@@ -1,12 +1,30 @@
+"use client";
+import { linksPageMenu } from "@/data/links_navbar";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 export const NavBar_pageMenu = () => {
+  const pathname = usePathname();
+
   return (
-    <ul className="container grid grid-cols-3 text-slate-200 gap-3 uppercase">
-      <li className="col-span-1 flex justify-center">Bebidas</li>
-      <li className="col-span-1 flex justify-center">Almuerzos</li>
-      <li className="col-span-1 flex justify-center">Postres</li>
-      <li className="col-span-1 flex justify-center">Cena</li>
-      <li className="col-span-1 flex justify-center">Cocteles</li>
-      <li className="col-span-1 flex justify-center">Otros</li>
+    <ul className="container grid grid-cols-4 text-slate-200 gap-y-6 uppercase">
+      {linksPageMenu.map((link) => (
+        <Link
+          key={link.hash}
+          href={link.href}
+          className={` col-span-1 flex justify-center rounded-md`}
+        >
+          <span
+            className={`px-4 rounded-md ${
+              pathname === link.href
+                ? "first:bg-primary text-darkMode shadow"
+                : ""
+            }`}
+          >
+            {link.name}
+          </span>
+        </Link>
+      ))}
     </ul>
   );
 };

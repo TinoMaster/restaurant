@@ -5,7 +5,6 @@ import { NavBar } from "@/components/navs/NavBar";
 import { Nabvar_Movil } from "@/components/navs/Nabvar_Movil";
 import { siligury } from "@/utils/fonts";
 import { NavBarScroll } from "@/components/navs/NavBarScroll";
-import { Suspense } from "react";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {

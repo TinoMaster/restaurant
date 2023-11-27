@@ -17,7 +17,7 @@ export default function Menu({ children }: { children: React.ReactNode }) {
       <SectionRoundedBehindBanner>
         <NavBar_pageMenu />
       </SectionRoundedBehindBanner>
-      <div className="h-[500px]">{children}</div>
+      <div className="min-h-[500px] container pb-10">{children}</div>
     </section>
   );
 }
