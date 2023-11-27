@@ -1,5 +1,7 @@
-import React from "react";
-
 export default function Menu() {
-  return <div>Menu</div>;
+  return (
+    <section>
+      <h2>Probando</h2>
+    </section>
+  );
 }

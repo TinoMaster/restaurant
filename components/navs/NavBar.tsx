@@ -9,7 +9,7 @@ export const NavBar = () => {
       {/* Logo */}
       <article className="flex text-sm flex-col items-center">
         <GiHotMeal className="text-xl" />
-        <h1 className="text-xl">Noah</h1>
+        <h1 className="text-3xl">Noah</h1>
       </article>
       {/* btn open menu */}
       <div className="lg:hidden">

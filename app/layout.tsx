@@ -6,6 +6,7 @@ import { Nabvar_Movil } from "@/components/navs/Nabvar_Movil";
 import { siligury } from "@/utils/fonts";
 import { NavBarScroll } from "@/components/navs/NavBarScroll";
 import { Suspense } from "react";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,7 +30,7 @@ export default function RootLayout({
             <NavBar />
           </header>
           <main>{children}</main>
-          <footer></footer>
+          <Footer />
         </NavProvider>
       </body>
     </html>
