@@ -18,7 +18,7 @@ export const NavBar = () => {
         <Btn_MenuMovil />
       </div>
       {/* Links */}
-      <div className="gap-3 text-lg hidden lg:flex items-center">
+      <div className="gap-5 text-lg hidden lg:flex items-center">
         {links?.map((link) => (
           <NavbarLink key={link.name} link={link} />
         ))}

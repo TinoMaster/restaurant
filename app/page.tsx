@@ -17,6 +17,7 @@ export default function Home() {
         imageDesktop={banner_homePage}
         imagemovil={banner_homePageMovil}
       >
+        <div className="gradient"></div>
         <BannerContent
           title={bannerContent.home.title}
           subtitle={bannerContent.home.subtitle}
@@ -25,12 +26,14 @@ export default function Home() {
         </BannerContent>
       </BannerPage>
       <SectionRoundedBehindBanner>
+        <div className="gradient"></div>
         <Wy_US />
       </SectionRoundedBehindBanner>
       <section className="bg-primary/10 py-10 lg:py-20">
         <AboutUs />
       </section>
       <PreferMenu />
+
       <BannerBussines />
     </>
   );

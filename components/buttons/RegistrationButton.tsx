@@ -1,7 +1,12 @@
+import Link from "next/link";
+
 export const RegistrationButton = () => {
   return (
-    <button className="bg-primaryGradient hover-primary-gradient px-3 py-1 rounded-md">
+    <Link
+      href={"/register"}
+      className="bg-primaryGradient hover-primary-gradient px-3 py-1 rounded-md"
+    >
       Registrarse
-    </button>
+    </Link>
   );
 };

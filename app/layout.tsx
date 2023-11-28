@@ -19,14 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${siligury.className} antialiased h-auto bg-darkMode`}>
+      <body className={`${siligury.className} antialiased h-auto min-h-screen bg-darkMode flex flex-col justify-between`}>
         <NavProvider>
           <header className="w-full overflow-hidden absolute z-20">
             <Nabvar_Movil />
             <NavBarScroll />
             <NavBar />
           </header>
-          <main className="w-full overflow-hidden">{children}</main>
+          <main className="w-full overflow-hidden grow">{children}</main>
           <Footer />
         </NavProvider>
       </body>

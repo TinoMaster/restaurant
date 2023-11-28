@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-lightDarkMode/30 text-white p-4 border-t-8 border-primary">
+    <footer className="w-full bg-lightDarkMode/30 text-white p-4 border-t-8 border-primary z-10">
       <div className="max-w-6xl mx-auto flex flex-wrap justify-around container gap-10">
         {/* Sección de Contacto */}
         <div className="w-full lg:w-auto flex flex-col items-center">
