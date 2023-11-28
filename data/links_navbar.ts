@@ -8,7 +8,7 @@ export const links: Array<TypeLinkNavBar> = [
   },
   {
     name: "Menu",
-    href: "/menu",
+    href: "/menu/antipasti",
     hash: "menu",
   },
   {
@@ -31,7 +31,7 @@ export const links: Array<TypeLinkNavBar> = [
 export const linksPageMenu: Array<TypeLinkNavBar> = [
   {
     name: "Antipasti",
-    href: "/menu",
+    href: "/menu/antipasti",
     hash: "antipasti",
   },
   {
@@ -70,3 +70,5 @@ export const linksPageMenu: Array<TypeLinkNavBar> = [
     hash: "vini",
   },
 ];
+
+export const firstPathnameMenuPage = linksPageMenu[0].href;

@@ -15,17 +15,19 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
   const { name, href } = link;
   const pathname = usePathname();
   const { setMenuIsOpen } = useNav();
-  const paths = cutPathnameByPiece(pathname);
-  const piece1 = `/${paths[1]}`;
+  const pathsUrl = cutPathnameByPiece(pathname);
+  const pathsLink = cutPathnameByPiece(href);
+  const piece1Path = `/${pathsUrl[1]}`;
+  const piece1Link = `/${pathsLink[1]}`;
 
   return (
     <div
       onClick={() => setMenuIsOpen(false)}
       className={`${
-        piece1 === link.href ? "" : ""
+        piece1Path === piece1Link ? "" : ""
       } relative text-3xl lg:text-xl inline-block`}
     >
-      {piece1 === link.href ? (
+      {piece1Path === piece1Link ? (
         <motion.div
           layoutId="active"
           className="absolute w-full h-full border-b-2"

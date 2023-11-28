@@ -4,6 +4,7 @@ import { links } from "@/data/links_navbar";
 import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
 import { useEffect, useState } from "react";
+import { RegistrationButton } from "../buttons/RegistrationButton";
 
 export const NavBarScroll = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -23,7 +24,7 @@ export const NavBarScroll = () => {
     <section
       className={`${
         menuVisible ? "translate-y-0" : "-translate-y-full"
-      } w-full transition-transform fixed text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-3 z-20`}
+      } w-full transition-transform fixed top-0 text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-3 z-40`}
     >
       {/* Logo */}
       <div className="container flex justify-between items-center">
@@ -36,10 +37,11 @@ export const NavBarScroll = () => {
           <Btn_MenuMovil />
         </div>
         {/* Links */}
-        <div className="gap-3 text-lg hidden lg:flex">
+        <div className="gap-3 text-lg hidden lg:flex items-center">
           {links?.map((link) => (
             <NavbarLink key={link.name} link={link} />
           ))}
+          <RegistrationButton />
         </div>
       </div>
     </section>

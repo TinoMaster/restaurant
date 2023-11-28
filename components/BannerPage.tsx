@@ -13,7 +13,6 @@ export const BannerPage = ({
 }: BannerPageProps) => {
   return (
     <section className="w-full h-[60vh] lg:h-[70vh] max-h-[600px] relative">
-      <div className="gradient"></div>
       <article className="absolute flex justify-center items-center w-full h-full bg-gradient-to-t from-black/40 to-black/50 z-10">
         {children}
       </article>

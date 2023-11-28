@@ -3,14 +3,29 @@
 @tailwind utilities;
 
 @layer base {
-  body {
+  html {
     scroll-behavior: smooth;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-720p m-auto w-full px-3;
+    @apply max-w-720p m-auto w-11/12;
+  }
+}
+
+@layer utilities {
+  .bg-primaryGradient {
+    @apply bg-gradient-to-r from-primaryPal-400 to-primaryPal-600;
+  }
+  .hover-primary-gradient {
+    @apply hover:from-primaryPal-500 hover:to-primaryPal-700;
+  }
+  .hover-primary-solid {
+    @apply hover:bg-primaryPal-600 hover:text-white;
+  }
+  .hover-primary-outline {
+    @apply hover:bg-primaryPal-100 hover:text-primaryPal-700 hover:border-primaryPal-700;
   }
 
   .gradient {

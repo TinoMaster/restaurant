@@ -1,7 +1,6 @@
-export default function Menu() {
-  return (
-    <section>
-      <h2>Probando</h2>
-    </section>
-  );
+import { links } from "@/data/links_navbar";
+import { redirect } from "next/navigation";
+
+export default function MenuPage() {
+  redirect(links[1].href);
 }
