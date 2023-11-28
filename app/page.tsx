@@ -33,7 +33,6 @@ export default function Home() {
         <AboutUs />
       </section>
       <PreferMenu />
-
       <BannerBussines />
     </>
   );
