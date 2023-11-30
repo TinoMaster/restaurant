@@ -25,7 +25,7 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
       onClick={() => setMenuIsOpen(false)}
       className={`${
         piece1Path === piece1Link ? "" : ""
-      } relative text-3xl lg:text-xl inline-block`}
+      } relative  inline-block`}
     >
       {piece1Path === piece1Link ? (
         <motion.div

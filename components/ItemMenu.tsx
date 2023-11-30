@@ -7,12 +7,12 @@ interface ItemMenuProps {
 export const ItemMenu = ({ title, description, price }: ItemMenuProps) => {
   return (
     <div className="flex flex-wrap justify-between items-center w-full">
-      <h3 className="lg:text-base text-sm text-primary font-bold uppercase">{title}</h3>
-      <span className="text-s hidden lg:block">----------------------</span>
-      <p className="lg:text-lg text-primary font-bold">{`€ ${price}.00`}</p>
-      <p className="w-full text-sm lg:text-base text-slate-300">
-        {description}
-      </p>
+      <div className="w-full flex justify-between items-center">
+        <h6 className="text-primary uppercase">{title}</h6>
+        <p className="grow text-center text-xs">------</p>
+        <h6 className="text-primary">{`€ ${price}.00`}</h6>
+      </div>
+      <p className="w-full text-gray-300 opacity-80 text-sm">{description}</p>
     </div>
   );
 };

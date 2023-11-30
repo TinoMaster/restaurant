@@ -11,21 +11,24 @@ export const Nabvar_Movil = () => {
     <section
       className={`fixed transition-transform z-50 ${
         menuIsOpen
-          ? "flex flex-col translate-x-0 w-screen bg-gradient-to-tr from-orange-50 via-white to-orange-50 h-screen z-20"
+          ? "flex flex-col translate-x-0 w-screen bg-darkMode text-white h-screen z-20"
           : "-translate-x-full"
       } `}
     >
-      <button
-        onClick={() => setMenuIsOpen(false)}
-        className="p-10 flex justify-end text-3xl text-slate-600"
-      >
-        <AiOutlineClose />
-      </button>
-      <ul className="flex flex-col grow justify-center items-center h-full gap-5">
-        {links?.map((link) => (
-          <NavbarLink key={link.name} link={link} />
-        ))}
-      </ul>
+      <div className="gradient"></div>
+      <div className="flex flex-col z-10 grow">
+        <button
+          onClick={() => setMenuIsOpen(false)}
+          className="p-10 flex justify-end text-3xl text-slate-600"
+        >
+          <AiOutlineClose />
+        </button>
+        <ul className="flex flex-col text-xl justify-center items-center h-full gap-8">
+          {links?.map((link) => (
+            <NavbarLink key={link.name} link={link} />
+          ))}
+        </ul>
+      </div>
     </section>
   );
 };

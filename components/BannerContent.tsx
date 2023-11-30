@@ -19,7 +19,7 @@ export const BannerContent = ({
         variants={bannerTittle}
         initial="initial"
         animate="animate"
-        className="text-slate-300 text-xs md:text-xl italic"
+        className="text-slate-300 text-xs md:text-xl "
       >
         {title}
       </MotionP>

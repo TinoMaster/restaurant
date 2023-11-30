@@ -6,15 +6,42 @@
   html {
     scroll-behavior: smooth;
   }
+  h2 {
+    @apply sm:text-4xl text-3xl font-bold;
+  }
+  h3 {
+    @apply sm:text-3xl text-2xl font-medium;
+  }
+  h4 {
+    @apply sm:text-2xl text-xl font-medium;
+  }
+  h5 {
+    @apply sm:text-xl text-lg font-medium;
+  }
+  h6 {
+    @apply sm:text-lg text-base font-medium;
+  }
 }
 
 @layer components {
   .container {
-    @apply max-w-720p m-auto w-11/12;
+    @apply max-w-720p m-auto w-11/12 overflow-hidden;
   }
 }
 
 @layer utilities {
+  .btn {
+    @apply text-lg py-2 px-8 rounded hover:shadow-md flex justify-center items-center;
+  }
+  .btn-mediun {
+    @apply min-w-[200px];
+  }
+  .btn-primary {
+    @apply text-white bg-primaryPal-600 hover:bg-primaryPal-700 transition-colors;
+  }
+  .btn-outline {
+    @apply border text-white border-primary bg-primaryPal-600/50 hover:bg-primary/40 transition-colors;
+  }
   .bg-primaryGradient {
     @apply bg-gradient-to-r from-primaryPal-400 to-primaryPal-600;
   }
@@ -26,6 +53,10 @@
   }
   .hover-primary-outline {
     @apply hover:bg-primaryPal-100 hover:text-primaryPal-700 hover:border-primaryPal-700;
+  }
+
+  .input-register_login {
+    @apply border-2 border-gray-400 rounded-md p-2 focus:outline-none focus:border-blue-400 bg-slate-50;
   }
 
   .gradient {

@@ -2,7 +2,7 @@ import { AboutUs } from "@/components/AboutUs";
 import { BannerBussines } from "@/components/BannerBussines";
 import { BannerContent } from "@/components/BannerContent";
 import { BannerPage } from "@/components/BannerPage";
-import { LinkButton } from "@/components/LinkButton";
+import { LinkButton } from "@/components/buttons/LinkButton";
 import { PreferMenu } from "@/components/PreferMenu";
 import { SectionRoundedBehindBanner } from "@/components/SectionRoundedBehindBanner";
 import { Wy_US } from "@/components/Wy-Us";

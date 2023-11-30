@@ -5,6 +5,8 @@ import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
 import { useEffect, useState } from "react";
 import { RegistrationButton } from "../buttons/RegistrationButton";
+import { LoginButton } from "../buttons/LoginButton";
+import { Logo } from "../Logo";
 
 export const NavBarScroll = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -24,14 +26,11 @@ export const NavBarScroll = () => {
     <section
       className={`${
         menuVisible ? "translate-y-0" : "-translate-y-full"
-      } w-full transition-transform fixed top-0 text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-3 z-40`}
+      } w-full transition-transform fixed top-0 text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-2 z-40`}
     >
       {/* Logo */}
-      <div className="container flex justify-between items-center">
-        <article className="flex text-sm flex-col items-center">
-          <GiHotMeal className="text-xl" />
-          <h1 className="text-xl">Noah</h1>
-        </article>
+      <div className="w-full px-5 flex justify-between items-center">
+        <Logo />
         {/* btn open menu */}
         <div className="lg:hidden">
           <Btn_MenuMovil />
@@ -41,7 +40,10 @@ export const NavBarScroll = () => {
           {links?.map((link) => (
             <NavbarLink key={link.name} link={link} />
           ))}
-          <RegistrationButton />
+          <div className="flex items-center">
+            <LoginButton />
+            <RegistrationButton />
+          </div>
         </div>
       </div>
     </section>
