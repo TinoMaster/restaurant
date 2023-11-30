@@ -19,7 +19,7 @@ export const BannerContent = ({
         variants={bannerTittle}
         initial="initial"
         animate="animate"
-        className="text-slate-300 text-xs md:text-xl "
+        className="text-slate-300 text-lg lg:text-xl"
       >
         {title}
       </MotionP>
@@ -27,7 +27,7 @@ export const BannerContent = ({
         variants={bannerBigTittle}
         initial="initial"
         animate="animate"
-        className="text-3xl md:text-5xl text-center italic"
+        className="text-4xl md:text-5xl text-center italic"
       >
         {subtitle}
       </MotionP>

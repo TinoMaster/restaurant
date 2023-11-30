@@ -1,5 +1,4 @@
 "use client";
-import { GiHotMeal } from "react-icons/gi";
 import { links } from "@/data/links_navbar";
 import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
@@ -28,15 +27,12 @@ export const NavBarScroll = () => {
         menuVisible ? "translate-y-0" : "-translate-y-full"
       } w-full transition-transform fixed top-0 text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-2 z-40`}
     >
-      {/* Logo */}
-      <div className="w-full px-5 flex justify-between items-center">
+      <div className="lg:pr-5 lg:pl-10 px-3 flex justify-between items-center">
         <Logo />
-        {/* btn open menu */}
         <div className="lg:hidden">
           <Btn_MenuMovil />
         </div>
-        {/* Links */}
-        <div className="gap-3 text-lg hidden lg:flex items-center">
+        <div className="gap-5 hidden lg:flex items-center">
           {links?.map((link) => (
             <NavbarLink key={link.name} link={link} />
           ))}

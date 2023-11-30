@@ -20,6 +20,15 @@ export const AboutUs = () => {
           suscipit, ratione beatae, cupiditate, placeat explicabo est blanditiis
           maiores. Illo modi fuga at odio vero laborum alias?
         </p>
+        <p className="text-slate-300 text-center">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore
+          aliquam odio consequuntur temporibus suscipit, ratione beatae,
+          cupiditate, placeat explicabo est blanditiis maiores. Illo modi fuga
+          at odio vero laborum alias? Lorem ipsum dolor sit, amet consectetur
+          adipisicing elit. Inventore aliquam odio consequuntur temporibus
+          suscipit, ratione beatae, cupiditate, placeat explicabo est blanditiis
+          maiores. Illo modi fuga at odio vero laborum alias?
+        </p>
         <div className="w-full flex justify-center py-5">
           <LinkButton title="Scopri di piu" href="/history" />
         </div>

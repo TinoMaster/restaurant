@@ -5,6 +5,7 @@ import { BannerPage } from "@/components/BannerPage";
 import { LinkButton } from "@/components/buttons/LinkButton";
 import { PreferMenu } from "@/components/PreferMenu";
 import { SectionRoundedBehindBanner } from "@/components/SectionRoundedBehindBanner";
+import { Testimonials } from "@/components/Testimonials";
 import { Wy_US } from "@/components/Wy-Us";
 import { bannerContent } from "@/data/bannerContent";
 import { firstPathnameMenuPage } from "@/data/links_navbar";
@@ -28,6 +29,7 @@ export default function Home() {
       <SectionRoundedBehindBanner>
         <div className="gradient"></div>
         <Wy_US />
+        <Testimonials />
       </SectionRoundedBehindBanner>
       <section className="bg-primary/10 py-10 lg:py-20">
         <AboutUs />
