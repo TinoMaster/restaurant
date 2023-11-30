@@ -8,12 +8,12 @@ export const PreferMenu = () => {
     <section className="py-10 lg:py-28 px-2 z-10 bg-darkMode text-slate-100 relative flex flex-col items-center justify-center">
       <BrokeBackground />
       <h6 className="text-primary/50 text-center w-full">Menu</h6>
-      <h3 className=" text-primary pb-10">
-        ~~ Il Vostro Preferito ~~
+      <h3 className="italic text-primary pb-10">
+        Il Vostro Preferito
       </h3>
       <article className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div className="flex flex-col gap-4 px-10">
+          <div className="flex flex-col gap-4">
             {preferMenuData.slice(0, 5).map((item) => (
               <ItemMenu
                 key={item.title}
@@ -23,7 +23,7 @@ export const PreferMenu = () => {
               />
             ))}
           </div>
-          <div className="flex flex-col gap-4 px-10">
+          <div className="flex flex-col gap-4">
             {preferMenuData.slice(5, 10).map((item) => (
               <ItemMenu
                 key={item.title}

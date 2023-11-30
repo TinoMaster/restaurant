@@ -29,13 +29,13 @@ export default function Home() {
       <SectionRoundedBehindBanner>
         <div className="gradient"></div>
         <Wy_US />
-        <Testimonials />
       </SectionRoundedBehindBanner>
-      <section className="bg-primary/10 py-10 lg:py-20">
+      <section className="bg-gradient-to-br from-primary/10 via-primary/20 to-primary/10 py-10 lg:py-20">
         <AboutUs />
       </section>
       <PreferMenu />
       <BannerBussines />
+      <Testimonials />
     </>
   );
 }

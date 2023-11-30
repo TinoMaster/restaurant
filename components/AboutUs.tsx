@@ -8,8 +8,8 @@ export const AboutUs = () => {
       <ImagesRotates image1={img_about_us1} image2={img_about_us2} />
       <section className="flex flex-col w-full lg:w-1/2 gap-2 items-center lg:items-start justify-center">
         <p className="text-primary/50 text-center w-full">Chi Siamo</p>
-        <h3 className="text-primary w-full text-center pb-2">
-          ~~ La Nostra Storia ~~
+        <h3 className="italic text-primary w-full text-center pb-2">
+           La Nostra Storia
         </h3>
         <p className="text-slate-300 text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore

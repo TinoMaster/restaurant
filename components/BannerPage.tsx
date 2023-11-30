@@ -17,7 +17,7 @@ export const BannerPage = ({
         {children}
       </article>
 
-      <div className="absolute w-full h-full bg-gradient-to-t from-black/70 via-black/10 to-black/70"></div>
+      <div className="absolute w-full h-full bg-gradient-to-t from-black/70 via-transparent to-black/70"></div>
       <Image
         priority={true}
         className="w-auto h-full object-cover md:hidden"
