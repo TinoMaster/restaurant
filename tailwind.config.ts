@@ -14,12 +14,25 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        /* primary: "#D6B57D", */
-        primary: "#b52022",
+        primary: "#D6B57D",
+        /* primary: "#b52022", */
         secondary: "#ec4749",
         darkMode: "#151618",
         lightDarkMode: "#1B1C1E",
         primaryPal: {
+          "50": "#fbf9f1",
+          "100": "#f5f0df",
+          "200": "#ebdebd",
+          "300": "#dec693",
+          "400": "#d6b57d",
+          "500": "#c5924a",
+          "600": "#b77d3f",
+          "700": "#986436",
+          "800": "#7b5131",
+          "900": "#64432a",
+          "950": "#352215",
+        },
+        /* primaryPal: {
           "50": "#fef2f2",
           "100": "#fde3e3",
           "200": "#fdcbcc",
@@ -31,7 +44,7 @@ const config: Config = {
           "800": "#961e1f",
           "900": "#7c2021",
           "950": "#430c0d",
-        },
+        }, */
         secondaryPal: {
           "50": "#fef2f2",
           "100": "#fde3e3",

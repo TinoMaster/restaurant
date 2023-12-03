@@ -37,17 +37,12 @@
     @apply min-w-[200px];
   }
   .btn-primary {
-    @apply text-white bg-primaryPal-600 hover:bg-primaryPal-700 transition-colors;
+    @apply text-white bg-gradient-to-tr from-darkMode via-primaryPal-600 to-primary hover:bg-primaryPal-700 transition-colors;
   }
   .btn-outline {
     @apply border text-white border-gray-200 bg-primaryPal-600/10 hover:bg-primary/40 hover:border-white transition-colors;
   }
-  .bg-primaryGradient {
-    @apply bg-gradient-to-r from-primaryPal-400 to-primaryPal-600;
-  }
-  .hover-primary-gradient {
-    @apply hover:from-primaryPal-500 hover:to-primaryPal-700;
-  }
+
   .hover-primary-solid {
     @apply hover:bg-primaryPal-600 hover:text-white;
   }
