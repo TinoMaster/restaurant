@@ -2,16 +2,16 @@ import { bannerBigTittle, bannerTittle } from "@/utils/animations/framers";
 import LoadingBannerContent from "./loaders/loadingBannerContent";
 import { MotionDiv, MotionP } from "./MotionDiv";
 
-interface BannerContentProps {
+interface HeroPageContentProps {
   title: string;
   subtitle: string;
   children?: React.ReactNode;
 }
-export const BannerContent = ({
+export const HeroPageContent = ({
   title,
   subtitle,
   children,
-}: BannerContentProps) => {
+}: HeroPageContentProps) => {
   return (
     <div className="flex flex-col text-white w-11/12 lg:w-1/3 h-full justify-center items-center relative">
       <LoadingBannerContent />
@@ -35,7 +35,7 @@ export const BannerContent = ({
         variants={bannerTittle}
         initial="initial"
         animate="animate"
-        className="py-4 z-20 flex flex-col justify-center items-center"
+        className="py-4 z-20 flex flex-col justify-center items-center gap-2"
       >
         {children}
       </MotionDiv>

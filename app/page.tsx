@@ -1,6 +1,6 @@
 import { AboutUs } from "@/components/AboutUs";
 import { BannerBussines } from "@/components/BannerBussines";
-import { BannerContent } from "@/components/BannerContent";
+import { HeroPageContent } from "@/components/HeroPageContent";
 import { HeroPage } from "@/components/HeroPage";
 import { LinkButton } from "@/components/buttons/LinkButton";
 import { PreferMenu } from "@/components/PreferMenu";
@@ -18,12 +18,13 @@ export default function Home() {
         imageDesktop={banner_homePage}
         imagemovil={banner_homePageMovil}
       >
-        <BannerContent
+        <HeroPageContent
           title={bannerContent.home.title}
           subtitle={bannerContent.home.subtitle}
         >
           <LinkButton href={firstPathnameMenuPage} title="Menu" />
-        </BannerContent>
+          <LinkButton href={firstPathnameMenuPage} title="Menu" />
+        </HeroPageContent>
       </HeroPage>
       <SectionRoundedBehindBanner>
         <div className="gradient"></div>

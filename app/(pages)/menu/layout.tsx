@@ -1,4 +1,4 @@
-import { BannerContent } from "@/components/BannerContent";
+import { HeroPageContent } from "@/components/HeroPageContent";
 import { HeroPage } from "@/components/HeroPage";
 import { SectionRoundedBehindBanner } from "@/components/SectionRoundedBehindBanner";
 import { TitleTypeMenu } from "@/components/TitleTypeMenu";
@@ -10,10 +10,10 @@ export default function Menu({ children }: { children: React.ReactNode }) {
   return (
     <section>
       <HeroPage imageDesktop={img_PageMenu} imagemovil={img_PageMenuMovil}>
-        <BannerContent
+        <HeroPageContent
           title={bannerContent.home.title}
           subtitle={bannerContent.home.subtitle}
-        ></BannerContent>
+        ></HeroPageContent>
       </HeroPage>
       <SectionRoundedBehindBanner>
         <NavBar_pageMenu />
