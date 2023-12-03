@@ -7,8 +7,8 @@ export const PreferMenu = () => {
   return (
     <section className="py-20 lg:py-44 px-2 z-10 bg-lightDarkMode text-slate-100 relative flex flex-col items-center justify-center">
       <BrokeBackground />
-      <h6 className="text-primary/50 text-center w-full">Menu</h6>
-      <h3 className="italic text-primary pb-10">
+      <h6 className="text-primary/80 font-bold text-center w-full">Menu</h6>
+      <h3 className="italic text-white pb-10">
         Il Vostro Preferito
       </h3>
       <article className="container">
