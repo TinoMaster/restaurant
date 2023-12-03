@@ -1,5 +1,5 @@
 "use client";
-import { linksPageMenu } from "@/data/links_navbar";
+import { linksPageMenu } from "@/constants/links_navbar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

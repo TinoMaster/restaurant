@@ -1,4 +1,4 @@
-import { links } from "@/data/links_navbar";
+import { links } from "@/constants/links_navbar";
 import Link from "next/link";
 
 const Footer = () => {

@@ -6,7 +6,7 @@ interface BannerPageProps {
   imageDesktop: StaticImageData;
 }
 
-export const BannerPage = ({
+export const HeroPage = ({
   children,
   imagemovil,
   imageDesktop,
@@ -16,7 +16,6 @@ export const BannerPage = ({
       <article className="absolute flex justify-center items-center w-full h-full bg-gradient-to-t from-black/40 to-black/50 z-10">
         {children}
       </article>
-
       <div className="absolute w-full h-full bg-gradient-to-t from-black/70 via-transparent to-black/70"></div>
       <Image
         priority={true}

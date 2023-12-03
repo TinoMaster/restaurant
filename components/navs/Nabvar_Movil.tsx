@@ -2,7 +2,7 @@
 import useNav from "@/context/navContext";
 import { NavbarLink } from "./NabvarLink";
 import { AiOutlineClose } from "react-icons/ai";
-import { links } from "@/data/links_navbar";
+import { links } from "@/constants/links_navbar";
 
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();
@@ -15,7 +15,6 @@ export const Nabvar_Movil = () => {
           : "-translate-x-full"
       } `}
     >
-      <div className="gradient"></div>
       <div className="flex flex-col z-10 grow">
         <button
           onClick={() => setMenuIsOpen(false)}

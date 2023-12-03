@@ -1,4 +1,4 @@
-import { preferMenuData } from "../data/Menu.data";
+import { preferMenuData } from "../constants/Menu.data";
 import { ItemMenu } from "./ItemMenu";
 import { LinkButton } from "./buttons/LinkButton";
 import { BrokeBackground } from "./backgrounds/BrokeBackground";

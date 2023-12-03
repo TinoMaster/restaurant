@@ -1,31 +1,30 @@
 import { AboutUs } from "@/components/AboutUs";
 import { BannerBussines } from "@/components/BannerBussines";
 import { BannerContent } from "@/components/BannerContent";
-import { BannerPage } from "@/components/BannerPage";
+import { HeroPage } from "@/components/HeroPage";
 import { LinkButton } from "@/components/buttons/LinkButton";
 import { PreferMenu } from "@/components/PreferMenu";
 import { SectionRoundedBehindBanner } from "@/components/SectionRoundedBehindBanner";
 import { Testimonials } from "@/components/Testimonials";
 import { Wy_US } from "@/components/Wy-Us";
-import { bannerContent } from "@/data/bannerContent";
-import { firstPathnameMenuPage } from "@/data/links_navbar";
+import { bannerContent } from "@/constants/bannerContent";
+import { firstPathnameMenuPage } from "@/constants/links_navbar";
 import { banner_homePage, banner_homePageMovil } from "@/utils/images";
 
 export default function Home() {
   return (
     <>
-      <BannerPage
+      <HeroPage
         imageDesktop={banner_homePage}
         imagemovil={banner_homePageMovil}
       >
-        <div className="gradient"></div>
         <BannerContent
           title={bannerContent.home.title}
           subtitle={bannerContent.home.subtitle}
         >
           <LinkButton href={firstPathnameMenuPage} title="Menu" />
         </BannerContent>
-      </BannerPage>
+      </HeroPage>
       <SectionRoundedBehindBanner>
         <div className="gradient"></div>
         <Wy_US />

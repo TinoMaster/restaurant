@@ -1,5 +1,5 @@
 "use client";
-import { testimonials } from "@/data/testimonials";
+import { testimonials } from "@/constants/testimonials";
 import { useState } from "react";
 
 export const Testimonials = () => {

@@ -1,4 +1,4 @@
-import { links } from "@/data/links_navbar";
+import { links } from "@/constants/links_navbar";
 import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
 import { RegistrationButton } from "../buttons/RegistrationButton";
