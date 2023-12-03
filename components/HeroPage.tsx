@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 
-interface BannerPageProps {
+interface HeroPageProps {
   children: React.ReactNode;
   imagemovil: StaticImageData;
   imageDesktop: StaticImageData;
@@ -10,9 +10,9 @@ export const HeroPage = ({
   children,
   imagemovil,
   imageDesktop,
-}: BannerPageProps) => {
+}: HeroPageProps) => {
   return (
-    <section className="w-full h-[60vh] lg:h-[70vh] max-h-[600px] relative">
+    <section className="w-full h-[60vh] lg:h-[80vh] max-h-[700px] relative">
       <article className="absolute flex justify-center items-center w-full h-full bg-gradient-to-t from-black/40 to-black/50 z-10">
         {children}
       </article>

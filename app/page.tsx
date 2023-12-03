@@ -9,30 +9,23 @@ import { Testimonials } from "@/components/Testimonials";
 import { Wy_US } from "@/components/Wy-Us";
 import { bannerContent } from "@/constants/bannerContent";
 import { firstPathnameMenuPage } from "@/constants/links_navbar";
-import { banner_homePage, banner_homePageMovil } from "@/utils/images";
+import { img_PageMenu, img_PageMenuMovil } from "@/utils/images";
 
 export default function Home() {
   return (
     <>
-      <HeroPage
-        imageDesktop={banner_homePage}
-        imagemovil={banner_homePageMovil}
-      >
+      <HeroPage imageDesktop={img_PageMenu} imagemovil={img_PageMenuMovil}>
         <HeroPageContent
           title={bannerContent.home.title}
           subtitle={bannerContent.home.subtitle}
         >
           <LinkButton href={firstPathnameMenuPage} title="Menu" />
-          <LinkButton href={firstPathnameMenuPage} title="Menu" />
         </HeroPageContent>
       </HeroPage>
       <SectionRoundedBehindBanner>
-        <div className="gradient"></div>
         <Wy_US />
       </SectionRoundedBehindBanner>
-      <section className="bg-gradient-to-br from-primary/10 via-primary/20 to-primary/10 py-10 lg:py-20">
-        <AboutUs />
-      </section>
+      <AboutUs />
       <PreferMenu />
       <BannerBussines />
       <Testimonials />
