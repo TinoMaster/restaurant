@@ -12,7 +12,7 @@ export const PreferMenu = () => {
       <h6 className="text-primary/80 font-bold text-center w-full">Menu</h6>
       <h3 className="italic text-white pb-10">Il Vostro Preferito</h3>
       <article className="container">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:p-10 py-5">
           {preferMenuData.slice(0, 3).map((item, index) => (
             <MenuItemPlusImage
               key={index}

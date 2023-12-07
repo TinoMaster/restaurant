@@ -6,6 +6,7 @@ import img_PageMenu from "@/public/images/parrilla.jpg";
 import img_PageMenuMovil from "@/public/images/parrilla_movil.jpg";
 import googleLogo from "@/public/images/google.png";
 import facebookLogo from "@/public/images/facebook.png";
+import texturaCemento from "@/public/images/textura-cemento.jpg";
 
 export {
   banner_homePage,
@@ -16,4 +17,5 @@ export {
   img_PageMenuMovil,
   googleLogo,
   facebookLogo,
+  texturaCemento,
 };
