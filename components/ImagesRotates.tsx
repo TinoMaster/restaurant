@@ -13,7 +13,7 @@ interface ImagesRotatesProps {
 
 export const ImagesRotates = ({ image1, image2 }: ImagesRotatesProps) => {
   return (
-    <article className="lg:w-1/2 flex gap-3 relative">
+    <article className="lg:w-1/2 flex gap-3 lg:gap-10 relative">
       <LoadingImagesRotates />
       {/* block1 */}
       <MotionDiv
@@ -23,7 +23,7 @@ export const ImagesRotates = ({ image1, image2 }: ImagesRotatesProps) => {
         transition={{ duration: 1.8 }}
         className="w-1/2 flex flex-col gap-2 justify-center items-end"
       >
-        <div className="w-[150px] h-[200px] lg:w-[250px] lg:h-[400px] p-1 bg-gradient-to-tr from-primary to-black shadow-lg shadow-black/40 rounded-md first:p-2 saturate-50">
+        <div className="w-[150px] h-[200px] lg:w-[300px] lg:h-[400px] p-1 bg-gradient-to-tr from-primary to-black shadow-lg shadow-black/40 rounded-md">
           <Image
             src={image1}
             alt="1"
@@ -39,7 +39,7 @@ export const ImagesRotates = ({ image1, image2 }: ImagesRotatesProps) => {
         transition={{ duration: 1.8 }}
         className="w-1/2 flex flex-col gap-2 justify-center items-start "
       >
-        <div className="w-[150px] h-[200px] lg:w-[250px] lg:h-[400px] p-1 bg-gradient-to-tr from-black to-primary shadow-lg shadow-black/40 rounded-md first:p-2 saturate-50">
+        <div className="w-[150px] h-[200px] lg:w-[300px] lg:h-[400px] p-1 bg-gradient-to-tr from-black to-primary shadow-lg shadow-black/40 rounded-md">
           <Image
             src={image2}
             alt="1"

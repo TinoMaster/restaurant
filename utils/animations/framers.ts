@@ -26,9 +26,8 @@ export const bannerBigTittle = {
 export const image1historyHome = {
   initial: {
     opacity: 0,
-    rotate: -10,
     x: 8,
-    y: 12,
+    y: 24,
   },
   animate: {
     opacity: 1,
@@ -39,7 +38,6 @@ export const image1historyHome = {
 export const image2historyHome = {
   initial: {
     opacity: 0,
-    rotate: 12,
     x: -8,
   },
   animate: {

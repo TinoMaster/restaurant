@@ -1,58 +1,138 @@
+interface Statistics {
+  total_sales: number;
+  favorites: number;
+  rating: number;
+}
+
+interface HomeService {
+  available: boolean;
+  delivery_cost: number;
+  estimated_delivery_time: string;
+}
+
+interface Nutrition {
+  calories: number;
+  protein: number;
+  fats: number;
+  carbohydrates: number;
+}
+
 interface MenuItem {
-  title: string;
+  name: string;
+  type: string;
   description: string;
+  ingredients: string[];
   price: number;
+  availability: boolean;
+  statistics: Statistics;
+  home_service: HomeService;
+  nutrition: Nutrition;
+  images: string[];
 }
 
 export const preferMenuData: MenuItem[] = [
   {
-    title: "PROBANDO EL MENU",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 10,
+    name: "Pasta Carbonara",
+    type: "Main",
+    description:
+      "Delicious pasta with carbonara sauce, made with eggs, parmesan cheese, bacon, and black pepper.",
+    ingredients: ["Pasta", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
+    price: 12.99,
+    availability: true,
+    statistics: {
+      total_sales: 150,
+      favorites: 45,
+      rating: 4.8,
+    },
+    home_service: {
+      available: true,
+      delivery_cost: 2.99,
+      estimated_delivery_time: "30-45 minutes",
+    },
+    nutrition: {
+      calories: 550,
+      protein: 15,
+      fats: 25,
+      carbohydrates: 65,
+    },
+    images: ["image_url_1", "image_url_2"],
   },
   {
-    title: "OTRA PRUEBA",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 20,
+    name: "Pasta Carbonara",
+    type: "Main",
+    description:
+      "Delicious pasta with carbonara sauce, made with eggs, parmesan cheese, bacon, and black pepper.",
+    ingredients: ["Pasta", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
+    price: 12.99,
+    availability: true,
+    statistics: {
+      total_sales: 150,
+      favorites: 45,
+      rating: 4.8,
+    },
+    home_service: {
+      available: true,
+      delivery_cost: 2.99,
+      estimated_delivery_time: "30-45 minutes",
+    },
+    nutrition: {
+      calories: 550,
+      protein: 15,
+      fats: 25,
+      carbohydrates: 65,
+    },
+    images: ["image_url_1", "image_url_2"],
   },
   {
-    title: "CALAMAR REBOSADO",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 30,
+    name: "Pasta Carbonara",
+    type: "Main",
+    description:
+      "Delicious pasta with carbonara sauce, made with eggs, parmesan cheese, bacon, and black pepper.",
+    ingredients: ["Pasta", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
+    price: 12.99,
+    availability: true,
+    statistics: {
+      total_sales: 150,
+      favorites: 45,
+      rating: 4.8,
+    },
+    home_service: {
+      available: true,
+      delivery_cost: 2.99,
+      estimated_delivery_time: "30-45 minutes",
+    },
+    nutrition: {
+      calories: 550,
+      protein: 15,
+      fats: 25,
+      carbohydrates: 65,
+    },
+    images: ["image_url_1", "image_url_2"],
   },
   {
-    title: "ALMEJAS VERDES",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 40,
-  },
-  {
-    title: "FRIJOLES NEGROS",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 50,
-  },
-  {
-    title: "FRIJOLES COLORADOS",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 60,
-  },
-  {
-    title: "LA BESTIA ROJA",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 70,
-  },
-  {
-    title: "TARTUFO NARANJA",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 80,
-  },
-  {
-    title: "SPAGUETY MATRICIANA",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 90,
-  },
-  {
-    title: "PICAGNA",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    price: 100,
+    name: "Pasta Carbonara",
+    type: "Main",
+    description:
+      "Delicious pasta with carbonara sauce, made with eggs, parmesan cheese, bacon, and black pepper.",
+    ingredients: ["Pasta", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
+    price: 12.99,
+    availability: true,
+    statistics: {
+      total_sales: 150,
+      favorites: 45,
+      rating: 4.8,
+    },
+    home_service: {
+      available: true,
+      delivery_cost: 2.99,
+      estimated_delivery_time: "30-45 minutes",
+    },
+    nutrition: {
+      calories: 550,
+      protein: 15,
+      fats: 25,
+      carbohydrates: 65,
+    },
+    images: ["image_url_1", "image_url_2"],
   },
 ];
