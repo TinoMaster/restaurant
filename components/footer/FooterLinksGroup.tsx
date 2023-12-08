@@ -8,7 +8,7 @@ interface FooterLinksGroupProps {
 export const FooterLinksGroup = ({ group }: FooterLinksGroupProps) => {
   const { category, links } = group;
   return (
-    <div className="w-full max-w-[250px]">
+    <div className="w-full max-w-[250px] m-auto">
       <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3 uppercase">
         {category}
       </h2>

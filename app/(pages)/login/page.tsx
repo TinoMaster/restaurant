@@ -1,5 +1,7 @@
+import { SocialButtons } from "@/components/buttons/SocialButtons";
 import { facebookLogo, googleLogo } from "@/utils/images";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Login() {
@@ -11,7 +13,7 @@ export default function Login() {
           Login
         </h2>
 
-        <form className="flex flex-col w-96 gap-3 z-20">
+        <form className="flex flex-col w-96 gap-3">
           <div className="flex flex-col">
             <label className="text-slate-200 pl-1" htmlFor="email">
               Correo
@@ -40,35 +42,23 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="bg-primaryGradient hover-primary-gradient p-3 rounded-md mt-2 text-white"
+            className="bg-primaryPal-600 shadow-md p-3 rounded-md mt-2 text-white"
           >
             Entrar
           </button>
         </form>
+        <div className="pt-5 flex text-gray-100 gap-1">
+          <span>No tienes cuenta?</span>
+          <Link
+            href={"/register"}
+            className="text-blue-300 border-b border-blue-200"
+          >
+            Registrarse
+          </Link>
+        </div>
         {/* Buttons login with google */}
         <p className="text-slate-200 text-center mt-10 mb-4">O entre con</p>
-        <div className="flex flex-col items-baseline w-full gap-2 z-20">
-          <button className="bg-slate-100 border border-red-500 w-full p-2 rounded-md text-lightDarkMode flex justify-center items-center gap-2">
-            <Image
-              src={googleLogo}
-              alt="google icon"
-              width={32}
-              height={32}
-              className="rounded-full"
-            />
-            Entra con Google
-          </button>
-          <button className="bg-slate-100 p-2 w-full rounded-md text-lightDarkMode border border-blue-600 flex justify-center items-center gap-2">
-            <Image
-              src={facebookLogo}
-              alt="facebook icon"
-              width={32}
-              height={32}
-              className="rounded-full"
-            />
-            Entra con Facebook
-          </button>
-        </div>
+        <SocialButtons />
       </div>
     </section>
   );
