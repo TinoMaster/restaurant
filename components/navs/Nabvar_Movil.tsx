@@ -2,7 +2,7 @@
 import useNav from "@/context/navContext";
 import { NavbarLink } from "./NabvarLink";
 import { AiOutlineClose } from "react-icons/ai";
-import { links } from "@/constants/links_navbar";
+import { linksPrincipalMenu } from "@/constants/links_navbar";
 
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();
@@ -23,7 +23,7 @@ export const Nabvar_Movil = () => {
           <AiOutlineClose />
         </button>
         <ul className="flex flex-col text-xl justify-center items-center h-full gap-8">
-          {links?.map((link) => (
+          {linksPrincipalMenu?.map((link) => (
             <NavbarLink key={link.name} link={link} />
           ))}
         </ul>

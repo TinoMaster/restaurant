@@ -3,12 +3,12 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { TypeLinkNavBar } from "@/types/common";
+import { TLink } from "@/types/common";
 import useNav from "@/context/navContext";
 import { cutPathnameByPiece } from "@/utils/cutPathname";
 
 interface NavbarLinkProps {
-  link: TypeLinkNavBar;
+  link: TLink;
 }
 
 export const NavbarLink = ({ link }: NavbarLinkProps) => {

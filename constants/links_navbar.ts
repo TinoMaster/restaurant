@@ -1,73 +1,75 @@
-import { TypeLinkNavBar } from "../types/common";
+import { TLink } from "../types/common";
 
-export const links: Array<TypeLinkNavBar> = [
+export const HOME_PAGE_NAME = "Casa";
+export const MENU_PAGE_NAME = "Menu";
+export const SERVICE_PAGE_NAME = "Servizi";
+export const HISTORY_PAGE_NAME = "Storia";
+export const CONTACT_PAGE_NAME = "Contatti";
+
+export const FIRST_GROUP_PLATE = "antipasti";
+export const SECOND_GROUP_PLATE = "primi";
+export const THIRD_GROUP_PLATE = "secondi";
+export const FOUR_GROUP_PLATE = "contorni";
+export const FIFT_GROUP_PLATE = "bevande";
+export const SIX_GROUP_PLATE = "cocktail";
+export const SEVEN_GROUP_PLATE = "dolci";
+export const EIGHT_GROUP_PLATE = "vini";
+
+export const linksPrincipalMenu: Array<TLink> = [
   {
-    name: "Casa",
+    name: HOME_PAGE_NAME,
     href: "/",
-    hash: "",
   },
   {
-    name: "Menu",
+    name: MENU_PAGE_NAME,
     href: "/menu/antipasti",
-    hash: "menu",
   },
   {
-    name: "Servizi",
+    name: SERVICE_PAGE_NAME,
     href: "/services",
-    hash: "services",
   },
   {
-    name: "Storia",
+    name: HISTORY_PAGE_NAME,
     href: "/history",
-    hash: "history",
   },
   {
-    name: "Contatti",
+    name: CONTACT_PAGE_NAME,
     href: "/contacts",
-    hash: "contacts",
   },
 ];
 
-export const linksPageMenu: Array<TypeLinkNavBar> = [
+export const linksPageMenu: Array<TLink> = [
   {
-    name: "Antipasti",
+    name: FIRST_GROUP_PLATE,
     href: "/menu/antipasti",
-    hash: "antipasti",
   },
   {
-    name: "Primi",
+    name: SECOND_GROUP_PLATE,
     href: "/menu/primi",
-    hash: "primi",
   },
   {
-    name: "Secondi",
+    name: THIRD_GROUP_PLATE,
     href: "/menu/secondi",
-    hash: "secondi",
   },
   {
-    name: "Contorni",
+    name: FOUR_GROUP_PLATE,
     href: "/menu/contorni",
-    hash: "contorni",
   },
   {
-    name: "Bevande",
+    name: FIFT_GROUP_PLATE,
     href: "/menu/bevande",
-    hash: "bevande",
   },
   {
-    name: "Cocktail",
+    name: SIX_GROUP_PLATE,
     href: "/menu/cocktail",
-    hash: "cocktail",
   },
   {
-    name: "Dolci",
+    name: SEVEN_GROUP_PLATE,
     href: "/menu/dolci",
-    hash: "dolci",
   },
   {
-    name: "Vini",
+    name: EIGHT_GROUP_PLATE,
     href: "/menu/vini",
-    hash: "vini",
   },
 ];
 

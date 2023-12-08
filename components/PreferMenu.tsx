@@ -1,9 +1,7 @@
 import { preferMenuData } from "../constants/Menu.data";
-import { ItemMenu } from "./ItemMenu";
 import { LinkButton } from "./buttons/LinkButton";
 import { BrokeBackground } from "./backgrounds/BrokeBackground";
 import { MenuItemPlusImage } from "./ItemMenuPlusImage";
-import { img_about_us1 } from "@/utils/images";
 
 export const PreferMenu = () => {
   return (
@@ -19,7 +17,6 @@ export const PreferMenu = () => {
               index={index}
               title={item.name}
               price={item.price}
-              imageSrc={img_about_us1}
             />
           ))}
           {preferMenuData.slice(0, 3).map((item, index) => (
@@ -28,7 +25,6 @@ export const PreferMenu = () => {
               index={index}
               title={item.name}
               price={item.price}
-              imageSrc={img_about_us1}
             />
           ))}
         </div>

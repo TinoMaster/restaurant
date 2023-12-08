@@ -1,5 +1,9 @@
-export type TypeLinkNavBar = {
-    name: string;
-    href: string;
-    hash: string;
-  };
+export type TLink = {
+  name: string;
+  href: string;
+};
+
+export type TGroupFooterLink = {
+  category: string;
+  links: TLink[];
+};

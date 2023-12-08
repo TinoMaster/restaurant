@@ -1,7 +1,5 @@
 import { MenuItemPlusImage } from "@/components/ItemMenuPlusImage";
 import { preferMenuData } from "@/constants/Menu.data";
-import { img_about_us1 } from "@/utils/images";
-import React from "react";
 
 export default function PrimiPlateSectionMenu() {
   return (
@@ -12,7 +10,6 @@ export default function PrimiPlateSectionMenu() {
           index={index}
           title={plate.name}
           price={plate.price}
-          imageSrc={img_about_us1}
         />
       ))}
     </div>

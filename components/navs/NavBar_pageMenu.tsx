@@ -10,7 +10,7 @@ export const NavBar_pageMenu = () => {
     <ul className="container grid grid-cols-4 text-slate-200 gap-y-6 uppercase">
       {linksPageMenu.map((link) => (
         <Link
-          key={link.hash}
+          key={link.name}
           href={link.href}
           className={` col-span-1 flex justify-center rounded-md`}
         >

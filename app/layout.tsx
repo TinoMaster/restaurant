@@ -5,7 +5,7 @@ import { NavBar } from "@/components/navs/NavBar";
 import { Nabvar_Movil } from "@/components/navs/Nabvar_Movil";
 import { siligury } from "@/utils/fonts";
 import { NavBarScroll } from "@/components/navs/NavBarScroll";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",

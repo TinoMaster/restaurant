@@ -1,4 +1,4 @@
-import { links } from "@/constants/links_navbar";
+import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
 import { RegistrationButton } from "../buttons/RegistrationButton";
@@ -13,7 +13,7 @@ export const NavBar = () => {
         <Btn_MenuMovil />
       </div>
       <div className="gap-5 hidden lg:flex items-center">
-        {links?.map((link) => (
+        {linksPrincipalMenu?.map((link) => (
           <NavbarLink key={link.name} link={link} />
         ))}
         <div className="flex">
