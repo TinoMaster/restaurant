@@ -1,14 +1,18 @@
 import { SocialButtons } from "@/components/buttons/SocialButtons";
-import { facebookLogo, googleLogo } from "@/utils/images";
+import { img_PageMenuMovil } from "@/utils/images";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export default function Login() {
   return (
-    <section className="w-full min-h-screen mt-24 flex flex-col justify-center items-center pb-20">
-      <div className="gradient"></div>
-      <div className="flex flex-col items-center p-4 rounded-md bg-primary/5 shadow-lg">
+    <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center px-2 relative">
+      <Image
+        src={img_PageMenuMovil}
+        alt="fondo auth"
+        className="w-full h-full absolute object-cover brightness-25"
+      />
+      <div className="flex flex-col items-center p-2 lg:p-8 max-w-md rounded-lg w-full bg-gradient-to-tr from-darkMode/70 via-primary/10 to-darkMode shadow-lg z-10">
         <h2 className="text-3xl font-bold text-center text-slate-200 py-5">
           Login
         </h2>
@@ -58,7 +62,7 @@ export default function Login() {
         </div>
         {/* Buttons login with google */}
         <p className="text-slate-200 text-center mt-10 mb-4">O entre con</p>
-        <SocialButtons />
+        <SocialButtons type="login" />
       </div>
     </section>
   );

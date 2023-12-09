@@ -15,7 +15,6 @@ const config: Config = {
       },
       colors: {
         primary: "#D6B57D",
-        /* primary: "#b52022", */
         secondary: "#ec4749",
         darkMode: "#151618",
         lightDarkMode: "#1B1C1E",
@@ -32,19 +31,6 @@ const config: Config = {
           "900": "#64432a",
           "950": "#352215",
         },
-        /* primaryPal: {
-          "50": "#fef2f2",
-          "100": "#fde3e3",
-          "200": "#fdcbcc",
-          "300": "#faa7a8",
-          "400": "#f47577",
-          "500": "#ea494b",
-          "600": "#d02729",
-          "700": "#b52022",
-          "800": "#961e1f",
-          "900": "#7c2021",
-          "950": "#430c0d",
-        }, */
         secondaryPal: {
           "50": "#fef2f2",
           "100": "#fde3e3",
@@ -63,6 +49,9 @@ const config: Config = {
         "1080p": "1920px",
         "720p": "1280px",
       },
+      brightness:{
+        "25": "15%",
+      }
     },
   },
   plugins: [],

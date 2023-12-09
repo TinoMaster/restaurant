@@ -2,7 +2,11 @@ import { facebookLogo, googleLogo } from "@/utils/images";
 import Image from "next/image";
 import React from "react";
 
-export const SocialButtons = () => {
+interface SocialButtonsProps {
+  type: "login" | "register";
+}
+
+export const SocialButtons = ({ type }: SocialButtonsProps) => {
   return (
     <div className="flex flex-col items-baseline w-full gap-2 z-10">
       <button className="bg-slate-200 hover:bg-slate-100 w-full p-2 rounded-md text-lightDarkMode flex justify-center items-center gap-2">
@@ -13,7 +17,7 @@ export const SocialButtons = () => {
           height={32}
           className="rounded-full"
         />
-        Registrarse con Google
+        {type === "login" ? "Entrar con Google" : "Registrarse con Google"}
       </button>
       <button className="bg-slate-200 p-2 w-full rounded-md text-lightDarkMode hover:bg-slate-100 flex justify-center items-center gap-2">
         <Image
@@ -23,7 +27,7 @@ export const SocialButtons = () => {
           height={32}
           className="rounded-full"
         />
-        Registrarse con Facebook
+        {type === "login" ? "Entrar con Facebook" : "Registrarse con Facebook"}
       </button>
     </div>
   );

@@ -1,50 +1,42 @@
 "use client";
 import { SocialButtons } from "@/components/buttons/SocialButtons";
-import { REGISTER } from "@/constants/routes.api";
-import { auth } from "@/services/auth";
+import { NotificationsLogin } from "@/components/notifications/NotificationsLogin";
+import { useRegister } from "@/hooks/useRegister";
+import { img_PageMenuMovil } from "@/utils/images";
+import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 
-const INITIAL_REGISTER_FORM = {
-  name: "",
-  email: "",
-  password: "",
-};
 export default function Register() {
-  const [formRegister, setFormRegister] = useState(INITIAL_REGISTER_FORM);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
-  const [success, setSuccess] = useState({});
-
-  const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
-    setLoading(true);
-    ev.preventDefault();
-    auth.register(REGISTER, formRegister).then((res) => {
-      if (res.success) {
-        setFormRegister(INITIAL_REGISTER_FORM);
-        setSuccess({ success: true, message: res?.message });
-        setLoading(false);
-        setTimeout(() => {
-          setSuccess({});
-          window.location.href = "/login";
-        }, 2000);
-      } else {
-        setError(res.message);
-        setTimeout(() => {
-          setError({});
-        }, 3000);
-      }
-    });
-  };
+  const {
+    formRegister,
+    error,
+    loading,
+    success,
+    handleSubmit,
+    setFormRegister,
+  } = useRegister();
   return (
-    <section className="w-full min-h-screen mt-24 flex flex-col justify-center items-center pb-20">
-      <div className="gradient"></div>
-      <div className="flex flex-col items-center p-4 rounded-md bg-primary/5 shadow-lg">
+    <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center px-2 relative">
+      {success?.success && (
+        <NotificationsLogin type="success" message={success.message} />
+      )}
+      {error?.error && (
+        <NotificationsLogin type="error" message={error.message} />
+      )}
+      <Image
+        src={img_PageMenuMovil}
+        alt="fondo auth"
+        className="w-full h-full absolute object-cover brightness-25"
+      />
+      <div className="flex flex-col items-center p-2 lg:p-8 max-w-md rounded-lg w-full bg-gradient-to-tr from-darkMode/70 via-primary/10 to-darkMode shadow-lg z-10">
         <h2 className="text-3xl font-bold text-center text-slate-200 py-5">
           Registrarse
         </h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-3 z-10">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col w-full max-w-96 gap-3 z-10"
+        >
           <div className="flex flex-col">
             <label className="text-slate-200" htmlFor="name">
               Nombre
@@ -129,7 +121,7 @@ export default function Register() {
         </div>
         {/* Buttons register with google */}
         <p className="text-slate-200 text-center py-5">O registrarse con</p>
-        <SocialButtons />
+        <SocialButtons type="register" />
       </div>
     </section>
   );
