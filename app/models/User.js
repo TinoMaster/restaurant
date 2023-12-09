@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+import { models, Schema, model } from "mongoose";
 
 const lengthPass = 8;
 
@@ -22,4 +22,4 @@ const UserSchema = new Schema(
   }
 );
 
-export const UserModel = model("Users", UserSchema);
+export const UserModel = models?.Users || model("Users", UserSchema);

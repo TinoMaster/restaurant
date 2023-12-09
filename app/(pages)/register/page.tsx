@@ -1,5 +1,6 @@
 "use client";
 import { SocialButtons } from "@/components/buttons/SocialButtons";
+import { REGISTER } from "@/constants/routes.api";
 import { auth } from "@/services/auth";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -11,9 +12,29 @@ const INITIAL_REGISTER_FORM = {
 };
 export default function Register() {
   const [formRegister, setFormRegister] = useState(INITIAL_REGISTER_FORM);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
+  const [success, setSuccess] = useState({});
+
   const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     ev.preventDefault();
-    auth.register("/api/register", formRegister);
+    auth.register(REGISTER, formRegister).then((res) => {
+      if (res.success) {
+        setFormRegister(INITIAL_REGISTER_FORM);
+        setSuccess({ success: true, message: res?.message });
+        setLoading(false);
+        setTimeout(() => {
+          setSuccess({});
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        setError(res.message);
+        setTimeout(() => {
+          setError({});
+        }, 3000);
+      }
+    });
   };
   return (
     <section className="w-full min-h-screen mt-24 flex flex-col justify-center items-center pb-20">
@@ -85,10 +106,16 @@ export default function Register() {
             />
           </div>
           <button
+            disabled={loading}
             type="submit"
-            className="bg-primaryPal-600 shadow-md p-3 rounded-md mt-2 text-white"
+            className="bg-primaryPal-600 gap-2 flex relative justify-center items-center shadow-md p-2 rounded-md mt-2 text-white"
           >
-            Registrarse
+            <div className="w-8 h-8">
+              {loading && (
+                <div className="animate-spin rounded-full w-full h-full border-t-2 border-primary border-t-primary border-r-2 border-r-primary"></div>
+              )}
+            </div>
+            <span className="pr-[12px]">Registrarse</span>
           </button>
         </form>
         <div className="pt-5 flex text-gray-100 gap-1">
