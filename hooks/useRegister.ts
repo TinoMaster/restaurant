@@ -26,8 +26,8 @@ export const useRegister = () => {
   const router = useRouter();
 
   const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
-    setLoading(true);
     ev.preventDefault();
+    setLoading(true);
     auth.register(REGISTER, formRegister).then((res) => {
       if (res.success) {
         setFormRegister(INITIAL_REGISTER_FORM);
@@ -38,6 +38,7 @@ export const useRegister = () => {
           router.push("/login");
         }, 2000);
       } else {
+        setLoading(false);
         setError({ error: true, message: res.message });
         setTimeout(() => {
           setError(INITIAL_ERROR);

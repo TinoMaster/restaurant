@@ -1,11 +1,19 @@
+import { UserModel } from "@/app/models/User";
+import { db_config } from "@/config/db.config";
+import { nextAuthConfig } from "@/config/nextAuth.config";
+import { verifyPassword } from "@/utils/api/password.verify";
+import mongoose from "mongoose";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
 const handler = NextAuth({
+  secret: nextAuthConfig.secret,
   providers: [
     CredentialsProvider({
       name: "Credentials",
+      id: "credentials",
       credentials: {
-        username: {
+        email: {
           label: "Email",
           type: "email",
           placeholder: "laura@example.com",
@@ -13,16 +21,17 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch("/your/endpoint", {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
-        const user = await res.json();
+        if (credentials) {
+          const { email, password } = credentials;
 
-        if (res.ok && user) {
-          return user;
+          mongoose.connect(`${db_config.host}/${db_config.database}`);
+          const user = await UserModel.findOne({ email });
+
+          if (user && (await verifyPassword(password, user.password))) {
+            return user;
+          }
         }
+
         return null;
       },
     }),

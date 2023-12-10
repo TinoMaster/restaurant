@@ -1,9 +1,8 @@
 import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
-import { RegistrationButton } from "../buttons/RegistrationButton";
 import { Logo } from "../Logo";
-import { LoginButton } from "../buttons/LoginButton";
+import { Registration } from "../Registration";
 
 export const NavBar = () => {
   return (
@@ -16,10 +15,7 @@ export const NavBar = () => {
         {linksPrincipalMenu?.map((link) => (
           <NavbarLink key={link.name} link={link} />
         ))}
-        <div className="flex">
-          <LoginButton />
-          <RegistrationButton />
-        </div>
+        <Registration />
       </div>
     </section>
   );

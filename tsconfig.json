@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/models/User.js", "app/api/auth/[kindeAuth]/route.js", "utils/api/password.hash.js", "utils/api/password.verify.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/models/User.js", "app/api/auth/[kindeAuth]/route.js", "utils/api/password.hash.js", "utils/api/password.verify.js", "components/SessionContext.js"],
   "exclude": ["node_modules"]
 }

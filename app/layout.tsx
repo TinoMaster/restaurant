@@ -6,6 +6,7 @@ import { Nabvar_Movil } from "@/components/navs/Nabvar_Movil";
 import { siligury } from "@/utils/fonts";
 import { NavBarScroll } from "@/components/navs/NavBarScroll";
 import Footer from "@/components/footer";
+import { Providers } from "./Providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,15 +20,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${siligury.className} antialiased h-auto min-h-screen bg-darkMode flex flex-col justify-between`}>
+      <body
+        className={`${siligury.className} antialiased h-auto min-h-screen bg-darkMode flex flex-col justify-between`}
+      >
         <NavProvider>
-          <header className="w-full overflow-hidden absolute z-20">
-            <Nabvar_Movil />
-            <NavBarScroll />
-            <NavBar />
-          </header>
-          <main className="w-full overflow-hidden grow">{children}</main>
-          <Footer />
+          <Providers>
+            <header className="w-full overflow-hidden absolute z-20">
+              <Nabvar_Movil />
+              <NavBarScroll />
+              <NavBar />
+            </header>
+            <main className="w-full overflow-hidden grow">{children}</main>
+            <Footer />
+          </Providers>
         </NavProvider>
       </body>
     </html>

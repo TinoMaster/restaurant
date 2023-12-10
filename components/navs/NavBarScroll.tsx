@@ -3,9 +3,8 @@ import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { NavbarLink } from "./NabvarLink";
 import { Btn_MenuMovil } from "../Btn_MenuMovil";
 import { useEffect, useState } from "react";
-import { RegistrationButton } from "../buttons/RegistrationButton";
-import { LoginButton } from "../buttons/LoginButton";
 import { Logo } from "../Logo";
+import { Registration } from "../Registration";
 
 export const NavBarScroll = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -36,10 +35,7 @@ export const NavBarScroll = () => {
           {linksPrincipalMenu?.map((link) => (
             <NavbarLink key={link.name} link={link} />
           ))}
-          <div className="flex items-center">
-            <LoginButton />
-            <RegistrationButton />
-          </div>
+          <Registration />
         </div>
       </div>
     </section>

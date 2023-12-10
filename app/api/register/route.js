@@ -7,6 +7,14 @@ export async function POST(req) {
   try {
     const body = await req.json();
     const { password } = body;
+
+    if (password?.length < 4) {
+      return Response.json({
+        success: false,
+        message: "La contraseña debe tener al menos 6 caracteres",
+      });
+    }
+
     const newPassword = await hashPassword(password);
 
     mongoose.connect(`${db_config.host}/${db_config.database}`);
@@ -18,6 +26,12 @@ export async function POST(req) {
       message: "Usuario creado con exito",
     });
   } catch (error) {
+    if (error.code === 11000) {
+      return Response.json({
+        success: false,
+        message: "El usuario ya existe",
+      });
+    }
     return Response.json({
       success: false,
       message: "Error al crear el usuario",

@@ -21,23 +21,20 @@ interface UserFromServer {
 
 class Auth {
   async register(route: string, data: TData) {
-    try {
-      const response = await fetch(route, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-      });
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    };
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
+    const response = await fetch(route, requestOptions);
 
-      const docs: ServerResponse = await response.json();
-      return docs;
-    } catch (error) {
-      console.log(error);
-      throw error;
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
     }
+
+    const docs: ServerResponse = await response.json();
+    return docs;
   }
 }
 

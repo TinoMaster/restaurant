@@ -102,7 +102,7 @@ export default function Register() {
             type="submit"
             className="bg-primaryPal-600 gap-2 flex relative justify-center items-center shadow-md p-2 rounded-md mt-2 text-white"
           >
-            <div className="w-8 h-8">
+            <div className={`w-8 h-8 ${loading && "cursor-wait"}`}>
               {loading && (
                 <div className="animate-spin rounded-full w-full h-full border-t-2 border-primary border-t-primary border-r-2 border-r-primary"></div>
               )}
@@ -111,7 +111,7 @@ export default function Register() {
           </button>
         </form>
         <div className="pt-5 flex text-gray-100 gap-1">
-          <span>Ya tienes cuenta?</span>
+          <span>Ya existe la cuenta? visite → </span>
           <Link
             href={"/login"}
             className="text-blue-300 border-b border-blue-200"

@@ -1,10 +1,41 @@
+"use client";
 import { SocialButtons } from "@/components/buttons/SocialButtons";
 import { img_PageMenuMovil } from "@/utils/images";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+
+interface IFormLogin {
+  email: string;
+  password: string;
+}
+
+const INITIAL_FORM: IFormLogin = {
+  email: "",
+  password: "",
+};
 
 export default function Login() {
+  const [formLogin, setFormLogin] = useState<IFormLogin>(INITIAL_FORM);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({ error: false, message: "" });
+  const [success, setSuccess] = useState({
+    success: false,
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    await signIn("credentials", {
+      email: formLogin.email,
+      password: formLogin.password,
+      redirect: false,
+    });
+    setLoading(false);
+  };
+
   return (
     <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center px-2 relative">
       <Image
@@ -17,12 +48,19 @@ export default function Login() {
           Login
         </h2>
 
-        <form className="flex flex-col w-96 gap-3">
+        <form className="flex flex-col w-96 gap-3" onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label className="text-slate-200 pl-1" htmlFor="email">
               Correo
             </label>
             <input
+              onChange={(e) => {
+                setFormLogin({
+                  ...formLogin,
+                  email: e.target.value,
+                });
+              }}
+              value={formLogin.email}
               required
               placeholder="Escriba su correo"
               type="email"
@@ -36,6 +74,13 @@ export default function Login() {
               Contraseña
             </label>
             <input
+              onChange={(e) => {
+                setFormLogin({
+                  ...formLogin,
+                  password: e.target.value,
+                });
+              }}
+              value={formLogin.password}
               required
               placeholder="Escriba una contraseña"
               type="password"

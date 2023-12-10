@@ -3,9 +3,8 @@ import useNav from "@/context/navContext";
 import { NavbarLink } from "./NabvarLink";
 import { AiOutlineClose } from "react-icons/ai";
 import { linksPrincipalMenu } from "@/constants/links_navbar";
-import { LoginButton } from "../buttons/LoginButton";
-import { RegistrationButton } from "../buttons/RegistrationButton";
 import { motion } from "framer-motion";
+import { Registration } from "../Registration";
 
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();
@@ -17,7 +16,7 @@ export const Nabvar_Movil = () => {
       transition={{ duration: 0.5 }}
       className={`fixed z-50 ${
         menuIsOpen
-          ? "flex flex-col translate-x-0 w-screen justify-center items-center bg-darkMode text-white h-screen z-20 overflow-x-hidden"
+          ? "flex flex-col translate-x-0 w-screen h-screen justify-center items-center bg-darkMode text-white z-20 overflow-x-hidden"
           : "-translate-x-full"
       } `}
     >
@@ -38,8 +37,7 @@ export const Nabvar_Movil = () => {
       </div>
       <div className="flex py-10">
         <small onClick={() => setMenuIsOpen(false)}>
-          <LoginButton />
-          <RegistrationButton />
+          <Registration />
         </small>
       </div>
     </motion.section>
