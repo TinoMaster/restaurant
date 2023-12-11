@@ -16,6 +16,7 @@ const UserSchema = new Schema(
         message: "Password must be at least 8 characters",
       },
     },
+    image: { type: String },
   },
   {
     timestamps: true,

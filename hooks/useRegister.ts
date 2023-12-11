@@ -1,5 +1,6 @@
 import { REGISTER } from "@/constants/routes.api";
 import { auth } from "@/services/auth";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -19,6 +20,7 @@ const INITIAL_ERROR = {
 };
 
 export const useRegister = () => {
+  const { status } = useSession();
   const [formRegister, setFormRegister] = useState(INITIAL_REGISTER_FORM);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(INITIAL_ERROR);
@@ -54,5 +56,6 @@ export const useRegister = () => {
     success,
     handleSubmit,
     setFormRegister,
+    status,
   };
 };
