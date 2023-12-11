@@ -1,6 +1,6 @@
 import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { NavbarLink } from "./NabvarLink";
-import { Btn_MenuMovil } from "../Btn_MenuMovil";
+import { Btn_MenuMovil } from "../buttons/Btn_MenuMovil";
 import { Logo } from "../Logo";
 import { Registration } from "../Registration";
 

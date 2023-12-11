@@ -1,6 +1,6 @@
 "use client";
 import useNav from "@/context/navContext";
-import { CgMenuHotdog } from "react-icons/cg";
+import { TbMenuDeep } from "react-icons/tb";
 
 export const Btn_MenuMovil = () => {
   const { setMenuIsOpen } = useNav();
@@ -8,9 +8,9 @@ export const Btn_MenuMovil = () => {
   return (
     <button
       onClick={() => setMenuIsOpen(true)}
-      className="text-4xl block p-1 border rounded-md"
+      className="text-4xl block p-1 rounded-md"
     >
-      <CgMenuHotdog />
+      <TbMenuDeep />
     </button>
   );
 };
