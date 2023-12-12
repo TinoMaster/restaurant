@@ -23,7 +23,7 @@ export const NavBarScroll = () => {
   return (
     <section
       className={`${
-        menuVisible ? "translate-y-0" : "-translate-y-full"
+        menuVisible ? "translate-y-0 scale-100" : "-translate-y-full scale-0"
       } transition-transform fixed top-0 right-0 rounded-l-3xl text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-2 z-40`}
     >
       <div className="lg:pr-5 lg:pl-10 px-3 flex justify-between items-center">

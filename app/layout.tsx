@@ -25,7 +25,7 @@ export default function RootLayout({
       >
         <NavProvider>
           <Providers>
-            <header className="w-full overflow-hidden absolute z-20">
+            <header className="w-full absolute z-20">
               <Nabvar_Movil />
               <NavBarScroll />
               <NavBar />

@@ -1,5 +1,5 @@
 "use client";
-import { linksProfile } from "@/constants/profile";
+import { linksProfile } from "@/constants/links_profile";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { RiLogoutCircleLine } from "react-icons/ri";

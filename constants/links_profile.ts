@@ -31,3 +31,31 @@ export const linksProfile: TLinkProfilePage[] = [
     icon: IoIosNotificationsOutline,
   },
 ];
+
+export const linksLogoProfile: TLinkProfilePage[] = [
+  {
+    title: "Mio Profilo",
+    href: "/profile",
+    icon: CiUser,
+  },
+  {
+    title: "favoritos",
+    href: "/favorites",
+    icon: IoIosHeartEmpty,
+  },
+  {
+    title: "mis compras",
+    href: "/orders",
+    icon: TbShoppingBagCheck,
+  },
+  {
+    title: "notificaciones",
+    href: "/notifications",
+    icon: IoIosNotificationsOutline,
+  },
+  {
+    title: "cerrar sesion",
+    href: "/",
+    icon: CiUser,
+  },
+];
