@@ -2,9 +2,11 @@
 import { linksProfile } from "@/constants/links_profile";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { RiLogoutCircleLine } from "react-icons/ri";
 
 export const Sidebar = () => {
+  const pathname = usePathname();
   return (
     <nav className="w-full h-full bg-lightDarkMode space-y-8 sm:w-80">
       <div className="flex flex-col items-center h-full w-full">
@@ -15,7 +17,11 @@ export const Sidebar = () => {
               <li key={idx}>
                 <Link
                   href={item.href}
-                  className="flex items-center capitalize gap-x-2 text-gray-400 p-2 rounded-lg  hover:bg-white/90 hover:text-gray-700 active:bg-primaryPal-900 duration-150"
+                  className={`flex items-center capitalize gap-x-2 text-gray-400 p-2 rounded-lg  ${
+                    pathname === item.href
+                      ? "bg-white/90 text-gray-700"
+                      : "hover:bg-white/10"
+                  }   active:bg-primaryPal-900 duration-150`}
                 >
                   <item.icon className="text-xl" />
                   {item.title}

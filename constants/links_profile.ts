@@ -7,27 +7,27 @@ import { TbShoppingBagCheck } from "react-icons/tb";
 export const linksProfile: TLinkProfilePage[] = [
   {
     title: "User info",
-    href: "/user_info",
+    href: "/profile",
     icon: CiUser,
   },
   {
     title: "favoritos",
-    href: "/favorites",
+    href: "/profile/favorites",
     icon: IoIosHeartEmpty,
   },
   {
     title: "direccion",
-    href: "/address",
+    href: "/profile/address",
     icon: PiAddressBookLight,
   },
   {
     title: "mis compras",
-    href: "/orders",
+    href: "/profile/orders",
     icon: TbShoppingBagCheck,
   },
   {
     title: "notificaciones",
-    href: "/notifications",
+    href: "/profile/notifications",
     icon: IoIosNotificationsOutline,
   },
 ];
@@ -40,22 +40,17 @@ export const linksLogoProfile: TLinkProfilePage[] = [
   },
   {
     title: "favoritos",
-    href: "/favorites",
+    href: "/profile/favorites",
     icon: IoIosHeartEmpty,
   },
   {
     title: "mis compras",
-    href: "/orders",
+    href: "/profile/orders",
     icon: TbShoppingBagCheck,
   },
   {
     title: "notificaciones",
     href: "/notifications",
     icon: IoIosNotificationsOutline,
-  },
-  {
-    title: "cerrar sesion",
-    href: "/",
-    icon: CiUser,
   },
 ];
