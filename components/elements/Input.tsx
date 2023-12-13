@@ -1,33 +1,25 @@
-// Import React module
-interface InputProps {
-  id: string;
-  name: string;
-  type: string;
-  placeholder?: string;
-  value: string;
-  changeHandler?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-// Create Input functional component
-const Input = ({
+import { TInputProps } from "@/types/common";
+
+export const Input = ({
   id,
-  type,
+  type = "text",
   placeholder,
   name,
-  changeHandler,
+  onChange,
   value,
-}: InputProps) => {
+  disabled = false,
+}: TInputProps) => {
   return (
     <input
-      value={value}
       id={id}
       type={type}
       placeholder={placeholder}
       name={name}
-      className="w-full bg-gray-100 rounded border border-gray-300 focus:border-primary focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-      onChange={changeHandler}
+      className="input"
+      value={value}
+      onChange={onChange}
+      disabled={disabled}
+      autoComplete="off"
     />
   );
 };
-
-// Export Input component as default
-export default Input;
