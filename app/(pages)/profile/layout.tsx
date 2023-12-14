@@ -12,9 +12,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           className="w-full h-full object-cover brightness-25 saturate-50"
         />
       </div>
-      <div className="container h-[800px] relative border border-primary flex rounded-3xl overflow-hidden bg-darkMode/80 my-24">
+      <div className="sm:container h-screen md:h-[80vh] relative sm:border border-primary flex sm:rounded-3xl overflow-hidden bg-darkMode/80 my-24">
         <Sidebar />
-        <div className="w-full h-full p-10 overflow-y-auto scroll-smooth">
+        <div className="w-full h-full p-4 md:p-10 py-36 overflow-y-auto scroll-smooth">
           {children}
         </div>
       </div>

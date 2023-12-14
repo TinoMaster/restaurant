@@ -1,5 +1,5 @@
 "use client";
-import LoadingSkeletonPages from "@/app/loading";
+import LoadingSkeletonPages from "@/app/(pages)/loading";
 import { SocialButtons } from "@/components/ui/buttons/SocialButtons";
 import { NotificationsLogin } from "@/components/ui/notifications/NotificationsLogin";
 import { useRegister } from "@/hooks/useRegister";
