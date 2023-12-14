@@ -17,6 +17,20 @@ const UserSchema = new Schema(
       },
     },
     image: { type: String },
+    isAdmin: { type: Boolean, default: false },
+    isVerified: { type: Boolean, default: false },
+    addresses: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Addresses",
+      },
+    ],
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Orders",
+      },
+    ],
   },
   {
     timestamps: true,
