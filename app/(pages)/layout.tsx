@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NavProvider } from "@/context/navContext";
-import { NavBar } from "@/components/navs/NavBar";
-import { Nabvar_Movil } from "@/components/navs/Nabvar_Movil";
 import { siligury } from "@/utils/fonts";
-import { NavBarScroll } from "@/components/navs/NavBarScroll";
-import Footer from "@/components/footer";
 import { Providers } from "./Providers";
 
 export const metadata: Metadata = {
@@ -25,13 +21,7 @@ export default function RootLayout({
       >
         <NavProvider>
           <Providers>
-            <header className="w-full absolute z-20">
-              <Nabvar_Movil />
-              <NavBarScroll />
-              <NavBar />
-            </header>
             <main className="w-full overflow-hidden grow">{children}</main>
-            <Footer />
           </Providers>
         </NavProvider>
       </body>
