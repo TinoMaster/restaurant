@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineNotificationsActive } from "react-icons/md";
-import { MotionDiv } from "../MotionDiv";
+import { MotionDiv } from "../../helpers/MotionDiv";
 
 interface NotificationsLoginProps {
   type: "success" | "error";

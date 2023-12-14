@@ -1,7 +1,7 @@
-import { preferMenuData } from "../constants/Menu.data";
-import { LinkButton } from "./buttons/LinkButton";
-import { BrokeBackground } from "./backgrounds/BrokeBackground";
-import { MenuItemPlusImage } from "./ItemMenuPlusImage";
+import { preferMenuData } from "../../../constants/Menu.data";
+import { LinkButton } from "../../ui/buttons/LinkButton";
+import { BrokeBackground } from "../../backgrounds/BrokeBackground";
+import { MenuItemPlusImage } from "../../ui/ItemMenuPlusImage";
 
 export const PreferMenu = () => {
   return (

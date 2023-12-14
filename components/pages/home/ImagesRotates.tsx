@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
-import { MotionDiv } from "./MotionDiv";
-import LoadingImagesRotates from "./loaders/LoadingImagesRotates";
+import { MotionDiv } from "../../helpers/MotionDiv";
+import LoadingImagesRotates from "../../ui/loaders/LoadingImagesRotates";
 import {
   image1historyHome,
   image2historyHome,

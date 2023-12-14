@@ -1,6 +1,6 @@
 import { img_about_us1, img_about_us2 } from "@/utils/images";
 import { ImagesRotates } from "./ImagesRotates";
-import { LinkButton } from "./buttons/LinkButton";
+import { LinkButton } from "../../ui/buttons/LinkButton";
 
 export const AboutUs = () => {
   return (

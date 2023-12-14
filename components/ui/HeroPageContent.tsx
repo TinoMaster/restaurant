@@ -1,6 +1,6 @@
 import { bannerBigTittle, bannerTittle } from "@/utils/animations/framers";
 import LoadingBannerContent from "./loaders/loadingBannerContent";
-import { MotionDiv, MotionP } from "./MotionDiv";
+import { MotionDiv, MotionP } from "../helpers/MotionDiv";
 
 interface HeroPageContentProps {
   title: string;

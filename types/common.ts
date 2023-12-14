@@ -27,9 +27,10 @@ export type TInput = {
 export type TInputProps = {
   id?: string;
   name: string;
+  label?: string;
   type: string;
   placeholder?: string;
-  value?: string;
+  value?: string | number | undefined | readonly string[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 };

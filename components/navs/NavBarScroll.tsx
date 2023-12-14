@@ -1,10 +1,10 @@
 "use client";
 import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { NavbarLink } from "./NabvarLink";
-import { Btn_MenuMovil } from "../buttons/Btn_MenuMovil";
+import { Btn_MenuMovil } from "../ui/buttons/Btn_MenuMovil";
 import { useEffect, useState } from "react";
-import { Logo } from "../Logo";
-import { Registration } from "../Registration";
+import { Logo } from "../ui/Logo";
+import { Registration } from "./Registration";
 
 export const NavBarScroll = () => {
   const [menuVisible, setMenuVisible] = useState(false);

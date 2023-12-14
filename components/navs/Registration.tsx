@@ -1,9 +1,9 @@
 "use client";
 import { useSession } from "next-auth/react";
 import React from "react";
-import { LoginButton } from "./buttons/LoginButton";
-import { RegistrationButton } from "./buttons/RegistrationButton";
-import { LogoProfile } from "./LogoProfile";
+import { LoginButton } from "../ui/buttons/LoginButton";
+import { RegistrationButton } from "../ui/buttons/RegistrationButton";
+import { LogoProfile } from "../ui/LogoProfile";
 
 export const Registration = () => {
   const { data: session, status } = useSession();

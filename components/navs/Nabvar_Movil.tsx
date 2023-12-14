@@ -4,7 +4,7 @@ import { NavbarLink } from "./NabvarLink";
 import { AiOutlineClose } from "react-icons/ai";
 import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { motion } from "framer-motion";
-import { Registration } from "../Registration";
+import { Registration } from "./Registration";
 
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();

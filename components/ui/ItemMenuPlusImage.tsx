@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { MotionButton, MotionDiv } from "./MotionDiv";
+import { MotionButton, MotionDiv } from "../helpers/MotionDiv";
 import { texturaCemento } from "@/utils/images";
 
 interface MenuItemPlusImageProps {

@@ -9,6 +9,10 @@ import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
   secret: nextAuthConfig.secret,
+  pages: {
+    signIn: "/login",
+    signOut: "/",
+  },
   providers: [
     GoogleProvider({
       clientId: nextAuthConfig.google_id || "",

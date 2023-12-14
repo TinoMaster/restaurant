@@ -1,4 +1,4 @@
-import { MotionDiv, MotionP } from "../MotionDiv";
+import { MotionDiv, MotionP } from "../../helpers/MotionDiv";
 
 export default function LoadingImagesRotates() {
   return (

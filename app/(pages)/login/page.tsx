@@ -1,7 +1,7 @@
 "use client";
 import LoadingSkeletonPages from "@/app/loading";
-import { SocialButtons } from "@/components/buttons/SocialButtons";
-import { NotificationsLogin } from "@/components/notifications/NotificationsLogin";
+import { SocialButtons } from "@/components/ui/buttons/SocialButtons";
+import { NotificationsLogin } from "@/components/ui/notifications/NotificationsLogin";
 import { useLogin } from "@/hooks/useLogin";
 import { img_PageMenuMovil } from "@/utils/images";
 import Image from "next/image";

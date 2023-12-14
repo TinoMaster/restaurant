@@ -1,4 +1,4 @@
-import { MenuItemPlusImage } from "@/components/ItemMenuPlusImage";
+import { MenuItemPlusImage } from "@/components/ui/ItemMenuPlusImage";
 import { preferMenuData } from "@/constants/Menu.data";
 
 export default function ContorniSectionMenu() {

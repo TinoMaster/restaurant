@@ -1,4 +1,4 @@
-import { MotionDiv } from "../MotionDiv";
+import { MotionDiv } from "../../helpers/MotionDiv";
 
 export default function LoadingBannerContent() {
   return (

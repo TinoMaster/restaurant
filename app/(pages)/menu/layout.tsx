@@ -1,7 +1,7 @@
-import { HeroPageContent } from "@/components/HeroPageContent";
-import { HeroPage } from "@/components/HeroPage";
-import { SectionRoundedBehindBanner } from "@/components/SectionRoundedBehindBanner";
-import { TitleTypeMenu } from "@/components/TitleTypeMenu";
+import { HeroPageContent } from "@/components/ui/HeroPageContent";
+import { HeroPage } from "@/components/ui/HeroPage";
+import { SectionRoundedBehindBanner } from "@/components/ui/SectionRoundedBehindBanner";
+import { TitleTypeMenu } from "@/components/helpers/TitleTypeMenu";
 import { NavBar_pageMenu } from "@/components/navs/NavBar_pageMenu";
 import { bannerContent } from "@/constants/bannerContent";
 import { img_PageMenu, img_PageMenuMovil } from "@/utils/images";
