@@ -1,5 +1,5 @@
 import { REGISTER } from "@/constants/routes.api";
-import { auth } from "@/services/auth";
+import { user } from "@/services/user";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -30,7 +30,7 @@ export const useRegister = () => {
   const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
     setLoading(true);
-    auth.register(REGISTER, formRegister).then((res) => {
+    user.register(REGISTER, formRegister).then((res) => {
       if (res.success) {
         setFormRegister(INITIAL_REGISTER_FORM);
         setSuccess({ success: true, message: res?.message });

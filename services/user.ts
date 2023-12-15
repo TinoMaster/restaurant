@@ -19,7 +19,7 @@ interface UserFromServer {
   updatedAt: string;
 }
 
-class Auth {
+class User {
   async register(route: string, data: TData) {
     const requestOptions = {
       method: "POST",
@@ -36,6 +36,23 @@ class Auth {
     const docs: ServerResponse = await response.json();
     return docs;
   }
+
+  async UpdateInfo(route: string, data: TData) {
+    const requestOptions = {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const response = await fetch(route, requestOptions);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const docs: ServerResponse = await response.json();
+    return docs;
+  }
 }
 
-export const auth = new Auth();
+export const user = new User();

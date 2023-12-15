@@ -8,6 +8,7 @@ export const userInfoProfilePageInputs: TInput[] = [
     type: "text",
     placeholder: "Introduce your name",
     name: "name",
+    editable: true,
   },
   {
     id: "email_userInfo",
@@ -15,13 +16,15 @@ export const userInfoProfilePageInputs: TInput[] = [
     type: "email",
     placeholder: "Introduce your email",
     name: "email",
+    editable: false,
   },
   {
     id: "phone_userInfo",
     label: "Phone Number",
-    type: "phone",
+    type: "tel",
     placeholder: "Introduce your phone number",
     name: "phone",
+    editable: false,
   },
   {
     id: "passwordChange_userInfo",
@@ -29,6 +32,7 @@ export const userInfoProfilePageInputs: TInput[] = [
     type: "password",
     placeholder: "Introduce your new password",
     name: "password",
+    editable: true,
   },
 ];
 
@@ -39,5 +43,6 @@ export const addressProfilePageInputs: TInput[] = [
     type: "text",
     placeholder: "Introduce your address",
     name: "address",
+    editable: true,
   },
 ];

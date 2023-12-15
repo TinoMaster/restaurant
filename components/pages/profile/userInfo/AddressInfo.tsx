@@ -2,7 +2,6 @@ import { Input } from "@/components/ui/elements/Input";
 import { addressProfilePageInputs } from "@/constants/forms/profiles.form";
 import { img_map } from "@/utils/images";
 import Image from "next/image";
-import React from "react";
 import { FaPlus } from "react-icons/fa6";
 
 export const AddressInfo = () => {
@@ -33,7 +32,11 @@ export const AddressInfo = () => {
       ))}
       {/* Caja mapa */}
       <div className="col-span-2 h-96 rounded-md overflow-hidden">
-        <Image src={img_map} alt="map" className="w-full h-full object-cover brightness-75" />
+        <Image
+          src={img_map}
+          alt="map"
+          className="w-full h-full object-cover brightness-75"
+        />
       </div>
     </fieldset>
   );

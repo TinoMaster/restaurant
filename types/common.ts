@@ -23,6 +23,7 @@ export type TInput = {
   type: string;
   label?: string;
   placeholder?: string;
+  editable?: boolean;
 };
 export type TInputProps = {
   id?: string;
