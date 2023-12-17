@@ -1,8 +1,8 @@
 import { UserModel } from "@/app/models/User";
 import { db_config } from "@/config/db.config";
+import { authOptions } from "@/utils/authOptions";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-import { nextOptions } from "../auth/[...nextauth]/route";
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
@@ -14,7 +14,7 @@ export async function PUT(req: Request) {
       });
     }
 
-    const session = await getServerSession(nextOptions);
+    const session = await getServerSession(authOptions);
     const email = session?.user?.email;
 
     await mongoose.connect(`${db_config.host}/${db_config.database}`);
