@@ -29,7 +29,7 @@ export default function Register() {
 
   if (status === "unauthenticated") {
     return (
-      <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center px-2 relative">
+      <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center relative">
         {success?.success && (
           <NotificationsLogin type="success" message={success.message} />
         )}
@@ -41,14 +41,14 @@ export default function Register() {
           alt="fondo auth"
           className="w-full h-full absolute object-cover brightness-25"
         />
-        <div className="flex flex-col items-center p-2 lg:p-8 max-w-md rounded-lg w-full bg-gradient-to-tr from-darkMode/70 via-primary/10 to-darkMode shadow-lg z-10">
+        <div className="flex flex-col items-center p-2 lg:p-8 max-w-md rounded-lg w-full sm:bg-gradient-to-tr from-darkMode/70 via-primary/10 to-darkMode shadow-lg z-10">
           <h2 className="text-3xl font-bold text-center text-slate-200 py-5">
             Registrarse
           </h2>
 
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col w-full max-w-96 gap-3 z-10"
+            className="flex flex-col w-full max-w-sm gap-3 z-10"
           >
             <div className="flex flex-col w-full max-w-sm m-auto">
               <label className="text-slate-200" htmlFor="name">

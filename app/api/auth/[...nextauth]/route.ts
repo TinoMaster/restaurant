@@ -1,13 +1,16 @@
 import { UserModel } from "@/app/models/User";
 import { db_config } from "@/config/db.config";
 import { nextAuthConfig } from "@/config/nextAuth.config";
+import clientPromise from "@/lib/mongodb";
 import { verifyPassword } from "@/utils/api/password.verify";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import mongoose from "mongoose";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
+  adapter: MongoDBAdapter(clientPromise!),
   secret: nextAuthConfig.secret,
   pages: {
     signIn: "/login",

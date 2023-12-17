@@ -32,7 +32,7 @@
     "utils/api/password.hash.js",
     "utils/api/password.verify.js",
     "components/SessionContext.js",
-    "libs/mongoConnect.js"
-  ],
+    "lib/mongoConnect.js"
+, "lib/mongodb.js"  ],
   "exclude": ["node_modules"]
 }
