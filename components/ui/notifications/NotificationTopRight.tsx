@@ -2,15 +2,15 @@ import React from "react";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { MotionDiv } from "../../helpers/MotionDiv";
 
-interface NotificationsLoginProps {
+interface NotificationTopRightProps {
   type: "success" | "error";
   message: string;
 }
 
-export const NotificationsLogin = ({
+export const NotificationTopRight = ({
   type,
   message,
-}: NotificationsLoginProps) => {
+}: NotificationTopRightProps) => {
   return (
     <MotionDiv
       initial={{ opacity: 0, y: -10 }}

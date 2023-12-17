@@ -1,7 +1,7 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
 import { SocialButtons } from "@/components/ui/buttons/SocialButtons";
-import { NotificationsLogin } from "@/components/ui/notifications/NotificationsLogin";
+import { NotificationTopRight } from "@/components/ui/notifications/NotificationTopRight";
 import { useRegister } from "@/hooks/useRegister";
 import { img_PageMenuMovil } from "@/utils/images";
 import Image from "next/image";
@@ -31,10 +31,10 @@ export default function Register() {
     return (
       <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center relative">
         {success?.success && (
-          <NotificationsLogin type="success" message={success.message} />
+          <NotificationTopRight type="success" message={success.message} />
         )}
         {error?.error && (
-          <NotificationsLogin type="error" message={error.message} />
+          <NotificationTopRight type="error" message={error.message} />
         )}
         <Image
           src={img_PageMenuMovil}

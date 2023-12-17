@@ -1,5 +1,12 @@
 import { TOrder } from "./order";
 
+export interface TUserSession {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  [key: string]: any;
+}
+
 export interface TUser {
   _id: string;
   name: string;
@@ -14,7 +21,18 @@ export interface TUser {
   updatedAt: string;
 }
 
+export interface TUserRegister {
+  name: string;
+  email: string;
+  password: string;
+}
+
 export interface TUserMainInfo
   extends Pick<TUser, "name" | "email" | "phone" | "image"> {
   [key: string]: string;
+}
+
+export interface TDataUserToUpdate {
+  name?: string;
+  [key: string]: any;
 }

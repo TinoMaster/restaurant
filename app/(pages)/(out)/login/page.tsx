@@ -1,7 +1,7 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
 import { SocialButtons } from "@/components/ui/buttons/SocialButtons";
-import { NotificationsLogin } from "@/components/ui/notifications/NotificationsLogin";
+import { NotificationTopRight } from "@/components/ui/notifications/NotificationTopRight";
 import { useLogin } from "@/hooks/useLogin";
 import { img_PageMenuMovil } from "@/utils/images";
 import Image from "next/image";
@@ -31,10 +31,10 @@ export default function Login() {
     return (
       <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center relative">
         {success?.success && (
-          <NotificationsLogin type="success" message={success.message} />
+          <NotificationTopRight type="success" message={success.message} />
         )}
         {error?.error && (
-          <NotificationsLogin type="error" message={error.message} />
+          <NotificationTopRight type="error" message={error.message} />
         )}
         <Image
           src={img_PageMenuMovil}
@@ -46,7 +46,10 @@ export default function Login() {
             Login
           </h2>
 
-          <form className="flex flex-col w-full max-w-sm gap-3" onSubmit={handleSubmit}>
+          <form
+            className="flex flex-col w-full max-w-sm gap-3"
+            onSubmit={handleSubmit}
+          >
             <div className="flex flex-col w-full max-w-sm m-auto">
               <label className="text-slate-200 pl-1" htmlFor="email">
                 Correo
@@ -94,7 +97,7 @@ export default function Login() {
             >
               <div className={`w-8 h-8 ${loading && "cursor-wait"}`}>
                 {loading && (
-                  <div className="animate-spin rounded-full w-full h-full border-t-2 border-primary border-t-primary border-r-2 border-r-primary"></div>
+                  <div className="animate-spin rounded-full w-full h-full border-t-2 border-primary border-t-primary border-r-2 border-r-primary" />
                 )}
               </div>
               <span className="mr-[25px]">Entrar</span>

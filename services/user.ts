@@ -1,26 +1,8 @@
-type TData = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-interface ServerResponse {
-  success: boolean;
-  data?: UserFromServer;
-  message: string;
-}
-
-interface UserFromServer {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import { ServerResponseForUsers } from "@/types/api_responses";
+import { TDataUserToUpdate, TUserRegister } from "@/types/user";
 
 class User {
-  async register(route: string, data: TData) {
+  async register(route: string, data: TUserRegister) {
     const requestOptions = {
       method: "POST",
       body: JSON.stringify(data),
@@ -33,11 +15,11 @@ class User {
       throw new Error(`Error: ${response.statusText}`);
     }
 
-    const docs: ServerResponse = await response.json();
+    const docs: ServerResponseForUsers = await response.json();
     return docs;
   }
 
-  async UpdateInfo(route: string, data: TData) {
+  async UpdateInfo(route: string, data: TDataUserToUpdate) {
     const requestOptions = {
       method: "PUT",
       body: JSON.stringify(data),
@@ -50,7 +32,7 @@ class User {
       throw new Error(`Error: ${response.statusText}`);
     }
 
-    const docs: ServerResponse = await response.json();
+    const docs: ServerResponseForUsers = await response.json();
     return docs;
   }
 }

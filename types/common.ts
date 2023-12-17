@@ -35,3 +35,15 @@ export type TInputProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 };
+
+/* Errors Types */
+export type TError = {
+  error: boolean;
+  message: string;
+};
+
+/* Success Types */
+export type TSuccess = {
+  success: boolean;
+  message: string;
+};

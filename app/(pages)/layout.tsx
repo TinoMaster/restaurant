@@ -3,6 +3,7 @@ import "./globals.css";
 import { NavProvider } from "@/context/navContext";
 import { siligury } from "@/utils/fonts";
 import { Providers } from "./Providers";
+import { ProfileProvider } from "@/context/profileContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,11 +20,13 @@ export default function RootLayout({
       <body
         className={`${siligury.className} antialiased h-auto min-h-screen bg-darkMode flex flex-col justify-between`}
       >
-        <NavProvider>
-          <Providers>
-            <main className="w-full overflow-hidden grow">{children}</main>
-          </Providers>
-        </NavProvider>
+        <Providers>
+          <ProfileProvider>
+            <NavProvider>
+              <main className="w-full overflow-hidden grow">{children}</main>
+            </NavProvider>
+          </ProfileProvider>
+        </Providers>
       </body>
     </html>
   );

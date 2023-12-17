@@ -3,7 +3,7 @@ import { UserModel } from "@/app/models/User";
 import mongoose from "mongoose";
 import { hashPassword } from "@/utils/api/password.hash";
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { password } = body;
@@ -14,9 +14,9 @@ export async function POST(req) {
         message: "La contraseña debe tener al menos 6 caracteres",
       });
     }
-    
+
     const newPassword = await hashPassword(password);
-    
+
     mongoose.connect(`${db_config.host}/${db_config.database}`);
     const user = await UserModel.create({ ...body, password: newPassword });
 
@@ -25,7 +25,7 @@ export async function POST(req) {
       data: user,
       message: "Usuario creado con exito",
     });
-  } catch (error) {
+  } catch (error: Error | any) {
     if (error.code === 11000) {
       return Response.json({
         success: false,
