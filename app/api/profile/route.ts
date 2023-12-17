@@ -22,6 +22,13 @@ export async function PUT(req: Request) {
       new: true,
     });
 
+    if (!response) {
+      return Response.json({
+        success: false,
+        message: "Ah ocurrido un error intente mas tarde",
+      });
+    }
+
     return Response.json({
       success: true,
       data: response,

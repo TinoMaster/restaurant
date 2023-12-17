@@ -9,7 +9,8 @@ const uri = process.env.MONGODB_URI;
 const options = {};
 
 let client;
-let clientPromise;
+let clientPromise: Promise<MongoClient>;
+let global: typeof globalThis & { _mongoClientPromise?: Promise<MongoClient> } = globalThis;
 
 if (process.env.NODE_ENV === "development") {
   if (!global._mongoClientPromise) {
