@@ -3,15 +3,15 @@ import { INITIAL_ERROR, INITIAL_SUCCESS } from "@/constants/common";
 import { PROFILE_ROUTE } from "@/constants/routes.api";
 import { user } from "@/services/user";
 import { TError, TSuccess } from "@/types/common";
-import { TDataUserToUpdate, TUserSession } from "@/types/user";
+import { TDataUserToUpdate, TUser, TUserSession } from "@/types/user";
 import { cleanMessage } from "@/utils/cleanMessage";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { createContext } from "react";
 
 type ProfileState = {
-  dataSession: TUserSession;
+  dataSession: TUser | undefined;
   editonMode: number | null;
   loading: boolean;
   error: TError;
@@ -29,6 +29,20 @@ const useProfile = (): ProfileState => {
   return context;
 };
 
+const INITIAL_DATA_SESSION: TUser = {
+  name: "",
+  email: "",
+  image: "",
+  addresses: [],
+  phone: "",
+  isAdmin: false,
+  orders: [],
+  createdAt: "",
+  updatedAt: "",
+  _id: "",
+  isVerified: false,
+};
+
 export const ProfileProvider = ({
   children,
 }: {
@@ -39,16 +53,25 @@ export const ProfileProvider = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(INITIAL_ERROR);
   const [success, setSuccess] = useState(INITIAL_SUCCESS);
+  const [dataSession, setDataSession] = useState<TUser | undefined>(
+    INITIAL_DATA_SESSION
+  );
 
-  const dataSession: TUserSession = {
-    name: session?.user?.name,
-    email: session?.user?.email,
-    image: session?.user?.image,
-  };
+  useEffect(() => {
+    if (session) {
+      console.log("siii");
 
-  const handleSubmitUpdateUserInfo = async (
+      user.getInfo(PROFILE_ROUTE).then((response) => {
+        if (response.success && response.data) {
+          setDataSession(response.data[0]);
+        }
+      });
+    }
+  }, [session]);
+
+  async function handleSubmitUpdateUserInfo(
     e: React.FormEvent<HTMLFormElement>
-  ) => {
+  ) {
     e.preventDefault();
     setLoading(true);
 
@@ -60,6 +83,7 @@ export const ProfileProvider = ({
     });
 
     const response = await user.UpdateInfo(PROFILE_ROUTE, data);
+
     if (response.success) {
       setEditonMode(null);
       setSuccess(response);
@@ -69,7 +93,7 @@ export const ProfileProvider = ({
       cleanMessage(setError, INITIAL_ERROR);
     }
     setLoading(false);
-  };
+  }
 
   const data = {
     dataSession,

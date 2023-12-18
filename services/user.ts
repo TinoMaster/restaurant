@@ -19,6 +19,23 @@ class User {
     return docs;
   }
 
+  async getInfo(route: string) {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const response = await fetch(route, requestOptions);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const docs: ServerResponseForUsers = await response.json();
+
+    return docs;
+  }
+
   async UpdateInfo(route: string, data: TDataUserToUpdate) {
     const requestOptions = {
       method: "PUT",

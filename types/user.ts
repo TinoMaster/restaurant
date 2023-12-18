@@ -19,6 +19,7 @@ export interface TUser {
   orders: TOrder[];
   createdAt: string;
   updatedAt: string;
+  [key: string]: any;
 }
 
 export interface TUserRegister {

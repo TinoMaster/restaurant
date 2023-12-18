@@ -14,8 +14,8 @@ export const MainInfo = async () => {
     loading,
     session,
   } = useProfile();
-  
-/* //Todo: Ver porque no se actualiza el nombre de usuario en la session cuando la cambio en la bd */
+
+
   return (
     <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
       {/* Caja imagen */}
