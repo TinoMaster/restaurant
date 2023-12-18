@@ -32,7 +32,7 @@ export const userInfoProfilePageInputs: TInput[] = [
     type: "password",
     placeholder: "Introduce your new password",
     name: "password",
-    editable: true,
+    editable: false,
   },
 ];
 

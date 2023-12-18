@@ -2,7 +2,7 @@
 import { linksProfile } from "@/constants/links_profile";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -11,6 +11,11 @@ import { useState } from "react";
 export const Sidebar = () => {
   const pathname = usePathname();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const router = useRouter();
+
+  const handlerBack = () => {
+    router.back();
+  };
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -26,10 +31,13 @@ export const Sidebar = () => {
           <button onClick={toggleMenu} className="p-2">
             <IoMenu className="text-3xl" />
           </button>
-          <Link href={"/"} className="flex items-center justify-center gap-2">
+          <button
+            onClick={handlerBack}
+            className="flex items-center justify-center gap-2"
+          >
             <FaArrowLeft className="text-xl" />
             <span className={`${menuIsOpen ? "block" : "hidden"}`}>volver</span>
-          </Link>
+          </button>
         </div>
 
         <ul className="p-2 sm:p-4 text-sm font-medium space-y-4">

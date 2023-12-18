@@ -12,13 +12,14 @@ import { createContext } from "react";
 
 type ProfileState = {
   dataSession: TUser | undefined;
-  editonMode: number | null;
+  editonMode: boolean;
   loading: boolean;
   error: TError;
   success: TSuccess;
-  setEditonMode: React.Dispatch<React.SetStateAction<number | null>>;
+  setEditonMode: React.Dispatch<React.SetStateAction<boolean>>;
   handleSubmitUpdateUserInfo: (e: React.FormEvent<HTMLFormElement>) => void;
   session: Session | null;
+  status: "loading" | "authenticated" | "unauthenticated";
 };
 
 const ProfileContext = createContext<ProfileState | null>(null);
@@ -48,8 +49,8 @@ export const ProfileProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { data: session } = useSession();
-  const [editonMode, setEditonMode] = useState<number | null>(null);
+  const { data: session, status } = useSession();
+  const [editonMode, setEditonMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(INITIAL_ERROR);
   const [success, setSuccess] = useState(INITIAL_SUCCESS);
@@ -59,8 +60,6 @@ export const ProfileProvider = ({
 
   useEffect(() => {
     if (session) {
-      console.log("siii");
-
       user.getInfo(PROFILE_ROUTE).then((response) => {
         if (response.success && response.data) {
           setDataSession(response.data[0]);
@@ -85,9 +84,10 @@ export const ProfileProvider = ({
     const response = await user.UpdateInfo(PROFILE_ROUTE, data);
 
     if (response.success) {
-      setEditonMode(null);
+      setEditonMode(false);
       setSuccess(response);
       cleanMessage(setSuccess, INITIAL_SUCCESS);
+      setDataSession(response.data);
     } else {
       setError({ error: true, message: response.message });
       cleanMessage(setError, INITIAL_ERROR);
@@ -104,6 +104,7 @@ export const ProfileProvider = ({
     setEditonMode,
     handleSubmitUpdateUserInfo,
     session,
+    status,
   };
   return (
     <ProfileContext.Provider value={data}>{children}</ProfileContext.Provider>

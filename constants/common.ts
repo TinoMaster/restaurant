@@ -16,3 +16,5 @@ export const INITIAL_SUCCESS: TSuccess = {
   success: false,
   message: "",
 };
+
+export const EMPTY = "empty";
