@@ -4,8 +4,18 @@ const lengthPass = 8;
 
 const UserSchema = new Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    name: {
+      type: String,
+      required: true,
+      minlength: [3, "Name must be at least 3 characters"],
+      maxlength: [20, "Name must be less than 20 characters"],
+    },
+    email: {
+      type: String,
+      required: [true, "Email required"],
+      unique: true,
+      match: [/.+\@.+\..+/, "Please enter a valid e-mail address"],
+    },
     password: {
       type: String,
       required: true,
@@ -17,7 +27,7 @@ const UserSchema = new Schema(
       },
     },
     image: { type: String },
-    phone: { type: String},
+    phone: { type: String },
     isAdmin: { type: Boolean },
     isVerified: { type: Boolean },
     addresses: [

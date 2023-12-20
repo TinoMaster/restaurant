@@ -56,27 +56,50 @@ export const MainInfo = async () => {
               dataSession={dataSession}
               editonMode={editonMode}
               inp={inp}
+              loading={loading}
             />
           ))}
+          {/* Buttons box */}
+          <div className="col-span-2 lg:col-span-1 flex justify-end">
+            <div className="flex gap-2 items-end">
+              {editonMode ? (
+                <>
+                  <button
+                    type="submit"
+                    onClick={() => setEditonMode(false)}
+                    className="py-2 px-8 bg-green-600 rounded-lg text-white text-sm"
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setEditonMode(false)}
+                    className="py-2 px-8 bg-red-600 rounded-lg text-white text-sm"
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setEditonMode(true)}
+                    className="py-2 px-8 bg-primaryPal-700 rounded-lg text-white text-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setEditonMode(true)}
+                    className="py-2 px-8 bg-slate-300 rounded-lg text-gray-800 text-sm"
+                  >
+                    Change Password
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
         </form>
-      </div>
-      {/* Buttons box */}
-      <div className="col-span-4 flex justify-end lg:pt-5">
-        {editonMode ? (
-          <button
-            onClick={() => setEditonMode(false)}
-            className="py-2 px-8 bg-green-600 rounded-lg text-white"
-          >
-            Save
-          </button>
-        ) : (
-          <button
-            onClick={() => setEditonMode(true)}
-            className="py-2 px-8 bg-primaryPal-700 rounded-lg text-white"
-          >
-            Edit
-          </button>
-        )}
       </div>
     </div>
   );

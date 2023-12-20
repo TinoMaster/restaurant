@@ -26,14 +26,6 @@ export const userInfoProfilePageInputs: TInput[] = [
     name: "phone",
     editable: false,
   },
-  {
-    id: "passwordChange_userInfo",
-    label: "Change Password",
-    type: "password",
-    placeholder: "Introduce your new password",
-    name: "password",
-    editable: false,
-  },
 ];
 
 export const addressProfilePageInputs: TInput[] = [
