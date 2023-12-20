@@ -1,5 +1,5 @@
 import { signIn, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface IFormLogin {
@@ -22,6 +22,7 @@ const INITIAL_ERROR = {
 };
 
 export const useLogin = () => {
+  const router = useRouter();
   const { status } = useSession();
   const [formLogin, setFormLogin] = useState<IFormLogin>(INITIAL_FORM);
   const [loading, setLoading] = useState(false);
@@ -36,12 +37,13 @@ export const useLogin = () => {
       password: formLogin.password,
       redirect: false,
     });
+
     if (res?.ok) {
       setFormLogin(INITIAL_FORM);
       setSuccess({ success: true, message: "Login exitoso" });
       setTimeout(() => {
         setSuccess(INITIAL_SUCCESS);
-        redirect("/");
+        router.push("/");
       }, 2000);
     } else {
       setError({

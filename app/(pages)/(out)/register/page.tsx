@@ -1,6 +1,5 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
-import { SocialButtons } from "@/components/ui/buttons/SocialButtons";
 import { NotificationTopRight } from "@/components/ui/notifications/NotificationTopRight";
 import { useRegister } from "@/hooks/useRegister";
 import { img_PageMenuMovil } from "@/utils/images";
@@ -132,9 +131,6 @@ export default function Register() {
               iniciar session
             </Link>
           </div>
-          {/* Buttons register with google */}
-          <p className="text-slate-200 text-center py-5">O registrarse con</p>
-          <SocialButtons type="register" />
         </div>
       </section>
     );

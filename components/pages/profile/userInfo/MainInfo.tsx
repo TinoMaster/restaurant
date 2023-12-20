@@ -11,6 +11,9 @@ export const MainInfo = async () => {
     setEditonMode,
     handleSubmitUpdateUserInfo,
     loading,
+    imagePreview,
+    onChangeImage,
+    handleChangeImage,
   } = useProfile();
 
   return (
@@ -26,22 +29,40 @@ export const MainInfo = async () => {
               height={100}
               className="w-full h-full object-cover rounded-full"
             />
+          ) : imagePreview ? (
+            <Image
+              src={imagePreview}
+              alt="profile"
+              width={100}
+              height={100}
+              className="w-full h-full object-cover rounded-full"
+            />
           ) : (
             <p className="text-5xl">{dataSession?.name?.slice(0, 2)}</p>
           )}
         </div>
-        <label
-          htmlFor="change-image"
-          className="bg-darkMode text-sm border border-primary hover:bg-primary/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
-        >
-          Change image
-          <input
-            type="file"
-            name="change-image"
-            id="change-image"
-            className="hidden"
-          />
-        </label>
+        {imagePreview ? (
+          <button
+            onClick={handleChangeImage}
+            className="text-sm border border-green-300 hover:bg-green-300/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
+          >
+            Save image
+          </button>
+        ) : (
+          <label
+            htmlFor="change-image"
+            className="text-sm border border-primary hover:bg-primary/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
+          >
+            Change image
+          </label>
+        )}
+        <input
+          onChange={onChangeImage}
+          type="file"
+          name="change-image"
+          id="change-image"
+          className="hidden"
+        />
       </div>
       {/* Caja información */}
       <div className="col-span-4 md:col-span-3">

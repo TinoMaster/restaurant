@@ -25,11 +25,12 @@ const UserSchema = new Schema(
         },
         message: "Password must be at least 8 characters",
       },
+      select: false,
     },
-    image: { type: String },
-    phone: { type: String },
-    isAdmin: { type: Boolean },
-    isVerified: { type: Boolean },
+    image: { type: String, default: undefined },
+    phone: { type: String, default: undefined },
+    isAdmin: { type: Boolean, default: false },
+    isVerified: { type: Boolean, default: false },
     addresses: [
       {
         type: Schema.Types.ObjectId,

@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { password } = body;
 
-    if (password?.length < 4) {
+    if (!password || password?.length < 4) {
       return Response.json({
         success: false,
         message: "La contraseña debe tener al menos 6 caracteres",
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     const newPassword = await hashPassword(password);
 
-    mongoose.connect(`${db_config.host}/${db_config.database}`);
+    await mongoose.connect(`${db_config.URI}`);
     const user = await UserModel.create({ ...body, password: newPassword });
 
     return Response.json({

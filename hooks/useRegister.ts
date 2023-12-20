@@ -1,6 +1,6 @@
 import { REGISTER } from "@/constants/routes.api";
 import { user } from "@/services/user";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -27,26 +27,32 @@ export const useRegister = () => {
   const [success, setSuccess] = useState(INITIAL_SUCCESS);
   const router = useRouter();
 
-  const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
     setLoading(true);
-    user.register(REGISTER, formRegister).then((res) => {
-      if (res.success) {
-        setFormRegister(INITIAL_REGISTER_FORM);
-        setSuccess({ success: true, message: res?.message });
-        setLoading(false);
-        setTimeout(() => {
-          setSuccess(INITIAL_SUCCESS);
-          router.push("/login");
-        }, 2000);
-      } else {
-        setLoading(false);
-        setError({ error: true, message: res.message });
-        setTimeout(() => {
-          setError(INITIAL_ERROR);
-        }, 3000);
+
+    const signupResponse = await user.register(REGISTER, formRegister);
+
+    if (signupResponse.success) {
+      setSuccess({ success: true, message: signupResponse?.message });
+      setLoading(false);
+      setSuccess(INITIAL_SUCCESS);
+      const signinResponse = await signIn("credentials", {
+        email: formRegister.email,
+        password: formRegister.password,
+        redirect: false,
+      });
+
+      if (signinResponse?.ok) {
+        router.push("/");
       }
-    });
+    } else {
+      setLoading(false);
+      setError({ error: true, message: signupResponse.message });
+      setTimeout(() => {
+        setError(INITIAL_ERROR);
+      }, 3000);
+    }
   };
 
   return {

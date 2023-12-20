@@ -1,14 +1,14 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
-import { SocialButtons } from "@/components/ui/buttons/SocialButtons";
 import { NotificationTopRight } from "@/components/ui/notifications/NotificationTopRight";
 import { useLogin } from "@/hooks/useLogin";
 import { img_PageMenuMovil } from "@/utils/images";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
   const {
     error,
     success,
@@ -24,7 +24,7 @@ export default function Login() {
   }
 
   if (status === "authenticated") {
-    redirect("/");
+    router.push("/");
   }
 
   if (status === "unauthenticated") {
@@ -112,9 +112,6 @@ export default function Login() {
               Registrarse
             </Link>
           </div>
-          {/* Buttons login with google */}
-          <p className="text-slate-200 text-center mt-10 mb-4">O entre con</p>
-          <SocialButtons type="login" />
         </div>
       </section>
     );

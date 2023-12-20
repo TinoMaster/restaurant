@@ -11,10 +11,6 @@ class User {
 
     const response = await fetch(route, requestOptions);
 
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
-
     const docs: ServerResponseForUsers = await response.json();
     return docs;
   }
@@ -26,10 +22,6 @@ class User {
     };
 
     const response = await fetch(route, requestOptions);
-
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
 
     const docs: ServerResponseForUsers = await response.json();
 
@@ -45,9 +37,20 @@ class User {
 
     const response = await fetch(route, requestOptions);
 
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
+    const docs: ServerResponseForUsers = await response.json();
+    return docs;
+  }
+
+  async uploadImage(route: string, data: FormData) {
+    const requestOptions = {
+      method: "POST",
+      body: data,
+      Headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+
+    const response = await fetch(route, requestOptions);
 
     const docs: ServerResponseForUsers = await response.json();
     return docs;
