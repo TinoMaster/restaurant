@@ -3,18 +3,21 @@ import { userInfoProfilePageInputs } from "@/constants/forms/profiles.form";
 import Image from "next/image";
 import useProfile from "@/context/profileContext";
 import { InputEditable } from "@/components/ui/elements/InputEditable";
+import { useMainInfo } from "@/hooks/profile/useMainInfo";
 
 export const MainInfo = async () => {
+  const { dataSession, setDataSession } = useProfile();
   const {
-    dataSession,
+    handleChangeImage,
+    imagePreview,
     editonMode,
-    setEditonMode,
+    error,
     handleSubmitUpdateUserInfo,
     loading,
-    imagePreview,
     onChangeImage,
-    handleChangeImage,
-  } = useProfile();
+    setEditonMode,
+    success,
+  } = useMainInfo({ setDataSession });
 
   return (
     <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">

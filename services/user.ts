@@ -1,5 +1,6 @@
-import { ServerResponseForUsers } from "@/types/api_responses";
-import { TDataUserToUpdate, TUserRegister } from "@/types/user";
+import { userAdapter } from "@/adapters/UserAdapter";
+import { ServerResponse } from "@/types/api_responses";
+import { TDataUserToUpdate, TUser, TUserRegister } from "@/types/user";
 
 class User {
   async register(route: string, data: TUserRegister) {
@@ -11,7 +12,7 @@ class User {
 
     const response = await fetch(route, requestOptions);
 
-    const docs: ServerResponseForUsers = await response.json();
+    const docs: ServerResponse = await response.json();
     return docs;
   }
 
@@ -23,9 +24,10 @@ class User {
 
     const response = await fetch(route, requestOptions);
 
-    const docs: ServerResponseForUsers = await response.json();
+    const docs: ServerResponse = await response.json();
+    const res = userAdapter(docs);
 
-    return docs;
+    return res;
   }
 
   async UpdateInfo(route: string, data: TDataUserToUpdate) {
@@ -37,8 +39,9 @@ class User {
 
     const response = await fetch(route, requestOptions);
 
-    const docs: ServerResponseForUsers = await response.json();
-    return docs;
+    const docs: ServerResponse = await response.json();
+    const res = userAdapter(docs);
+    return res;
   }
 
   async uploadImage(route: string, data: FormData) {
@@ -52,8 +55,9 @@ class User {
 
     const response = await fetch(route, requestOptions);
 
-    const docs: ServerResponseForUsers = await response.json();
-    return docs;
+    const docs: ServerResponse = await response.json();
+    const res = userAdapter(docs);
+    return res;
   }
 }
 

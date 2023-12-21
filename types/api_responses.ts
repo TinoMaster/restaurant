@@ -1,7 +1,5 @@
-import { TUser } from "./user";
-
-export interface ServerResponseForUsers {
+export interface ServerResponse<T = any> {
   success: boolean;
-  data?: TUser;
+  data?: T;
   message: string;
 }

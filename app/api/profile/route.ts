@@ -23,6 +23,7 @@ export async function GET() {
     return Response.json({
       success: true,
       data: response,
+      message: "Informacion cargada con exito",
     });
   } catch (error) {
     console.log(error);
