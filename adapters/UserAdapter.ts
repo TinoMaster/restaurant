@@ -10,7 +10,12 @@ export const userAdapter = (response: ServerResponse) => {
       message: response.message,
     };
   } else {
-    if (Array.isArray(response.data)) {
+    if (!response.data) {
+      docs = {
+        success: true,
+        message: response.message,
+      };
+    } else if (Array.isArray(response.data)) {
       docs = {
         success: true,
         data: response.data[0],
