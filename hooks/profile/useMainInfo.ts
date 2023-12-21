@@ -1,10 +1,8 @@
-import { INITIAL_ERROR, INITIAL_SUCCESS } from "@/constants/common";
 import { PROFILE_ROUTE, UPLOAD_FILE } from "@/constants/routes.api";
 import { user } from "@/services/user";
-import { TError, TSuccess } from "@/types/common";
 import { TDataUserToUpdate, TUser } from "@/types/user";
-import { cleanMessage } from "@/utils/cleanMessage";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface IUseMainInfoProps {
   setDataSession: React.Dispatch<React.SetStateAction<TUser | undefined>>;
@@ -12,9 +10,6 @@ interface IUseMainInfoProps {
 
 interface IUseMainInfo {
   editonMode: boolean;
-  loading: boolean;
-  error: TError;
-  success: TSuccess;
   setEditonMode: React.Dispatch<React.SetStateAction<boolean>>;
   handleSubmitUpdateUserInfo: (e: React.FormEvent<HTMLFormElement>) => void;
   onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -26,9 +21,6 @@ export const useMainInfo = ({
   setDataSession,
 }: IUseMainInfoProps): IUseMainInfo => {
   const [editonMode, setEditonMode] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(INITIAL_ERROR);
-  const [success, setSuccess] = useState(INITIAL_SUCCESS);
 
   /* change image states */
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -38,7 +30,7 @@ export const useMainInfo = ({
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
-    setLoading(true);
+    toast.loading("Updating....");
 
     const data: TDataUserToUpdate = {};
 
@@ -50,15 +42,14 @@ export const useMainInfo = ({
     const response = await user.UpdateInfo(PROFILE_ROUTE, data);
 
     if (response.success) {
-      setEditonMode(false);
-      setSuccess(response);
-      cleanMessage(setSuccess, INITIAL_SUCCESS);
       setDataSession(response.data);
+      setEditonMode(false);
+      toast.remove();
+      toast.success("Updated");
     } else {
-      setError({ error: true, message: response.message });
-      cleanMessage(setError, INITIAL_ERROR);
+      toast.remove();
+      toast.error(response.message);
     }
-    setLoading(false);
   }
 
   function onChangeImage(e: React.ChangeEvent<HTMLInputElement>) {
@@ -75,28 +66,29 @@ export const useMainInfo = ({
     }
   }
 
+  /* //TODO: fix this */
   async function handleChangeImage() {
     if (imageFile) {
+      toast.loading("Uploading...");
       const formData = new FormData();
       formData.append("image", imageFile);
       const response = await user.uploadImage(UPLOAD_FILE, formData);
 
       if (response.success) {
+        toast.remove();
+        /* await user.UpdateInfo(PROFILE_ROUTE, { image: response.data }); */
         setImagePreview(null);
-        setSuccess(response);
-        cleanMessage(setSuccess, INITIAL_SUCCESS);
+        toast.success("Image uploaded");
       } else {
-        setError({ error: true, message: response.message });
-        cleanMessage(setError, INITIAL_ERROR);
+        setImagePreview(null);
+        toast.remove();
+        toast.error(response.message);
       }
     }
   }
 
   return {
     editonMode,
-    loading,
-    error,
-    success,
     imagePreview,
     setEditonMode,
     handleSubmitUpdateUserInfo,

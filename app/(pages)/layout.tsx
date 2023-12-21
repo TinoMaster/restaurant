@@ -4,6 +4,7 @@ import { NavProvider } from "@/context/navContext";
 import { siligury } from "@/utils/fonts";
 import { Providers } from "./Providers";
 import { ProfileProvider } from "@/context/profileContext";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +24,10 @@ export default function RootLayout({
         <Providers>
           <ProfileProvider>
             <NavProvider>
-              <main className="w-full overflow-hidden grow">{children}</main>
+              <main className="w-full overflow-hidden grow">
+                <Toaster />
+                {children}
+              </main>
             </NavProvider>
           </ProfileProvider>
         </Providers>

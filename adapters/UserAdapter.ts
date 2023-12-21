@@ -15,6 +15,12 @@ export const userAdapter = (response: ServerResponse) => {
         success: true,
         message: response.message,
       };
+    } else if (typeof response.data === "string") {
+      docs = {
+        success: true,
+        data: response.data,
+        message: response.message,
+      };
     } else if (Array.isArray(response.data)) {
       docs = {
         success: true,

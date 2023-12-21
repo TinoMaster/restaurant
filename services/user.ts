@@ -1,6 +1,6 @@
 import { userAdapter } from "@/adapters/UserAdapter";
 import { ServerResponse } from "@/types/api_responses";
-import { TDataUserToUpdate, TUser, TUserRegister } from "@/types/user";
+import { TDataUserToUpdate, TUserRegister } from "@/types/user";
 
 class User {
   async register(route: string, data: TUserRegister) {

@@ -11,12 +11,9 @@ export const MainInfo = async () => {
     handleChangeImage,
     imagePreview,
     editonMode,
-    error,
     handleSubmitUpdateUserInfo,
-    loading,
     onChangeImage,
     setEditonMode,
-    success,
   } = useMainInfo({ setDataSession });
 
   return (
@@ -24,17 +21,17 @@ export const MainInfo = async () => {
       {/* Caja imagen */}
       <div className="flex flex-col gap-2 justify-center items-center col-span-4 md:col-span-1">
         <div className="w-44 h-44 bg-darkMode border border-primary relative rounded-full flex justify-center items-center">
-          {dataSession?.image ? (
-            <Image
-              src={dataSession?.image}
-              alt="profile"
-              width={100}
-              height={100}
-              className="w-full h-full object-cover rounded-full"
-            />
-          ) : imagePreview ? (
+          {imagePreview ? (
             <Image
               src={imagePreview}
+              alt="profile"
+              width={250}
+              height={250}
+              className="w-full h-full object-cover rounded-full"
+            />
+          ) : dataSession?.image ? (
+            <Image
+              src={dataSession?.image}
               alt="profile"
               width={100}
               height={100}
@@ -54,7 +51,7 @@ export const MainInfo = async () => {
         ) : (
           <label
             htmlFor="change-image"
-            className="text-sm border border-primary hover:bg-primary/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
+            className="text-sm border border-gray-300 hover:bg-white/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
           >
             Change image
           </label>
@@ -80,7 +77,6 @@ export const MainInfo = async () => {
               dataSession={dataSession}
               editonMode={editonMode}
               inp={inp}
-              loading={loading}
             />
           ))}
           {/* Buttons box */}
@@ -108,14 +104,14 @@ export const MainInfo = async () => {
                   <button
                     type="button"
                     onClick={() => setEditonMode(true)}
-                    className="py-2 px-8 bg-primaryPal-700 rounded-lg text-white text-sm"
+                    className="py-2 px-8 border border-gray-300 rounded-lg text-white text-sm"
                   >
                     Edit
                   </button>
                   <button
                     type="button"
                     onClick={() => setEditonMode(true)}
-                    className="py-2 px-8 bg-slate-300 rounded-lg text-gray-800 text-sm"
+                    className="py-2 px-8 border border-gray-300 rounded-lg text-sm"
                   >
                     Change Password
                   </button>
