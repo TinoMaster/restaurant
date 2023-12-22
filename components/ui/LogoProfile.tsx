@@ -1,35 +1,40 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { linksLogoProfile } from "@/constants/links_profile";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import useProfile from "@/context/profileContext";
+import { CiMenuKebab } from "react-icons/ci";
 
 export const LogoProfile = () => {
-  const { data: session } = useSession();
+  const { dataSession } = useProfile();
   const [menuProfile, setMenuProfile] = useState(false);
   return (
     <div
       onClick={() => setMenuProfile(!menuProfile)}
-      className="cursor-pointer w-10 h-10 flex justify-center items-center bg-lightDarkMode rounded-full relative"
+      className="cursor-pointer flex justify-center items-center relative"
     >
-      {session?.user?.image ? (
-        <Image
-          src={session.user?.image}
-          alt="user image"
-          width={32}
-          height={32}
-          className="w-10 h-10 rounded-full"
-        />
-      ) : (
-        <p className="text-white font-serif capitalize">
-          {session?.user?.name?.slice(0, 2)}
-        </p>
-      )}
+      <div className="flex items-center">
+        {dataSession?.image ? (
+          <Image
+            src={dataSession?.image}
+            alt="user image"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-full"
+          />
+        ) : (
+          <p className="text-darkMode font-serif capitalize w-8 h-8 bg-gray-100 rounded-full flex justify-center items-center">
+            {dataSession?.name?.slice(0, 2)}
+          </p>
+        )}
+        <CiMenuKebab className="" />
+      </div>
 
       {menuProfile && (
-        <div className="bg-gradient-to-r from-primary/10 to-darkMode absolute top-[48px] right-0 p-4 flex flex-col justify-center gap-2 rounded-lg">
+        <div className="bg-gradient-to-r from-gray-100 to-white text-darkMode absolute top-[48px] right-0 p-4 flex flex-col justify-center gap-2 rounded-lg">
           {linksLogoProfile.map((item, idx) => (
             <Link
               key={idx}

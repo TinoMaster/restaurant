@@ -41,13 +41,14 @@ export const ProfileProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { data: session, status } = useSession();
+  const Session = useSession();
+  const { data: session, status } = Session;
   const [dataSession, setDataSession] = useState<TUser | undefined>(
     INITIAL_DATA_SESSION
   );
 
   useEffect(() => {
-    if (session) {
+    if (status === "authenticated") {
       user.getInfo(PROFILE_ROUTE).then((response) => {
         if (response.success && response.data) {
           setDataSession(response.data);
@@ -56,7 +57,7 @@ export const ProfileProvider = ({
         }
       });
     }
-  }, [session]);
+  }, [Session, status]);
 
   const data = {
     setDataSession,

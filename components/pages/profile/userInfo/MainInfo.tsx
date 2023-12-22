@@ -4,17 +4,20 @@ import Image from "next/image";
 import useProfile from "@/context/profileContext";
 import { InputEditable } from "@/components/ui/elements/InputEditable";
 import { useMainInfo } from "@/hooks/profile/useMainInfo";
+import { Btn_profile } from "@/components/ui/buttons/Btn_profile";
 
-export const MainInfo = async () => {
+export const MainInfo = () => {
   const { dataSession, setDataSession } = useProfile();
   const {
     handleChangeImage,
     imagePreview,
     editonMode,
+    userInfoToEdit,
+    handlerInfoToEdit,
     handleSubmitUpdateUserInfo,
     onChangeImage,
     setEditonMode,
-  } = useMainInfo({ setDataSession });
+  } = useMainInfo({ setDataSession, dataSession });
 
   return (
     <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
@@ -36,23 +39,16 @@ export const MainInfo = async () => {
               width={100}
               height={100}
               className="w-full h-full object-cover rounded-full"
+              priority
             />
           ) : (
             <p className="text-5xl">{dataSession?.name?.slice(0, 2)}</p>
           )}
         </div>
         {imagePreview ? (
-          <button
-            onClick={handleChangeImage}
-            className="text-sm border border-green-300 hover:bg-green-300/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
-          >
-            Save image
-          </button>
+          <Btn_profile trigger={handleChangeImage} name="Save image" />
         ) : (
-          <label
-            htmlFor="change-image"
-            className="text-sm border border-gray-300 hover:bg-white/30 transition-colors py-2 px-4 rounded-lg cursor-pointer"
-          >
+          <label htmlFor="change-image" className="btn-white">
             Change image
           </label>
         )}
@@ -69,54 +65,29 @@ export const MainInfo = async () => {
         <h3 className="text-3xl mb-5">User Info</h3>
         <form
           onSubmit={handleSubmitUpdateUserInfo}
-          className="grid md:grid-cols-2 gap-4"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4"
         >
           {userInfoProfilePageInputs.map((inp, idx) => (
             <InputEditable
+              handlerInfoToEdit={handlerInfoToEdit}
+              userInfoToEdit={userInfoToEdit}
               key={idx}
               dataSession={dataSession}
-              editonMode={editonMode}
               inp={inp}
             />
           ))}
           {/* Buttons box */}
           <div className="col-span-2 lg:col-span-1 flex justify-end">
             <div className="flex gap-2 items-end">
-              {editonMode ? (
-                <>
-                  <button
-                    type="submit"
-                    onClick={() => setEditonMode(false)}
-                    className="py-2 px-8 bg-green-600 rounded-lg text-white text-sm"
-                  >
-                    Save
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setEditonMode(false)}
-                    className="py-2 px-8 bg-red-600 rounded-lg text-white text-sm"
-                  >
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => setEditonMode(true)}
-                    className="py-2 px-8 border border-gray-300 rounded-lg text-white text-sm"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setEditonMode(true)}
-                    className="py-2 px-8 border border-gray-300 rounded-lg text-sm"
-                  >
-                    Change Password
-                  </button>
-                </>
-              )}
+              <>
+                <Btn_profile type="submit" name="Edit" disabled={!editonMode} />
+
+                <Btn_profile
+                  type="button"
+                  trigger={() => setEditonMode(false)}
+                  name="Change password"
+                />
+              </>
             </div>
           </div>
         </form>

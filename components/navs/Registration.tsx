@@ -7,7 +7,6 @@ import { LogoProfile } from "../ui/LogoProfile";
 
 export const Registration = () => {
   const { data: session, status } = useSession();
-
   if (status === "loading") {
     return (
       <div className="w-10 h-10 animate-pulse bg-white/10 rounded-full"></div>

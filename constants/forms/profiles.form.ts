@@ -30,11 +30,35 @@ export const userInfoProfilePageInputs: TInput[] = [
 
 export const addressProfilePageInputs: TInput[] = [
   {
-    id: "address_userInfo",
-    label: "Address",
+    id: "Country_address",
+    label: "Country",
     type: "text",
-    placeholder: "Introduce your address",
-    name: "address",
+    placeholder: "Ej: Colombia",
+    name: "country",
+    editable: true,
+  },
+  {
+    id: "city_address",
+    label: "City",
+    type: "text",
+    placeholder: "Ej: Bogota",
+    name: "city",
+    editable: true,
+  },
+  {
+    id: "street_address",
+    label: "Street Address",
+    type: "text",
+    placeholder: "Ej: Calle Falsa 123",
+    name: "street address",
+    editable: true,
+  },
+  {
+    id: "postal_code_address",
+    label: "Postal Code",
+    type: "number",
+    placeholder: "Ej: 11001",
+    name: "postal code",
     editable: true,
   },
 ];
