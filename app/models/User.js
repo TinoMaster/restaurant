@@ -30,6 +30,7 @@ const UserSchema = new Schema(
     image: { type: String, default: undefined },
     phone: { type: String, default: undefined },
     isAdmin: { type: Boolean, default: false },
+    emailVerified: { type: Boolean, default: false },
     isVerified: { type: Boolean, default: false },
     addresses: [
       {
@@ -41,6 +42,24 @@ const UserSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Orders",
+      },
+    ],
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Products",
+      },
+    ],
+    cart: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Products",
+      },
+    ],
+    notifications: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Notifications",
       },
     ],
   },

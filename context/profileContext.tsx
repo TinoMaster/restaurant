@@ -1,7 +1,7 @@
 "use client";
 import { PROFILE_ROUTE } from "@/constants/routes.api";
 import { user } from "@/services/user";
-import { TUser } from "@/types/user";
+import { TUser } from "@/types/models/user";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
 import React, { useState, useContext, useEffect } from "react";
@@ -27,6 +27,9 @@ const INITIAL_DATA_SESSION: TUser = {
   email: "",
   image: "",
   addresses: [],
+  cart: [],
+  notifications: [],
+  emailVerified: false,
   phone: "",
   isAdmin: false,
   orders: [],

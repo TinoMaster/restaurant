@@ -1,5 +1,5 @@
 import { ServerResponse } from "@/types/api_responses";
-import { TUser } from "@/types/user";
+import { TUser } from "@/types/models/user";
 
 export const userAdapter = (response: ServerResponse) => {
   let docs: ServerResponse<TUser> | ServerResponse;

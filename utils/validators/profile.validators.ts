@@ -1,4 +1,4 @@
-import { TDataUserToUpdate, TUser } from "@/types/user";
+import { TDataUserToUpdate, TUser } from "@/types/models/user";
 
 export const validateName = (name: string) => {
   if (name.length < 3) {

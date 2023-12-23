@@ -1,22 +1,16 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
-import { NotificationTopRight } from "@/components/ui/notifications/NotificationTopRight";
 import { useRegister } from "@/hooks/useRegister";
 import { img_PageMenuMovil } from "@/utils/images";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default function Register() {
-  const {
-    formRegister,
-    error,
-    loading,
-    success,
-    handleSubmit,
-    setFormRegister,
-    status,
-  } = useRegister();
+  const { status } = useSession();
+  const { formRegister, loading, handleSubmit, setFormRegister } =
+    useRegister();
 
   if (status === "loading") {
     return <LoadingSkeletonPages />;
@@ -29,12 +23,6 @@ export default function Register() {
   if (status === "unauthenticated") {
     return (
       <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center relative">
-        {success?.success && (
-          <NotificationTopRight type="success" message={success.message} />
-        )}
-        {error?.error && (
-          <NotificationTopRight type="error" message={error.message} />
-        )}
         <Image
           src={img_PageMenuMovil}
           alt="fondo auth"

@@ -1,4 +1,4 @@
-import { TItenMenu } from "./menu";
+import { TItenMenu } from "../menu";
 
 export interface TOrder {
   _id: string;

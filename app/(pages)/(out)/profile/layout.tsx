@@ -1,5 +1,5 @@
 import { Sidebar } from "@/components/pages/profile/Sidebar";
-import { authOptions } from "@/utils/authOptions";
+import { authOptions } from "@/libs/authOptions";
 import { img_about_us2 } from "@/utils/images";
 import { getServerSession } from "next-auth";
 import Image from "next/image";

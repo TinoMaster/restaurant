@@ -7,8 +7,12 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
+import useProfile from "@/context/profileContext";
+import { ADMIN_PANEL } from "@/constants/routes.app";
+import { GrUserAdmin } from "react-icons/gr";
 
 export const Sidebar = () => {
+  const { dataSession } = useProfile();
   const pathname = usePathname();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const router = useRouter();
@@ -58,6 +62,25 @@ export const Sidebar = () => {
               </Link>
             </li>
           ))}
+          {dataSession?.isAdmin && (
+            <li>
+              <Link
+                href={ADMIN_PANEL}
+                className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
+                  pathname === ADMIN_PANEL
+                    ? "bg-white/90 text-gray-700"
+                    : "hover:bg-white/10"
+                }   active:bg-primaryPal-900 duration-150`}
+              >
+                <div className="p-1">
+                  <GrUserAdmin />
+                </div>
+                <span className={`${menuIsOpen ? "block" : "hidden"}`}>
+                  Admin Panel
+                </span>
+              </Link>
+            </li>
+          )}
         </ul>
         <div className="py-5 sm:px-4 flex">
           <button

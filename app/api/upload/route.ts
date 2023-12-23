@@ -1,7 +1,7 @@
 import { UserModel } from "@/app/models/User";
 import { db_config } from "@/config/db.config";
 import { saveImageInCubbit } from "@/libs/saveImageCubbit";
-import { authOptions } from "@/utils/authOptions";
+import { authOptions } from "@/libs/authOptions";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 

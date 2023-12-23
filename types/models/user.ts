@@ -1,4 +1,7 @@
 import { TOrder } from "./order";
+import { TNotification } from "./notification";
+import { TProduct } from "./product";
+import { TAddress } from "./address";
 
 export interface TUserSession {
   name?: string | null;
@@ -12,11 +15,14 @@ export interface TUser {
   name: string;
   email: string;
   phone: string;
-  addresses: string[];
+  addresses: TAddress[];
   image: string;
   isAdmin: boolean;
   isVerified: boolean;
+  emailVerified: boolean;
   orders: TOrder[];
+  cart: TProduct[];
+  notifications: TNotification[];
   createdAt: string;
   updatedAt: string;
   [key: string]: any;

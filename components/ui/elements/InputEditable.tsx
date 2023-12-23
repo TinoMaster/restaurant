@@ -1,5 +1,5 @@
 import { TInput } from "@/types/common";
-import { TDataUserToUpdate, TUser } from "@/types/user";
+import { TDataUserToUpdate, TUser } from "@/types/models/user";
 import React, { useState } from "react";
 
 interface InputEditableProps {

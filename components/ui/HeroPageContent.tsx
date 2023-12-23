@@ -13,7 +13,7 @@ export const HeroPageContent = ({
   children,
 }: HeroPageContentProps) => {
   return (
-    <div className="flex flex-col text-white w-11/12 lg:w-1/3 h-full justify-center items-center relative">
+    <div className="flex flex-col text-white w-11/12 lg:w-2/3 xl:w-2/5 2xl:w-1/3 h-full justify-center items-center relative">
       <LoadingBannerContent />
       <MotionP
         variants={bannerTittle}
