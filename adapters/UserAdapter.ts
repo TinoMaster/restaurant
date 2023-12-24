@@ -10,30 +10,14 @@ export const userAdapter = (response: ServerResponse) => {
       message: response.message,
     };
   } else {
-    if (!response.data) {
-      docs = {
-        success: true,
-        message: response.message,
-      };
-    } else if (typeof response.data === "string") {
-      docs = {
-        success: true,
-        data: response.data,
-        message: response.message,
-      };
-    } else if (Array.isArray(response.data)) {
-      docs = {
-        success: true,
-        data: response.data[0],
-        message: response.message,
-      };
-    } else {
-      docs = {
-        success: true,
-        data: response.data,
-        message: response.message,
-      };
-    }
+    const data = Array.isArray(response.data)
+      ? response.data[0]
+      : response.data;
+    docs = {
+      success: true,
+      data: data,
+      message: response.message,
+    };
   }
 
   return docs;

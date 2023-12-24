@@ -19,3 +19,22 @@ export async function GET() {
     });
   }
 }
+
+export async function POST(req: Request) {
+  try {
+    await mongoose.connect(`${db_config.URI}`);
+    const body = await req.json();
+    const category = await CategoryModel.create(body);
+    return Response.json({
+      success: true,
+      data: category,
+      message: "Creado con exito",
+    });
+  } catch (error) {
+    console.log(error);
+    return Response.json({
+      success: false,
+      message: "Hubo un error al procesar la solicitud",
+    });
+  }
+}

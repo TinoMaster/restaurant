@@ -5,7 +5,11 @@ export interface TCategory {
   name: string;
   image?: string;
   description?: string;
-  products?: TProduct[];
+  products?: TProduct["_id"][] | TProduct[];
   createdAt: string;
   updatedAt: string;
+}
+
+export interface TCategoryCreate {
+  name: string;
 }

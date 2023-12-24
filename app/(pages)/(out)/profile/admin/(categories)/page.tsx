@@ -1,30 +1,32 @@
-async function getCategories() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
+import { Categories } from "@/components/pages/profile/admin/categories/Categories";
+import { createCategory } from "@/services/actions/category.actions";
+import { Suspense } from "react";
 
-/* //TODO: Continue here */
-
-export default async function CategoriesAdminPage() {
-  const categories = await getCategories();
-  console.log(categories);
-
+export default async function PageCategoriesAdmin() {
+  /* //TODO: Implementar el form como un componente del cleinte para convinarlo con el server action y poder manejar mensaje de error
+    https://www.youtube.com/watch?v=nsMzWA6_3RA&ab_channel=ByteGrad
+  */
   return (
-    <div className="flex justify-center">
-      <label
-        htmlFor="category"
+    <div className="flex flex-col items-center">
+      <form
+        action={createCategory}
         className="flex gap-1 items-center p-5 lg:min-w-[500px]"
       >
-        <input id="category" type="text" className="input" />
-        <button className="bg-white text-gray-600 px-5 py-2 rounded-xl font-bold">
+        <input name="name" type="text" className="input" />
+        <button
+          type="submit"
+          className="bg-white text-gray-600 px-5 py-2 rounded-xl font-bold"
+        >
           Save
         </button>
-      </label>
+      </form>
+      <div className="w-full">
+        <ul>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Categories />
+          </Suspense>
+        </ul>
+      </div>
     </div>
   );
 }

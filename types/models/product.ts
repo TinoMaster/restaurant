@@ -1,4 +1,4 @@
-import { TCategory } from "./categorie";
+import { TCategory } from "./category";
 import { TIngredient } from "./ingredient";
 
 export interface TProduct {
