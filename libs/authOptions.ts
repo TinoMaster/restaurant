@@ -1,16 +1,21 @@
 import { UserModel } from "@/app/models/User";
 import { db_config } from "@/config/db.config";
 import { nextAuthConfig } from "@/config/nextAuth.config";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import mongoose from "mongoose";
-import { AuthOptions, User } from "next-auth";
+import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { verifyPassword } from "../utils/api/password.verify";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "./clientPromise";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: AuthOptions = {
   secret: nextAuthConfig.secret,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
     CredentialsProvider({
       name: "credentials",
       id: "credentials",

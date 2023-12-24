@@ -10,6 +10,7 @@ import { useState } from "react";
 import useProfile from "@/context/profileContext";
 import { ADMIN_PANEL } from "@/constants/routes.app";
 import { GrUserAdmin } from "react-icons/gr";
+import { cutPathnameByPiece } from "@/utils/cutPathname";
 
 export const Sidebar = () => {
   const { dataSession } = useProfile();
@@ -67,7 +68,7 @@ export const Sidebar = () => {
               <Link
                 href={ADMIN_PANEL}
                 className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
-                  pathname === ADMIN_PANEL
+                  cutPathnameByPiece(pathname, 2) === ADMIN_PANEL
                     ? "bg-white/90 text-gray-700"
                     : "hover:bg-white/10"
                 }   active:bg-primaryPal-900 duration-150`}

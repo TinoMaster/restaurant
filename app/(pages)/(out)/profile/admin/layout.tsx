@@ -1,3 +1,4 @@
+import { NavBar_admin } from "@/components/pages/profile/admin/NavBar_admin";
 import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -16,7 +17,7 @@ export default async function AdminPanellayout({
 
   return (
     <div>
-      <h1>Admin Panel</h1>
+      <NavBar_admin />
       {children}
     </div>
   );

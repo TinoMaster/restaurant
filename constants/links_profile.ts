@@ -54,3 +54,21 @@ export const linksLogoProfile: TLinkProfilePage[] = [
     icon: IoIosNotificationsOutline,
   },
 ];
+
+export const linksAdminPanel: TLinkProfilePage[] = [
+  {
+    title: "Categories",
+    href: "/profile/admin",
+    icon: CiUser,
+  },
+  {
+    title: "Menu Items",
+    href: "/profile/admin/menu",
+    icon: IoIosHeartEmpty,
+  },
+  {
+    title: "Users",
+    href: "/profile/admin/users",
+    icon: TbShoppingBagCheck,
+  },
+];
