@@ -1,13 +1,19 @@
-import { TItenMenu } from "../menu";
+import { TAddress } from "./address";
+import { TProduct } from "./product";
+import { TUser } from "./user";
+
+interface TProductOrder {
+  product: TProduct;
+  quantity: number;
+}
 
 export interface TOrder {
   _id: string;
-  user: string;
-  orderItems: TItenMenu[];
-  shippingAddress: string;
+  user: TUser;
+  products: TProductOrder[];
+  shippingAddress: TAddress;
   paymentMethod: string;
   paymentResult: string;
-  itemsPrice: number;
   shippingPrice: number;
   taxPrice: number;
   totalPrice: number;
