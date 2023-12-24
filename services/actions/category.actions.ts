@@ -17,5 +17,6 @@ export async function createCategory(formDate: FormData) {
     revalidatePath("/profile/admin");
   } catch (error) {
     console.log(error);
+    return false;
   }
 }

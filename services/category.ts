@@ -1,5 +1,7 @@
 import { categoryAdapter } from "@/adapters/CategoryAdapter";
 import { ServerResponse } from "@/types/api_responses";
+import toast from "react-hot-toast";
+import { createCategory } from "./actions/category.actions";
 
 class Category {
   async getCategories() {
@@ -11,6 +13,19 @@ class Category {
     const server_response: ServerResponse = await res.json();
     const docs = categoryAdapter(server_response);
     return docs;
+  }
+
+  async createCategoryClient(formData: FormData) {
+    toast.loading("Saving...");
+    const response = await createCategory(formData);
+
+    if (!response) {
+      toast.dismiss();
+      toast.error("Something went wrong");
+    }
+
+    toast.dismiss();
+    toast.success("Category created");
   }
 }
 
