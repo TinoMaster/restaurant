@@ -10,15 +10,10 @@ export const categoryAdapter = (response: ServerResponse) => {
       message: response.message,
     };
   } else {
-    if (!response?.data) {
-      docs = {
-        success: true,
-        message: response.message,
-      };
-    }
+    const data = Array.isArray(response.data) ? response.data : [response.data];
     docs = {
       success: true,
-      data: response.data,
+      data,
       message: response.message,
     };
   }

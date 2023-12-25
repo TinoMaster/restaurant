@@ -17,7 +17,6 @@ export const Categories = async () => {
       key={category._id}
       _id={category._id}
       name={category.name}
-      description={category.description}
       image={category.image}
     />
   ));

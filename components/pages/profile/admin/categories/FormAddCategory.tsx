@@ -5,7 +5,7 @@ export const FormAddCategory = () => {
   return (
     <form
       action={category.createCategoryClient}
-      className="flex gap-1 items-center p-5 lg:min-w-[500px]"
+      className="flex gap-1 items-center py-5 w-full lg:max-w-[500px]"
     >
       <input name="name" type="text" className="input" />
       <button

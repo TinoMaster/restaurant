@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <div className="w-screen sm:container h-screen md:h-[80vh] relative sm:border border-primary flex sm:rounded-3xl overflow-hidden bg-darkMode/80">
         <Sidebar />
-        <div className="w-full h-full p-4 md:p-10 overflow-y-auto scroll-smooth ml-16">
+        <div className="w-full h-full p-4 md:p-10 overflow-y-auto scroll-smooth ml-16 bg-black/50">
           {children}
         </div>
       </div>

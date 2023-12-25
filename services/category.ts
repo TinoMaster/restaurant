@@ -15,6 +15,27 @@ class Category {
     return docs;
   }
 
+  async getCategoryById(id: string) {
+    const url = `${process.env.NEXTAUTH_URL}/api/categories/${id}`;
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
+
+    if (!res.ok)
+      return {
+        success: false,
+        message: "Uppsss. Something went wrong",
+      };
+
+    const server_response: ServerResponse = await res.json();
+    const docs = categoryAdapter(server_response);
+    return docs;
+  }
+
   async createCategoryClient(formData: FormData) {
     toast.loading("Saving...");
     const response = await createCategory(formData);
