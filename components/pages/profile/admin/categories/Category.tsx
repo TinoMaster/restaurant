@@ -13,8 +13,8 @@ export const Category = (category: CategoryProps) => {
   const { name, _id, image } = category;
   return (
     <Link
-      href={`/profile/admin/${_id}`}
-      className="w-full p-3 mx-auto grid grid-cols-10 sm:max-w-sm bg-darkMode hover:bg-darkMode duration-150 rounded-lg overflow-hidden"
+      href={`/profile/admin/categories/${_id}`}
+      className="w-full p-3 mx-auto grid grid-cols-10 sm:max-w-sm bg-darkMode hover:bg-lightDarkMode duration-150 rounded-lg overflow-hidden"
     >
       <div className="mt-1 col-span-8">
         <span className="block text-gray-500 text-xs">CATEGORIA</span>
@@ -38,7 +38,9 @@ export const Category = (category: CategoryProps) => {
             className="w-full h-full object-cover rounded-lg"
           />
         ) : (
-          <p className="text-center text-gray-700 font-bold text-xs">No image</p>
+          <p className="text-center text-gray-700 font-bold text-xs">
+            No image
+          </p>
         )}
       </div>
     </Link>

@@ -1,4 +1,5 @@
 import { category } from "@/services/category";
+import { notFound } from "next/navigation";
 
 export default async function CategoryPage({
   params,
@@ -9,7 +10,7 @@ export default async function CategoryPage({
   const cat = await category.getCategoryById(id);
   const { data } = cat;
 
-  if (!cat) return <div>loading</div>;
+  if (!cat || !cat.data?.length) notFound();
 
   if (!cat.success) return <div>Something went wrong</div>;
 

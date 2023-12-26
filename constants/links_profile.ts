@@ -58,7 +58,7 @@ export const linksLogoProfile: TLinkProfilePage[] = [
 export const linksAdminPanel: TLinkProfilePage[] = [
   {
     title: "Categories",
-    href: "/profile/admin",
+    href: "/profile/admin/categories",
     icon: CiUser,
   },
   {

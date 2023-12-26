@@ -28,7 +28,7 @@ export const Sidebar = () => {
   return (
     <nav
       className={`h-full bg-lightDarkMode absolute transition-all z-30 ${
-        menuIsOpen ? "w-60" : "w-16"
+        menuIsOpen ? "w-60" : "w-14"
       }`}
     >
       <div className="flex flex-col h-full justify-between items-center">
@@ -68,7 +68,8 @@ export const Sidebar = () => {
               <Link
                 href={ADMIN_PANEL}
                 className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
-                  cutPathnameByPiece(pathname, 2) === ADMIN_PANEL
+                  cutPathnameByPiece(pathname, 2) ===
+                  cutPathnameByPiece(ADMIN_PANEL, 2)
                     ? "bg-white/90 text-gray-700"
                     : "hover:bg-white/10"
                 }   active:bg-primaryPal-900 duration-150`}
