@@ -7,7 +7,7 @@ export const Link_CreateItemMenu = () => {
     <div className="flex justify-end">
       <Link
         href="/profile/admin/menu/create_item_menu"
-        className="flex items-center gap-1 p-2 text-xs md:text-base bg-primaryPal-600/80 rounded-lg hover:bg-primaryPal-600 transition-colors"
+        className="flex items-center gap-1 p-2 text-sm md:text-base bg-primaryPal-600/80 rounded-lg hover:bg-primaryPal-600 transition-colors"
       >
         <MdOutlineAddBusiness />
         <span>Create Item Menu</span>
