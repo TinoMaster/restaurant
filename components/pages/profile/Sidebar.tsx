@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
-import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowLeft, FaHouse } from "react-icons/fa6";
 import { useState } from "react";
 import useProfile from "@/context/profileContext";
 import { ADMIN_PANEL } from "@/constants/routes.app";
@@ -22,6 +22,10 @@ export const Sidebar = () => {
     router.back();
   };
 
+  const goHome = () => {
+    router.push("/");
+  };
+
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
   };
@@ -32,16 +36,23 @@ export const Sidebar = () => {
       }`}
     >
       <div className="flex flex-col h-full justify-between items-center">
-        <div className="flex flex-col gap-3 py-2">
+        <div className="flex flex-col gap-5 py-2">
           <button onClick={toggleMenu} className="p-2">
             <IoMenu className="text-3xl" />
+          </button>
+          <button
+            onClick={goHome}
+            className="flex items-center justify-center gap-2"
+          >
+            <FaHouse className="text-xl" />
+            <span className={`${menuIsOpen ? "block" : "hidden"}`}>Home</span>
           </button>
           <button
             onClick={handlerBack}
             className="flex items-center justify-center gap-2"
           >
             <FaArrowLeft className="text-xl" />
-            <span className={`${menuIsOpen ? "block" : "hidden"}`}>volver</span>
+            <span className={`${menuIsOpen ? "block" : "hidden"}`}>back</span>
           </button>
         </div>
 

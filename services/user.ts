@@ -17,12 +17,11 @@ class User {
   }
 
   async getInfo(route: string) {
-    const requestOptions = {
+    const response = await fetch(route, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-    };
-
-    const response = await fetch(route, requestOptions);
+      cache: "no-store",
+    });
 
     const docs: ServerResponse = await response.json();
     const res = userAdapter(docs);

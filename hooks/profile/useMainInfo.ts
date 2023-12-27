@@ -8,6 +8,7 @@ import { PROFILE_ROUTE, UPLOAD_FILE } from "@/constants/routes.api";
 import { user } from "@/services/user";
 import { TDataUserToUpdate, TUser } from "@/types/models/user";
 import { validateUserInfo } from "@/utils/validators/profile.validators";
+import { revalidatePath } from "next/cache";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 

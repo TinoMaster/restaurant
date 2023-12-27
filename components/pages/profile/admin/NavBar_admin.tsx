@@ -9,7 +9,7 @@ export const NavBar_admin = () => {
   const pathName = usePathname();
   const path = cutPathnameByPiece(pathName, 3);
   return (
-    <header className="text-gray-400 py-4 rounded-lg flex justify-end bg-white/10 mb-5">
+    <header className="text-gray-400 py-4 rounded-lg flex justify-end bg-white/10 mb-10">
       <nav className="md:ml-auto flex flex-wrap items-center justify-center gap-3">
         {linksAdminPanel.map((link) => (
           <Link

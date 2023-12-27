@@ -62,3 +62,22 @@ export const addressProfilePageInputs: TInput[] = [
     editable: true,
   },
 ];
+
+export const menuItemsProfilePageInputs: TInput[] = [
+  {
+    id: "name_item",
+    label: "Name",
+    type: "text",
+    placeholder: "Ej: Coca Cola",
+    name: "name",
+    editable: true,
+  },
+  {
+    id: "price_item",
+    label: "Price",
+    type: "number",
+    placeholder: "Ej: 120",
+    name: "price",
+    editable: true,
+  },
+];

@@ -7,7 +7,7 @@ import { TbShoppingBagCheck } from "react-icons/tb";
 export const linksProfile: TLinkProfilePage[] = [
   {
     title: "User info",
-    href: "/profile",
+    href: "/profile/user_info",
     icon: CiUser,
   },
   {
@@ -35,7 +35,7 @@ export const linksProfile: TLinkProfilePage[] = [
 export const linksLogoProfile: TLinkProfilePage[] = [
   {
     title: "Mio Profilo",
-    href: "/profile",
+    href: "/profile/user_info",
     icon: CiUser,
   },
   {
