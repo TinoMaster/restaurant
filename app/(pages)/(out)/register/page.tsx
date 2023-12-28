@@ -1,5 +1,6 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
+import { Btn_Google } from "@/components/ui/buttons/Btn_Google";
 import { useRegister } from "@/hooks/useRegister";
 import { img_PageMenuMovil } from "@/utils/images";
 import { useSession } from "next-auth/react";
@@ -119,6 +120,8 @@ export default function Register() {
               iniciar session
             </Link>
           </div>
+          <p className="text-gray-100 mt-5">o bien</p>
+          <Btn_Google />
         </div>
       </section>
     );

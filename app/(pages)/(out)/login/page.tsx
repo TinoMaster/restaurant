@@ -1,5 +1,6 @@
 "use client";
 import LoadingSkeletonPages from "@/app/(pages)/loading";
+import { Btn_Google } from "@/components/ui/buttons/Btn_Google";
 import { NotificationTopRight } from "@/components/ui/notifications/NotificationTopRight";
 import { useLogin } from "@/hooks/useLogin";
 import { img_PageMenuMovil } from "@/utils/images";
@@ -112,6 +113,8 @@ export default function Login() {
               Registrarse
             </Link>
           </div>
+          <p className="text-gray-100 mt-5">o bien</p>
+          <Btn_Google />
         </div>
       </section>
     );
