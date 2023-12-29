@@ -1,5 +1,6 @@
 "use client";
 import { PROFILE_ROUTE } from "@/constants/routes.api";
+import { INITIAL_DATA_SESSION } from "@/constants/user";
 import { user } from "@/services/user";
 import { TUser } from "@/types/models/user";
 import { Session } from "next-auth";
@@ -20,23 +21,6 @@ const useProfile = (): ProfileState => {
   const context = useContext(ProfileContext);
   if (!context) throw new Error("Please use ThemeProvider in parent component");
   return context;
-};
-
-const INITIAL_DATA_SESSION: TUser = {
-  name: "",
-  email: "",
-  image: "",
-  addresses: [],
-  cart: [],
-  notifications: [],
-  emailVerified: false,
-  phone: "",
-  isAdmin: false,
-  orders: [],
-  createdAt: "",
-  updatedAt: "",
-  _id: "",
-  isVerified: false,
 };
 
 export const ProfileProvider = ({
