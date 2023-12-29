@@ -1,10 +1,9 @@
 import { TInput } from "@/types/common";
-import { TDataUserToUpdate, TUser } from "@/types/models/user";
-import React, { useState } from "react";
+import { TDataUserToUpdate } from "@/types/models/user";
+import React from "react";
 
 interface InputEditableProps {
   inp: TInput;
-  dataSession: TUser | undefined;
   userInfoToEdit: TDataUserToUpdate;
   handlerInfoToEdit: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

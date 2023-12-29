@@ -7,16 +7,16 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
 import { FaArrowLeft, FaHouse } from "react-icons/fa6";
 import { useState } from "react";
-import useProfile from "@/context/profileContext";
 import { ADMIN_PANEL } from "@/constants/routes.app";
 import { GrUserAdmin } from "react-icons/gr";
 import { cutPathnameByPiece } from "@/utils/cutPathname";
+import { useAppSelector } from "@/redux/hooks";
 
 export const Sidebar = () => {
-  const { dataSession } = useProfile();
   const pathname = usePathname();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const router = useRouter();
+  const isAdmin = useAppSelector((state) => state.userReducer.isAdmin);
 
   const handlerBack = () => {
     router.back();
@@ -74,7 +74,7 @@ export const Sidebar = () => {
               </Link>
             </li>
           ))}
-          {dataSession?.isAdmin && (
+          {isAdmin && (
             <li>
               <Link
                 href={ADMIN_PANEL}

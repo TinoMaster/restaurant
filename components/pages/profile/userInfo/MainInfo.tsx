@@ -1,13 +1,13 @@
 "use client";
 import { userInfoProfilePageInputs } from "@/constants/forms/profiles.form";
 import Image from "next/image";
-import useProfile from "@/context/profileContext";
 import { InputEditable } from "@/components/ui/elements/InputEditable";
 import { useMainInfo } from "@/hooks/profile/useMainInfo";
 import { Btn_profile } from "@/components/ui/buttons/Btn_profile";
+import { useAppSelector } from "@/redux/hooks";
 
 export const MainInfo = () => {
-  const { dataSession, setDataSession } = useProfile();
+  const { image, name } = useAppSelector((state) => state.userReducer);
   const {
     handleChangeImage,
     imagePreview,
@@ -17,7 +17,7 @@ export const MainInfo = () => {
     handleSubmitUpdateUserInfo,
     onChangeImage,
     setEditonMode,
-  } = useMainInfo({ setDataSession, dataSession });
+  } = useMainInfo();
 
   return (
     <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
@@ -32,9 +32,9 @@ export const MainInfo = () => {
               height={250}
               className="w-full h-full object-cover rounded-full"
             />
-          ) : dataSession?.image ? (
+          ) : image ? (
             <Image
-              src={dataSession?.image}
+              src={image}
               alt="profile"
               width={100}
               height={100}
@@ -42,7 +42,7 @@ export const MainInfo = () => {
               priority
             />
           ) : (
-            <p className="text-5xl">{dataSession?.name?.slice(0, 2)}</p>
+            <p className="text-5xl">{name?.slice(0, 2)}</p>
           )}
         </div>
         {imagePreview ? (
@@ -72,7 +72,6 @@ export const MainInfo = () => {
               handlerInfoToEdit={handlerInfoToEdit}
               userInfoToEdit={userInfoToEdit}
               key={idx}
-              dataSession={dataSession}
               inp={inp}
             />
           ))}

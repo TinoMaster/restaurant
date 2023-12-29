@@ -5,12 +5,12 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { linksLogoProfile } from "@/constants/links_profile";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import useProfile from "@/context/profileContext";
 import { CiMenuKebab } from "react-icons/ci";
+import { useAppSelector } from "@/redux/hooks";
 
 export const LogoProfile = () => {
-  const { dataSession } = useProfile();
   const [menuProfile, setMenuProfile] = useState(false);
+  const { image, name } = useAppSelector((state) => state.userReducer);
 
   useEffect(() => {
     if (menuProfile) {
@@ -35,9 +35,9 @@ export const LogoProfile = () => {
       className="cursor-pointer flex justify-center items-center relative"
     >
       <div className="flex items-center">
-        {dataSession?.image ? (
+        {image ? (
           <Image
-            src={dataSession?.image}
+            src={image}
             alt="user image"
             width={32}
             height={32}
@@ -45,7 +45,7 @@ export const LogoProfile = () => {
           />
         ) : (
           <p className="text-darkMode font-serif capitalize w-8 h-8 bg-gray-100 rounded-full flex justify-center items-center">
-            {dataSession?.name?.slice(0, 2)}
+            {name?.slice(0, 2)}
           </p>
         )}
         <CiMenuKebab className="" />

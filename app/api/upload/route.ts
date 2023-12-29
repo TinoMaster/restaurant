@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     const email = session?.user?.email;
 
     const file = formData.get("image");
+    const name = formData.get("name");
 
     if (!file) {
       return Response.json({
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
 
     const response = await saveImageInCubbit({
       file: file as File,
-      imageName: email || (file as File).name,
+      imageName: (name as string) || (file as File).name,
     });
 
     if (!response.success) {

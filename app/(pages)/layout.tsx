@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { NavProvider } from "@/context/navContext";
 import { siligury } from "@/utils/fonts";
-import { Providers } from "./Providers";
-import { ProfileProvider } from "@/context/profileContext";
+import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
+import { Providers } from "./Providers";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,14 +20,10 @@ export default function RootLayout({
         className={`${siligury.className} antialiased h-auto min-h-screen bg-darkMode flex flex-col justify-between`}
       >
         <Providers>
-          <ProfileProvider>
-            <NavProvider>
-              <main className="w-full overflow-hidden grow">
-                <Toaster />
-                {children}
-              </main>
-            </NavProvider>
-          </ProfileProvider>
+          <main className="w-full overflow-hidden grow">
+            <Toaster />
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

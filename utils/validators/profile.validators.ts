@@ -19,7 +19,7 @@ export const validateItalianPhone = (phone: string) => {
 
 export const validateUserInfo = (
   { name = "", email = "", phone = "" }: TDataUserToUpdate,
-  actualData: TUser
+  actualData: Pick<TUser, "name" | "email" | "phone">
 ) => {
   if (
     name === actualData.name &&

@@ -5,17 +5,14 @@ import {
   UPDATING_INFO_PROFILE,
 } from "@/constants/common";
 import { PROFILE_ROUTE, UPLOAD_FILE } from "@/constants/routes.api";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { updateImage, updateMainInfo } from "@/redux/reducers/user_slice";
 import { user } from "@/services/user";
-import { TDataUserToUpdate, TUser } from "@/types/models/user";
+import { TDataUserToUpdate } from "@/types/models/user";
+import { createNameImage } from "@/utils/createNameImage";
 import { validateUserInfo } from "@/utils/validators/profile.validators";
-import { revalidatePath } from "next/cache";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
-interface IUseMainInfoProps {
-  setDataSession: React.Dispatch<React.SetStateAction<TUser | undefined>>;
-  dataSession: TUser | undefined;
-}
 
 interface IUseMainInfo {
   editonMode: boolean;
@@ -28,15 +25,18 @@ interface IUseMainInfo {
   handleChangeImage: () => void;
 }
 
-export const useMainInfo = ({
-  setDataSession,
-  dataSession,
-}: IUseMainInfoProps): IUseMainInfo => {
+export const useMainInfo = (): IUseMainInfo => {
+  /* Redux */
+  const { name, email, phone, image } = useAppSelector(
+    (state) => state.userReducer
+  );
+  const dispatch = useAppDispatch();
+  /* States hook */
   const [editonMode, setEditonMode] = useState(false);
   const [userInfoToEdit, setUserInfoToEdit] = useState<TDataUserToUpdate>({
-    name: dataSession?.name || "",
-    email: dataSession?.email || "",
-    phone: dataSession?.phone || "",
+    name: name || "",
+    email: email || "",
+    phone: phone || "",
   });
 
   /* change image states */
@@ -44,8 +44,8 @@ export const useMainInfo = ({
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   useEffect(() => {
-    setEditonMode(validateUserInfo(userInfoToEdit, dataSession as TUser));
-  }, [userInfoToEdit]);
+    setEditonMode(validateUserInfo(userInfoToEdit, { name, email, phone }));
+  }, [userInfoToEdit, name, email, phone]);
 
   const handlerInfoToEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -57,12 +57,11 @@ export const useMainInfo = ({
   ) {
     e.preventDefault();
     toast.loading(UPDATING_INFO_PROFILE);
-    console.log("siiii", userInfoToEdit);
 
     const response = await user.UpdateInfo(PROFILE_ROUTE, userInfoToEdit);
 
     if (response.success) {
-      setDataSession(response.data);
+      dispatch(updateMainInfo(userInfoToEdit));
       setEditonMode(false);
       toast.remove();
       toast.success(SUCCESS_INFO_PROFILE);
@@ -91,18 +90,12 @@ export const useMainInfo = ({
       toast.loading(UPDATING_IMAGE);
       const formData = new FormData();
       formData.append("image", imageFile);
+      formData.append("name", createNameImage(email));
       const response = await user.uploadImage(UPLOAD_FILE, formData);
 
       if (response.success) {
         toast.remove();
-        setDataSession((prev) => {
-          if (prev) {
-            return {
-              ...prev,
-              image: imagePreview as string,
-            };
-          }
-        });
+        dispatch(updateImage(response.data));
         setImagePreview(null);
         toast.success(SUCCESS_UPLOAD_IMAGE);
       } else {

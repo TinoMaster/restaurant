@@ -1,6 +1,7 @@
 import { TUser } from "@/types/models/user";
 
 export const INITIAL_DATA_SESSION: TUser = {
+  _id: "",
   name: "",
   email: "",
   image: "",
@@ -13,6 +14,5 @@ export const INITIAL_DATA_SESSION: TUser = {
   orders: [],
   createdAt: "",
   updatedAt: "",
-  _id: "",
   isVerified: false,
 };
