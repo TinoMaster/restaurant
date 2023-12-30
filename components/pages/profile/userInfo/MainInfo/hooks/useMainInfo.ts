@@ -27,9 +27,7 @@ interface IUseMainInfo {
 
 export const useMainInfo = (): IUseMainInfo => {
   /* Redux */
-  const { name, email, phone, image } = useAppSelector(
-    (state) => state.userReducer
-  );
+  const { name, email, phone } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
   /* States hook */
   const [editonMode, setEditonMode] = useState(false);

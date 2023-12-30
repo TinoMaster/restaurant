@@ -1,6 +1,7 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface IFormLogin {
   email: string;
@@ -12,25 +13,15 @@ const INITIAL_FORM: IFormLogin = {
   password: "",
 };
 
-const INITIAL_SUCCESS = {
-  success: false,
-  message: "",
-};
-const INITIAL_ERROR = {
-  error: false,
-  message: "",
-};
-
 export const useLogin = () => {
   const router = useRouter();
   const { status } = useSession();
   const [formLogin, setFormLogin] = useState<IFormLogin>(INITIAL_FORM);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(INITIAL_ERROR);
-  const [success, setSuccess] = useState(INITIAL_SUCCESS);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    toast.loading("Iniciando sesión...");
     setLoading(true);
     const res = await signIn("credentials", {
       email: formLogin.email,
@@ -40,19 +31,11 @@ export const useLogin = () => {
 
     if (res?.ok) {
       setFormLogin(INITIAL_FORM);
-      setSuccess({ success: true, message: "Login exitoso" });
-      setTimeout(() => {
-        setSuccess(INITIAL_SUCCESS);
-        router.push("/");
-      }, 2000);
+      toast.remove();
+      router.push("/");
     } else {
-      setError({
-        error: true,
-        message: "Error de autenticación",
-      });
-      setTimeout(() => {
-        setError(INITIAL_ERROR);
-      }, 3000);
+      toast.remove();
+      toast.error(res?.error || "Error al iniciar sesión");
     }
     setLoading(false);
   };
@@ -60,8 +43,6 @@ export const useLogin = () => {
   return {
     formLogin,
     loading,
-    error,
-    success,
     handleSubmit,
     setFormLogin,
     status,

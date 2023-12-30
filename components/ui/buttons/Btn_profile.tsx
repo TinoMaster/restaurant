@@ -5,6 +5,7 @@ interface TBtnProfileProps {
   trigger?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  title?: string;
 }
 
 export const Btn_profile = ({
@@ -12,9 +13,11 @@ export const Btn_profile = ({
   trigger,
   type = "button",
   disabled = false,
+  title = "button",
 }: TBtnProfileProps) => {
   return (
     <button
+      title={title}
       disabled={disabled}
       type={type}
       onClick={trigger}

@@ -31,6 +31,7 @@ const UserSchema = new Schema(
     phone: { type: String, default: undefined },
     isAdmin: { type: Boolean, default: false },
     emailVerified: { type: Boolean, default: false },
+    phoneVerified: { type: Boolean, default: false },
     isVerified: { type: Boolean, default: false },
     addresses: [
       {

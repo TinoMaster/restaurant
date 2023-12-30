@@ -20,6 +20,7 @@ export interface TUser {
   isAdmin: boolean;
   isVerified: boolean;
   emailVerified: boolean;
+  phoneVerified: boolean;
   orders: TOrder[];
   cart: TProduct[];
   notifications: TNotification[];
