@@ -3,6 +3,8 @@ import { TDataUserToUpdate } from "@/types/models/user";
 import React from "react";
 import { MdOutlineVerified } from "react-icons/md";
 import { LuBadgeAlert } from "react-icons/lu";
+import { dialogChangeEmail, dialogChangePhone } from "@/constants/dialogs";
+import { TOptionsToEdit } from "./types";
 
 interface InputEditableProps {
   inp: TInput;
@@ -10,6 +12,7 @@ interface InputEditableProps {
   handlerInfoToEdit: (e: React.ChangeEvent<HTMLInputElement>) => void;
   emailVerified?: boolean;
   phoneVerified?: boolean;
+  openDialog?: (dialog: TOptionsToEdit) => void;
 }
 
 export const InputEditable = ({
@@ -18,6 +21,7 @@ export const InputEditable = ({
   handlerInfoToEdit,
   emailVerified = false,
   phoneVerified = false,
+  openDialog,
 }: InputEditableProps) => {
   const disabledInput = () => {
     if (inp.name === "email" && emailVerified) {
@@ -39,9 +43,13 @@ export const InputEditable = ({
               verified <MdOutlineVerified className="" />
             </span>
           ) : (
-            <span className="px-2 text-xs bg-yellow-400/30 rounded-lg absolute right-4 flex items-center">
+            <button
+              type="button"
+              onClick={() => openDialog?.(dialogChangeEmail)}
+              className="px-2 text-xs bg-yellow-400/30 rounded-lg absolute right-4 flex items-center"
+            >
               not verified <LuBadgeAlert className="" />
-            </span>
+            </button>
           ))}
         {inp.name === "phone" &&
           (phoneVerified ? (
@@ -49,9 +57,13 @@ export const InputEditable = ({
               verified <MdOutlineVerified className="" />
             </span>
           ) : (
-            <span className="px-2 text-xs bg-yellow-400/30 rounded-lg absolute right-4 flex items-center">
+            <button
+              type="button"
+              onClick={() => openDialog?.(dialogChangePhone)}
+              className="px-2 text-xs bg-yellow-400/30 rounded-lg absolute right-4 flex items-center"
+            >
               not verified <LuBadgeAlert className="" />
-            </span>
+            </button>
           ))}
       </span>
       <div className="flex relative items-center">

@@ -93,7 +93,7 @@ export const useMainInfo = (): IUseMainInfo => {
 
       if (response.success) {
         toast.remove();
-        dispatch(updateImage(response.data));
+        dispatch(updateImage(imagePreview || ""));
         setImagePreview(null);
         toast.success(SUCCESS_UPLOAD_IMAGE);
       } else {

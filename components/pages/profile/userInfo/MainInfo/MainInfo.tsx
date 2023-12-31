@@ -1,14 +1,15 @@
 "use client";
-import { userInfoProfilePageInputs } from "@/constants/forms/profiles.form";
-import Image from "next/image";
 import { Btn_profile } from "@/components/ui/buttons/Btn_profile";
+import { userInfoProfilePageInputs } from "@/constants/forms/profiles.form";
+import { useMainInfo } from "@/hooks/pages/profile/useMainInfo";
+import { useDialogs } from "@/hooks/useDialogs";
 import { useAppSelector } from "@/redux/hooks";
-import { Dialog } from "@/components/ui/modals/Dialog";
+import { Dialogs_Render } from "./Dialogs_Render";
+import { ImageBlock } from "./ImageBlock";
 import { InputEditable } from "./InputEditable";
-import { useMainInfo } from "./hooks/useMainInfo";
 
 export const MainInfo = () => {
-  const { image, name, emailVerified, phoneVerified } = useAppSelector(
+  const { emailVerified, phoneVerified } = useAppSelector(
     (state) => state.userReducer
   );
   const {
@@ -21,55 +22,18 @@ export const MainInfo = () => {
     onChangeImage,
     setEditonMode,
   } = useMainInfo();
+  const { openDialog } = useDialogs();
 
   return (
     <>
-      <Dialog
-        title="Verifiy your email"
-        description=" We've sent a verification link to your email. Please check your email and click on the link to verify your email."
-      >
-        <div className="max-w-xs m-auto">
-          <input type="text" className="input" />
-        </div>
-      </Dialog>
+      <Dialogs_Render />
       <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
         {/* Caja imagen */}
         <div className="flex flex-col gap-2 justify-center items-center col-span-4 md:col-span-1">
-          <div className="w-44 h-44 bg-darkMode border border-primary relative rounded-full flex justify-center items-center">
-            {imagePreview ? (
-              <Image
-                src={imagePreview}
-                alt="profile"
-                width={250}
-                height={250}
-                className="w-full h-full object-cover rounded-full"
-              />
-            ) : image ? (
-              <Image
-                src={image}
-                alt="profile"
-                width={100}
-                height={100}
-                className="w-full h-full object-cover rounded-full"
-                priority
-              />
-            ) : (
-              <p className="text-5xl">{name?.slice(0, 2)}</p>
-            )}
-          </div>
-          {imagePreview ? (
-            <Btn_profile trigger={handleChangeImage} name="Save image" />
-          ) : (
-            <label htmlFor="change-image" className="btn-white">
-              Change image
-            </label>
-          )}
-          <input
-            onChange={onChangeImage}
-            type="file"
-            name="change-image"
-            id="change-image"
-            className="hidden"
+          <ImageBlock
+            handleChangeImage={handleChangeImage}
+            imagePreview={imagePreview}
+            onChangeImage={onChangeImage}
           />
         </div>
         {/* Caja información */}
@@ -87,6 +51,7 @@ export const MainInfo = () => {
                 inp={inp}
                 emailVerified={emailVerified}
                 phoneVerified={phoneVerified}
+                openDialog={openDialog}
               />
             ))}
             {/* Buttons box */}
