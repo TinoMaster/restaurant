@@ -50,6 +50,7 @@ export const useMainInfo = (): IUseMainInfo => {
     setUserInfoToEdit((prev) => ({ ...prev, [name]: value }));
   };
 
+  /* //TODO: arreglar esta funcion para que cuando se cambie el correo electronico se desconecte y tenga que iniciar sesion */
   async function handleSubmitUpdateUserInfo(
     e: React.FormEvent<HTMLFormElement>
   ) {

@@ -1,9 +1,11 @@
 interface EmailTemplateProps {
   firstName: string;
+  verificationCode: string;
 }
 
 export const EmailVerification: React.FC<Readonly<EmailTemplateProps>> = ({
   firstName,
+  verificationCode,
 }) => (
   <section className="font-sans bg-gray-100 p-4">
     <h1>Welcome, {firstName}!</h1>
@@ -19,14 +21,7 @@ export const EmailVerification: React.FC<Readonly<EmailTemplateProps>> = ({
       </p>
 
       {/* <!-- Reemplaza 'URL_DEL_SERVIDOR' con la URL real de tu servidor de verificación --> */}
-      <p className="mb-4">
-        <a
-          href="URL_DEL_SERVIDOR/verificar?codigo=CODIGO_DE_VERIFICACION"
-          className="text-blue-500"
-        >
-          Verificar Correo Electrónico
-        </a>
-      </p>
+      <p className="mb-4">Codigo: {verificationCode}</p>
 
       <p className="mb-4">
         Si no has realizado este registro, puedes ignorar este correo.

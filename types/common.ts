@@ -35,3 +35,9 @@ export type TInputProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 };
+
+export interface IDataToVerifyEmail {
+  email: string;
+  firstName: string;
+  verificationCode: string;
+}

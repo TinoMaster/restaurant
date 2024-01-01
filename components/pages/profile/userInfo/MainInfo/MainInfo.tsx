@@ -7,9 +7,10 @@ import { useAppSelector } from "@/redux/hooks";
 import { Dialogs_Render } from "./Dialogs_Render";
 import { ImageBlock } from "./ImageBlock";
 import { InputEditable } from "./InputEditable";
+import LoadingSkeletonProfile from "@/app/(pages)/(out)/profile/user_info/loading";
 
 export const MainInfo = () => {
-  const { emailVerified, phoneVerified } = useAppSelector(
+  const { emailVerified, phoneVerified, _id } = useAppSelector(
     (state) => state.userReducer
   );
   const {
@@ -23,6 +24,10 @@ export const MainInfo = () => {
     setEditonMode,
   } = useMainInfo();
   const { openDialog } = useDialogs();
+
+  if (!_id) {
+    return <LoadingSkeletonProfile />;
+  }
 
   return (
     <>

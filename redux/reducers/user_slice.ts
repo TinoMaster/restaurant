@@ -7,6 +7,7 @@ export interface TUserActions {
   logout: () => Action;
   updateMainInfo: (payload: Pick<TUser, "name" | "email" | "phone">) => Action;
   updateImage: (payload: string) => Action;
+  updateVerificationEmail: (payload: boolean) => Action;
 }
 
 export const userSlice = createSlice({
@@ -40,9 +41,18 @@ export const userSlice = createSlice({
     updateImage: (state, action: PayloadAction<string>) => {
       state.image = action.payload;
     },
+    updateVerificationEmail: (state, action: PayloadAction<boolean>) => {
+      state.emailVerified = action.payload;
+    },
   },
 });
 
-export const { login, logout, updateMainInfo, updateImage } = userSlice.actions;
+export const {
+  login,
+  logout,
+  updateMainInfo,
+  updateImage,
+  updateVerificationEmail,
+} = userSlice.actions;
 
 export default userSlice.reducer;
