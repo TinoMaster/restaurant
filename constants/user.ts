@@ -9,6 +9,7 @@ export const INITIAL_DATA_SESSION: TUser = {
   cart: [],
   notifications: [],
   emailVerified: false,
+  phoneVerified: false,
   phone: "",
   isAdmin: false,
   orders: [],
