@@ -5,31 +5,12 @@ import { AiOutlineClose } from "react-icons/ai";
 import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { motion } from "framer-motion";
 import { Registration } from "./Registration";
-import { useEffect, useState } from "react";
 
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();
-  const [altura, setAltura] = useState(window.innerHeight);
 
-  useEffect(() => {
-    const ajustarAltura = () => {
-      setAltura(window.innerHeight);
-    };
-
-    // Llamada inicial y escucha de eventos de cambio de tamaño
-    ajustarAltura();
-    window.addEventListener("resize", ajustarAltura);
-
-    // Cleanup: Remover el evento al desmontar el componente
-    return () => {
-      window.removeEventListener("resize", ajustarAltura);
-    };
-  }, []);
-
-  /* //TODO: Animate menu */
   return (
     <motion.section
-      style={{ height: `${altura}px` }}
       initial={{ opacity: 0 }}
       animate={menuIsOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: "-100%" }}
       exit={{ opacity: 0 }}
