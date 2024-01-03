@@ -39,16 +39,16 @@ export const LogoProfile = () => {
           <Image
             src={image}
             alt="user image"
-            width={32}
-            height={32}
-            className="w-8 h-8 rounded-full"
+            width={250}
+            height={250}
+            className="w-14 h-14 lg:w-8 lg:h-8 rounded-full"
           />
         ) : (
           <p className="text-darkMode font-serif capitalize w-8 h-8 bg-gray-100 rounded-full flex justify-center items-center">
             {name?.slice(0, 2)}
           </p>
         )}
-        <CiMenuKebab className="" />
+        <CiMenuKebab className="text-3xl lg:text-base" />
       </div>
 
       {menuProfile && (

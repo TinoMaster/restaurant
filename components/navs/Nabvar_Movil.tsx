@@ -5,17 +5,34 @@ import { AiOutlineClose } from "react-icons/ai";
 import { linksPrincipalMenu } from "@/constants/links_navbar";
 import { motion } from "framer-motion";
 import { Registration } from "./Registration";
+import { useEffect, useState } from "react";
 
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();
+  const [altura, setAltura] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const ajustarAltura = () => {
+      setAltura(window.innerHeight);
+    };
+
+    // Llamada inicial y escucha de eventos de cambio de tamaño
+    ajustarAltura();
+    window.addEventListener("resize", ajustarAltura);
+
+    // Cleanup: Remover el evento al desmontar el componente
+    return () => {
+      window.removeEventListener("resize", ajustarAltura);
+    };
+  }, []);
 
   /* //TODO: Animate menu */
   return (
     <motion.section
+      style={{ height: `${altura}px` }}
       initial={{ opacity: 0 }}
       animate={menuIsOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: "-100%" }}
       exit={{ opacity: 0 }}
-      /* transition={{ duration: 0.5 }} */
       className="fixed z-50 top-0 left-0 flex flex-col w-[100vw] h-[100vh] justify-center items-center bg-darkMode text-white overflow-hidden"
     >
       <div className="flex w-full flex-col z-10 grow">
@@ -33,7 +50,7 @@ export const Nabvar_Movil = () => {
           ))}
         </ul>
       </div>
-      <div className="flex py-10">
+      <div className="py-20">
         <small onClick={() => setMenuIsOpen(false)}>
           <Registration />
         </small>
