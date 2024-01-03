@@ -26,6 +26,7 @@ interface IUseMainInfo {
 }
 
 export const useMainInfo = (): IUseMainInfo => {
+
   /* Redux */
   const { name, email, phone } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
@@ -36,10 +37,10 @@ export const useMainInfo = (): IUseMainInfo => {
     email: email || "",
     phone: phone || "",
   });
-
   /* change image states */
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+
 
   useEffect(() => {
     setEditonMode(validateUserInfo(userInfoToEdit, { name, email, phone }));
