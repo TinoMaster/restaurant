@@ -8,11 +8,17 @@ export const validateName = (name: string) => {
 };
 
 export const validateEmail = (email: string) => {
+  if (!email) {
+    return true;
+  }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
 export const validateItalianPhone = (phone: string) => {
+  if (!phone) {
+    return true;
+  }
   const phoneRegex = /^3\d{9}$/;
   return phoneRegex.test(phone);
 };

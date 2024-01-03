@@ -11,6 +11,7 @@ import { user } from "@/services/user";
 import { TDataUserToUpdate } from "@/types/models/user";
 import { createNameImage } from "@/utils/createNameImage";
 import { validateUserInfo } from "@/utils/validators/profile.validators";
+import { signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -26,7 +27,6 @@ interface IUseMainInfo {
 }
 
 export const useMainInfo = (): IUseMainInfo => {
-
   /* Redux */
   const { name, email, phone } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
@@ -41,7 +41,6 @@ export const useMainInfo = (): IUseMainInfo => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-
   useEffect(() => {
     setEditonMode(validateUserInfo(userInfoToEdit, { name, email, phone }));
   }, [userInfoToEdit, name, email, phone]);
@@ -51,16 +50,31 @@ export const useMainInfo = (): IUseMainInfo => {
     setUserInfoToEdit((prev) => ({ ...prev, [name]: value }));
   };
 
-  /* //TODO: arreglar esta funcion para que cuando se cambie el correo electronico se desconecte y tenga que iniciar sesion */
   async function handleSubmitUpdateUserInfo(
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
     toast.loading(UPDATING_INFO_PROFILE);
 
+    if (userInfoToEdit.email !== email) {
+      const confirm = window.confirm(
+        "Al actualizar el correo electronico se desconectara de la sesion"
+      );
+
+      if (!confirm) {
+        toast.remove();
+        return;
+      }
+    }
+
     const response = await user.UpdateInfo(PROFILE_ROUTE, userInfoToEdit);
 
     if (response.success) {
+      if (userInfoToEdit.email !== email) {
+        toast.remove();
+        toast.success(SUCCESS_INFO_PROFILE);
+        signOut();
+      }
       dispatch(updateMainInfo(userInfoToEdit));
       setEditonMode(false);
       toast.remove();

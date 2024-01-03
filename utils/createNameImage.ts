@@ -1,3 +1,3 @@
 export const createNameImage = (email: string) => {
-  return email.split("@")[0];
+  return email;
 };
