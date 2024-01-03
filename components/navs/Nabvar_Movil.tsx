@@ -9,16 +9,14 @@ import { Registration } from "./Registration";
 export const Nabvar_Movil = () => {
   const { menuIsOpen, setMenuIsOpen } = useNav();
 
+  /* //TODO: Animate menu */
   return (
     <motion.section
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed z-50 ${
-        menuIsOpen
-          ? "flex flex-col translate-x-0 w-screen h-screen justify-center items-center bg-darkMode text-white z-20 overflow-x-hidden"
-          : "-translate-x-full"
-      } `}
+      animate={menuIsOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: "-100%" }}
+      exit={{ opacity: 0 }}
+      /* transition={{ duration: 0.5 }} */
+      className="fixed z-50 top-0 left-0 flex flex-col w-[100vw] h-[100vh] justify-center items-center bg-darkMode text-white overflow-hidden"
     >
       <div className="flex w-full flex-col z-10 grow">
         <div className="flex w-full justify-end">
