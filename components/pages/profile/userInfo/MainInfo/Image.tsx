@@ -9,7 +9,7 @@ interface IImageBlockProps {
   onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const ImageBlock = ({
+export const ImageMainInfo = ({
   imagePreview,
   handleChangeImage,
   onChangeImage,
@@ -30,9 +30,9 @@ export const ImageBlock = ({
           <Image
             src={image}
             alt="profile"
-            width={100}
-            height={100}
-            className="w-full h-full object-cover rounded-full"
+            width={500}
+            height={500}
+            className="w-full h-full object-cover object-top rounded-full"
             priority
           />
         ) : (

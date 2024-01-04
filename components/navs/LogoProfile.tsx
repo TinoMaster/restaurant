@@ -39,9 +39,9 @@ export const LogoProfile = () => {
           <Image
             src={image}
             alt="user image"
-            width={250}
-            height={250}
-            className="w-14 h-14 lg:w-8 lg:h-8 rounded-full"
+            width={100}
+            height={100}
+            className="w-12 h-12 lg:w-8 lg:h-8 rounded-full object-cover object-top"
           />
         ) : (
           <p className="text-darkMode font-serif capitalize w-8 h-8 bg-gray-100 rounded-full flex justify-center items-center">

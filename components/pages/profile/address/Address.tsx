@@ -4,7 +4,8 @@ import { addressProfilePageInputs } from "@/constants/forms/profiles.form";
 import { img_map } from "@/utils/images";
 import Image from "next/image";
 
-export const AddressInfo = () => {
+/* //TODO: continue here */
+export const AddressForm = () => {
   return (
     <div className="w-full grid grid-cols-4">
       <fieldset className="grid grid-cols-2 col-span-4 lg:col-span-3 lg:col-start-2">

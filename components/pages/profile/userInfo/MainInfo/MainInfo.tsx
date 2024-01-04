@@ -6,7 +6,7 @@ import { useDialogs } from "@/hooks/useDialogs";
 import { useAppSelector } from "@/redux/hooks";
 import { Dialogs_Render } from "./Dialogs_Render";
 import { Fallback_MainInfo } from "./Fallback_MainInfo";
-import { ImageBlock } from "./ImageBlock";
+import { ImageMainInfo } from "./Image";
 import { InputEditable } from "./InputEditable";
 
 export const MainInfo = () => {
@@ -34,7 +34,7 @@ export const MainInfo = () => {
         <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
           {/* Caja imagen */}
           <div className="flex flex-col gap-2 justify-center items-center col-span-4 md:col-span-1">
-            <ImageBlock
+            <ImageMainInfo
               handleChangeImage={handleChangeImage}
               imagePreview={imagePreview}
               onChangeImage={onChangeImage}
