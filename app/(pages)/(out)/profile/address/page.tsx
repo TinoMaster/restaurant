@@ -1,7 +1,9 @@
+import { RenderAddresses } from "@/components/pages/profile/address/RenderAddresses";
+
 export default function AddressPage() {
   return (
     <div>
-      <h1>Address</h1>
+      <RenderAddresses />
     </div>
   );
 }

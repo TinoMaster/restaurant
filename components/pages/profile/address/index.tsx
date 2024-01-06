@@ -1,1 +1,1 @@
-export { AddressForm } from "./Address";
+export { FormAddAddress } from "./FormAddAddress";
