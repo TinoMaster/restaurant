@@ -1,48 +1,13 @@
-import { img_map } from "@/utils/images";
-import Image from "next/image";
+import { TAddressInTheView } from "@/types/models/address";
+import Link from "next/link";
 
-const tableItems = [
+const tableItems: TAddressInTheView[] = [
   {
-    avatar:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-    name: "Liam James",
-    email: "liamjames@example.com",
-    phone_nimber: "+1 (555) 000-000",
-    position: "Software engineer",
-    salary: "$100K",
-  },
-  {
-    avatar: "https://randomuser.me/api/portraits/men/86.jpg",
-    name: "Olivia Emma",
-    email: "oliviaemma@example.com",
-    phone_nimber: "+1 (555) 000-000",
-    position: "Product designer",
-    salary: "$90K",
-  },
-  {
-    avatar: "https://randomuser.me/api/portraits/women/79.jpg",
-    name: "William Benjamin",
-    email: "william.benjamin@example.com",
-    phone_nimber: "+1 (555) 000-000",
-    position: "Front-end developer",
-    salary: "$80K",
-  },
-  {
-    avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
-    name: "Henry Theodore",
-    email: "henrytheodore@example.com",
-    phone_nimber: "+1 (555) 000-000",
-    position: "Laravel engineer",
-    salary: "$120K",
-  },
-  {
-    avatar:
-      "https://images.unsplash.com/photo-1439911767590-c724b615299d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-    name: "Amelia Elijah",
-    email: "amelia.elijah@example.com",
-    phone_nimber: "+1 (555) 000-000",
-    position: "Open source manager",
-    salary: "$75K",
+    _id: "1",
+    name: "Principale",
+    city: "Francavilla al Mare",
+    street: "via spaccapietra 14",
+    postal_code: "66012",
   },
 ];
 
@@ -52,7 +17,7 @@ export const RenderAddresses = () => {
       <div className="items-start justify-between md:flex">
         <div className="max-w-lg">
           <h3 className="text-primaryPal-600 text-xl font-bold sm:text-2xl">
-            Team members
+            Addresses
           </h3>
           <p className="text-gray-300 mt-2">
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -60,51 +25,41 @@ export const RenderAddresses = () => {
           </p>
         </div>
         <div className="mt-3 md:mt-0">
-          <a className="btn-white">Add member</a>
+          <Link href={"/profile/address/add_new_address"} className="btn-white">
+            Add new
+          </Link>
         </div>
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
-          <thead className="bg-primary text-gray-600 font-medium border-b">
+          <thead className="bg-primaryPal-500 text-gray-100 font-medium border-b">
             <tr>
-              <th className="py-3 px-6">Username</th>
-              <th className="py-3 px-6">Email</th>
-              <th className="py-3 px-6">Position</th>
-              <th className="py-3 px-6">Salary</th>
+              <th className="py-3 px-6">Name</th>
+              <th className="py-3 px-6">City</th>
+              <th className="py-3 px-6">Street</th>
+              <th className="py-3 px-6">Postal code</th>
               <th className="py-3 px-6"></th>
             </tr>
           </thead>
           <tbody className="text-gray-300 divide-y bg-white/10">
-            {tableItems.map((item, idx) => (
-              <tr key={idx}>
-                <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
-                  <Image
-                    alt="prueba"
-                    src={img_map}
-                    className="w-10 h-10 rounded-full"
-                  />
-                  <div>
-                    <span className="block text-gray-100 text-sm font-medium">
-                      {item.name}
-                    </span>
-                    <span className="block text-gray-300 text-xs">
-                      {item.email}
-                    </span>
-                  </div>
+            {tableItems.map(({ _id, name, city, street, postal_code }) => (
+              <tr key={_id}>
+                <td className="flex items-center gap-x-3 py-4 px-6 whitespace-nowrap">
+                  <span className="block text-gray-100 text-sm font-medium">
+                    {name}
+                  </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {item.phone_nimber}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.position}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
-                <td className="text-right px-6 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap">{city}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{street}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{postal_code}</td>
+                <td className="text-right px-6 whitespace-nowrap space-x-2">
                   <a
                     href="javascript:void()"
-                    className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                    className="py-2 px-3 font-medium text-indigo-400 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                   >
                     Edit
                   </a>
-                  <button className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
+                  <button className="py-2 leading-none px-3 font-medium text-red-400 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
                     Delete
                   </button>
                 </td>

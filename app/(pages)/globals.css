@@ -63,7 +63,7 @@
   }
 
   .btn-white {
-    @apply min-w-[100px] text-xs sm:text-sm border font-bold text-gray-700 shadow bg-white active:scale-90 hover:border-primaryPal-300 transition-colors py-2 lg:py-1 px-3 rounded-lg cursor-pointer;
+    @apply min-w-[100px] text-xs sm:text-sm font-bold text-gray-100 shadow bg-primaryPal-500 active:scale-90 hover:bg-primaryPal-600 transition-colors py-2 px-3 rounded-lg cursor-pointer;
   }
 
   .hover-primary-solid {
