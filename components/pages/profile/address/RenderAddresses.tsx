@@ -1,17 +1,9 @@
-import { TAddressInTheView } from "@/types/models/address";
+"use client";
+import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 
-const tableItems: TAddressInTheView[] = [
-  {
-    _id: "1",
-    name: "Principale",
-    city: "Francavilla al Mare",
-    street: "via spaccapietra 14",
-    postal_code: "66012",
-  },
-];
-
 export const RenderAddresses = () => {
+  const { addresses } = useAppSelector((state) => state.userReducer);
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
       <div className="items-start justify-between md:flex">
@@ -42,7 +34,7 @@ export const RenderAddresses = () => {
             </tr>
           </thead>
           <tbody className="text-gray-300 divide-y bg-white/10">
-            {tableItems.map(({ _id, name, city, street, postal_code }) => (
+            {addresses.map(({ _id, name, city, street, postal_code }) => (
               <tr key={_id}>
                 <td className="flex items-center gap-x-3 py-4 px-6 whitespace-nowrap">
                   <span className="block text-gray-100 text-sm font-medium">

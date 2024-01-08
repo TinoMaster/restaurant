@@ -11,7 +11,7 @@ export async function GET() {
     const session = await getServerSession(authOptions);
     const email = session?.user?.email;
 
-    const response = await UserModel.find({ email });
+    const response = await UserModel.find({ email }).populate("addresses");
 
     if (!response) {
       return Response.json({

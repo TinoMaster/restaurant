@@ -1,5 +1,5 @@
 import { ServerResponse } from "@/types/api_responses";
-import { TAddressCreate } from "@/types/models/address";
+import { TAddress, TAddressCreate } from "@/types/models/address";
 
 class Address {
   async createAddress(route: string, data: TAddressCreate) {
@@ -11,7 +11,7 @@ class Address {
 
     const response = await fetch(route, requestOptions);
 
-    const docs: ServerResponse = await response.json();
+    const docs: ServerResponse<TAddress> = await response.json();
     return docs;
   }
 }

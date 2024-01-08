@@ -1,4 +1,5 @@
 import { INITIAL_DATA_SESSION } from "@/constants/user";
+import { TAddress } from "@/types/models/address";
 import { TDataUserToUpdate, TUser } from "@/types/models/user";
 import { Action, PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -8,6 +9,7 @@ export interface TUserActions {
   updateMainInfo: (payload: Pick<TUser, "name" | "email" | "phone">) => Action;
   updateImage: (payload: string) => Action;
   updateVerificationEmail: (payload: boolean) => Action;
+  addAddress: (payload: TAddress) => Action;
 }
 
 export const userSlice = createSlice({
@@ -44,6 +46,9 @@ export const userSlice = createSlice({
     updateVerificationEmail: (state, action: PayloadAction<boolean>) => {
       state.emailVerified = action.payload;
     },
+    addAddress: (state, action: PayloadAction<TAddress>) => {
+      state.addresses.push(action.payload);
+    },
   },
 });
 
@@ -53,6 +58,7 @@ export const {
   updateMainInfo,
   updateImage,
   updateVerificationEmail,
+  addAddress,
 } = userSlice.actions;
 
 export default userSlice.reducer;

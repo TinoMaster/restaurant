@@ -30,6 +30,14 @@ export const userInfoProfilePageInputs: TInput[] = [
 
 export const addressProfilePageInputs: TInput[] = [
   {
+    id: "name_address",
+    label: "Name",
+    type: "text",
+    placeholder: "Ej: My first address",
+    name: "name",
+    editable: true,
+  },
+  {
     id: "Country_address",
     label: "Country",
     type: "text",
@@ -50,15 +58,15 @@ export const addressProfilePageInputs: TInput[] = [
     label: "Street Address",
     type: "text",
     placeholder: "Ej: Calle Falsa 123",
-    name: "street address",
+    name: "street_address",
     editable: true,
   },
   {
     id: "postal_code_address",
     label: "Postal Code",
-    type: "number",
+    type: "string",
     placeholder: "Ej: 11001",
-    name: "postal code",
+    name: "postal_code",
     editable: true,
   },
 ];

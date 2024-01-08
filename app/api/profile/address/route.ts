@@ -1,12 +1,23 @@
+import { AddressModel } from "@/app/models/Address";
 import { UserModel } from "@/app/models/User";
 import { db_config } from "@/config/db.config";
+import { authOptions } from "@/libs/authOptions";
 import { ServerResponse } from "@/types/api_responses";
+import { TAddress } from "@/types/models/address";
 import mongoose from "mongoose";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { email, address } = body;
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json<ServerResponse>({
+      success: false,
+      message: "No hay una sesion activa",
+    });
+  }
 
   if (!body) {
     return NextResponse.json<ServerResponse>({
@@ -16,17 +27,30 @@ export async function POST(req: Request) {
   }
   try {
     await mongoose.connect(db_config.URI);
-    const res = await UserModel.updateOne({ email }, { $push: { address } });
+    const resSaveAddress = await AddressModel.create(body);
 
-    if (!res) {
+    if (!resSaveAddress) {
       return NextResponse.json<ServerResponse>({
         success: false,
-        message: "Ah ocurrido un error al cargar la informacion",
+        message: "Ah ocurrido un error al guardar la direccion",
       });
     }
 
-    return NextResponse.json<ServerResponse>({
+    const resSaveIdAddressInUser = await UserModel.findOneAndUpdate(
+      { email: session?.user?.email },
+      { $push: { addresses: resSaveAddress._id } }
+    );
+
+    if (!resSaveIdAddressInUser) {
+      return NextResponse.json<ServerResponse>({
+        success: false,
+        message: "Ah ocurrido un error al guardar la direccion en el usuario",
+      });
+    }
+
+    return NextResponse.json<ServerResponse<TAddress>>({
       success: true,
+      data: resSaveAddress,
       message: "Informacion cargada con exito",
     });
   } catch (error) {

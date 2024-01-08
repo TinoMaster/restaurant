@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.8",
     "@aws-sdk/client-s3": "^3.478.0",
+    "@next/third-parties": "^14.0.4",
     "@reduxjs/toolkit": "^2.0.1",
     "bcrypt": "^5.1.1",
     "framer-motion": "^10.16.5",
