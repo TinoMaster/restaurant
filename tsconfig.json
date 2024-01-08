@@ -33,6 +33,6 @@
     "utils/api/password.verify.js",
     "components/SessionContext.js",
     "lib/mongoConnect.js"
-, "lib/mongodb.ts", "app/api/profile/route.js", "app/models/Address.js", "app/models/Categories.js", "app/models/Ingredients.js", "app/models/Notifications.js", "app/models/Orders.js", "app/models/Products.js"  ],
+, "lib/mongodb.ts", "app/api/profile/route.js", "app/models/Addresses.js", "app/models/Categories.js", "app/models/Ingredients.js", "app/models/Notifications.js", "app/models/Orders.js", "app/models/Products.js"  ],
   "exclude": ["node_modules"]
 }
