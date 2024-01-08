@@ -1,29 +1,29 @@
-import React from "react";
+import React from 'react'
 
 interface TBtnProfileProps {
-  name: string;
-  trigger?: () => void;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  title?: string;
+   name: string
+   trigger?: () => void
+   type?: 'button' | 'submit' | 'reset'
+   disabled?: boolean
+   title?: string
 }
 
 export const Btn_profile = ({
-  name,
-  trigger,
-  type = "button",
-  disabled = false,
-  title = "button",
+   name,
+   trigger,
+   type = 'button',
+   disabled = false,
+   title = 'button',
 }: TBtnProfileProps) => {
-  return (
-    <button
-      title={title}
-      disabled={disabled}
-      type={type}
-      onClick={trigger}
-      className="btn-white disabled:bg-primaryPal-300/40 disabled:cursor-not-allowed"
-    >
-      {name}
-    </button>
-  );
-};
+   return (
+      <button
+         title={title}
+         disabled={disabled}
+         type={type}
+         onClick={trigger}
+         className="btn-white disabled:bg-primaryPal-300/40 disabled:cursor-not-allowed"
+      >
+         {name}
+      </button>
+   )
+}

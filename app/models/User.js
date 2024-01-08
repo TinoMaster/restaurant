@@ -1,72 +1,72 @@
-import { models, Schema, model } from "mongoose";
+import { models, Schema, model } from 'mongoose'
 
-const lengthPass = 8;
+const lengthPass = 8
 
 const UserSchema = new Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      minlength: [3, "Name must be at least 3 characters"],
-      maxlength: [20, "Name must be less than 20 characters"],
-    },
-    email: {
-      type: String,
-      required: [true, "Email required"],
-      unique: true,
-      match: [/.+\@.+\..+/, "Please enter a valid e-mail address"],
-    },
-    password: {
-      type: String,
-      required: true,
-      validate: {
-        validator: function (pass) {
-          return pass.length >= lengthPass;
-        },
-        message: "Password must be at least 8 characters",
+   {
+      name: {
+         type: String,
+         required: true,
+         minlength: [3, 'Name must be at least 3 characters'],
+         maxlength: [20, 'Name must be less than 20 characters'],
       },
-      select: false,
-    },
-    image: { type: String, default: undefined },
-    phone: { type: String, default: undefined },
-    isAdmin: { type: Boolean, default: false },
-    emailVerified: { type: Boolean, default: false },
-    phoneVerified: { type: Boolean, default: false },
-    isVerified: { type: Boolean, default: false },
-    addresses: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Address",
+      email: {
+         type: String,
+         required: [true, 'Email required'],
+         unique: true,
+         match: [/.+\@.+\..+/, 'Please enter a valid e-mail address'],
       },
-    ],
-    orders: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Orders",
+      password: {
+         type: String,
+         required: true,
+         validate: {
+            validator: function (pass) {
+               return pass.length >= lengthPass
+            },
+            message: 'Password must be at least 8 characters',
+         },
+         select: false,
       },
-    ],
-    favorites: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Products",
-      },
-    ],
-    cart: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Products",
-      },
-    ],
-    notifications: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Notifications",
-      },
-    ],
-  },
-  {
-    timestamps: true,
-  }
-);
+      image: { type: String, default: undefined },
+      phone: { type: String, default: undefined },
+      isAdmin: { type: Boolean, default: false },
+      emailVerified: { type: Boolean, default: false },
+      phoneVerified: { type: Boolean, default: false },
+      isVerified: { type: Boolean, default: false },
+      addresses: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Address',
+         },
+      ],
+      orders: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Orders',
+         },
+      ],
+      favorites: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Products',
+         },
+      ],
+      cart: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Products',
+         },
+      ],
+      notifications: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Notifications',
+         },
+      ],
+   },
+   {
+      timestamps: true,
+   }
+)
 
-export const UserModel = models?.Users || model("Users", UserSchema);
+export const UserModel = models?.Users || model('Users', UserSchema)

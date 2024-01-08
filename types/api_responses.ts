@@ -1,5 +1,5 @@
 export interface ServerResponse<T = any> {
-  success: boolean;
-  data?: T;
-  message: string;
+   success: boolean
+   data?: T
+   message: string
 }

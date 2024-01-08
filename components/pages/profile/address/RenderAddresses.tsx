@@ -1,9 +1,9 @@
-"use client";
-import { useAppSelector } from "@/redux/hooks";
-import Link from "next/link";
+'use client'
+import { useAppSelector } from '@/redux/hooks'
+import Link from 'next/link'
 
 export const RenderAddresses = () => {
-  const { addresses } = useAppSelector((state) => state.userReducer);
+  const { addresses } = useAppSelector((state) => state.userReducer)
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
       <div className="items-start justify-between md:flex">
@@ -17,7 +17,7 @@ export const RenderAddresses = () => {
           </p>
         </div>
         <div className="mt-3 md:mt-0">
-          <Link href={"/profile/address/add_new_address"} className="btn-white">
+          <Link href={'/profile/address/add_new_address'} className="btn-white">
             Add new
           </Link>
         </div>
@@ -61,5 +61,5 @@ export const RenderAddresses = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
