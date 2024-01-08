@@ -1,4 +1,4 @@
-import { AddressModel } from '@/app/models/Address'
+import { AddressesModel } from '@/app/models/Address'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
 import { authOptions } from '@/libs/authOptions'
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
    try {
       await mongoose.connect(db_config.URI)
 
-      const savedAddress = await AddressModel.create(body)
+      const savedAddress = await AddressesModel.create(body)
       if (!savedAddress) {
          return NextResponse.json<ServerResponse>({
             success: false,

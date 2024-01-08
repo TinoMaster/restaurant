@@ -1,8 +1,9 @@
-import { UserModel } from '@/app/models/User'
+import mongoose from 'mongoose'
 import { db_config } from '@/config/db.config'
 import { authOptions } from '@/libs/authOptions'
-import mongoose from 'mongoose'
 import { getServerSession } from 'next-auth'
+import '@/app/models/Addresses'
+import { UserModel } from '@/app/models/User'
 
 export async function GET() {
    try {
@@ -11,7 +12,7 @@ export async function GET() {
       const session = await getServerSession(authOptions)
       const email = session?.user?.email
 
-      const response = await UserModel.find({ email }).populate('addresses')
+      const response = await UserModel.findOne({ email }).populate('addresses')
 
       if (!response) {
          return Response.json({
