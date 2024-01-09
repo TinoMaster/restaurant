@@ -1,4 +1,4 @@
-import { AddressesModel } from '@/app/models/Address'
+import { AddressesModel } from '@/app/models/Addresses'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
 import { authOptions } from '@/libs/authOptions'
