@@ -24,6 +24,7 @@ export type TInput = {
    label?: string
    placeholder?: string
    editable?: boolean
+   value?: string
 }
 export type TInputProps = {
    id?: string

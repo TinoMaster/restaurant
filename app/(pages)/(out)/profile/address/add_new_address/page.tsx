@@ -1,50 +1,12 @@
 'use client'
-import { Input } from '@/components/ui/elements/Input'
+import { InputAddNewAddress } from '@/components/pages/profile/address/add_new_address/Input_add_new_address'
 import { addressProfilePageInputs } from '@/constants/forms/profiles.form'
-import { ADDRESS_PATH } from '@/constants/routes.api'
-import { ADDRESSES_PANEL } from '@/constants/routes.app'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { addAddress } from '@/redux/reducers/user_slice'
-import { address } from '@/services/address'
-import { TAddress, TAddressCreate } from '@/types/models/address'
+import { useAddNewAddress } from '@/hooks/pages/profile/address/useAddNewAddress'
 import { img_map } from '@/utils/images'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import toast from 'react-hot-toast'
 
 export default function AddNewAddressPage() {
-   const router = useRouter()
-   const { _id } = useAppSelector((state) => state.userReducer)
-   const dispatch = useAppDispatch()
-
-   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-      e.preventDefault()
-      toast.loading('Adding address...')
-      const formData = new FormData(e.currentTarget)
-
-      const data: TAddressCreate = {
-         name: formData.get('name') as string,
-         city: formData.get('city') as string,
-         street: formData.get('street_address') as string,
-         country: formData.get('country') as string,
-         postal_code: formData.get('postal_code') as string,
-         user: _id,
-      }
-
-      const response = await address.createAddress(ADDRESS_PATH, data)
-
-      if (!response.success) {
-         toast.dismiss()
-         toast.error(response.message)
-      }
-
-      if (response.success) {
-         toast.dismiss()
-         toast.success('Address added successfully')
-         dispatch(addAddress(response.data as TAddress))
-         router.push(ADDRESSES_PANEL)
-      }
-   }
+   const { handleSubmit } = useAddNewAddress()
 
    return (
       <div className="w-full grid grid-cols-4">
@@ -58,18 +20,22 @@ export default function AddNewAddressPage() {
                   className="grid grid-cols-1 lg:grid-cols-2 col-span-2 gap-5 rounded-xl"
                >
                   {addressProfilePageInputs.map((inp, idx) => (
-                     <Input
+                     <InputAddNewAddress
                         key={idx}
                         type={inp.type}
                         label={inp.label}
                         name={inp.name}
                         id={inp.id}
                         placeholder={inp.placeholder}
+                        disabled={inp.editable ? false : true}
+                        value={inp.value}
                      />
                   ))}
-                  <button type="submit" className="btn-white">
-                     Add
-                  </button>
+                  <div className="flex justify-end col-span-full">
+                     <button type="submit" className="btn-white">
+                        Add
+                     </button>
+                  </div>
                </form>
                {/* Caja mapa */}
                <div className="col-span-2 h-96 rounded-md overflow-hidden">

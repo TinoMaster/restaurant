@@ -43,7 +43,8 @@ export const addressProfilePageInputs: TInput[] = [
       type: 'text',
       placeholder: 'Ej: Colombia',
       name: 'country',
-      editable: true,
+      editable: false,
+      value: 'Italia',
    },
    {
       id: 'city_address',
@@ -51,7 +52,8 @@ export const addressProfilePageInputs: TInput[] = [
       type: 'text',
       placeholder: 'Ej: Bogota',
       name: 'city',
-      editable: true,
+      editable: false,
+      value: 'Francavilla al mare',
    },
    {
       id: 'street_address',
