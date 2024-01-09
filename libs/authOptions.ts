@@ -69,6 +69,7 @@ export const authOptions: AuthOptions = {
             session.user = {
                ...session.user,
                isAdmin: token.isAdmin as boolean,
+               id: token.sub as string,
             }
          }
 

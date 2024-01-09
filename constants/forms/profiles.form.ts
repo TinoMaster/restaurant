@@ -1,5 +1,13 @@
 import { TInput } from '@/types/common'
 
+export enum InputsAddress {
+   NAME = 'name',
+   COUNTRY = 'country',
+   CITY = 'city',
+   STREET = 'street_address',
+   POSTAL_CODE = 'postal_code',
+}
+
 /* inputs userInfo */
 export const userInfoProfilePageInputs: TInput[] = [
    {
@@ -34,7 +42,7 @@ export const addressProfilePageInputs: TInput[] = [
       label: 'Name',
       type: 'text',
       placeholder: 'Ej: My first address',
-      name: 'name',
+      name: InputsAddress.NAME,
       editable: true,
    },
    {
@@ -42,7 +50,7 @@ export const addressProfilePageInputs: TInput[] = [
       label: 'Country',
       type: 'text',
       placeholder: 'Ej: Colombia',
-      name: 'country',
+      name: InputsAddress.COUNTRY,
       editable: false,
       value: 'Italia',
    },
@@ -51,7 +59,7 @@ export const addressProfilePageInputs: TInput[] = [
       label: 'City',
       type: 'text',
       placeholder: 'Ej: Bogota',
-      name: 'city',
+      name: InputsAddress.CITY,
       editable: false,
       value: 'Francavilla al mare',
    },
@@ -60,7 +68,7 @@ export const addressProfilePageInputs: TInput[] = [
       label: 'Street Address',
       type: 'text',
       placeholder: 'Ej: Calle Falsa 123',
-      name: 'street_address',
+      name: InputsAddress.STREET,
       editable: true,
    },
    {
@@ -68,7 +76,7 @@ export const addressProfilePageInputs: TInput[] = [
       label: 'Postal Code',
       type: 'string',
       placeholder: 'Ej: 11001',
-      name: 'postal_code',
+      name: InputsAddress.POSTAL_CODE,
       editable: true,
    },
 ]

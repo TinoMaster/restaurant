@@ -1,9 +1,9 @@
-'use client'
-import { useAppSelector } from '@/redux/hooks'
+import { getAddress } from '@/services/actions/address.action'
 import Link from 'next/link'
 
-export const RenderAddresses = () => {
-   const { addresses } = useAppSelector((state) => state.userReducer)
+export const RenderAddresses = async () => {
+   const addresses = await getAddress()
+
    return (
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
          <div className="items-start justify-between md:flex">
@@ -26,7 +26,7 @@ export const RenderAddresses = () => {
             </div>
          </div>
          <div className="mt-12 shadow-sm rounded-lg overflow-x-auto">
-            {!addresses.length ? (
+            {!addresses ? (
                <p>No addresses</p>
             ) : (
                <table className="w-full table-auto text-sm text-left">
@@ -59,7 +59,7 @@ export const RenderAddresses = () => {
                               </td>
                               <td className="text-right px-6 whitespace-nowrap space-x-2">
                                  <a
-                                    href="javascript:void()"
+                                    href=""
                                     className="py-2 px-3 font-medium text-indigo-400 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                                  >
                                     Edit
