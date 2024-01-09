@@ -5,10 +5,11 @@ import { TitleTypeMenu } from '@/components/helpers/TitleTypeMenu'
 import { NavBar_pageMenu } from '@/components/navs/NavBar_pageMenu'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
 import { BANNER_CONTENT } from '@/constants/common'
+import { InnerPages } from '@/components/animation/InnerPages'
 
 export default function Menu({ children }: { children: React.ReactNode }) {
    return (
-      <section>
+      <InnerPages>
          <HeroPage imageDesktop={img_PageMenu} imagemovil={img_PageMenuMovil}>
             <HeroPageContent
                title={BANNER_CONTENT.home.title}
@@ -22,6 +23,6 @@ export default function Menu({ children }: { children: React.ReactNode }) {
             <TitleTypeMenu />
             {children}
          </section>
-      </section>
+      </InnerPages>
    )
 }

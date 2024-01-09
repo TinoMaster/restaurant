@@ -10,10 +10,11 @@ import { Wy_US } from '@/components/pages/home/Wy-Us'
 import { firstPathnameMenuPage } from '@/constants/links_navbar'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
 import { BANNER_CONTENT } from '@/constants/common'
+import { InnerPages } from '@/components/animation/InnerPages'
 
 export default function Home() {
    return (
-      <>
+      <InnerPages>
          <HeroPage imageDesktop={img_PageMenu} imagemovil={img_PageMenuMovil}>
             <HeroPageContent
                title={BANNER_CONTENT.home.title}
@@ -29,6 +30,6 @@ export default function Home() {
          <PreferMenu />
          <BannerBussines />
          <Testimonials />
-      </>
+      </InnerPages>
    )
 }
