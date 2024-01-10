@@ -13,17 +13,11 @@ export const NavBarScroll = () => {
    const variant = {
       open: {
          y: 0,
-         opacity: 1,
-         transition: {
-            y: { stiffness: 1000, velocity: -100 },
-         },
+         opacity: [0, 1],
       },
       closed: {
-         y: 50,
+         y: ['30%', '100%'],
          opacity: 0,
-         transition: {
-            y: { stiffness: 1000 },
-         },
       },
    }
 
@@ -33,18 +27,16 @@ export const NavBarScroll = () => {
             onClick={() => setIsActive(false)}
             variants={variant}
             animate={isActive ? 'open' : 'closed'}
-            className={`${
-               isActive ? 'w-screen h-screen' : 'hidden'
-            } fixed flex flex-col top-0 right-0 rounded-l-3xl text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode to-darkMode shadow-md py-2 `}
+            className={` w-screen h-screen fixed flex flex-col top-0 right-0 text-slate-200 bg-gradient-to-r from-darkMode via-lightDarkMode to-darkMode shadow-md py-2 `}
          >
-            <div className="flex w-full flex-col z-10 grow">
+            <div className="flex w-full flex-col z-10 mt-10 grow">
                <ul className="flex w-[150vw] -translate-x-[25vw] flex-col text-xl justify-center items-center h-full gap-8 bg-lightDarkMode rounded-t-full">
                   {linksPrincipalMenu?.map((link) => (
                      <NavbarLink key={link.name} link={link} />
                   ))}
                </ul>
             </div>
-            <div className="py-20">
+            <div className="py-10">
                <small onClick={() => setIsActive(false)}>
                   <Registration />
                </small>
