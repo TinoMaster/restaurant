@@ -26,6 +26,7 @@ export const NavBarScroll = () => {
          <motion.div
             onClick={() => setIsActive(false)}
             variants={variant}
+            initial={isActive ? 'open' : 'closed'}
             animate={isActive ? 'open' : 'closed'}
             className={` w-screen h-screen fixed flex flex-col top-0 right-0 text-slate-200 bg-gradient-to-r from-darkMode via-lightDarkMode to-darkMode shadow-md py-2 `}
          >
@@ -36,7 +37,7 @@ export const NavBarScroll = () => {
                   ))}
                </ul>
             </div>
-            <div className="py-10">
+            <div className="py-20">
                <small onClick={() => setIsActive(false)}>
                   <Registration />
                </small>
