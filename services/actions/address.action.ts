@@ -64,3 +64,19 @@ export async function createAddress(formDate: FormData) {
    revalidatePath('/profile/address')
    redirect('/profile/address')
 }
+
+export async function deleteAddress(id: string) {
+   const session = await getServerSession(authOptions)
+   try {
+      await mongoose.connect(db_config.URI)
+      await UserModel.findOneAndUpdate(
+         { _id: session?.user?.id },
+         { $pull: { addresses: id } }
+      )
+      await AddressesModel.deleteOne({ _id: id })
+      revalidatePath('/profile/address')
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}

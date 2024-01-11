@@ -1,5 +1,6 @@
 import { getAddress } from '@/services/actions/address.action'
 import Link from 'next/link'
+import { CardAddress } from './CardAddress'
 
 export const RenderAddresses = async () => {
    const addresses = await getAddress()
@@ -25,54 +26,20 @@ export const RenderAddresses = async () => {
                </Link>
             </div>
          </div>
-         <div className="mt-12 shadow-sm rounded-lg overflow-x-auto">
+         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
             {!addresses ? (
                <p>No addresses</p>
             ) : (
-               <table className="w-full table-auto text-sm text-left">
-                  <thead className="bg-primaryPal-500 text-gray-100 font-medium border-b">
-                     <tr>
-                        <th className="py-3 px-6">Name</th>
-                        <th className="py-3 px-6">City</th>
-                        <th className="py-3 px-6">Street</th>
-                        <th className="py-3 px-6">Postal code</th>
-                        <th className="py-3 px-6"></th>
-                     </tr>
-                  </thead>
-                  <tbody className="text-gray-300 divide-y bg-white/10">
-                     {addresses.map(
-                        ({ _id, name, city, street, postal_code }) => (
-                           <tr key={_id}>
-                              <td className="flex items-center gap-x-3 py-4 px-6 whitespace-nowrap">
-                                 <span className="block text-gray-100 text-sm font-medium">
-                                    {name}
-                                 </span>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                 {city}
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                 {street}
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                 {postal_code}
-                              </td>
-                              <td className="text-right px-6 whitespace-nowrap space-x-2">
-                                 <a
-                                    href=""
-                                    className="py-2 px-3 font-medium text-indigo-400 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
-                                 >
-                                    Edit
-                                 </a>
-                                 <button className="py-2 leading-none px-3 font-medium text-red-400 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
-                                    Delete
-                                 </button>
-                              </td>
-                           </tr>
-                        )
-                     )}
-                  </tbody>
-               </table>
+               addresses.map(({ _id, name, city, street, postal_code }) => (
+                  <CardAddress
+                     key={_id}
+                     _id={_id}
+                     name={name}
+                     city={city}
+                     street={street}
+                     postal_code={postal_code}
+                  />
+               ))
             )}
          </div>
       </div>

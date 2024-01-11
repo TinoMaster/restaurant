@@ -1,20 +1,19 @@
 import { AboutUs } from '@/components/pages/home/AboutUs'
 import { BannerBussines } from '@/components/pages/home/BannerBussines'
-import { HeroPageContent } from '@/components/ui/HeroPageContent'
-import { HeroPage } from '@/components/ui/HeroPage'
-import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { PreferMenu } from '@/components/pages/home/PreferMenu'
-import { SectionRoundedBehindBanner } from '@/components/ui/SectionRoundedBehindBanner'
 import { Testimonials } from '@/components/pages/home/Testimonials'
 import { Wy_US } from '@/components/pages/home/Wy-Us'
+import { HeroPage } from '@/components/ui/HeroPage'
+import { HeroPageContent } from '@/components/ui/HeroPageContent'
+import { SectionRoundedBehindBanner } from '@/components/ui/SectionRoundedBehindBanner'
+import { LinkButton } from '@/components/ui/buttons/LinkButton'
+import { BANNER_CONTENT } from '@/constants/common'
 import { firstPathnameMenuPage } from '@/constants/links_navbar'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
-import { BANNER_CONTENT } from '@/constants/common'
-import { InnerPages } from '@/components/animation/InnerPages'
 
 export default function Home() {
    return (
-      <InnerPages>
+      <>
          <HeroPage imageDesktop={img_PageMenu} imagemovil={img_PageMenuMovil}>
             <HeroPageContent
                title={BANNER_CONTENT.home.title}
@@ -30,6 +29,6 @@ export default function Home() {
          <PreferMenu />
          <BannerBussines />
          <Testimonials />
-      </InnerPages>
+      </>
    )
 }

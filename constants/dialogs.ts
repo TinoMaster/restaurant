@@ -1,3 +1,7 @@
-export const dialogChangeEmail = 'verify-email'
-export const dialogChangePassword = 'change-password'
-export const dialogChangePhone = 'verify-phone'
+/* User Info Page */
+export const DIALOG_CHANGE_EMAIL = 'verify-email'
+export const DIALOG_CHANGE_PASSWORD = 'change-password'
+export const DIALOG_VERIFY_PHONE = 'verify-phone'
+
+/* Address Page */
+export const DIALOG_EDIT_ADDRESS = 'edit-address'

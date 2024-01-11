@@ -1,7 +1,7 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { TOptionsToEdit } from '../components/pages/profile/userInfo/MainInfo/types'
+import { TOptionsToEdit } from '../../../../components/pages/profile/userInfo/MainInfo/types'
 
-export const useDialogs = () => {
+export const useDialogsMainInfo = () => {
    const searchParams = useSearchParams()
    const pathname = usePathname()
    const { replace } = useRouter()
