@@ -1,6 +1,7 @@
 import { getAddress } from '@/services/actions/address.action'
 import Link from 'next/link'
 import { CardAddress } from './CardAddress'
+import { ADD_NEW_ADDRESS } from '@/constants/routes.app'
 
 export const RenderAddresses = async () => {
    const addresses = await getAddress()
@@ -18,10 +19,7 @@ export const RenderAddresses = async () => {
                </p>
             </div>
             <div className="mt-3 md:mt-0">
-               <Link
-                  href={'/profile/address/add_new_address'}
-                  className="btn-white"
-               >
+               <Link href={ADD_NEW_ADDRESS} className="btn-white">
                   Add new
                </Link>
             </div>
@@ -33,7 +31,7 @@ export const RenderAddresses = async () => {
                addresses.map(({ _id, name, city, street, postal_code }) => (
                   <CardAddress
                      key={_id}
-                     _id={_id}
+                     _id={JSON.stringify(_id)}
                      name={name}
                      city={city}
                      street={street}

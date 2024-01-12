@@ -73,4 +73,4 @@ export const linksPageMenu: Array<TLink> = [
    },
 ]
 
-export const firstPathnameMenuPage = linksPageMenu[0].href
+export const FIRS_PATHNAME_MENU_PAGE = linksPageMenu[0].href

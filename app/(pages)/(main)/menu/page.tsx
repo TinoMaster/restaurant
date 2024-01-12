@@ -1,6 +1,6 @@
-import { firstPathnameMenuPage } from '@/constants/links_navbar'
+import { FIRS_PATHNAME_MENU_PAGE } from '@/constants/links_navbar'
 import { redirect } from 'next/navigation'
 
 export default function MenuPage() {
-   redirect(firstPathnameMenuPage)
+   redirect(FIRS_PATHNAME_MENU_PAGE)
 }

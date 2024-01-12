@@ -8,7 +8,7 @@ import { HeroPageContent } from '@/components/ui/HeroPageContent'
 import { SectionRoundedBehindBanner } from '@/components/ui/SectionRoundedBehindBanner'
 import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { BANNER_CONTENT } from '@/constants/common'
-import { firstPathnameMenuPage } from '@/constants/links_navbar'
+import { FIRS_PATHNAME_MENU_PAGE } from '@/constants/links_navbar'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
                title={BANNER_CONTENT.home.title}
                subtitle={BANNER_CONTENT.home.subtitle}
             >
-               <LinkButton href={firstPathnameMenuPage} title="Menu" />
+               <LinkButton href={FIRS_PATHNAME_MENU_PAGE} title="Menu" />
             </HeroPageContent>
          </HeroPage>
          <SectionRoundedBehindBanner>
