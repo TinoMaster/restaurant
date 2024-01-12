@@ -1,7 +1,4 @@
-import { Buttom_add_new_address } from '@/components/pages/profile/address/add_new_address/Buttom_add_new_address'
-import { InputAddNewAddress } from '@/components/pages/profile/address/add_new_address/Input_add_new_address'
-import { addressProfilePageInputs } from '@/constants/forms/profiles.form'
-import { createAddress } from '@/services/actions/address.action'
+import { FormAddAddress } from '@/components/pages/profile/address/add_new_address/FormAddAddress'
 import { img_map } from '@/utils/images'
 import Image from 'next/image'
 
@@ -13,26 +10,7 @@ export default function AddNewAddressPage() {
                Add Address
             </legend>
             <div className="grid grid-cols-2 col-span-2 gap-10 ">
-               <form
-                  action={createAddress}
-                  className="grid grid-cols-1 lg:grid-cols-2 col-span-2 gap-5 rounded-xl"
-               >
-                  {addressProfilePageInputs.map((inp, idx) => (
-                     <InputAddNewAddress
-                        key={idx}
-                        type={inp.type}
-                        label={inp.label}
-                        name={inp.name}
-                        id={inp.id}
-                        placeholder={inp.placeholder}
-                        disabled={inp.editable ? false : true}
-                        value={inp.value}
-                     />
-                  ))}
-                  <div className="flex justify-end col-span-full">
-                     <Buttom_add_new_address />
-                  </div>
-               </form>
+               <FormAddAddress />
                {/* Caja mapa */}
                <div className="col-span-2 h-96 rounded-md overflow-hidden">
                   <Image

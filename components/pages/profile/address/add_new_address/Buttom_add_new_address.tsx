@@ -1,23 +1,8 @@
 'use client'
-import { useEffect } from 'react'
 import { useFormStatus } from 'react-dom'
-import toast from 'react-hot-toast'
 
 export const Buttom_add_new_address = () => {
    const { pending } = useFormStatus()
-
-   useEffect(() => {
-      if (pending) {
-         toast.loading('Adding address...')
-      }
-      if (pending === false) {
-         toast.dismiss()
-      }
-
-      return () => {
-         toast.dismiss()
-      }
-   }, [pending])
 
    return (
       <button

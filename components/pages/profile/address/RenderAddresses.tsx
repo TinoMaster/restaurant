@@ -1,10 +1,10 @@
-import { getAddress } from '@/services/actions/address.action'
+import { getAddresses } from '@/services/actions/address.action'
 import Link from 'next/link'
 import { CardAddress } from './CardAddress'
 import { ADD_NEW_ADDRESS } from '@/constants/routes.app'
 
 export const RenderAddresses = async () => {
-   const addresses = await getAddress()
+   const addresses = await getAddresses()
 
    return (
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -31,7 +31,7 @@ export const RenderAddresses = async () => {
                addresses.map(({ _id, name, city, street, postal_code }) => (
                   <CardAddress
                      key={_id}
-                     _id={JSON.stringify(_id)}
+                     _id={_id}
                      name={name}
                      city={city}
                      street={street}

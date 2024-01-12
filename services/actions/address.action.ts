@@ -11,7 +11,7 @@ import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-export async function getAddress() {
+export async function getAddresses() {
    const session = await getServerSession(authOptions)
 
    try {
@@ -25,6 +25,22 @@ export async function getAddress() {
       }
 
       return false
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function getAddress(id: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const address = await AddressesModel.findById(id)
+
+      if (!address) {
+         return false
+      }
+
+      return address
    } catch (error) {
       console.log(error)
       return false
@@ -49,20 +65,24 @@ export async function createAddress(formDate: FormData) {
       const savedAddress = await AddressesModel.create(address)
 
       if (!savedAddress) {
-         return false
+         throw new Error('Failed to save address')
       }
 
-      await UserModel.findOneAndUpdate(
+      const saveInUser = await UserModel.findOneAndUpdate(
          { _id: session?.user?.id },
-         { $push: { addresses: savedAddress._id } }
+         { $push: { addresses: savedAddress._id } },
+         { new: true }
       )
+
+      if (!saveInUser) {
+         throw new Error('Failed to save address in user')
+      }
+      revalidatePath('/profile/address')
+      return JSON.stringify(savedAddress)
    } catch (error) {
       console.log(error)
       return false
    }
-
-   revalidatePath('/profile/address')
-   redirect('/profile/address')
 }
 
 export async function deleteAddress(id: string) {

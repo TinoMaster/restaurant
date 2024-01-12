@@ -2,7 +2,7 @@
 import { Btn_profile } from '@/components/ui/buttons/Btn_profile'
 import { userInfoProfilePageInputs } from '@/constants/forms/profiles.form'
 import { useMainInfo } from '@/hooks/pages/profile/main-info/useMainInfo'
-import { useDialogsMainInfo } from '@/hooks/pages/profile/main-info/useDialogsMainInfo'
+import { useOpenDialogs } from '@/hooks/useOpenDialogs'
 import { useAppSelector } from '@/redux/hooks'
 import { Dialogs_Render } from './Dialogs_Render'
 import { Fallback_MainInfo } from './Fallback_MainInfo'
@@ -23,7 +23,7 @@ export const MainInfo = () => {
       onChangeImage,
       setEditonMode,
    } = useMainInfo()
-   const { openDialog } = useDialogsMainInfo()
+   const { openDialog } = useOpenDialogs()
 
    if (!_id) {
       return <Fallback_MainInfo />

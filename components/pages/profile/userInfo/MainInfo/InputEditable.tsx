@@ -1,10 +1,10 @@
+import { DIALOG_CHANGE_EMAIL, DIALOG_VERIFY_PHONE } from '@/constants/dialogs'
+import { IFunctionOpenDialog } from '@/hooks/useOpenDialogs'
 import { TInput } from '@/types/common'
 import { TDataUserToUpdate } from '@/types/models/user'
 import React from 'react'
-import { MdOutlineVerified } from 'react-icons/md'
 import { LuBadgeAlert } from 'react-icons/lu'
-import { DIALOG_CHANGE_EMAIL, DIALOG_VERIFY_PHONE } from '@/constants/dialogs'
-import { TOptionsToEdit } from './types'
+import { MdOutlineVerified } from 'react-icons/md'
 
 interface InputEditableProps {
    inp: TInput
@@ -12,7 +12,7 @@ interface InputEditableProps {
    handlerInfoToEdit: (e: React.ChangeEvent<HTMLInputElement>) => void
    emailVerified?: boolean
    phoneVerified?: boolean
-   openDialog?: (dialog: TOptionsToEdit) => void
+   openDialog?: IFunctionOpenDialog
 }
 
 export const InputEditable = ({
