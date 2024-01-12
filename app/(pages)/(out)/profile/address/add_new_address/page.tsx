@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function AddNewAddressPage() {
    return (
-      <div className="w-full grid grid-cols-4">
+      <div className="w-full grid grid-cols-4 pb-16">
          <fieldset className="grid grid-cols-2 col-span-4">
             <legend className="col-span-2 text-2xl lg:text-2xl py-5 text-primary">
                Add Address

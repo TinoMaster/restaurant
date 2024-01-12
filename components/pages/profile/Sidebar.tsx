@@ -31,7 +31,7 @@ export const Sidebar = () => {
    }
    return (
       <nav
-         className={`h-full bg-lightDarkMode absolute transition-all z-30 ${
+         className={`h-full bg-lightDarkMode absolute transition-all z-30 overflow-y-auto overflow-x-hidden ${
             menuIsOpen ? 'w-60' : 'w-14'
          }`}
       >
@@ -42,7 +42,7 @@ export const Sidebar = () => {
                </button>
                <button
                   onClick={goHome}
-                  className="flex items-center justify-center gap-2"
+                  className="flex items-center justify-center gap-2 pt-4"
                >
                   <FaHouse className="text-xl" />
                   <span className={`${menuIsOpen ? 'block' : 'hidden'}`}>
@@ -60,7 +60,7 @@ export const Sidebar = () => {
                </button>
             </div>
 
-            <ul className="p-2 sm:p-4 text-sm font-medium space-y-4">
+            <ul className="p-2 pt-5 sm:p-4 text-sm font-medium space-y-4">
                {linksProfile.map((item, idx) => (
                   <li key={idx}>
                      <Link
@@ -100,7 +100,7 @@ export const Sidebar = () => {
                   </li>
                )}
             </ul>
-            <div className="py-5 sm:px-4 flex">
+            <div className="pt-5 pb-10 sm:px-4 flex">
                <button
                   onClick={() => signOut()}
                   className="gap-2 flex relative justify-center items-center p-2 rounded-md mt-2 text-primary w-full max-w-sm m-auto"
