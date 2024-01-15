@@ -14,7 +14,7 @@ export interface DialogProps {
       color?: string
       icon?: JSX.Element
    }
-   onConfirm?: () => void
+   onConfirm?: () => boolean | Promise<boolean>
    onConfirmProps?: {
       text?: string
       color?: string

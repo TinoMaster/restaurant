@@ -6,8 +6,7 @@ import { useAppSelector } from '@/redux/hooks'
 import React from 'react'
 
 export const Dialogs_Render = () => {
-   const { sendEmail, confirmWithCode, handlerVerificationCode } =
-      useVerifyEmail()
+   const { confirmWithCode, handlerVerificationCode } = useVerifyEmail()
    const { email, emailVerified } = useAppSelector((state) => state.userReducer)
    return (
       <>
@@ -15,10 +14,10 @@ export const Dialogs_Render = () => {
             <Dialog
                onConfirm={confirmWithCode}
                title="Verifiy your email"
-               description={`We've sent a verification link to your email: ${email}. Please check your email and click on the link to verify your email.`}
+               description={`We've sent a verification link to your email: ${email} Please check your email and click on the link to verify your email.`}
                dialog={DIALOG_CHANGE_EMAIL}
             >
-               <div onFocus={sendEmail} className="max-w-xs m-auto">
+               <div className="max-w-xs m-auto">
                   <input
                      onChange={handlerVerificationCode}
                      type="text"

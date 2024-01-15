@@ -1,16 +1,16 @@
+import { DIALOG, DIALOG_ID } from '@/constants/dialogs'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 export const useDialog = (
    dialog: string,
-   onConfirm?: () => void,
-   onCancel?: () => void
+   onConfirm?: () => boolean | Promise<boolean>
 ) => {
    const searchParams = useSearchParams()
    const pathName = usePathname()
    const { replace } = useRouter()
    const dialogRef = useRef<HTMLDialogElement | null>(null)
-   const showDialog = searchParams.get('dialog')
+   const showDialog = searchParams.get(DIALOG)
 
    useEffect(() => {
       if (showDialog === dialog) {
@@ -23,15 +23,18 @@ export const useDialog = (
    const closeDialog = () => {
       const params = new URLSearchParams(searchParams)
       dialogRef.current?.close()
-      if (onCancel) onCancel()
-      params.delete('dialog')
-      params.delete('id')
+      params.delete(DIALOG)
+      params.delete(DIALOG_ID)
       replace(`${pathName}?${params.toString()}`)
    }
 
-   const confirmDialog = () => {
-      if (onConfirm) onConfirm()
-      closeDialog()
+   const confirmDialog = async () => {
+      if (onConfirm) {
+         if (!(await onConfirm())) return
+         closeDialog()
+      } else {
+         closeDialog()
+      }
    }
 
    return { dialogRef, closeDialog, confirmDialog, showDialog }

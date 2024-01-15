@@ -17,7 +17,6 @@ export const Dialog = ({
 }: DialogProps) => {
    const { showDialog, closeDialog, confirmDialog, dialogRef } = useDialog(
       dialog,
-      onCancel,
       onConfirm
    )
 
@@ -62,19 +61,17 @@ export const Dialog = ({
                         {onDeleteProps?.text || 'Cancel'}
                      </button>
                   )}
-                  {onCancel && (
-                     <button
-                        style={
-                           onCancelProps?.color
-                              ? { backgroundColor: onCancelProps?.color }
-                              : {}
-                        }
-                        onClick={closeDialog}
-                        className="btn-white"
-                     >
-                        {onCancelProps?.text || 'Cancel'}
-                     </button>
-                  )}
+                  <button
+                     style={
+                        onCancelProps?.color
+                           ? { backgroundColor: onCancelProps?.color }
+                           : {}
+                     }
+                     onClick={closeDialog}
+                     className="btn-white"
+                  >
+                     {onCancelProps?.text || 'Cancel'}
+                  </button>
                </div>
             </div>
          </dialog>
