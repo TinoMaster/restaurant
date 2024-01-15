@@ -9,6 +9,7 @@ export interface TUserActions {
    updateMainInfo: (payload: Pick<TUser, 'name' | 'email' | 'phone'>) => Action
    updateImage: (payload: string) => Action
    updateVerificationEmail: (payload: boolean) => Action
+   updateVerificationPhone: (payload: boolean) => Action
    addAddress: (payload: TAddress) => Action
 }
 
@@ -25,6 +26,7 @@ export const userSlice = createSlice({
          state.isAdmin = action.payload.isAdmin
          state.isVerified = action.payload.isVerified
          state.phone = action.payload.phone
+         state.phoneVerified = action.payload.phoneVerified
          state.addresses = action.payload.addresses
          state.orders = action.payload.orders
          state.cart = action.payload.cart
@@ -46,7 +48,9 @@ export const userSlice = createSlice({
       updateVerificationEmail: (state, action: PayloadAction<boolean>) => {
          state.emailVerified = action.payload
       },
-
+      updateVerificationPhone: (state, action: PayloadAction<boolean>) => {
+         state.phoneVerified = action.payload
+      },
       addAddress: (state, action: PayloadAction<TAddress>) => {
          state.addresses.push(action.payload)
       },
@@ -59,6 +63,7 @@ export const {
    updateMainInfo,
    updateImage,
    updateVerificationEmail,
+   updateVerificationPhone,
    addAddress,
 } = userSlice.actions
 

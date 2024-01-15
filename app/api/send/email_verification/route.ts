@@ -1,8 +1,10 @@
 import { UserModel } from '@/app/models/User'
 import { EmailVerification } from '@/components/helpers/Email Templates/Email_Verification'
 import { db_config } from '@/config/db.config'
+import { authOptions } from '@/libs/authOptions'
 import { ServerResponse } from '@/types/api_responses'
 import mongoose from 'mongoose'
+import { getServerSession } from 'next-auth'
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
@@ -42,11 +44,11 @@ export async function POST(req: Request) {
 }
 
 export async function PUT(req: Request) {
-   const body = await req.json()
-   const { email } = body
+   const session = await getServerSession(authOptions)
+   const _id = session?.user?.id
    try {
       await mongoose.connect(`${db_config.URI}`)
-      await UserModel.findOneAndUpdate({ email }, { emailVerified: true })
+      await UserModel.findOneAndUpdate({ _id }, { emailVerified: true })
 
       return NextResponse.json<ServerResponse>({
          success: true,

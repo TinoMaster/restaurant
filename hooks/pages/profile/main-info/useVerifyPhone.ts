@@ -1,7 +1,7 @@
-import { DIALOG, DIALOG_CHANGE_EMAIL } from '@/constants/dialogs'
-import { VERIFY_EMAIL } from '@/constants/routes.api'
+import { DIALOG, DIALOG_VERIFY_PHONE } from '@/constants/dialogs'
+import { VERIFY_PHONE } from '@/constants/routes.api'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { updateVerificationEmail } from '@/redux/reducers/user_slice'
+import { updateVerificationPhone } from '@/redux/reducers/user_slice'
 import { user } from '@/services/user'
 import { IDataToVerifyEmail } from '@/types/common'
 import { createRandomCode } from '@/utils/createRandomCode'
@@ -9,52 +9,48 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-interface IUseVerifyEmail {
+interface IUseVerifyPhone {
    handlerVerificationCode: (e: React.ChangeEvent<HTMLInputElement>) => void
    confirmWithCode: () => Promise<boolean>
 }
 
-export const useVerifyEmail = (): IUseVerifyEmail => {
+export const useVerifyPhone = (): IUseVerifyPhone => {
    const [randomGenerate, setRandomGenerate] = useState('')
    const [inputCode, setInputCode] =
       useState<IDataToVerifyEmail['verificationCode']>('')
-   const { email, name, emailVerified } = useAppSelector(
-      (state) => state.userReducer
-   )
-
    const searchParams = useSearchParams()
-   const dispatch = useAppDispatch()
    const showDialog = searchParams.get(DIALOG)
+   const { phoneVerified, phone } = useAppSelector((state) => state.userReducer)
+   const dispatch = useAppDispatch()
 
    useEffect(() => {
-      if (showDialog === DIALOG_CHANGE_EMAIL) {
-         if (!emailVerified) {
-            sendEmail()
+      if (showDialog === DIALOG_VERIFY_PHONE) {
+         if (!phoneVerified) {
+            sendSMS()
          }
       }
-   }, [showDialog, emailVerified])
+   }, [showDialog, phoneVerified])
 
-   const sendEmail = async () => {
-      if (emailVerified) {
-         toast.error('El correo electronico ya ha sido verificado')
+   const sendSMS = async () => {
+      if (phoneVerified) {
+         toast.error('El telefono ya ha sido verificado')
          return
       }
 
       toast.loading('Generando codigo de verificación...')
-      const randomCode = createRandomCode(4)
+      const randomCode = createRandomCode(6)
       setRandomGenerate(randomCode)
 
       const body = {
-         email,
-         firstName: name,
-         verificationCode: randomCode,
+         message: `Tu codigo de verificación es ${randomCode}`,
+         phoneNumber: phone,
       }
 
-      const res = await user.sendEmailToVerify(VERIFY_EMAIL, body)
+      const res = await user.sendSMSToVerify(VERIFY_PHONE, body)
 
       if (res.success) {
          toast.remove()
-         toast.success('Se ha enviado el correo electronico')
+         toast.success('Se ha enviado el SMS')
       } else {
          toast.remove()
          toast.error(res.message)
@@ -71,16 +67,16 @@ export const useVerifyEmail = (): IUseVerifyEmail => {
          return false
       }
 
-      toast.loading('Verificando correo electronico...')
+      toast.loading('Verificando telefono...')
 
       if (inputCode === randomGenerate) {
-         const res = await user.updateEmailVerified(VERIFY_EMAIL)
+         const res = await user.updatePhoneVerified(VERIFY_PHONE)
 
          toast.remove()
 
          if (res.success) {
-            toast.success('El correo electronico ha sido verificado')
-            dispatch(updateVerificationEmail(true))
+            toast.success('El telefono ha sido verificado')
+            dispatch(updateVerificationPhone(true))
             return true
          } else {
             toast.error(res.message)
