@@ -60,7 +60,7 @@ class User {
       return res
    }
 
-   async verifyEmail(
+   async sendEmailToVerify(
       route: string,
       { firstName, verificationCode, email }: IDataToVerifyEmail
    ) {
@@ -76,10 +76,37 @@ class User {
       return docs
    }
 
-   async confirmEmail(route: string, email: string) {
+   async updateEmailVerified(route: string) {
       const requestOptions = {
          method: 'PUT',
-         body: JSON.stringify({ email }),
+         headers: { 'Content-Type': 'application/json' },
+      }
+
+      const response = await fetch(route, requestOptions)
+
+      const docs: ServerResponse = await response.json()
+      return docs
+   }
+
+   async sendSMSToVerify(
+      route: string,
+      body: { message: string; phoneNumber: string }
+   ) {
+      const requestOptions = {
+         method: 'POST',
+         body: JSON.stringify(body),
+         headers: { 'Content-Type': 'application/json' },
+      }
+
+      const response = await fetch(route, requestOptions)
+
+      const docs: ServerResponse = await response.json()
+      return docs
+   }
+
+   async updatePhoneVerified(route: string) {
+      const requestOptions = {
+         method: 'PUT',
          headers: { 'Content-Type': 'application/json' },
       }
 

@@ -13,6 +13,7 @@ export const MainInfo = () => {
    const { emailVerified, phoneVerified, _id } = useAppSelector(
       (state) => state.userReducer
    )
+
    const {
       handleChangeImage,
       imagePreview,
