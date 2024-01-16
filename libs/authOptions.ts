@@ -45,7 +45,8 @@ export const authOptions: AuthOptions = {
          },
       }),
    ],
-   adapter: MongoDBAdapter(clientPromise),
+   /* //FIXME: view later */
+   adapter: MongoDBAdapter(clientPromise) as any,
    pages: {
       signIn: '/login',
    },
