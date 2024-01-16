@@ -1,13 +1,13 @@
 'use client'
-
+import { addDescription } from '@/services/actions/category.actions'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 interface AddDescriptionToCategoryProps {
    description?: string
    id: string
 }
 
-/* // TODO: Continue here */
 export const AddDescriptionToCategory = ({
    description,
    id,
@@ -17,11 +17,24 @@ export const AddDescriptionToCategory = ({
 
    if (editDescriptionMode) {
       return (
-         <form className="flex flex-wrap gap-3 items-center py-5 w-full">
+         <form
+            action={async (formData) => {
+               toast.loading('Saving...')
+               const res = await addDescription(formData, id)
+               toast.remove()
+               if (res) {
+                  toast.success('Description saved')
+                  setEditDescriptionMode(false)
+               }
+               if (!res) toast.error('Something went wrong')
+            }}
+            className="flex flex-wrap gap-3 items-center py-5 w-full"
+         >
             <textarea
                name="description"
                id="description"
                className="input resize-none overflow-auto"
+               defaultValue={description}
             />
             <button type="submit" className="btn-white ml-auto">
                Save

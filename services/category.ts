@@ -25,28 +25,11 @@ class Category {
          cache: 'no-store',
       })
 
-      if (!res.ok)
-         return {
-            success: false,
-            message: 'Uppsss. Something went wrong',
-         }
+      if (!res.ok) return false
 
       const server_response: ServerResponse = await res.json()
       const docs = categoryAdapter(server_response)
       return docs
-   }
-
-   async createCategoryClient(formData: FormData) {
-      toast.loading('Saving...')
-      const response = await createCategory(formData)
-
-      if (!response) {
-         toast.dismiss()
-         toast.error('Something went wrong')
-      }
-
-      toast.dismiss()
-      toast.success('Category created')
    }
 }
 

@@ -13,6 +13,11 @@ export const Categories = async () => {
       )
 
    return data?.map((category) => (
-      <Category key={category._id} _id={category._id} name={category.name} />
+      <Category
+         key={category._id}
+         _id={category._id}
+         name={category.name}
+         description={category.description}
+      />
    ))
 }
