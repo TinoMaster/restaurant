@@ -8,10 +8,10 @@ export default async function PageAdminMenu() {
    if (!products) {
       return <p className="">Something went wrong</p>
    }
-   const categories = products.length
+   /* const categories = products.length
       ? Object.groupBy(products, ({ category }) => category)
       : []
-   console.log(categories)
+   console.log(categories) */
 
    return (
       <div className="">
