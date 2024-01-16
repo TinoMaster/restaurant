@@ -27,12 +27,12 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/models/User.js",
+    "app/models/User.ts",
     "app/api/auth/[kindeAuth]/route.js",
     "utils/api/password.hash.js",
     "utils/api/password.verify.js",
     "components/SessionContext.js",
     "lib/mongoConnect.js"
-, "lib/mongodb.ts", "app/api/profile/route.js", "app/models/Addresses.js", "app/models/Categories.js", "app/models/Ingredients.js", "app/models/Notifications.js", "app/models/Orders.js", "app/models/Products.js"  ],
+, "lib/mongodb.ts", "app/api/profile/route.js", "app/models/Addresses.ts", "app/models/Categories.ts", "app/models/Ingredients.ts", "app/models/Notifications.ts", "app/models/Orders.ts", "app/models/Products.ts"  ],
   "exclude": ["node_modules"]
 }

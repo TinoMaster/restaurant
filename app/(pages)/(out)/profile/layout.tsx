@@ -25,7 +25,7 @@ export default async function Layout({
             />
          </div>
 
-         <div className="w-screen sm:container h-screen md:h-[80vh] relative sm:border border-primary flex sm:rounded-3xl overflow-hidden bg-darkMode/80">
+         <div className="w-screen sm:container h-svh md:h-[80vh] md:min-h-[800px] md:max-h-[1000px] relative sm:border border-primary flex sm:rounded-3xl overflow-hidden bg-darkMode/80">
             <Sidebar />
             <div className="w-full h-full p-4 md:p-10 overflow-y-auto scroll-smooth ml-14 bg-black/50">
                {children}
