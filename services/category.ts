@@ -1,7 +1,5 @@
 import { categoryAdapter } from '@/adapters/CategoryAdapter'
 import { ServerResponse } from '@/types/api_responses'
-import toast from 'react-hot-toast'
-import { createCategory } from './actions/category.actions'
 
 class Category {
    async getCategories() {

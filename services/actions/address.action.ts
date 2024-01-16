@@ -9,7 +9,6 @@ import { TUser } from '@/types/models/user'
 import mongoose from 'mongoose'
 import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 
 export async function getAddresses() {
    const session = await getServerSession(authOptions)
