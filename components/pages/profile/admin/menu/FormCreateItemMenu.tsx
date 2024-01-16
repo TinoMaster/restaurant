@@ -1,9 +1,14 @@
 import { Input } from '@/components/ui/elements/Input'
 import { menuItemsProfilePageInputs } from '@/constants/forms/profiles.form'
+import { getCategories } from '@/services/actions/category.actions'
 
-export const FormCreateItemMenu = () => {
+export const FormCreateItemMenu = async () => {
+   const categories = await getCategories()
    return (
-      <form action="" className="grid grid-cols-2 col-span-full w-full">
+      <form
+         action=""
+         className="grid grid-cols-2 col-span-4 lg:col-span-3 lg:col-start-2 w-full"
+      >
          <legend className="col-span-2 text-2xl lg:text-3xl">
             Create Item Menu
          </legend>
@@ -26,8 +31,24 @@ export const FormCreateItemMenu = () => {
                   <span className="font-bold text-gray-300/80 text-sm ml-1">
                      Category
                   </span>
-                  <select name="" id="select_category" className="input">
-                     <option value="">--select a category--</option>
+                  <select
+                     name=""
+                     id="select_category"
+                     className="input capitalize"
+                  >
+                     <option className="bg-lightDarkMode" value="">
+                        --select a category--
+                     </option>
+                     {categories &&
+                        categories?.map((category) => (
+                           <option
+                              className="bg-lightDarkMode capitalize"
+                              key={category._id}
+                              value={JSON.parse(JSON.stringify(category._id))}
+                           >
+                              {category.name}
+                           </option>
+                        ))}
                   </select>
                </label>
                <label

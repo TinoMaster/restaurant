@@ -1,6 +1,6 @@
 import { AddDescriptionToCategory } from '@/components/pages/profile/admin/categories/category/AddDescriptionToCategory'
 import { ButtomDeleteCategory } from '@/components/pages/profile/admin/categories/category/ButtomDeleteCategory'
-import { category } from '@/services/category'
+import { getCategoryById } from '@/services/actions/category.actions'
 import { notFound } from 'next/navigation'
 
 export default async function CategoryPage({
@@ -9,12 +9,12 @@ export default async function CategoryPage({
    params: { id: string }
 }) {
    const { id } = params
-   const cat = await category.getCategoryById(id)
+   const cat = await getCategoryById(id)
 
-   if (!cat || !cat.data?.length) notFound()
+   if (!cat) notFound()
 
-   const { data } = cat
-   const { name, _id, description, products } = data[0]
+   const { name, _id, description, products } = cat
+   const categoryId = JSON.parse(JSON.stringify(_id))
 
    return (
       <section className="text-gray-400 body-font overflow-hidden">
@@ -90,20 +90,20 @@ export default async function CategoryPage({
                   </div>
                   <AddDescriptionToCategory
                      description={description}
-                     id={_id}
+                     id={categoryId}
                   />
                   <hr className="my-8 border-gray-200" />
                   {/* Products box */}
                   <div className="grid my-10">
                      {products && products.length > 0 ? (
-                        products.map((product) => <div key={product._id}></div>)
+                        products.map((product) => <div key={categoryId}></div>)
                      ) : (
                         <p>Aun no hay productos agregados a esta categoria</p>
                      )}
                   </div>
 
                   <div className="flex">
-                     <ButtomDeleteCategory id={_id} />
+                     <ButtomDeleteCategory id={categoryId} />
                   </div>
                </div>
             </div>

@@ -1,9 +1,33 @@
 'use server'
 import { CategoryModel } from '@/app/models/Categories'
 import { db_config } from '@/config/db.config'
-import { TCategoryCreate } from '@/types/models/category'
+import { TCategory, TCategoryCreate } from '@/types/models/category'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
+
+export async function getCategories() {
+   try {
+      await mongoose.connect(db_config.URI)
+      const categories: TCategory[] | null = await CategoryModel.find()
+
+      return categories
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function getCategoryById(id: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const category: TCategory | null = await CategoryModel.findById(id)
+
+      return category
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
 
 export async function createCategory(formData: FormData) {
    try {
