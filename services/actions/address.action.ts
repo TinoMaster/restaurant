@@ -9,7 +9,6 @@ import { TUser } from '@/types/models/user'
 import mongoose from 'mongoose'
 import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 
 export async function getAddresses() {
    const session = await getServerSession(authOptions)
@@ -47,17 +46,17 @@ export async function getAddress(id: string) {
    }
 }
 
-export async function createAddress(formDate: FormData) {
+export async function createAddress(formData: FormData) {
    const session = await getServerSession(authOptions)
    try {
       const address: TAddressCreate = {
-         name: formDate.get(InputsAddress.NAME) as string,
-         street: formDate.get(InputsAddress.STREET) as string,
-         country: (formDate.get(InputsAddress.COUNTRY) as string) ?? 'Italia',
+         name: formData.get(InputsAddress.NAME) as string,
+         street: formData.get(InputsAddress.STREET) as string,
+         country: (formData.get(InputsAddress.COUNTRY) as string) ?? 'Italia',
          city:
-            (formDate.get(InputsAddress.CITY) as string) ??
+            (formData.get(InputsAddress.CITY) as string) ??
             'Francavilla al mare',
-         postal_code: formDate.get(InputsAddress.POSTAL_CODE) as string,
+         postal_code: formData.get(InputsAddress.POSTAL_CODE) as string,
          user: session?.user?.id as string,
       }
 

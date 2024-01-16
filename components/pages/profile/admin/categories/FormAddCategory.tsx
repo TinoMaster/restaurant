@@ -1,19 +1,30 @@
-"use client";
-import { category } from "@/services/category";
+'use client'
+import { createCategory } from '@/services/actions/category.actions'
+import toast from 'react-hot-toast'
 
 export const FormAddCategory = () => {
-  return (
-    <form
-      action={category.createCategoryClient}
-      className="flex gap-3 items-center py-5 w-full lg:max-w-[500px]"
-    >
-      <input name="name" type="text" className="input" />
-      <button
-        type="submit"
-        className="bg-white text-gray-600 px-5 py-2 rounded-xl font-bold"
+   return (
+      <form
+         action={async (formData) => {
+            toast.loading('Saving...')
+            const res = await createCategory(formData)
+            toast.remove()
+
+            if (!res.success) {
+               toast.error(res.message)
+               return
+            }
+            toast.success('Category created')
+         }}
+         className="flex gap-3 items-center py-5 w-full lg:max-w-[500px]"
       >
-        Create
-      </button>
-    </form>
-  );
-};
+         <input name="name" type="text" className="input" />
+         <button
+            type="submit"
+            className="bg-white text-gray-600 px-5 py-2 rounded-xl font-bold"
+         >
+            Create
+         </button>
+      </form>
+   )
+}
