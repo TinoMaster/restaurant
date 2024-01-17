@@ -2,6 +2,7 @@
 import { CategoryModel } from '@/app/models/Categories'
 import { db_config } from '@/config/db.config'
 import { TCategory, TCategoryCreate } from '@/types/models/category'
+import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
 
@@ -10,7 +11,7 @@ export async function getCategories() {
       await mongoose.connect(db_config.URI)
       const categories: TCategory[] | null = await CategoryModel.find()
 
-      return categories
+      return formatServerResponse<TCategory[]>(categories)
    } catch (error) {
       console.log(error)
       return false
@@ -22,7 +23,11 @@ export async function getCategoryById(id: string) {
       await mongoose.connect(db_config.URI)
       const category: TCategory | null = await CategoryModel.findById(id)
 
-      return category
+      if (!category) {
+         return false
+      }
+
+      return formatServerResponse<TCategory>(category)
    } catch (error) {
       console.log(error)
       return false

@@ -4,3 +4,5 @@ export interface TIngredient {
    createdAt: string
    updatedAt: string
 }
+
+export interface TIngredientCreate extends Pick<TIngredient, 'name'> {}

@@ -12,3 +12,12 @@ export interface TProduct {
    createdAt: string
    updatedAt: string
 }
+
+export interface TCreateProduct {
+   name: string
+   description: string
+   price: number
+   image: string
+   category: TCategory['_id']
+   ingredients: TIngredient['_id'][]
+}

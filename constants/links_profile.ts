@@ -62,7 +62,12 @@ export const linksAdminPanel: TLinkProfilePage[] = [
       icon: CiUser,
    },
    {
-      title: 'Menu Items',
+      title: 'Ingredients',
+      href: '/profile/admin/ingredients',
+      icon: CiUser,
+   },
+   {
+      title: 'Menu',
       href: '/profile/admin/menu',
       icon: IoIosHeartEmpty,
    },

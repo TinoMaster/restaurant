@@ -11,6 +11,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'restaurant.s3.cubbit.eu',
          },
+         {
+            protocol: 'https',
+            hostname: 's3.cubbit.eu',
+         }
       ],
    },
 }
