@@ -1,4 +1,5 @@
 import { TProduct } from '@/types/models/product'
+import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 
 interface RenderMenusProps {
@@ -12,8 +13,8 @@ export function ProductCard({ product }: RenderMenusProps) {
             className="w-full h-36 object-cover"
             width={500}
             height={500}
-            src={product.image}
-            alt={product.name}
+            src={texturaCemento}
+            alt={`image of ${product.name}`}
          />
          <div className="p-4">
             <h2 className="font-bold mb-2 text-base">{product.name}</h2>

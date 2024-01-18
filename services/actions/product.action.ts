@@ -1,4 +1,6 @@
 'use server'
+import '@/app/models/Ingredients'
+import '@/app/models/Categories'
 import { ProductModel } from '@/app/models/Products'
 import { db_config } from '@/config/db.config'
 import { TCategory } from '@/types/models/category'

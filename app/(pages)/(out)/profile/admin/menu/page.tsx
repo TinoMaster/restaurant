@@ -39,8 +39,7 @@ export default async function PageAdminMenu() {
                      key={category._id}
                   >
                      <summary className="">{category.name}</summary>
-                     {/*//TODO: Hacer el grid de los productos  */}
-                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-5">
+                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-5 bg-black/5">
                         {products
                            .filter(
                               (product) =>
