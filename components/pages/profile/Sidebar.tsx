@@ -70,7 +70,7 @@ export const Sidebar = () => {
                            cutPathnameByPiece(item.href, 2)
                               ? 'bg-white/90 text-gray-700'
                               : 'hover:bg-white/10'
-                        }   active:bg-primaryPal-900 duration-150`}
+                        }   active:bg-pri-900 duration-150`}
                      >
                         <item.icon className="text-xl" />
                         <span className={`${menuIsOpen ? 'block' : 'hidden'}`}>
@@ -88,7 +88,7 @@ export const Sidebar = () => {
                            cutPathnameByPiece(ADMIN_PANEL, 2)
                               ? 'bg-white/90 text-gray-700'
                               : 'hover:bg-white/10'
-                        }   active:bg-primaryPal-900 duration-150`}
+                        }   active:bg-pri-900 duration-150`}
                      >
                         <div className="p-1">
                            <GrUserAdmin />

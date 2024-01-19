@@ -51,7 +51,7 @@ export const MenuItemPlusImage = ({
                   </button>
                   <MotionButton
                      whileHover={{ y: [0, -5, 0, -5, 0] }}
-                     className="bg-primaryPal-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"
+                     className="bg-pri-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"
                   >
                      <FaCartArrowDown />
                   </MotionButton>

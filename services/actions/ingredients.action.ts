@@ -41,3 +41,16 @@ export async function addNewIngredient(formData: FormData) {
       return { success: false, message: 'Something went wrong' }
    }
 }
+
+export async function deleteIngredient(id: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      await IngredientModel.findByIdAndDelete(id)
+
+      revalidatePath('/profile/admin/ingredients')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}

@@ -19,7 +19,7 @@ const config: Config = {
             darkMode: '#151618',
             lightDarkMode: '#1B1C1E',
             darkContrast: '#161e2d',
-            primaryPal: {
+            pri: {
                '50': '#fbf9f1',
                '100': '#f5f0df',
                '200': '#ebdebd',
@@ -32,7 +32,7 @@ const config: Config = {
                '900': '#64432a',
                '950': '#352215',
             },
-            secondaryPal: {
+            sec: {
                '50': '#fef2f2',
                '100': '#fde3e3',
                '200': '#fdcbcc',

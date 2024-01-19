@@ -26,7 +26,7 @@ export const FormCreateProduct = ({
             toast.remove()
 
             if (!res.success) {
-               toast.error('Something went wrong')
+               toast.error(res.message)
                return
             }
 

@@ -10,7 +10,7 @@ export const RenderAddresses = async () => {
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
          <div className="items-start justify-between md:flex">
             <div className="max-w-lg">
-               <h3 className="text-primaryPal-600 text-xl font-bold sm:text-2xl">
+               <h3 className="text-pri-600 text-xl font-bold sm:text-2xl">
                   Addresses
                </h3>
                <p className="text-gray-300 mt-2">

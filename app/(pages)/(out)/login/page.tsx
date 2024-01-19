@@ -79,7 +79,7 @@ export default function Login() {
                   <button
                      disabled={loading}
                      type="submit"
-                     className="bg-primaryPal-600 gap-2 flex relative justify-center items-center shadow-md p-2 rounded-md mt-2 text-white w-full max-w-sm m-auto"
+                     className="bg-pri-600 gap-2 flex relative justify-center items-center shadow-md p-2 rounded-md mt-2 text-white w-full max-w-sm m-auto"
                   >
                      <div className={`w-8 h-8 ${loading && 'cursor-wait'}`}>
                         {loading && (

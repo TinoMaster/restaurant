@@ -93,7 +93,7 @@ export const menuItemsProfilePageInputs: TInput[] = [
    {
       id: 'price_item',
       label: 'Price',
-      type: 'number',
+      type: 'text',
       placeholder: 'Ej: 120',
       name: 'price',
       editable: true,

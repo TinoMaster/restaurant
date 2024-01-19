@@ -48,7 +48,9 @@ export default async function PageAdminMenu() {
                            .map((product) => (
                               <ProductCard
                                  key={product._id}
-                                 product={product}
+                                 _id={product._id}
+                                 name={product.name}
+                                 image={product.image}
                               />
                            ))}
                      </div>

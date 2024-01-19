@@ -1,6 +1,15 @@
-import { model, models, Schema } from 'mongoose'
+import mongoose, { model, models, Schema } from 'mongoose'
 
-const ProductSchema = new Schema(
+interface IProduct extends mongoose.Document {
+   name: string
+   description: string
+   price: number
+   image: string
+   category: mongoose.Types.ObjectId
+   ingredients: mongoose.Types.ObjectId
+}
+
+const ProductSchema = new Schema<IProduct>(
    {
       name: {
          type: String,

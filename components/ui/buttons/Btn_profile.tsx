@@ -21,7 +21,7 @@ export const Btn_profile = ({
          disabled={disabled}
          type={type}
          onClick={trigger}
-         className="btn-white disabled:bg-primaryPal-300/40 disabled:cursor-not-allowed"
+         className="btn-white disabled:bg-pri-300/40 disabled:cursor-not-allowed"
       >
          {name}
       </button>

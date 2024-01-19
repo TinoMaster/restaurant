@@ -51,9 +51,9 @@ export const Testimonials = () => {
                   {testimonials.map((_, idx) => (
                      <li key={idx}>
                         <button
-                           className={`w-2.5 h-2.5 rounded-full duration-150 ring-offset-2 ring-primaryPal-300 focus:ring ${
+                           className={`w-2.5 h-2.5 rounded-full duration-150 ring-offset-2 ring-pri-300 focus:ring ${
                               currentTestimonial == idx
-                                 ? 'bg-primaryPal-600'
+                                 ? 'bg-pri-600'
                                  : 'bg-gray-300'
                            }`}
                            onClick={() => setCurrentTestimonial(idx)}

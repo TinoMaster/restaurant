@@ -20,7 +20,7 @@ export const NewsLetter = () => {
                   placeholder="laura@gml.it"
                />
             </div>
-            <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-primaryPal-600 border-0 py-2 px-6 focus:outline-none hover:bg-primaryPal-700 rounded">
+            <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-pri-600 border-0 py-2 px-6 focus:outline-none hover:bg-pri-700 rounded">
                Enviar
             </button>
          </div>

@@ -21,12 +21,12 @@ export const NavBar_admin = () => {
       <motion.header
          ref={element}
          whileTap={{ cursor: 'grabbing' }}
-         className="flex lg:justify-end overflow-hidden relative py-4 mb-10 px-2 bg-white/10 rounded-md"
+         className="flex lg:justify-end overflow-hidden relative py-4 mb-4 lg:mb-10 px-2 bg-white/10 rounded-lg"
       >
          <motion.nav
             drag="x"
             dragConstraints={{ right: 0, left: -width }}
-            className="flex w-max gap-4 lg:gap-7 cursor-grab justify-center md:justify-end min-w-full mr-5"
+            className="flex w-max gap-4 lg:gap-7 cursor-grab md:justify-end min-w-full"
          >
             {linksAdminPanel.map((link) => (
                <Link
