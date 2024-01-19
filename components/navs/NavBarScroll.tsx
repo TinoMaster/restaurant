@@ -12,7 +12,7 @@ export const NavBarScroll = () => {
 
    const variant = {
       open: {
-         y: 0,
+         x: 0,
          opacity: [0, 1],
       },
       closed: {
