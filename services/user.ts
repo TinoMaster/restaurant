@@ -17,19 +17,6 @@ class User {
       return docs
    }
 
-   async getInfo(route: string) {
-      const response = await fetch(route, {
-         method: 'GET',
-         headers: { 'Content-Type': 'application/json' },
-         cache: 'no-store',
-      })
-
-      const docs: ServerResponse = await response.json()
-      const res = userAdapter(docs)
-
-      return res
-   }
-
    async UpdateInfo(route: string, data: TDataUserToUpdate) {
       const requestOptions = {
          method: 'PUT',

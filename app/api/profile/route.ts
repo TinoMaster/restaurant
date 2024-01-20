@@ -5,35 +5,6 @@ import { getServerSession } from 'next-auth'
 import '@/app/models/Addresses'
 import { UserModel } from '@/app/models/User'
 
-export async function GET() {
-   try {
-      await mongoose.connect(`${db_config.host}/${db_config.database}`)
-
-      const session = await getServerSession(authOptions)
-      const email = session?.user?.email
-
-      const response = await UserModel.findOne({ email }).populate('addresses')
-
-      if (!response) {
-         return Response.json({
-            success: false,
-            message: 'Ah ocurrido un error al cargar la informacion',
-         })
-      }
-
-      return Response.json({
-         success: true,
-         data: response,
-         message: 'Informacion cargada con exito',
-      })
-   } catch (error) {
-      console.log(error)
-      return Response.json({
-         success: false,
-         message: 'Hubo un error al procesar la solicitud',
-      })
-   }
-}
 export async function PUT(req: Request) {
    try {
       const body = await req.json()

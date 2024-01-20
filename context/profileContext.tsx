@@ -1,10 +1,10 @@
 'use client'
-import { PROFILE_ROUTE } from '@/constants/routes.api'
 import { useAppDispatch } from '@/redux/hooks'
 import { login, logout } from '@/redux/reducers/user_slice'
-import { user } from '@/services/user'
+import { getUser } from '@/services/actions/user.actions'
 import { useSession } from 'next-auth/react'
 import React, { createContext, useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 type ProfileState = {}
 
@@ -16,20 +16,25 @@ export const ProfileProvider = ({
    children: React.ReactNode
 }) => {
    const Session = useSession()
-   const { status } = Session
+   const { data: session, status } = Session
    const dispatch = useAppDispatch()
 
    useEffect(() => {
       if (status === 'authenticated') {
-         user.getInfo(PROFILE_ROUTE).then((response) => {
-            if (response.success && response.data) {
-               dispatch(login(response.data))
+         getUser(session?.user.id).then((response) => {
+            if (response) {
+               dispatch(login(response))
             } else {
+               toast.error('Hubo un error al cargar la informacion')
                dispatch(logout())
             }
          })
       }
-   }, [status, dispatch])
+
+      if (status === 'unauthenticated') {
+         dispatch(logout())
+      }
+   }, [status, dispatch, session])
 
    const data = {}
    return (
