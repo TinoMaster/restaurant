@@ -27,7 +27,9 @@ export async function getProducts() {
 export async function getProductById(id: string) {
    try {
       await mongoose.connect(db_config.URI)
-      const product: TProduct | null = await ProductModel.findById(id)
+      const product: TProduct | null = (await ProductModel.findById(id)
+         .populate('category')
+         .populate('ingredients')) as TProduct
 
       if (!product) {
          return false
