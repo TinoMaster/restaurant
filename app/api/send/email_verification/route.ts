@@ -45,7 +45,7 @@ export async function POST(req: Request) {
 
 export async function PUT(req: Request) {
    const session = await getServerSession(authOptions)
-   const _id = session?.user?.id
+   const _id = session?.user?.sub
    try {
       await mongoose.connect(`${db_config.URI}`)
       await UserModel.findOneAndUpdate({ _id }, { emailVerified: true })

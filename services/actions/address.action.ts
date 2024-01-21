@@ -15,7 +15,7 @@ export async function getAddresses() {
 
    try {
       await mongoose.connect(db_config.URI)
-      const user: TUser | null = await UserModel.findById(session?.user?.id)
+      const user: TUser | null = await UserModel.findById(session?.user?.sub)
          .populate('addresses')
          .lean()
 
@@ -57,7 +57,7 @@ export async function createAddress(formData: FormData) {
             (formData.get(InputsAddress.CITY) as string) ??
             'Francavilla al mare',
          postal_code: formData.get(InputsAddress.POSTAL_CODE) as string,
-         user: session?.user?.id as string,
+         user: session?.user?.sub as string,
       }
 
       await mongoose.connect(db_config.URI)
@@ -68,7 +68,7 @@ export async function createAddress(formData: FormData) {
       }
 
       const saveInUser = await UserModel.findOneAndUpdate(
-         { _id: session?.user?.id },
+         { _id: session?.user?.sub },
          { $push: { addresses: savedAddress._id } },
          { new: true }
       )
@@ -89,7 +89,7 @@ export async function deleteAddress(id: string) {
    try {
       await mongoose.connect(db_config.URI)
       await UserModel.findOneAndUpdate(
-         { _id: session?.user?.id },
+         { _id: session?.user?.sub },
          { $pull: { addresses: id } }
       )
       await AddressesModel.deleteOne({ _id: id })
