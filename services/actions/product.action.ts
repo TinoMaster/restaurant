@@ -4,11 +4,16 @@ import '@/app/models/Categories'
 import { ProductModel } from '@/app/models/Products'
 import { db_config } from '@/config/db.config'
 import { TCategory } from '@/types/models/category'
-import { TCreateProduct, TProduct } from '@/types/models/product'
+import {
+   TCreateProduct,
+   TProduct,
+   TUpdateProduct,
+} from '@/types/models/product'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
 import { validateProduct } from '../validators/schemas/product.zod'
+import { CategoryModel } from '@/app/models/Categories'
 
 export async function getProducts() {
    try {
@@ -60,12 +65,69 @@ export async function createProduct(formData: FormData) {
 
    try {
       await mongoose.connect(db_config.URI)
-      await ProductModel.create(product)
+      const res = await ProductModel.create(product)
+
+      if (!res) {
+         return { success: false, message: 'Something went wrong' }
+      }
+
+      const saveProductInCategory = await CategoryModel.findByIdAndUpdate(
+         res.category,
+         {
+            $push: {
+               products: res._id,
+            },
+         }
+      )
+
+      if (!saveProductInCategory) {
+         return { success: false, message: 'Something went wrong' }
+      }
 
       revalidatePath('/profile/admin/menu')
       return { success: true, message: 'Product created successfully' }
    } catch (error) {
       console.log(error)
       return { success: false, message: 'Something went wrong' }
+   }
+}
+
+export async function deleteProduct(id: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const res = await ProductModel.findByIdAndDelete(id)
+
+      if (!res) {
+         return false
+      }
+
+      await CategoryModel.findByIdAndUpdate(res.category, {
+         $pull: {
+            products: res._id,
+         },
+      })
+
+      revalidatePath('/profile/admin/menu')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function uppdateProduct(id: string, data: TUpdateProduct) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const res = await ProductModel.findByIdAndUpdate(id, data, {
+         new: true,
+      })
+      if (!res) {
+         return false
+      }
+      revalidatePath('/profile/admin/menu')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
    }
 }

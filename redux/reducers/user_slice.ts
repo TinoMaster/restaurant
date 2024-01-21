@@ -10,6 +10,7 @@ export interface TUserActions {
    updateImage: (payload: string) => Action
    updateVerificationEmail: (payload: boolean) => Action
    updateVerificationPhone: (payload: boolean) => Action
+   updateRole: (payload: boolean) => Action
    addAddress: (payload: TAddress) => Action
 }
 
@@ -48,6 +49,9 @@ export const userSlice = createSlice({
       updateVerificationEmail: (state, action: PayloadAction<boolean>) => {
          state.emailVerified = action.payload
       },
+      updateRole: (state, action: PayloadAction<boolean>) => {
+         state.isAdmin = action.payload
+      },
       updateVerificationPhone: (state, action: PayloadAction<boolean>) => {
          state.phoneVerified = action.payload
       },
@@ -64,6 +68,7 @@ export const {
    updateImage,
    updateVerificationEmail,
    updateVerificationPhone,
+   updateRole,
    addAddress,
 } = userSlice.actions
 

@@ -24,9 +24,9 @@ export async function getUser(id: string) {
 export async function getUserInfo(id: string) {
    try {
       await mongoose.connect(db_config.URI)
-      const userInfo: TUserMainInfo | null = (await UserModel.findById(id).select(
-         'name email phone image -_id'
-      )) as TUserMainInfo
+      const userInfo: TUserMainInfo | null = (await UserModel.findById(
+         id
+      ).select('name email phone image -_id')) as TUserMainInfo
 
       if (!userInfo) {
          return false
@@ -46,6 +46,17 @@ export async function updateUser(id: string, data: TUser) {
          new: true,
       })
       console.log(user)
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function ChangeAdminRole(id: string, isAdmin: boolean) {
+   try {
+      await mongoose.connect(db_config.URI)
+      await UserModel.findByIdAndUpdate(id, { isAdmin })
+      return true
    } catch (error) {
       console.log(error)
       return false

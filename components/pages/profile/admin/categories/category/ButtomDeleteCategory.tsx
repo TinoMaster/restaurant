@@ -1,7 +1,6 @@
 'use client'
 
 import { deleteCategory } from '@/services/actions/category.actions'
-import { revalidatePath } from 'next/cache'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
@@ -13,7 +12,7 @@ export const ButtomDeleteCategory = ({ id }: ButtomDeleteCategoryProps) => {
    const { push } = useRouter()
    const onDelete = async () => {
       const confirm = window.confirm(
-         'Are you sure you want to delete this category?'
+         'Are you sure you want to delete this category?, this delete all products with this category!'
       )
       if (!confirm) return
       toast.loading('Deleting...')

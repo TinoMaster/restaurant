@@ -1,5 +1,11 @@
-import { REGISTER } from '@/constants/routes.api'
-import { useAppSelector } from '@/redux/hooks'
+import { REGISTER, VERIFY_PHONE } from '@/constants/routes.api'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {
+   updateRole,
+   updateVerificationEmail,
+   updateVerificationPhone,
+} from '@/redux/reducers/user_slice'
+import { ChangeAdminRole } from '@/services/actions/user.actions'
 import { user } from '@/services/user'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -18,14 +24,15 @@ const formLogin = {
 }
 
 export const useSimulatingOptions = () => {
-   const { isAdmin, emailVerified, phoneVerified } = useAppSelector(
+   const { isAdmin, emailVerified, phoneVerified, _id } = useAppSelector(
       (state) => state.userReducer
    )
+   const { data: session, update } = useSession()
+   const dispatch = useAppDispatch()
    const [menuOpen, setMenuOpen] = useState(false)
-   const [loadingLogin, setLoadingLogin] = useState(false)
    const router = useRouter()
+
    const handleLogin = async () => {
-      setLoadingLogin(true)
       toast.loading('Iniciando sesión...')
       const res = await signIn('credentials', {
          email: formLogin.email,
@@ -52,12 +59,54 @@ export const useSimulatingOptions = () => {
             toast.error(signupResponse.message)
          }
       }
-      setLoadingLogin(false)
+   }
+
+   const handleChangeToAdmin = async () => {
+      toast.loading('Cambiando rol...')
+      const res = await ChangeAdminRole(_id, !isAdmin)
+      toast.remove()
+      if (res) {
+         await update({
+            ...session,
+            user: {
+               ...session?.user,
+               isAdmin: !isAdmin,
+            },
+         })
+         toast.success('Rol cambiado exitosamente')
+         dispatch(updateRole(!isAdmin))
+      } else {
+         toast.error('Error al cambiar rol')
+      }
    }
 
    const toggleMenu = () => {
       setMenuOpen(!menuOpen)
    }
 
-   return { menuOpen, toggleMenu, handleLogin }
+   const handleVerifiedNumber = async () => {
+      dispatch(updateVerificationPhone(!phoneVerified))
+      toast.success(
+         `El telefono ha sido ${!phoneVerified ? 'verificado' : 'revertido'}`
+      )
+   }
+
+   const handleVerifiedEmail = async () => {
+      dispatch(updateVerificationEmail(!emailVerified))
+      toast.success(
+         `El correo ha sido ${!emailVerified ? 'verificado' : 'revertido'}`
+      )
+   }
+
+   return {
+      menuOpen,
+      toggleMenu,
+      handleLogin,
+      handleChangeToAdmin,
+      isAdmin,
+      handleVerifiedNumber,
+      phoneVerified,
+      handleVerifiedEmail,
+      emailVerified,
+   }
 }

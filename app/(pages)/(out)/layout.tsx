@@ -11,7 +11,17 @@ export default function LayoutOutPages({
    const pathname = usePathname()
    const pathNameAuth = ['/login', '/register']
    const isAuth = pathNameAuth.includes(pathname)
-   const { toggleMenu, menuOpen, handleLogin } = useSimulatingOptions()
+   const {
+      toggleMenu,
+      menuOpen,
+      handleLogin,
+      handleChangeToAdmin,
+      isAdmin,
+      handleVerifiedNumber,
+      phoneVerified,
+      handleVerifiedEmail,
+      emailVerified,
+   } = useSimulatingOptions()
 
    return (
       <>
@@ -46,14 +56,23 @@ export default function LayoutOutPages({
                   </button>
                ) : (
                   <>
-                     <button className="py-2 px-4 rounded-md bg-white/5 hover:bg-white/10">
-                        change to admin
+                     <button
+                        onClick={handleChangeToAdmin}
+                        className="py-2 px-4 rounded-md bg-white/5 hover:bg-white/10"
+                     >
+                        {isAdmin ? 'simulate user' : 'simulate admin'}
                      </button>
-                     <button className="py-2 px-4 rounded-md bg-white/5 hover:bg-white/10">
-                        Verified phone
+                     <button
+                        onClick={handleVerifiedNumber}
+                        className="py-2 px-4 rounded-md bg-white/5 hover:bg-white/10"
+                     >
+                        {phoneVerified ? 'unverify phone' : 'verify phone'}
                      </button>
-                     <button className="py-2 px-4 rounded-md bg-white/5 hover:bg-white/10">
-                        Verified email
+                     <button
+                        onClick={handleVerifiedEmail}
+                        className="py-2 px-4 rounded-md bg-white/5 hover:bg-white/10"
+                     >
+                        {emailVerified ? 'unverify email' : 'verify email'}
                      </button>
                   </>
                )}

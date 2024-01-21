@@ -21,3 +21,11 @@ export interface TCreateProduct {
    category: TCategory['_id']
    ingredients: TIngredient['_id'][]
 }
+
+export interface TUpdateProduct {
+   name?: string
+   description?: string
+   price?: number
+   image?: string
+   ingredients?: TIngredient['_id'][]
+}

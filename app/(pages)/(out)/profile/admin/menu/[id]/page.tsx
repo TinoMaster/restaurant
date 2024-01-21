@@ -1,4 +1,6 @@
 import { Description } from '@/components/pages/profile/admin/menu/view_product/Description'
+import { Ingredients } from '@/components/pages/profile/admin/menu/view_product/Ingredients'
+import { Name } from '@/components/pages/profile/admin/menu/view_product/Name'
 import { getProductById } from '@/services/actions/product.action'
 import { formatPrice } from '@/utils/formatPrice'
 import { texturaCemento } from '@/utils/images'
@@ -42,25 +44,17 @@ export default async function PageAdminProductDetails({
                   <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">
                      {`PRODUCT | ${category.name}`}
                   </h2>
-                  <h1 className="text-white text-3xl title-font font-medium mb-1 capitalize">
-                     {product.name}
-                  </h1>
+                  <Name name={name} id={id} />
                   <div className="flex mb-4">
                      <span className="flex items-center">
                         <span className="text-xl text-primary">★★★★★</span>
                         <span className="ml-3">4 Reviews</span>
                      </span>
+                     Name
                   </div>
                   <hr className="my-4 border-gray-500" />
-                  <Description description={description} />
-                  <div className="my-4">
-                     <p className="font-bold text-primary/80">Ingredientes:</p>
-                     <p className="capitalize">
-                        {ingredients
-                           .map((ingredient) => ingredient.name)
-                           .join(', ')}
-                     </p>
-                  </div>
+                  <Description description={description} id={id} />
+                  <Ingredients ingredients={ingredients} id={id} />
                   <p className="text-sm">
                      {`Creado: ${new Date(createdAt).toLocaleString()}`}
                      <br />
@@ -69,7 +63,7 @@ export default async function PageAdminProductDetails({
                   <hr className="my-4 border-gray-500" />
                   <div className="flex justify-between">
                      <span className="title-font font-medium text-2xl text-white">
-                        {formatPrice(product.price)}
+                        {formatPrice(price)}
                      </span>
                      <div className="space-x-2">
                         <button className="btn-white">Eliminar</button>

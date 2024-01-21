@@ -21,7 +21,9 @@ export async function getCategories() {
 export async function getCategoryById(id: string) {
    try {
       await mongoose.connect(db_config.URI)
-      const category: TCategory | null = await CategoryModel.findById(id)
+      const category: TCategory | null = (await CategoryModel.findById(
+         id
+      ).populate('products')) as TCategory
 
       if (!category) {
          return false
@@ -37,7 +39,7 @@ export async function getCategoryById(id: string) {
 export async function createCategory(formData: FormData) {
    try {
       const category: TCategoryCreate = {
-         name: formData.get('name') as string,
+         name: formData.get('name')?.toString().toLocaleLowerCase() as string,
       }
       await mongoose.connect(db_config.URI)
       await CategoryModel.create(category)
@@ -72,7 +74,7 @@ export async function addDescription(FormData: FormData, id: string) {
 export async function deleteCategory(id: string) {
    try {
       await mongoose.connect(db_config.URI)
-      await CategoryModel.findByIdAndDelete(id)
+      await CategoryModel.findOneAndDelete({ _id: id })
       revalidatePath('/profile/admin/categories')
       return true
    } catch (error) {

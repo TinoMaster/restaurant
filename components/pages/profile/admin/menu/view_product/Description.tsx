@@ -1,27 +1,47 @@
 'use client'
-import { useState } from 'react'
+import { ConfirmOrCancelInputChanges } from '@/components/ui/buttons/ConfirmOrCancelInputChanges'
 import { FiEdit } from 'react-icons/fi'
-export const Description = ({ description }: { description: string }) => {
-   const [editionMode, setEditionMode] = useState(false)
+import { useDescription } from './useDescription'
+import { EditInput } from '@/components/ui/buttons/EditInput'
+
+export const Description = ({
+   description,
+   id,
+}: {
+   description: string
+   id: string
+}) => {
+   const {
+      editionMode,
+      onCancelChange,
+      onConfirmChange,
+      textAreaText,
+      onChangeTextArea,
+      onChangeEditionMode,
+   } = useDescription({ description, id })
+
    return (
       <div>
          <div className="flex gap-2 items-center">
             <p className="font-bold text-primary/80">Descripción:</p>
-            <button
-               onClick={() => setEditionMode(!editionMode)}
-               className="bg-lightDarkMode p-2 rounded-full"
-            >
-               <FiEdit className="text-sm" />
-            </button>
+            {!editionMode ? (
+               <EditInput onClick={onChangeEditionMode} />
+            ) : (
+               <ConfirmOrCancelInputChanges
+                  onConfirm={onConfirmChange}
+                  onCancel={onCancelChange}
+               />
+            )}
          </div>
          {editionMode && (
             <textarea
                name="description"
                id=""
-               defaultValue={description}
+               defaultValue={textAreaText}
+               onChange={onChangeTextArea}
                cols={10}
                rows={3}
-               className="input resize-none overflow-auto mt-2"
+               className="bg-transparent focus:outline-none w-full resize-none overflow-auto mt-2 text-white"
             />
          )}
          {!editionMode && (

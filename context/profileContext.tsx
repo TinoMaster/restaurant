@@ -21,7 +21,7 @@ export const ProfileProvider = ({
 
    useEffect(() => {
       if (status === 'authenticated') {
-         getUser(session?.user.id).then((response) => {
+         getUser(session?.user.sub).then((response) => {
             if (response) {
                dispatch(login(response))
             } else {

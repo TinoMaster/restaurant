@@ -59,20 +59,14 @@ export const authOptions: AuthOptions = {
       maxAge: 60 * 60 * 24 * 30,
    },
    callbacks: {
-      async jwt({ token, user }) {
-         if (user && 'isAdmin' in user) {
-            token.isAdmin = user.isAdmin || false
+      async jwt({ token, user, trigger, session }) {
+         if (trigger === 'update') {
+            return { ...token, ...session.user }
          }
-         return token
+         return { ...token, ...user }
       },
       async session({ session, token }) {
-         if (token && session.user && 'isAdmin' in token) {
-            session.user = {
-               ...session.user,
-               isAdmin: token.isAdmin as boolean,
-               id: token.sub as string,
-            }
-         }
+         session.user = token as any
 
          return session
       },
