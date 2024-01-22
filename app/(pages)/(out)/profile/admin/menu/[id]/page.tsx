@@ -1,12 +1,13 @@
+import { BtnDeleteProduct } from '@/components/pages/profile/admin/menu/view_product/BtnDeleteProduct'
 import { Description } from '@/components/pages/profile/admin/menu/view_product/Description'
+import { Disponibility } from '@/components/pages/profile/admin/menu/view_product/Disponibility'
 import { Ingredients } from '@/components/pages/profile/admin/menu/view_product/Ingredients'
 import { Name } from '@/components/pages/profile/admin/menu/view_product/Name'
+import { Price } from '@/components/pages/profile/admin/menu/view_product/Price'
 import { getProductById } from '@/services/actions/product.action'
-import { formatPrice } from '@/utils/formatPrice'
 import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import React from 'react'
 
 export default async function PageAdminProductDetails({
    params,
@@ -25,6 +26,9 @@ export default async function PageAdminProductDetails({
       name,
       price,
       description,
+      available,
+      favorites,
+      sells,
       createdAt,
       updatedAt,
    } = product
@@ -45,12 +49,12 @@ export default async function PageAdminProductDetails({
                      {`PRODUCT | ${category.name}`}
                   </h2>
                   <Name name={name} id={id} />
+                  <Disponibility available={available} id={id} />
                   <div className="flex mb-4">
                      <span className="flex items-center">
                         <span className="text-xl text-primary">★★★★★</span>
                         <span className="ml-3">4 Reviews</span>
                      </span>
-                     Name
                   </div>
                   <hr className="my-4 border-gray-500" />
                   <Description description={description} id={id} />
@@ -61,15 +65,16 @@ export default async function PageAdminProductDetails({
                      {`Actualizado: ${new Date(updatedAt).toLocaleString()}`}
                   </p>
                   <hr className="my-4 border-gray-500" />
-                  <div className="flex justify-between">
-                     <span className="title-font font-medium text-2xl text-white">
-                        {formatPrice(price)}
-                     </span>
-                     <div className="space-x-2">
-                        <button className="btn-white">Eliminar</button>
-                     </div>
+                  <div className="flex justify-between gap-4">
+                     <Price price={price} id={id} />
+                     <BtnDeleteProduct id={id} />
                   </div>
                </div>
+            </div>
+            <hr className="my-4 border-gray-500" />
+            <div className="flex items-center gap-3">
+               <p>{`Veces Vendido: ${sells || 0}`}</p>
+               <p>{`Veces Favorito: ${favorites || 0}`}</p>
             </div>
          </div>
       </section>

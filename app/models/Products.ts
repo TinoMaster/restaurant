@@ -7,6 +7,9 @@ interface IProduct extends mongoose.Document {
    image: string
    category: mongoose.Types.ObjectId
    ingredients: mongoose.Types.ObjectId
+   available: boolean
+   favorites: number
+   sells: number
 }
 
 const ProductSchema = new Schema<IProduct>(
@@ -39,6 +42,18 @@ const ProductSchema = new Schema<IProduct>(
             ref: 'Ingredients',
          },
       ],
+      available: {
+         type: Boolean,
+         default: true,
+      },
+      favorites: {
+         type: Number,
+         default: 0,
+      },
+      sells: {
+         type: Number,
+         default: 0,
+      },
    },
    {
       timestamps: true,

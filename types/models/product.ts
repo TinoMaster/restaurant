@@ -9,6 +9,9 @@ export interface TProduct {
    image: string
    category: TCategory
    ingredients: TIngredient[]
+   available: boolean
+   favorites: number
+   sells: number
    createdAt: string
    updatedAt: string
 }

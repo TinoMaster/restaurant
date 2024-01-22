@@ -36,6 +36,24 @@ export async function getCategoryById(id: string) {
    }
 }
 
+export async function getCategoryByName(name: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const category: TCategory | null = (await CategoryModel.findOne({
+         name,
+      }).populate('products')) as TCategory
+
+      if (!category) {
+         return false
+      }
+
+      return formatServerResponse<TCategory>(category)
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
 export async function createCategory(formData: FormData) {
    try {
       const category: TCategoryCreate = {

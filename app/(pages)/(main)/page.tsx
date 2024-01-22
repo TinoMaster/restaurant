@@ -8,8 +8,9 @@ import { HeroPageContent } from '@/components/ui/HeroPageContent'
 import { SectionRoundedBehindBanner } from '@/components/ui/SectionRoundedBehindBanner'
 import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { BANNER_CONTENT } from '@/constants/common'
-import { FIRS_PATHNAME_MENU_PAGE } from '@/constants/links_navbar'
+import { MENU_PAGE } from '@/constants/routes.app'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
+import { Suspense } from 'react'
 
 export default function Home() {
    return (
@@ -19,14 +20,16 @@ export default function Home() {
                title={BANNER_CONTENT.home.title}
                subtitle={BANNER_CONTENT.home.subtitle}
             >
-               <LinkButton href={FIRS_PATHNAME_MENU_PAGE} title="Menu" />
+               <LinkButton href={MENU_PAGE} title="Menu" />
             </HeroPageContent>
          </HeroPage>
          <SectionRoundedBehindBanner>
             <Wy_US />
          </SectionRoundedBehindBanner>
          <AboutUs />
-         <PreferMenu />
+         <Suspense fallback={null}>
+            <PreferMenu />
+         </Suspense>
          <BannerBussines />
          <Testimonials />
       </>
