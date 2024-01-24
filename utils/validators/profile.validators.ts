@@ -28,12 +28,19 @@ export const validateUserInfo = (
    actualData: Pick<TUser, 'name' | 'email' | 'phone'>
 ) => {
    if (
+      validateName(name) &&
+      validateEmail(email) &&
+      validateItalianPhone(phone)
+   ) {
+      return false
+   }
+
+   if (
       name === actualData.name &&
       email === actualData.email &&
       phone === actualData.phone
-   )
+   ) {
       return false
-   return (
-      validateName(name) && validateEmail(email) && validateItalianPhone(phone)
-   )
+   }
+   return true
 }

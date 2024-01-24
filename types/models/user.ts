@@ -29,6 +29,18 @@ export interface TUser {
    [key: string]: any
 }
 
+export interface TCreateAdminUserForTest
+   extends Pick<
+      TUser,
+      | 'name'
+      | 'isAdmin'
+      | 'email'
+      | 'password'
+      | 'phone'
+      | 'phoneVerified'
+      | 'emailVerified'
+   > {}
+
 export interface TUserRegister {
    name: string
    email: string

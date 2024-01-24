@@ -1,13 +1,30 @@
 import { userAdapter } from '@/adapters/UserAdapter'
 import { ServerResponse } from '@/types/api_responses'
 import { IDataToVerifyEmail } from '@/types/common'
-import { TDataUserToUpdate, TUserRegister } from '@/types/models/user'
+import {
+   TCreateAdminUserForTest,
+   TDataUserToUpdate,
+   TUserRegister,
+} from '@/types/models/user'
 
 class User {
    async register(route: string, data: TUserRegister) {
+      let dataToSend: TCreateAdminUserForTest | TUserRegister | null
+      if (data.email === 'testemail@example.com') {
+         dataToSend = {
+            ...data,
+            isAdmin: true,
+            emailVerified: true,
+            phoneVerified: true,
+            phone: '1234567891',
+         }
+      } else {
+         dataToSend = data
+      }
+
       const requestOptions = {
          method: 'POST',
-         body: JSON.stringify(data),
+         body: JSON.stringify(dataToSend),
          headers: { 'Content-Type': 'application/json' },
       }
 

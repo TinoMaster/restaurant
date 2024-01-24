@@ -66,8 +66,12 @@ export const authOptions: AuthOptions = {
          return { ...token, ...user }
       },
       async session({ session, token }) {
-         session.user = token as any
-
+         session.user = {
+            name: token.name,
+            email: token.email,
+            sub: token.sub,
+            isAdmin: (token._doc as { isAdmin: boolean }).isAdmin,
+         } as any
          return session
       },
    },
