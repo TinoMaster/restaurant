@@ -17,22 +17,25 @@ export const FormCreateProduct = ({
    ingredients,
 }: IFormCreateProductProps) => {
    const { push } = useRouter()
+
+   const onSubmit = async (formData: FormData) => {
+      toast.loading('Saving...')
+      const res = await createProduct(formData)
+
+      toast.remove()
+
+      if (!res.success) {
+         toast.error(res.message)
+         return
+      }
+
+      toast.success('Item menu created')
+      push('/profile/admin/menu')
+   }
+
    return (
       <form
-         action={async (formData) => {
-            toast.loading('Saving...')
-            const res = await createProduct(formData)
-
-            toast.remove()
-
-            if (!res.success) {
-               toast.error(res.message)
-               return
-            }
-
-            toast.success('Item menu created')
-            push('/profile/admin/menu')
-         }}
+         action={onSubmit}
          className="grid grid-cols-2 col-span-4 lg:col-span-3 lg:col-start-2 w-full"
       >
          <legend className="col-span-2 text-2xl lg:text-3xl">
@@ -62,9 +65,10 @@ export const FormCreateProduct = ({
                      id="select_category"
                      className="input capitalize"
                   >
-                     <option className="bg-lightDarkMode" value="">
-                        --select a category--
-                     </option>
+                     <option
+                        className="bg-lightDarkMode text-gray-400"
+                        value=""
+                     ></option>
                      {categories &&
                         categories?.map((category) => (
                            <option
@@ -78,10 +82,13 @@ export const FormCreateProduct = ({
                   </select>
                </label>
                {/* Ingredients */}
-               <div className="flex col-span-full justify-center items-center">
+               <div className="flex flex-col col-span-2 justify-center items-center">
+                  <span className="font-bold text-gray-300/80 text-sm pl-1 py-1 w-full">
+                     Ingredients
+                  </span>
                   <details className="w-full p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 input rounded-lg">
-                     <summary className="uppercase font-semibold text-gray-400 text-sm">
-                        Ingredients
+                     <summary className="font-semibold text-gray-400">
+                        Choose ingredients
                      </summary>
                      <div className="flex flex-wrap py-4 gap-5">
                         {ingredients?.length ? (
@@ -108,22 +115,25 @@ export const FormCreateProduct = ({
                      </div>
                   </details>
                </div>
-               <label className="lg:col-span-2 space-y-1 lg:space-y-2">
-                  <span className="font-bold text-gray-300/80 text-sm ml-1">
-                     Description
-                  </span>
-                  <textarea
-                     name="description"
-                     id=""
-                     cols={30}
-                     rows={4}
-                     placeholder="Ej: Esta es la descripcion del plato"
-                     className="input resize-none"
-                  />
-               </label>
+               <div className='col-span-2'>
+                  <label
+                     id="description"
+                     className="space-y-1 lg:space-y-2"
+                  >
+                     <span className="font-bold text-gray-300/80 text-sm ml-1">
+                        Description
+                     </span>
+                     <textarea
+                        name="description"
+                        id="description"
+                        rows={4}
+                        placeholder="Ej: Esta es la descripcion del plato"
+                        className="input resize-none w-full"
+                     />
+                  </label>
+               </div>
             </div>
          </div>
-         {/* Ingredients */}
          {/* Buttons */}
          <div className="flex py-5 gap-3 justify-end col-span-2">
             <button type="reset" className="btn-white">

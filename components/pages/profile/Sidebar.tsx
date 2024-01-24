@@ -19,8 +19,6 @@ export const Sidebar = () => {
    const router = useRouter()
    const isAdmin = useAppSelector((state) => state.userReducer.isAdmin)
 
-   console.log(path)
-
    const handlerBack = () => {
       router.back()
    }
