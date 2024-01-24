@@ -18,7 +18,7 @@ export const Registration = () => {
          {session ? (
             <LogoProfile />
          ) : (
-            <div className="flex">
+            <div className="flex justify-center text-xl">
                <LoginButton />
                <RegistrationButton />
             </div>
