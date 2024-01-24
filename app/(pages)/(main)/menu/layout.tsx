@@ -1,4 +1,4 @@
-import { NavBar_pageMenu } from '@/components/navs/NavBar_pageMenu'
+import { NavBar_pageMenu } from '@/components/pages/menu/navbar_products'
 import { HeroPage } from '@/components/ui/HeroPage'
 import { HeroPageContent } from '@/components/ui/HeroPageContent'
 import { SectionRoundedBehindBanner } from '@/components/ui/SectionRoundedBehindBanner'

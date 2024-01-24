@@ -7,10 +7,6 @@ import { MENU_PAGE } from '@/constants/routes.app'
 export const PreferMenu = async () => {
    const products = await getProducts()
 
-   if (!products) {
-      return <div>No hay productos</div>
-   }
-
    return (
       <section className="py-20 lg:py-44 px-2 z-10 bg-lightDarkMode text-slate-100 relative flex flex-col items-center justify-center">
          <BrokeBackground />
@@ -18,9 +14,19 @@ export const PreferMenu = async () => {
          <h3 className="italic text-white pb-10">Il Vostro Preferito</h3>
          <article className="container">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:p-10 py-5">
-               {products.map((item, index) => (
-                  <MenuItemPlusImage key={index} index={index} product={item} />
-               ))}
+               {products && products?.length > 0 ? (
+                  products.map((item, index) => (
+                     <MenuItemPlusImage
+                        key={index}
+                        index={index}
+                        product={item}
+                     />
+                  ))
+               ) : (
+                  <p className="text-center col-span-full text-gray-300">
+                     Debes crear productos para que puedas verlos aqui
+                  </p>
+               )}
             </div>
          </article>
          <div className="flex justify-center pt-20">

@@ -1,7 +1,6 @@
 import { linksPrincipalMenu } from '@/constants/links_navbar'
-import { NavbarLink } from './NabvarLink'
-import { Btn_MenuMovil } from '../ui/buttons/Btn_MenuMovil'
 import { Logo } from '../ui/Logo'
+import { NavbarLink } from './NabvarLink'
 import { Registration } from './Registration'
 
 export const NavBar = () => {

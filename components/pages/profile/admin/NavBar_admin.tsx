@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 export const NavBar_admin = () => {
    const pathName = usePathname()
-   const path = cutPathnameByPiece(pathName, 3)
+   const path = cutPathnameByPiece(pathName, 1, 4)
    const [width, setWhidth] = useState(0)
    const element = useRef<HTMLDivElement | null>(null)
 

@@ -14,9 +14,12 @@ import { useAppSelector } from '@/redux/hooks'
 
 export const Sidebar = () => {
    const pathname = usePathname()
+   const path = cutPathnameByPiece(pathname, 1, 3)
    const [menuIsOpen, setMenuIsOpen] = useState(false)
    const router = useRouter()
    const isAdmin = useAppSelector((state) => state.userReducer.isAdmin)
+
+   console.log(path)
 
    const handlerBack = () => {
       router.back()
@@ -66,8 +69,7 @@ export const Sidebar = () => {
                      <Link
                         href={item.href}
                         className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
-                           cutPathnameByPiece(pathname, 2) ===
-                           cutPathnameByPiece(item.href, 2)
+                           path === item.href
                               ? 'bg-white/90 text-gray-700'
                               : 'hover:bg-white/10'
                         }   active:bg-pri-900 duration-150`}
@@ -84,8 +86,7 @@ export const Sidebar = () => {
                      <Link
                         href={ADMIN_PANEL}
                         className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
-                           cutPathnameByPiece(pathname, 2) ===
-                           cutPathnameByPiece(ADMIN_PANEL, 2)
+                           path === cutPathnameByPiece(ADMIN_PANEL, 1, 3)
                               ? 'bg-white/90 text-gray-700'
                               : 'hover:bg-white/10'
                         }   active:bg-pri-900 duration-150`}

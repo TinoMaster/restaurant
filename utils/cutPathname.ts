@@ -1,5 +1,9 @@
-export const cutPathnameByPiece = (pathname: string, piece: number) => {
+export const cutPathnameByPiece = (
+   pathname: string,
+   from: number,
+   piece: number
+) => {
    const pathnameArr = pathname.split('/')
 
-   return pathnameArr.slice(0, piece + 1).join('/')
+   return `/` + pathnameArr.slice(from, piece).join('/')
 }

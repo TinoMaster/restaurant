@@ -13,7 +13,7 @@ export const Categories = async () => {
 
    if (categories.length === 0)
       return (
-         <p className="text-center font-bold text-gray-400">No categories</p>
+         <p className="text-center font-bold text-gray-400 col-span-full py-5">Debes crear al menos una categoría para que aparezcan aqui</p>
       )
 
    return categories.map((category) => (
