@@ -16,7 +16,7 @@ export default async function Layout({
       redirect('/login')
    }
    return (
-      <div className="flex justify-center items-center w-screen min-h-screen text-gray-300">
+      <div className="flex justify-center items-center w-screen h-screen max-h-[100svh] text-gray-300">
          <div className="absolute w-screen h-screen bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode">
             <Image
                src={img_about_us2}

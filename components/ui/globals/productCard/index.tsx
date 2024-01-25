@@ -1,21 +1,18 @@
-import Image from 'next/image'
-import { FaCartArrowDown } from 'react-icons/fa6'
-import { IoMdHeartEmpty } from 'react-icons/io'
-import { MotionButton, MotionDiv } from '../helpers/MotionDiv'
-import { texturaCemento } from '@/utils/images'
 import { TProduct } from '@/types/models/product'
 import { formatPrice } from '@/utils/formatPrice'
+import { texturaCemento } from '@/utils/images'
+import Image from 'next/image'
+import { FaCartArrowDown } from 'react-icons/fa6'
+import { MotionButton, MotionDiv } from '../../../helpers/MotionDiv'
+import { ButtonAddFav } from './ButtonAddFav'
 
 interface MenuItemPlusImageProps {
    product: TProduct
    index?: number
 }
 
-export const MenuItemPlusImage = ({
-   product,
-   index,
-}: MenuItemPlusImageProps) => {
-   const { name, price, image, description, ingredients } = product
+export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
+   const { name, price, image, description, ingredients, _id } = product
 
    return (
       <MotionDiv
@@ -27,9 +24,9 @@ export const MenuItemPlusImage = ({
             transition: { delay: 0, duration: 0.2, type: 'spring' },
             cursor: 'pointer',
          }}
-         className="col-span-1 max-w-md mx-auto bg-lightDarkMode rounded-xl overflow-hidden shadow-md min-w-[180px] lg:min-w-[270px]"
+         className="col-span-1 max-w-md mx-auto bg-lightDarkMode rounded-xl overflow-hidden shadow-md w-full relative flex flex-col"
       >
-         <div className="w-full h-44 lg:h-56 flex justify-center items-center relative">
+         <div className="w-full h-36 lg:h-56 flex justify-center items-center relative">
             <Image
                width={400}
                height={400}
@@ -39,24 +36,29 @@ export const MenuItemPlusImage = ({
             />
             <div className="w-32 h-32 lg:w-44 lg:h-44 bg-primary/30 rounded-full z-10"></div>
          </div>
-         <div className="p-2 lg:p-4">
-            <h2 className="text-base lg:text-xl text-primary capitalize">
+         <div className="px-2 py-1 lg:p-4 grow flex flex-col">
+            <h2 className="text-sm lg:text-xl text-primary capitalize">
                {name}
             </h2>
-            <div className='flex flex-col gap-3 my-2 text-sm'>
-               <p className="text-gray-300 first-letter:capitalize">
+            <div className="flex flex-col gap-1 my-1 text-[10px] md:text-base grow">
+               <p className="first-letter:capitalize grow text-pri-300/50">
                   {description}
                </p>
-               <p className='capitalize'>{ingredients?.map((i) => i.name).join(', ')}</p>
+               <div className="flex flex-col">
+                  <p className="text-[8px] md:text-sm font-bold text-primary/70">
+                     ingredients:
+                  </p>
+                  <p className="capitalize text-[8px] md:text-sm text-pri-300/50">
+                     {ingredients?.map((i) => i.name).join(', ')}
+                  </p>
+               </div>
             </div>
             <div className="flex justify-between items-center mt-4">
                <span className="lg:text-xl text-primary font-bold text-sm">
                   {formatPrice(price)}
                </span>
                <div className="flex gap-2 items-center">
-                  <button className="text-white/70 px-2 lg:text-2xl rounded-full hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 transition duration-150 ease-in-out">
-                     <IoMdHeartEmpty />
-                  </button>
+                  <ButtonAddFav productId={_id} />
                   <MotionButton
                      whileHover={{ y: [0, -5, 0, -5, 0] }}
                      className="bg-pri-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"

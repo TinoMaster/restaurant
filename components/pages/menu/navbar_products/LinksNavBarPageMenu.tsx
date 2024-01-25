@@ -14,7 +14,7 @@ export const LinksNavBarPageMenu = async ({
    const pathUrl = cutPathnameByPiece(pathname, 2, 3)
 
    return (
-      <ul className="container grid grid-cols-5 text-slate-200 gap-6 uppercase">
+      <ul className="container grid grid-cols-1 text-slate-200 gap-6 uppercase">
          <h4 className='col-span-full text-center text-primary/80 text-3xl font-bold'>CATEGORIAS</h4>
          {categories?.map((link) => (
             <Link

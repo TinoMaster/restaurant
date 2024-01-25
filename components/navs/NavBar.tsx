@@ -1,5 +1,5 @@
 import { linksPrincipalMenu } from '@/constants/links_navbar'
-import { Logo } from '../ui/Logo'
+import { Logo } from '../ui/globals/Logo'
 import { NavbarLink } from './NabvarLink'
 import { Registration } from './Registration'
 

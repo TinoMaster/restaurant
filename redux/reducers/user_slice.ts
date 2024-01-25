@@ -1,4 +1,5 @@
 import { INITIAL_DATA_SESSION } from '@/constants/user'
+import { IsFavorite } from '@/services/actions/product.action'
 import { TAddress } from '@/types/models/address'
 import { TDataUserToUpdate, TUser } from '@/types/models/user'
 import { Action, PayloadAction, createSlice } from '@reduxjs/toolkit'
@@ -11,6 +12,8 @@ export interface TUserActions {
    updateVerificationEmail: (payload: boolean) => Action
    updateVerificationPhone: (payload: boolean) => Action
    updateRole: (payload: boolean) => Action
+   addFavorite: (payload: string) => Action
+   removeFavorite: (payload: string) => Action
    addAddress: (payload: TAddress) => Action
 }
 
@@ -29,6 +32,7 @@ export const userSlice = createSlice({
          state.phone = action.payload.phone
          state.phoneVerified = action.payload.phoneVerified
          state.addresses = action.payload.addresses
+         state.favorites = action.payload.favorites
          state.orders = action.payload.orders
          state.cart = action.payload.cart
          state.notifications = action.payload.notifications
@@ -55,6 +59,14 @@ export const userSlice = createSlice({
       updateVerificationPhone: (state, action: PayloadAction<boolean>) => {
          state.phoneVerified = action.payload
       },
+      addFavorite: (state, action: PayloadAction<string>) => {
+         state.favorites.push(action.payload)
+      },
+      removeFromFavorite: (state, action: PayloadAction<string>) => {
+         state.favorites = state.favorites.filter(
+            (favorite) => favorite !== action.payload
+         )
+      },
       addAddress: (state, action: PayloadAction<TAddress>) => {
          state.addresses.push(action.payload)
       },
@@ -68,6 +80,8 @@ export const {
    updateImage,
    updateVerificationEmail,
    updateVerificationPhone,
+   addFavorite,
+   removeFromFavorite,
    updateRole,
    addAddress,
 } = userSlice.actions

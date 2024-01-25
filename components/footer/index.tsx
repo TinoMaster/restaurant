@@ -1,4 +1,4 @@
-import { NewsLetter } from '../ui/NewsLetter'
+import { NewsLetter } from '../ui/globals/NewsLetter'
 import { FooterLinksGroup } from './FooterLinksGroup'
 import { footerLinks } from '@/constants/footer'
 import { FooterEnd } from './FooterEnd'

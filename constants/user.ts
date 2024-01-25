@@ -8,6 +8,7 @@ export const INITIAL_DATA_SESSION: TUser = {
    addresses: [],
    cart: [],
    notifications: [],
+   favorites: [],
    emailVerified: false,
    phoneVerified: false,
    phone: '',

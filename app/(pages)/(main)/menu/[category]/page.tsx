@@ -1,4 +1,4 @@
-import { MenuItemPlusImage } from '@/components/ui/ItemMenuPlusImage'
+import { ProductCard } from '@/components/ui/globals/productCard'
 import { getCategoryByName } from '@/services/actions/category.actions'
 import { TCategory } from '@/types/models/category'
 
@@ -27,7 +27,7 @@ export default async function SectionRenderProducts({
    return (
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
          {products?.map((product, index) => (
-            <MenuItemPlusImage key={index} index={index} product={product} />
+            <ProductCard key={index} index={index} product={product} />
          ))}
       </div>
    )

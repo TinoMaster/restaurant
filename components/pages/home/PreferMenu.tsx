@@ -1,6 +1,6 @@
 import { getProducts } from '@/services/actions/product.action'
 import { BrokeBackground } from '../../backgrounds/BrokeBackground'
-import { MenuItemPlusImage } from '../../ui/ItemMenuPlusImage'
+import { ProductCard } from '../../ui/globals/productCard'
 import { LinkButton } from '../../ui/buttons/LinkButton'
 import { MENU_PAGE } from '@/constants/routes.app'
 
@@ -16,7 +16,7 @@ export const PreferMenu = async () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:p-10 py-5">
                {products && products?.length > 0 ? (
                   products.map((item, index) => (
-                     <MenuItemPlusImage
+                     <ProductCard
                         key={index}
                         index={index}
                         product={item}

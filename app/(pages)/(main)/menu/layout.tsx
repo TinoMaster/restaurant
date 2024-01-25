@@ -1,7 +1,7 @@
 import { NavBar_pageMenu } from '@/components/pages/menu/navbar_products'
-import { HeroPage } from '@/components/ui/HeroPage'
-import { HeroPageContent } from '@/components/ui/HeroPageContent'
-import { SectionRoundedBehindBanner } from '@/components/ui/SectionRoundedBehindBanner'
+import { HeroPage } from '@/components/ui/globals/heroPage/HeroPage'
+import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageContent'
+import { SectionRoundedBehindBanner } from '@/components/ui/globals/SectionRoundedBehindBanner'
 import { BANNER_CONTENT } from '@/constants/common'
 import { banner_menuPage, banner_menuPageMovil } from '@/utils/images'
 

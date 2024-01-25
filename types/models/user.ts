@@ -23,6 +23,7 @@ export interface TUser {
    phoneVerified: boolean
    orders: TOrder[]
    cart: TProduct[]
+   favorites: TProduct['_id'][]
    notifications: TNotification[]
    createdAt: string
    updatedAt: string

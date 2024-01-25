@@ -14,6 +14,7 @@ import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
 import { validateProduct } from '../validators/schemas/product.zod'
 import { CategoryModel } from '@/app/models/Categories'
+import { UserModel } from '@/app/models/User'
 
 export async function getProducts() {
    try {
@@ -171,6 +172,42 @@ export async function deleteIngredientFromProduct(
       })
 
       revalidatePath('/profile/admin/menu')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function IsFavorite(id: string, userId: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      await UserModel.findByIdAndUpdate(userId, {
+         $addToSet: { favorites: id },
+      })
+      await ProductModel.findByIdAndUpdate(id, {
+         $inc: { favorites: 1 },
+      })
+
+      revalidatePath('/')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function removeFavorite(id: string, userId: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      await UserModel.findByIdAndUpdate(userId, {
+         $pull: { favorites: id },
+      })
+      await ProductModel.findByIdAndUpdate(id, {
+         $inc: { favorites: -1 },
+      })
+
+      revalidatePath('/')
       return true
    } catch (error) {
       console.log(error)
