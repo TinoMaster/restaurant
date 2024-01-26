@@ -1,5 +1,5 @@
-import banner_homePage from '@/public/images/img-bannerPrincipalPage.jpg'
-import banner_homePageMovil from '@/public/images/img-bannerPrincipalPageMovil.jpg'
+import banner_servicesPage from '@/public/images/img-bannerPrincipalPage.jpg'
+import banner_servicesPageMovil from '@/public/images/img-bannerPrincipalPageMovil.jpg'
 import banner_menuPage from '@/public/images/portadaMenu.jpeg'
 import banner_menuPageMovil from '@/public/images/portadaMenuMovil.jpg'
 import img_about_us1 from '@/public/images/portadaHistory.jpg'
@@ -12,8 +12,8 @@ import texturaCemento from '@/public/images/textura-cemento.jpg'
 import img_map from '@/public/images/img_map.webp'
 
 export {
-   banner_homePage,
-   banner_homePageMovil,
+   banner_servicesPage,
+   banner_servicesPageMovil,
    banner_menuPage,
    banner_menuPageMovil,
    img_about_us1,

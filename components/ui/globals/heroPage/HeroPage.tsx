@@ -2,8 +2,8 @@ import Image, { StaticImageData } from 'next/image'
 
 interface HeroPageProps {
    children: React.ReactNode
-   imagemovil: StaticImageData
-   imageDesktop: StaticImageData
+   imagemovil?: StaticImageData
+   imageDesktop?: StaticImageData
 }
 
 export const HeroPage = ({
@@ -16,19 +16,25 @@ export const HeroPage = ({
          <article className="absolute flex justify-center items-center w-full h-full bg-gradient-to-t from-black/40 to-black/50 z-10">
             {children}
          </article>
-         <div className="absolute w-full h-full bg-gradient-to-t from-black/30 via-transparent to-black/70"></div>
-         <Image
-            priority={true}
-            className="w-full h-full object-cover md:hidden"
-            src={imagemovil}
-            alt="immagine di sfondo del banner principale"
-         />
-         <Image
-            priority={true}
-            className="w-full h-full object-cover hidden md:block"
-            src={imageDesktop}
-            alt="immagine di sfondo del banner principale"
-         />
+         {imagemovil && imageDesktop ? (
+            <>
+               <div className="absolute w-full h-full bg-gradient-to-t from-black/30 via-transparent to-black/70"></div>
+               <Image
+                  priority={true}
+                  className="w-full h-full object-cover md:hidden"
+                  src={imagemovil}
+                  alt="immagine del banner principale"
+               />
+               <Image
+                  priority={true}
+                  className="w-full h-full object-cover hidden md:block"
+                  src={imageDesktop}
+                  alt="immagine del banner principale"
+               />
+            </>
+         ) : (
+            <div className="w-full h-full object-cover bg-gradient-to-t from-black/30 via-transparent to-black/70"></div>
+         )}
       </section>
    )
 }

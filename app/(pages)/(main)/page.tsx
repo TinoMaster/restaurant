@@ -1,5 +1,5 @@
 import { AboutUs } from '@/components/pages/home/AboutUs'
-import { BannerBussines } from '@/components/pages/home/BannerBussines'
+import { BannerServices } from '@/components/pages/home/BannerServices'
 import { PreferMenu } from '@/components/pages/home/PreferMenu'
 import { Testimonials } from '@/components/pages/home/Testimonials'
 import { Wy_US } from '@/components/pages/home/Wy-Us'
@@ -30,7 +30,7 @@ export default function Home() {
          <Suspense fallback={null}>
             <PreferMenu />
          </Suspense>
-         <BannerBussines />
+         <BannerServices />
          <Testimonials />
       </>
    )

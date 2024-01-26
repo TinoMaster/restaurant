@@ -1,15 +1,17 @@
+import { LinkButton } from '@/components/ui/buttons/LinkButton'
+import { SERVICES_PAGE } from '@/constants/routes.app'
 import { img_about_us1 } from '@/utils/images'
 import Image from 'next/image'
 
 img_about_us1
-export const BannerBussines = () => {
+export const BannerServices = () => {
    return (
       <article className="relative flex justify-center items-center">
          <div className="gradient"></div>
          <div className="absolute w-full h-full">
             <Image
                src={img_about_us1}
-               alt="imagen de fondo seccion azienda"
+               alt="image banner services"
                className="w-full h-full object-cover brightness-50 grayscale"
             />
          </div>
@@ -17,13 +19,12 @@ export const BannerBussines = () => {
          <section className="text-gray-400 z-10">
             <div className="container px-5 py-24">
                <div className="text-center mb-20">
-                  <h3 className="text-white mb-4">
-                     Raw Denim Heirloom Man Braid
-                  </h3>
+                  <h3 className="text-white mb-4">Scopri i nostri servizi</h3>
                   <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-300 text-opacity-80">
-                     Blue bottle crucifix vinyl post-ironic four dollar toast
-                     vegan taxidermy. Gastropub indxgo juice poutine, ramps
-                     microdosing banh mi pug.
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
+                     deleniti mollitia ratione perspiciatis, porro excepturi
+                     aperiam, alias hic, facere modi quos necessitatibus autem.
+                     Dolor, id quam maxime sit quasi quisquam.
                   </p>
                   <div className="flex mt-6 justify-center">
                      <div className="w-16 h-1 rounded-full bg-primary inline-flex"></div>
@@ -151,9 +152,10 @@ export const BannerBussines = () => {
                      </div>
                   </div>
                </div>
-               <button className="btn btn-primary flex mx-auto mt-16">
-                  Button
-               </button>
+               <div className='flex justify-center mt-20'>
+
+               <LinkButton href={SERVICES_PAGE} title="Vedi Servizi" />
+               </div>
             </div>
          </section>
       </article>

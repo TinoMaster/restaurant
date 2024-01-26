@@ -44,7 +44,10 @@ export async function getFavorites(id: string) {
       await mongoose.connect(db_config.URI)
       const favorites = await UserModel.findById(id)
          .select('favorites')
-         .populate('favorites')
+         .populate({
+            path: 'favorites',
+            populate: { path: 'ingredients' },
+         })
 
       if (!favorites) {
          return false
