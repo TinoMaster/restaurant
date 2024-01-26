@@ -52,7 +52,7 @@ export const LogoProfile = () => {
          </div>
 
          {menuProfile && (
-            <div className="bg-gradient-to-r from-gray-100 to-white text-darkMode absolute -top-[300px] z-20 lg:top-[48px] lg:right-0 p-4 flex flex-col justify-center gap-2 rounded-lg">
+            <div className="bg-gradient-to-r from-gray-100 to-white text-darkMode absolute z-20 top-[48px] right-2 lg:right-0 p-4 flex flex-col justify-center gap-2 rounded-lg">
                {linksLogoProfile.map((item, idx) => (
                   <Link
                      key={idx}

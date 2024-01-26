@@ -39,6 +39,24 @@ export async function getUserInfo(id: string) {
    }
 }
 
+export async function getFavorites(id: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const favorites = await UserModel.findById(id)
+         .select('favorites')
+         .populate('favorites')
+
+      if (!favorites) {
+         return false
+      }
+
+      return formatServerResponse(favorites)
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
 export async function updateUser(id: string, data: TUser) {
    try {
       await mongoose.connect(db_config.URI)

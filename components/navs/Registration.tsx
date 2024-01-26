@@ -4,6 +4,7 @@ import React from 'react'
 import { LoginButton } from '../ui/buttons/LoginButton'
 import { RegistrationButton } from '../ui/buttons/RegistrationButton'
 import { LogoProfile } from './LogoProfile'
+import { CartAndFavorites } from './CartAndFavorites'
 
 export const Registration = () => {
    const { data: session, status } = useSession()
@@ -16,7 +17,10 @@ export const Registration = () => {
    return (
       <>
          {session ? (
-            <LogoProfile />
+            <div className="flex items-center">
+               <CartAndFavorites />
+               <LogoProfile />
+            </div>
          ) : (
             <div className="flex justify-center text-xl">
                <LoginButton />
