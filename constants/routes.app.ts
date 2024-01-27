@@ -1,7 +1,7 @@
 /* Principal Pages */
 export const HOME_PAGE = '/'
 export const MENU_PAGE = '/menu'
-export const SERVICES_PAGE = '/services'
+export const SERVICES_PAGE = '/services/events'
 export const HISTORY_PAGE = '/history'
 export const CONTACT_PAGE = '/contacts'
 

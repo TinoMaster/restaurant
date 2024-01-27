@@ -1,4 +1,6 @@
 'use server'
+import '@/app/models/Products'
+import '@/app/models/Ingredients'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
 import { TUser, TUserMainInfo } from '@/types/models/user'

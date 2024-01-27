@@ -1,7 +1,6 @@
+import { SERVICES_PAGE } from '@/constants/routes.app'
+import { redirect } from 'next/navigation'
+
 export default function Page() {
-   return (
-      <div>
-         <h1>Services</h1>
-      </div>
-   )
+   redirect(SERVICES_PAGE)
 }

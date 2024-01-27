@@ -16,13 +16,14 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
    const pathname = usePathname()
    const { setMenuIsOpen } = useNav()
    const pathsUrl = cutPathnameByPiece(pathname, 1, 2)
+   const pathHref = cutPathnameByPiece(href, 1, 2)
 
    return (
       <div
          onClick={() => setMenuIsOpen(false)}
          className=" relative  inline-block"
       >
-         {pathsUrl === href ? (
+         {pathsUrl === pathHref ? (
             <motion.div
                layoutId="active"
                className="absolute w-full h-full border-b-2"

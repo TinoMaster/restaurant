@@ -1,3 +1,4 @@
+import { ChoiceService } from '@/components/pages/services/ChoiceService'
 import { SectionRoundedBehindBanner } from '@/components/ui/globals/SectionRoundedBehindBanner'
 import { HeroPage } from '@/components/ui/globals/heroPage/HeroPage'
 import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageContent'
@@ -21,7 +22,7 @@ export default function LayoutServicePage({
             ></HeroPageContent>
          </HeroPage>
          <SectionRoundedBehindBanner>
-            <div>prueba</div>
+            <ChoiceService />
          </SectionRoundedBehindBanner>
          <section className="min-h-[500px] container pb-10">{children}</section>
       </>
