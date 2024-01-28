@@ -32,18 +32,18 @@ export const Sidebar = () => {
    }
    return (
       <nav
-         className={`h-full bg-lightDarkMode absolute transition-all z-30 overflow-y-auto overflow-x-hidden ${
-            menuIsOpen ? 'w-60' : 'w-14'
+         className={`md:h-full bg-lightDarkMode absolute transition-all z-30 overflow-y-auto overflow-x-hidden py-1 ${
+            menuIsOpen ? 'w-60' : 'w-full md:w-14'
          }`}
       >
-         <div className="flex flex-col h-full justify-between items-center">
-            <div className="flex flex-col gap-5 py-2">
-               <button onClick={toggleMenu} className="p-2">
+         <div className="flex md:flex-col md:h-full justify-between items-center px-2 md:px-0">
+            <div className="flex md:flex-col items-center justify-center gap-5 px-2 pr-4 md:pr-0 md:py-2 border-r md:border-r-0 md:border-b border-gray-600 md:pb-10">
+               <button onClick={toggleMenu} className="p-2 hidden md:block">
                   <IoMenu className="text-3xl" />
                </button>
                <button
                   onClick={goHome}
-                  className="flex items-center justify-center gap-2 pt-4"
+                  className="flex items-center justify-center gap-2 p-2"
                >
                   <FaHouse className="text-xl" />
                   <span className={`${menuIsOpen ? 'block' : 'hidden'}`}>
@@ -61,7 +61,7 @@ export const Sidebar = () => {
                </button>
             </div>
 
-            <ul className="p-2 pt-5 sm:p-4 text-sm font-medium space-y-4">
+            <ul className="p-2 sm:p-4 text-sm font-medium md:space-y-4 flex md:flex-col gap-1">
                {linksProfile.map((item, idx) => (
                   <li key={idx}>
                      <Link
@@ -99,10 +99,10 @@ export const Sidebar = () => {
                   </li>
                )}
             </ul>
-            <div className="pt-5 pb-10 sm:px-4 flex">
+            <div className="md:pt-5 border-l md:border-l-0 border-gray-600 pl-2 md:pb-10 sm:px-4 flex">
                <button
                   onClick={() => signOut()}
-                  className="gap-2 flex relative justify-center items-center p-2 rounded-md mt-2 text-primary w-full max-w-sm m-auto"
+                  className="gap-2 flex relative justify-center items-center p-2 rounded-md md:mt-2 text-primary w-full max-w-sm m-auto"
                >
                   <RiLogoutCircleLine />
                   <span className={`${menuIsOpen ? 'block' : 'hidden'}`}>

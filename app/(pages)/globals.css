@@ -49,21 +49,8 @@
 }
 
 @layer utilities {
-   .btn {
-      @apply text-lg py-2 px-8 rounded-full hover:shadow-md flex justify-center items-center;
-   }
-   .btn-mediun {
-      @apply min-w-[200px];
-   }
-   .btn-primary {
-      @apply text-white bg-gradient-to-tr from-darkMode via-pri-600 to-primary hover:bg-pri-700 transition-colors;
-   }
-   .btn-outline {
-      @apply border text-white border-gray-200 bg-pri-600/10 hover:bg-primary/40 hover:border-white transition-colors;
-   }
-
    .btn-white {
-      @apply min-w-[100px] text-xs sm:text-sm font-bold text-gray-600 shadow bg-gray-50 active:scale-90 hover:bg-white transition-colors py-2 px-3 rounded-lg cursor-pointer;
+      @apply min-w-[100px] text-xs sm:text-sm font-bold text-gray-600 shadow bg-gray-50 active:scale-90 hover:bg-white transition-colors py-3 px-3 rounded-lg cursor-pointer;
    }
 
    .hover-primary-solid {

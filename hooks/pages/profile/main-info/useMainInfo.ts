@@ -16,10 +16,10 @@ import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
 interface IUseMainInfo {
-   editonMode: boolean
+   editionMode: boolean
    userInfoToEdit: TDataUserToUpdate
    handlerInfoToEdit: (e: React.ChangeEvent<HTMLInputElement>) => void
-   setEditonMode: React.Dispatch<React.SetStateAction<boolean>>
+   setEditionMode: React.Dispatch<React.SetStateAction<boolean>>
    handleSubmitUpdateUserInfo: (e: React.FormEvent<HTMLFormElement>) => void
    onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void
    imagePreview: string | null
@@ -31,7 +31,7 @@ export const useMainInfo = (): IUseMainInfo => {
    const { name, email, phone } = useAppSelector((state) => state.userReducer)
    const dispatch = useAppDispatch()
    /* States hook */
-   const [editonMode, setEditonMode] = useState(false)
+   const [editionMode, setEditionMode] = useState(false)
    const [userInfoToEdit, setUserInfoToEdit] = useState<TDataUserToUpdate>({
       name: name || '',
       email: email || '',
@@ -42,7 +42,7 @@ export const useMainInfo = (): IUseMainInfo => {
    const [imagePreview, setImagePreview] = useState<string | null>(null)
 
    useEffect(() => {
-      setEditonMode(validateUserInfo(userInfoToEdit, { name, email, phone }))
+      setEditionMode(validateUserInfo(userInfoToEdit, { name, email, phone }))
    }, [userInfoToEdit, name, email, phone])
 
    const handlerInfoToEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +76,7 @@ export const useMainInfo = (): IUseMainInfo => {
             signOut()
          }
          dispatch(updateMainInfo(userInfoToEdit))
-         setEditonMode(false)
+         setEditionMode(false)
          toast.remove()
          toast.success(SUCCESS_INFO_PROFILE)
       } else {
@@ -121,11 +121,11 @@ export const useMainInfo = (): IUseMainInfo => {
    }
 
    return {
-      editonMode,
+      editionMode,
       userInfoToEdit,
       imagePreview,
       handlerInfoToEdit,
-      setEditonMode,
+      setEditionMode,
       handleSubmitUpdateUserInfo,
       onChangeImage,
       handleChangeImage,

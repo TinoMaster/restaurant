@@ -7,8 +7,8 @@ export const RenderAddresses = async () => {
    const addresses = await getAddresses()
 
    return (
-      <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-         <div className="items-start justify-between md:flex">
+      <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+         <div className="items-start justify-between space-y-4 lg:flex">
             <div className="max-w-lg">
                <h3 className="text-pri-600 text-xl font-bold sm:text-2xl">
                   Addresses

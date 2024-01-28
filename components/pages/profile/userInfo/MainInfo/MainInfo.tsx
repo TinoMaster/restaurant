@@ -17,12 +17,12 @@ export const MainInfo = () => {
    const {
       handleChangeImage,
       imagePreview,
-      editonMode,
+      editionMode,
       userInfoToEdit,
       handlerInfoToEdit,
       handleSubmitUpdateUserInfo,
       onChangeImage,
-      setEditonMode,
+      setEditionMode,
    } = useMainInfo()
    const { openDialog } = useOpenDialogs()
 
@@ -33,16 +33,16 @@ export const MainInfo = () => {
          <>
             <Dialogs_Render />
             <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
-               {/* Caja imagen */}
-               <div className="flex flex-col gap-2 justify-center items-center col-span-4 md:col-span-1">
+               {/* image box */}
+               <div className="flex flex-col gap-2 justify-center items-center col-span-4 lg:col-span-1">
                   <ImageMainInfo
                      handleChangeImage={handleChangeImage}
                      imagePreview={imagePreview}
                      onChangeImage={onChangeImage}
                   />
                </div>
-               {/* Caja información */}
-               <div className="col-span-4 md:col-span-3">
+               {/* information box */}
+               <div className="col-span-4 lg:col-span-3">
                   <h3 className="text-3xl mb-5">User Info</h3>
                   <form
                      onSubmit={handleSubmitUpdateUserInfo}
@@ -66,9 +66,9 @@ export const MainInfo = () => {
                               <Btn_profile
                                  type="submit"
                                  name="Edit"
-                                 disabled={!editonMode}
+                                 disabled={!editionMode}
                                  title={
-                                    editonMode
+                                    editionMode
                                        ? 'Edit'
                                        : 'You must do any change'
                                  }
@@ -76,7 +76,7 @@ export const MainInfo = () => {
 
                               <Btn_profile
                                  type="button"
-                                 trigger={() => setEditonMode(false)}
+                                 trigger={() => setEditionMode(false)}
                                  name="Change password"
                                  disabled={!emailVerified}
                                  title={

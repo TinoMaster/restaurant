@@ -1,6 +1,4 @@
 import { FormAddAddress } from '@/components/pages/profile/address/add_new_address/FormAddAddress'
-import { img_map } from '@/utils/images'
-import Image from 'next/image'
 
 export default function AddNewAddressPage() {
    return (
@@ -11,14 +9,14 @@ export default function AddNewAddressPage() {
             </legend>
             <div className="grid grid-cols-2 col-span-2 gap-10 ">
                <FormAddAddress />
-               {/* Caja mapa */}
-               <div className="col-span-2 h-96 rounded-md overflow-hidden">
+               {/* map box */}
+               {/* <div className="col-span-2 h-96 rounded-md overflow-hidden">
                   <Image
                      src={img_map}
                      alt="map"
                      className="w-full h-full object-cover brightness-75"
                   />
-               </div>
+               </div> */}
             </div>
          </fieldset>
       </div>

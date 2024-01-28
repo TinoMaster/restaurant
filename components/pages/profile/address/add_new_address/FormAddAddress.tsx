@@ -12,23 +12,26 @@ import { InputAddNewAddress } from './Input_add_new_address'
 export const FormAddAddress = () => {
    const dispatch = useAppDispatch()
    const router = useRouter()
+
+   const onSubmit = async (formData: FormData) => {
+      toast.loading('Adding address...')
+      const response = await createAddress(formData)
+      if (!response) {
+         toast.dismiss()
+         toast.error('Something went wrong')
+         return
+      }
+      const res = JSON.parse(response)
+      dispatch(addAddress(res))
+      toast.dismiss()
+      toast.success('Address added successfully')
+      router.push('/profile/address')
+   }
+
    return (
       <form
-         action={async (formData: FormData) => {
-            toast.loading('Adding address...')
-            const response = await createAddress(formData)
-            if (!response) {
-               toast.dismiss()
-               toast.error('Something went wrong')
-               return
-            }
-            const res = JSON.parse(response)
-            dispatch(addAddress(res))
-            toast.dismiss()
-            toast.success('Address added successfully')
-            router.push('/profile/address')
-         }}
-         className="grid grid-cols-1 lg:grid-cols-2 col-span-2 gap-5 rounded-xl"
+         action={onSubmit}
+         className="grid grid-cols-1 md:grid-cols-2 col-span-2 gap-5 rounded-xl"
       >
          {addressProfilePageInputs.map((inp, idx) => (
             <InputAddNewAddress

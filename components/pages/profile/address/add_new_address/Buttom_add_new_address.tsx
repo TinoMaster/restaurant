@@ -7,7 +7,7 @@ export const Buttom_add_new_address = () => {
    return (
       <button
          type="submit"
-         className="btn-white"
+         className="btn-white w-full md:w-min my-2"
          style={
             pending
                ? { pointerEvents: 'none', cursor: 'not-allowed', opacity: 0.5 }
