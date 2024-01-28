@@ -13,7 +13,7 @@ export const PreferMenu = async () => {
          <h6 className="text-primary/80 font-bold text-center w-full">Menu</h6>
          <h3 className="italic text-white pb-10">Il Vostro Preferito</h3>
          <article className="container">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:p-10 py-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:p-10 py-5">
                {products && products?.length > 0 ? (
                   products.map((item, index) => (
                      <ProductCard

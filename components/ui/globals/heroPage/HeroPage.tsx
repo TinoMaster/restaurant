@@ -33,7 +33,7 @@ export const HeroPage = ({
                />
             </>
          ) : (
-            <div className="w-full h-full object-cover bg-gradient-to-t from-black/30 via-transparent to-black/70"></div>
+            <div className="w-full h-full object-cover bg-gradient-to-t from-darkMode via-pri-400/30 to-darkMode"></div>
          )}
       </section>
    )

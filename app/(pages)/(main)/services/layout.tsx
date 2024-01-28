@@ -13,17 +13,17 @@ export default function LayoutServicePage({
    return (
       <>
          <HeroPage
-            imageDesktop={banner_servicesPage}
-            imagemovil={banner_servicesPageMovil}
+            /* imageDesktop={banner_servicesPage}
+            imagemovil={banner_servicesPageMovil} */
          >
-            <HeroPageContent
+            {/*             <HeroPageContent
                title={BANNER_CONTENT.home.title}
                subtitle={BANNER_CONTENT.home.subtitle}
-            ></HeroPageContent>
-         </HeroPage>
-         <SectionRoundedBehindBanner>
+            ></HeroPageContent> */}
             <ChoiceService />
-         </SectionRoundedBehindBanner>
+         </HeroPage>
+         {/* <SectionRoundedBehindBanner>
+         </SectionRoundedBehindBanner> */}
          <section className="min-h-[500px] container pb-10">{children}</section>
       </>
    )

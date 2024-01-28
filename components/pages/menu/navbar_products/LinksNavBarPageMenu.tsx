@@ -14,8 +14,8 @@ export const LinksNavBarPageMenu = async ({
    const pathUrl = cutPathnameByPiece(pathname, 2, 3)
 
    return (
-      <ul className="container grid grid-cols-1 text-slate-200 gap-6 uppercase">
-         <h4 className='col-span-full text-center text-primary/80 text-3xl font-bold'>CATEGORIAS</h4>
+      <ul className="container grid grid-cols-3 md:grid-cols-4 text-slate-200 gap-6 uppercase">
+         <h4 className='col-span-full text-center text-secondary/70 text-2xl md:text-3xl font-bold'>CATEGORIAS</h4>
          {categories?.map((link) => (
             <Link
                key={link.name}
@@ -25,10 +25,10 @@ export const LinksNavBarPageMenu = async ({
                {pathUrl === '/' + link.name ? (
                   <motion.div
                      layoutId="active2"
-                     className="absolute bg-white/10 w-full h-full rounded-md"
+                     className="absolute bg-sec-500/40 w-full h-full rounded-md"
                   ></motion.div>
                ) : null}
-               <span className="text-center text-xl">{link.name}</span>
+               <span className="text-center text-base md:text-xl">{link.name}</span>
             </Link>
          ))}
       </ul>

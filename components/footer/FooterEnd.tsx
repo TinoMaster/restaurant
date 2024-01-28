@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const FooterEnd = () => {
    return (
-      <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+      <div className="max-w-4xl px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
          <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
             <svg
                xmlns="http://www.w3.org/2000/svg"

@@ -7,7 +7,7 @@ const Footer = () => {
    return (
       <footer className="text-gray-400 bg-lightDarkMode/50 body-font">
          <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-wrap md:text-left text-center order-first">
+            <div className="flex flex-wrap md:text-left text-center order-first justify-center">
                {footerLinks.map((group) => (
                   <div
                      key={group.category}

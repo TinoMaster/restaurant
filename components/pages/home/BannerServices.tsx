@@ -44,7 +44,7 @@ export const BannerServices = () => {
                         <h2 className="text-white text-lg title-font font-medium mb-3">
                            Eventi
                         </h2>
-                        <p className="leading-relaxed text-base">
+                        <p className="leading-relaxed text-base text-pretty">
                            Blue bottle crucifix vinyl post-ironic four dollar
                            toast vegan taxidermy. Gastropub indxgo juice
                            poutine, ramps microdosing banh mi pug VHS try-hard.
@@ -66,7 +66,7 @@ export const BannerServices = () => {
                         <h2 className="text-white text-lg title-font font-medium mb-3">
                            locazione di locali
                         </h2>
-                        <p className="leading-relaxed text-base">
+                        <p className="leading-relaxed text-base text-pretty">
                            Blue bottle crucifix vinyl post-ironic four dollar
                            toast vegan taxidermy. Gastropub indxgo juice
                            poutine, ramps microdosing banh mi pug VHS try-hard.
@@ -88,7 +88,7 @@ export const BannerServices = () => {
                         <h2 className="text-white text-lg title-font font-medium mb-3">
                            attività imprenditoriale
                         </h2>
-                        <p className="leading-relaxed text-base">
+                        <p className="leading-relaxed text-base text-pretty">
                            Blue bottle crucifix vinyl post-ironic four dollar
                            toast vegan taxidermy. Gastropub indxgo juice
                            poutine, ramps microdosing banh mi pug VHS try-hard.
