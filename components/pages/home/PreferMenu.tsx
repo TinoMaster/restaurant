@@ -16,11 +16,7 @@ export const PreferMenu = async () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:p-10 py-5">
                {products && products?.length > 0 ? (
                   products.map((item, index) => (
-                     <ProductCard
-                        key={index}
-                        index={index}
-                        product={item}
-                     />
+                     <ProductCard key={index} index={index} product={item} />
                   ))
                ) : (
                   <p className="text-center col-span-full text-gray-300">

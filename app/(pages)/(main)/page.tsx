@@ -11,6 +11,7 @@ import { BANNER_CONTENT } from '@/constants/common'
 import { MENU_PAGE } from '@/constants/routes.app'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
 import { Suspense } from 'react'
+import { LoadingProductsMenu } from '@/components/ui/loaders/LoadingProductsMenu'
 
 export default function Home() {
    return (
@@ -27,7 +28,7 @@ export default function Home() {
             <Wy_US />
          </SectionRoundedBehindBanner>
          <AboutUs />
-         <Suspense fallback={null}>
+         <Suspense fallback={<LoadingProductsMenu />}>
             <PreferMenu />
          </Suspense>
          <BannerServices />

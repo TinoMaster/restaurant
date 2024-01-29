@@ -11,7 +11,11 @@ export default async function SectionRenderProducts({
    const res = await getCategoryByName(category)
 
    if (!res) {
-      return
+      return (
+         <p className="text-center text-gray-400 text-lg">
+            No se encontro la categoria
+         </p>
+      )
    }
    const categoryData: TCategory = res
    const { products } = categoryData

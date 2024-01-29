@@ -11,6 +11,7 @@ interface ImagesRotatesProps {
    image2: StaticImageData
 }
 
+/* //TODO: fix loading animation */
 export const ImagesRotates = ({ image1, image2 }: ImagesRotatesProps) => {
    return (
       <article className="lg:w-1/2 flex gap-3 lg:gap-10 relative">

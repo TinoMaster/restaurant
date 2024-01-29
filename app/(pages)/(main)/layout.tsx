@@ -8,13 +8,13 @@ export default function MainLayout({
    children: React.ReactNode
 }) {
    return (
-      <main className="w-full overflow-hidden grow">
+      <>
          <header className="w-full absolute z-20">
             <NavBarScroll />
             <NavBar />
          </header>
-         {children}
+         <div className="w-full h-full">{children}</div>
          <Footer />
-      </main>
+      </>
    )
 }

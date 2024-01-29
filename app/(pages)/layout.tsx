@@ -17,10 +17,10 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body
-            className={`${siligury.className} antialiased h-auto min-h-screen bg-darkMode flex flex-col justify-between`}
+            className={`${siligury.className} antialiased min-h-screen bg-darkMode`}
          >
             <Providers>
-               <main className="w-full overflow-hidden grow">
+               <main className="w-full">
                   <Toaster />
                   {children}
                </main>
