@@ -17,7 +17,7 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body
-            className={`${siligury.className} antialiased min-h-screen bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode w-full`}
+            className={`${siligury.className} antialiased min-h-screen bg-gradient-to-tr from-darkMode via-lightDarkMode text-gray-100 to-darkMode w-full`}
          >
             <Providers>
                <main className="w-full">

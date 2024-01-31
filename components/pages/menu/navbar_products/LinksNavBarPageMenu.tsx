@@ -14,7 +14,7 @@ export const LinksNavBarPageMenu = async ({
    const pathUrl = cutPathnameByPiece(pathname, 2, 3)
 
    return (
-      <ul className="max-w-screen-xl mx-auto grid grid-cols-3 md:grid-cols-4 text-slate-200 gap-6 uppercase bg-gradient-to-r from-black/30 to-black/50 p-3 rounded-3xl">
+      <ul className="container grid grid-cols-3 md:grid-cols-4 text-slate-200 gap-6 uppercase p-3 rounded-lg">
          <h4 className="col-span-full text-center text-primary/70 text-xl md:text-2xl font-bold">
             CATEGORIES
          </h4>
@@ -27,7 +27,7 @@ export const LinksNavBarPageMenu = async ({
                {pathUrl === '/' + link.name ? (
                   <motion.div
                      layoutId="active2"
-                     className="absolute bg-white w-full h-full rounded-md"
+                     className="absolute bg-white w-full px-2 h-full rounded-md"
                   ></motion.div>
                ) : null}
                <span

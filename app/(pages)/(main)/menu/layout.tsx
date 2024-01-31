@@ -1,6 +1,10 @@
 import { NavBar_pageMenu } from '@/components/pages/menu/navbar_products'
 import { LoadingCategories } from '@/components/pages/profile/admin/categories/loadings/LoadingCategories'
+import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { HeroCurve } from '@/components/ui/globals/HeroCurve'
+import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageContent'
+import { BANNER_CONTENT } from '@/constants/common'
+import { MENU_PAGE } from '@/constants/routes.app'
 import { banner_menuPage, banner_menuPageMovil } from '@/utils/images'
 import { Suspense } from 'react'
 
@@ -15,11 +19,17 @@ export default function LayoutMenuPage({
             imageDesktop={banner_menuPage}
             imagemovil={banner_menuPageMovil}
          >
-            <Suspense fallback={<LoadingCategories />}>
-               <NavBar_pageMenu />
-            </Suspense>
+            <HeroPageContent
+               title={BANNER_CONTENT.home.title}
+               subtitle={BANNER_CONTENT.home.subtitle}
+            >
+               <LinkButton href={MENU_PAGE} title="Menu" />
+            </HeroPageContent>
          </HeroCurve>
-         <section className="min-h-[500px] container pb-10">{children}</section>
+         <Suspense fallback={<LoadingCategories />}>
+            <NavBar_pageMenu />
+         </Suspense>
+         <section className="min-h-[500px] container py-10">{children}</section>
       </>
    )
 }
