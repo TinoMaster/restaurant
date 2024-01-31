@@ -7,9 +7,11 @@ export const EventCard = () => {
       <section className="text-gray-300/80 body-font overflow-hidden">
          <div className="container">
             <div className="flex flex-wrap py-4">
-               <div className="lg:w-1/2 w-full relative lg:h-[600px] h-64 rounded-md bg-primary/10 shadow-md shadow-black/50">
-                <div className='absolute inset-0 w-full h-full border-2 border-primary rounded-md'></div>
+               <div className="lg:w-1/2 w-full max-w-lg mx-auto relative lg:h-[550px] h-64 rounded-md bg-primary/10 shadow-md shadow-black/50">
+                  <div className="absolute inset-0 w-full h-full border-2 border-primary rounded-md"></div>
                   <Image
+                     width={500}
+                     height={500}
                      alt="ecommerce"
                      className="w-full h-full translate-x-[20px] translate-y-[20px] object-cover object-center rounded-md"
                      src={img_about_us1}

@@ -5,5 +5,5 @@ export default async function MenuPage() {
    const categories = await getCategories()
 
    if (!categories || categories.length === 0) return null
-   else redirect(`/menu/${categories[0].name}`)
+   else redirect(`/menu/${categories[0].name}#top`)
 }

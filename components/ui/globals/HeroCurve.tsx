@@ -19,12 +19,16 @@ export const HeroCurve = ({
          {imagemovil && imageDesktop ? (
             <>
                <Image
+                  width={500}
+                  height={500}
                   priority={true}
                   className="w-full h-full object-cover md:hidden"
                   src={imagemovil}
                   alt="immagine del banner principale"
                />
                <Image
+                  width={1000}
+                  height={1000}
                   priority={true}
                   className="w-full h-full object-cover hidden md:block"
                   src={imageDesktop}
