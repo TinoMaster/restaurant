@@ -96,15 +96,19 @@ export async function createProduct(formData: FormData) {
 export async function deleteProduct(id: string) {
    try {
       await mongoose.connect(db_config.URI)
-      const res = await ProductModel.findByIdAndDelete(id)
+      const res: TProduct | null = await ProductModel.findOneAndDelete({
+         _id: id,
+      })
 
       if (!res) {
          return false
       }
 
-      await CategoryModel.findByIdAndUpdate(res.category, {
+      const { category, _id } = res
+
+      await CategoryModel.findByIdAndUpdate(category, {
          $pull: {
-            products: res._id,
+            products: _id,
          },
       })
 
