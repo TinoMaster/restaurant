@@ -8,7 +8,7 @@ export default function EventsPage() {
          <div className="">
             <EventCard />
          </div>
-         <div className="py-20">
+         <div className="py-20 container">
             <SomeEventsPictures />
          </div>
       </div>

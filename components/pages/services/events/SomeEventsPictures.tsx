@@ -7,9 +7,9 @@ export const SomeEventsPictures = () => {
       <section className="text-gray-300/80 body-font">
          <div className="px-5 py-24 mx-auto flex flex-wrap">
             <div className="flex w-full mb-20 flex-col">
-               <h1 className="sm:text-4xl text-3xl font-medium title-font text-white text-center">
+               <h3 className="sm:text-4xl text-4xl font-medium title-font text-white text-center">
                   Some of our events
-               </h1>
+               </h3>
                <p className="text-center leading-relaxed text-lg max-w-3xl mx-auto">
                   Whatever cardigan tote bag tumblr hexagon brooklyn
                   asymmetrical gentrify, subway tile poke farm-to-table. Franzen
