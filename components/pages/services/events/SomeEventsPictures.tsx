@@ -17,13 +17,13 @@ export const SomeEventsPictures = () => {
                   heirloom.
                </p>
             </div>
-            <div className="gap-6 columns-1 sm:columns-2 lg:columns-3 space-y-5">
-               <Image alt="gallery" src={img_about_us2} />
-               <Image alt="gallery" src={banner_menuPage} />
-               <Image alt="gallery" src={banner_menuPageMovil} />
-               <Image alt="gallery" src={banner_servicesPage} />
-               <Image alt="gallery" src={img_about_us2} />
-               <Image alt="gallery" src={img_about_us2} />
+            <div className="gap-6 columns-1 w-full sm:columns-2 lg:columns-3 space-y-5">
+               <Image className='w-full' width={350} height={250} alt="gallery" src={img_about_us2} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={banner_menuPage} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={banner_menuPageMovil} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={banner_servicesPage} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={img_about_us2} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={img_about_us2} />
             </div>
          </div>
       </section>

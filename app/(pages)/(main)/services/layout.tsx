@@ -26,7 +26,7 @@ export default function LayoutServicePage({
          </HeroCurve>
          <ChoiceService />
 
-         <section className="min-h-[500px] container py-10">{children}</section>
+         <section className="min-h-[500px] py-10">{children}</section>
       </>
    )
 }
