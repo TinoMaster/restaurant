@@ -16,6 +16,11 @@ export interface TProduct {
    updatedAt: string
 }
 
+export interface TProductInCart {
+   productId: TProduct['_id']
+   quantity: number
+}
+
 export interface TCreateProduct {
    name: string
    description: string

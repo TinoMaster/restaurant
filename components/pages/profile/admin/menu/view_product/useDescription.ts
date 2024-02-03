@@ -1,4 +1,4 @@
-import { uppdateProduct } from '@/services/actions/product.action'
+import { updateProduct } from '@/services/actions/product.action'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -13,7 +13,7 @@ export const useDescription = ({
    const [textAreaText, setTextAreaText] = useState(description)
    const onConfirmChange = async () => {
       toast.loading('Saving...')
-      const res = await uppdateProduct(id, { description: textAreaText })
+      const res = await updateProduct(id, { description: textAreaText })
 
       toast.remove()
 

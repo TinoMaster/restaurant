@@ -27,6 +27,8 @@ export async function getProducts() {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -45,6 +47,8 @@ export async function getProductById(id: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -90,6 +94,8 @@ export async function createProduct(formData: FormData) {
    } catch (error) {
       console.log(error)
       return { success: false, message: 'Something went wrong' }
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -117,10 +123,12 @@ export async function deleteProduct(id: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
-export async function uppdateProduct(id: string, data: TUpdateProduct) {
+export async function updateProduct(id: string, data: TUpdateProduct) {
    try {
       await mongoose.connect(db_config.URI)
       const res = await ProductModel.findByIdAndUpdate(id, data, {
@@ -134,6 +142,8 @@ export async function uppdateProduct(id: string, data: TUpdateProduct) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -149,6 +159,8 @@ export async function addIngredientToProduct(id: string, ingredientId: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -162,6 +174,8 @@ export async function changeAvailability(id: string, isAvailable: boolean) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -180,6 +194,8 @@ export async function deleteIngredientFromProduct(
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -198,6 +214,8 @@ export async function IsFavorite(id: string, userId: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -216,5 +234,64 @@ export async function removeFavorite(id: string, userId: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
+   }
+}
+
+export async function AddToCart(
+   userId: string,
+   productId: string,
+   quantity: number
+) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const res = await UserModel.findByIdAndUpdate(userId, {
+         $addToSet: { cart: { productId, quantity } },
+      })
+      revalidatePath('/profile')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   } finally {
+      await mongoose.disconnect()
+   }
+}
+
+export async function AddOneMoreToCart(
+   userId: string,
+   productId: string,
+   quantity: number
+) {
+   try {
+      await mongoose.connect(db_config.URI)
+      await UserModel.findByIdAndUpdate(userId, {
+         $inc: { cart: { $each: [{ productId, quantity }] } },
+      })
+      revalidatePath('/profile')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   } finally {
+      await mongoose.disconnect()
+   }
+}
+
+export async function RemoveFromCart(userId: string, productId: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      await UserModel.findByIdAndUpdate(userId, {
+         $pull: { cart: { productId } },
+      })
+
+      revalidatePath('/profile')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   } finally {
+      await mongoose.disconnect()
    }
 }

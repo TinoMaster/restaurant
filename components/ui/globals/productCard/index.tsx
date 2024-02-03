@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { FaCartArrowDown } from 'react-icons/fa6'
 import { MotionButton, MotionDiv } from '../../../helpers/MotionDiv'
 import { ButtonAddFav } from './ButtonAddFav'
+import { ButtonAddCart } from './ButtonAddCart'
 
 interface MenuItemPlusImageProps {
    product: TProduct
@@ -59,12 +60,7 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                </span>
                <div className="flex gap-2 items-center">
                   <ButtonAddFav productId={_id} />
-                  <MotionButton
-                     whileHover={{ y: [0, -5, 0, -5, 0] }}
-                     className="bg-pri-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"
-                  >
-                     <FaCartArrowDown />
-                  </MotionButton>
+                  <ButtonAddCart productId={_id} />
                </div>
             </div>
          </div>

@@ -1,6 +1,7 @@
 import { INITIAL_DATA_SESSION } from '@/constants/user'
 import { IsFavorite } from '@/services/actions/product.action'
 import { TAddress } from '@/types/models/address'
+import { TProductInCart } from '@/types/models/product'
 import { TDataUserToUpdate, TUser } from '@/types/models/user'
 import { Action, PayloadAction, createSlice } from '@reduxjs/toolkit'
 
@@ -15,6 +16,8 @@ export interface TUserActions {
    addFavorite: (payload: string) => Action
    removeFavorite: (payload: string) => Action
    addAddress: (payload: TAddress) => Action
+   addToCart: (payload: TProductInCart) => Action
+   removeFromCart: (payload: string) => Action
 }
 
 export const userSlice = createSlice({
@@ -67,6 +70,14 @@ export const userSlice = createSlice({
             (favorite) => favorite !== action.payload
          )
       },
+      addToCart: (state, action: PayloadAction<TProductInCart>) => {
+         state.cart.push(action.payload)
+      },
+      removeFromCart: (state, action: PayloadAction<string>) => {
+         state.cart = state.cart.filter(
+            (cart) => cart.productId !== action.payload
+         )
+      },
       addAddress: (state, action: PayloadAction<TAddress>) => {
          state.addresses.push(action.payload)
       },
@@ -84,6 +95,8 @@ export const {
    removeFromFavorite,
    updateRole,
    addAddress,
+   addToCart,
+   removeFromCart,
 } = userSlice.actions
 
 export default userSlice.reducer

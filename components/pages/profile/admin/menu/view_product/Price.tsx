@@ -1,7 +1,7 @@
 'use client'
 import { ConfirmOrCancelInputChanges } from '@/components/ui/buttons/ConfirmOrCancelInputChanges'
 import { EditInput } from '@/components/ui/buttons/EditInput'
-import { uppdateProduct } from '@/services/actions/product.action'
+import { updateProduct } from '@/services/actions/product.action'
 import { formatPrice } from '@/utils/formatPrice'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -21,7 +21,7 @@ export const Price = ({ price, id }: { price: number; id: string }) => {
          console.log(inputPrice, price.toString())
          if (inputPrice !== price.toString()) {
             toast.loading('Saving...')
-            const res = await uppdateProduct(id, { price: Number(inputPrice) })
+            const res = await updateProduct(id, { price: Number(inputPrice) })
 
             toast.remove()
 
