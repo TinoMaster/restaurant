@@ -1,6 +1,5 @@
-import { banner_menuPage, banner_menuPageMovil, banner_servicesPage, img_about_us2 } from '@/utils/images'
+import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
-import React from 'react'
 
 export const SomeEventsPictures = () => {
    return (
@@ -18,12 +17,12 @@ export const SomeEventsPictures = () => {
                </p>
             </div>
             <div className="gap-6 columns-1 w-full sm:columns-2 lg:columns-3 space-y-5">
-               <Image className='w-full' width={350} height={250} alt="gallery" src={img_about_us2} />
-               <Image className='w-full' width={350} height={250} alt="gallery" src={banner_menuPage} />
-               <Image className='w-full' width={350} height={250} alt="gallery" src={banner_menuPageMovil} />
-               <Image className='w-full' width={350} height={250} alt="gallery" src={banner_servicesPage} />
-               <Image className='w-full' width={350} height={250} alt="gallery" src={img_about_us2} />
-               <Image className='w-full' width={350} height={250} alt="gallery" src={img_about_us2} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={texturaCemento} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={texturaCemento} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={texturaCemento} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={texturaCemento} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={texturaCemento} />
+               <Image className='w-full' width={350} height={250} alt="gallery" src={texturaCemento} />
             </div>
          </div>
       </section>

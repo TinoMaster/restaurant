@@ -5,7 +5,9 @@ import { HeroCurve } from '@/components/ui/globals/HeroCurve'
 import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageContent'
 import { BANNER_CONTENT } from '@/constants/common'
 import { MENU_PAGE } from '@/constants/routes.app'
-import { banner_menuPage, banner_menuPageMovil } from '@/utils/images'
+import {
+   texturaCemento
+} from '@/utils/images'
 import { Suspense } from 'react'
 
 export default function LayoutMenuPage({
@@ -15,10 +17,7 @@ export default function LayoutMenuPage({
 }) {
    return (
       <>
-         <HeroCurve
-            imageDesktop={banner_menuPage}
-            imagemovil={banner_menuPageMovil}
-         >
+         <HeroCurve imageDesktop={texturaCemento} imagemovil={texturaCemento}>
             <HeroPageContent
                title={BANNER_CONTENT.home.title}
                subtitle={BANNER_CONTENT.home.subtitle}

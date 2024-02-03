@@ -1,31 +1,31 @@
-import { img_about_us1 } from '@/utils/images'
+import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 
 export default function HistoryPage() {
    return (
       <div className="">
-         <div className="grid grid-cols-2 gap-4 py-36 container">
-            <div>
-               <h1 className="text-3xl font-bold mb-4">
-                  Italian Restaurant Story
-               </h1>
-               <p className="text-lg">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  euismod, nisl nec ultricies lacinia, nunc nisl aliquet nisl,
-                  nec aliquet nisl nisl nec nisl. Sed euismod, nisl nec
-                  ultricies lacinia, nunc nisl aliquet nisl, nec aliquet nisl
-                  nisl nec nisl.
-               </p>
-            </div>
-            <div>
+         <div className="italian-restaurant-story py-32 text-white rounded-md shadow-lg container">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">
+               Historia del Restaurante Italiano
+            </h2>
+            <div className='w-full h-96'>
                <Image
-                  width={200}
-                  height={300}
-                  className="w-full h-full object-cover"
-                  src={img_about_us1}
-                  alt="Italian Restaurant Story"
+                  src={texturaCemento}
+                  alt="map"
+                  className="w-full h-full object-cover py-4 m-auto rounded-md"
                />
             </div>
+            {[...Array(2)].map((i) => (
+               <p
+                  key={i}
+                  className="mb-4 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-pretty leading-relaxed text-gray-200"
+               >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+                  accusantium corrupti eligendi rem. Tempore fugit mollitia amet
+                  beatae. Non quisquam corporis modi amet illo facilis minima,
+                  maiores neque nobis earum.
+               </p>
+            ))}
          </div>
       </div>
    )
