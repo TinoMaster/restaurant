@@ -18,14 +18,14 @@ export const CartAndFavorites = () => {
                </span>
             )}
          </Link>
-         <div className="p-2 relative">
+         <Link href={'/cart'} className="p-2 relative">
             <IoCartOutline className="w-6 h-6 hover:cursor-pointer" />
             {cart.length > 0 && (
                <span className="w-4 h-4 text-sm flex justify-center items-center text-white rounded-full bg-green-600 absolute -top-1 -right-1">
                   {cart.length}
                </span>
             )}
-         </div>
+         </Link>
       </div>
    )
 }
