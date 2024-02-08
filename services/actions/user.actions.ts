@@ -6,11 +6,15 @@ import { db_config } from '@/config/db.config'
 import { TUser, TUserMainInfo } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
+import { TResponseProductInCartPopulated } from '@/types/models/product'
 
 export async function getUser(id: string) {
    try {
       await mongoose.connect(db_config.URI)
-      const user: TUser | null = await UserModel.findById(id)
+      const user: TUser | null = await UserModel.findById(id).populate({
+         path: 'cart',
+         populate: { path: 'productId' },
+      }) as TUser
 
       if (!user) {
          return false
@@ -80,6 +84,27 @@ export async function ChangeAdminRole(id: string, isAdmin: boolean) {
       await mongoose.connect(db_config.URI)
       await UserModel.findByIdAndUpdate(id, { isAdmin })
       return true
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function getProductsCart(userId: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const productsCart = await UserModel.findById(userId)
+         .select('cart')
+         .populate({
+            path: 'cart',
+            populate: { path: 'productId' },
+         })
+
+      if (!productsCart) {
+         return false
+      }
+
+      return formatServerResponse<TResponseProductInCartPopulated>(productsCart)
    } catch (error) {
       console.log(error)
       return false

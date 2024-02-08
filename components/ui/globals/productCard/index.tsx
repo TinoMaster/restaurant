@@ -60,7 +60,7 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                </span>
                <div className="flex gap-2 items-center">
                   <ButtonAddFav productId={_id} />
-                  <ButtonAddCart productId={_id} />
+                  <ButtonAddCart product={product} />
                </div>
             </div>
          </div>

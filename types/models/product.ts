@@ -19,6 +19,23 @@ export interface TProduct {
 export interface TProductInCart {
    productId: TProduct['_id']
    quantity: number
+   _id: string
+}
+
+export interface TResponseProductInCartPopulated {
+   _id: string
+   cart: [
+      {
+         _id: string
+         productId: TProduct
+         quantity: number
+      }
+   ]
+}
+export interface TProductInCartPopulated {
+   productId: TProduct
+   quantity: number
+   _id: string
 }
 
 export interface TCreateProduct {

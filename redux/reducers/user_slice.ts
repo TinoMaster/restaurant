@@ -1,7 +1,6 @@
 import { INITIAL_DATA_SESSION } from '@/constants/user'
-import { IsFavorite } from '@/services/actions/product.action'
 import { TAddress } from '@/types/models/address'
-import { TProductInCart } from '@/types/models/product'
+import { TProductInCart, TProductInCartPopulated } from '@/types/models/product'
 import { TDataUserToUpdate, TUser } from '@/types/models/user'
 import { Action, PayloadAction, createSlice } from '@reduxjs/toolkit'
 
@@ -18,6 +17,8 @@ export interface TUserActions {
    addAddress: (payload: TAddress) => Action
    addToCart: (payload: TProductInCart) => Action
    removeFromCart: (payload: string) => Action
+   addQuantityOfOneProduct: (payload: string) => Action
+   removeQuantityOfOneProduct: (payload: string) => Action
 }
 
 export const userSlice = createSlice({
@@ -70,13 +71,29 @@ export const userSlice = createSlice({
             (favorite) => favorite !== action.payload
          )
       },
-      addToCart: (state, action: PayloadAction<TProductInCart>) => {
+      addToCart: (state, action: PayloadAction<TProductInCartPopulated>) => {
          state.cart.push(action.payload)
       },
       removeFromCart: (state, action: PayloadAction<string>) => {
          state.cart = state.cart.filter(
-            (cart) => cart.productId !== action.payload
+            (cart) => cart.productId._id !== action.payload
          )
+      },
+      addQuantityOfOneProduct: (state, action: PayloadAction<string>) => {
+         state.cart = state.cart.map((cart) => {
+            if (cart.productId._id === action.payload) {
+               cart.quantity = cart.quantity + 1
+            }
+            return cart
+         })
+      },
+      removeQuantityOfOneProduct: (state, action: PayloadAction<string>) => {
+         state.cart = state.cart.map((cart) => {
+            if (cart.productId._id === action.payload) {
+               cart.quantity = cart.quantity - 1
+            }
+            return cart
+         })
       },
       addAddress: (state, action: PayloadAction<TAddress>) => {
          state.addresses.push(action.payload)
@@ -97,6 +114,8 @@ export const {
    addAddress,
    addToCart,
    removeFromCart,
+   addQuantityOfOneProduct,
+   removeQuantityOfOneProduct,
 } = userSlice.actions
 
 export default userSlice.reducer
