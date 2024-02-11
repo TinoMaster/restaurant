@@ -1,5 +1,6 @@
 import { AddDescriptionToCategory } from '@/components/pages/profile/admin/categories/category/AddDescriptionToCategory'
 import { ButtomDeleteCategory } from '@/components/pages/profile/admin/categories/category/ButtomDeleteCategory'
+import { CategoryName } from '@/components/pages/profile/admin/categories/category/CategoryName'
 import { getCategoryById } from '@/services/actions/category.actions'
 import { notFound } from 'next/navigation'
 
@@ -22,15 +23,13 @@ export default async function CategoryPage({
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
                {/* <div className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center bg-slate-500 rounded" /> */}
                <div className="w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                  <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                  <p className="text-sm title-font text-gray-500 tracking-widest">
                      CATEGORY
-                  </h2>
-                  <h1 className="text-white text-3xl title-font font-medium mb-1 capitalize">
-                     {name}
-                  </h1>
+                  </p>
+                  <CategoryName name={name} id={categoryId} />
                   <div className="flex mb-4">
                      <span className="flex items-center">
-                        <span className='text-primary'>★★★★★</span>
+                        <span className="text-primary">★★★★★</span>
                         <span className="ml-3">4 Reviews</span>
                      </span>
                   </div>

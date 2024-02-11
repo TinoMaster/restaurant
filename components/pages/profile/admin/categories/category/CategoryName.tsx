@@ -1,9 +1,9 @@
 'use client'
 import { ConfirmOrCancelInputChanges } from '@/components/ui/buttons/ConfirmOrCancelInputChanges'
 import { EditInput } from '@/components/ui/buttons/EditInput'
-import { useName } from './useName'
+import { useCategoryName } from './useCategoryName'
 
-export const Name = ({ name, id }: { name: string; id: string }) => {
+export const CategoryName = ({ name, id }: { name: string; id: string }) => {
    const {
       editionMode,
       onCancelChange,
@@ -11,21 +11,20 @@ export const Name = ({ name, id }: { name: string; id: string }) => {
       inputName,
       onChangeInputName,
       onChangeEditionMode,
-   } = useName({ name, id })
+   } = useCategoryName(name, id)
 
    return (
-      <div className="mb-1 capitalize flex items-center gap-2">
+      <div className="flex items-center gap-2">
          {!editionMode ? (
-            <h2 className="text-white text-3xl title-font font-medium">
+            <h2 className="text-white text-3xl title-font font-medium capitalize py-1">
                {name}
             </h2>
          ) : (
             <input
                value={inputName}
                onChange={onChangeInputName}
-               defaultValue={inputName}
                type="text"
-               className="bg-transparent text-3xl focus:outline-none w-full resize-none overflow-auto mt-2 text-white"
+               className="bg-transparent text-3xl w-full max-w-[200px] focus:outline-none resize-none overflow-auto mt-2 text-white capitalize"
             />
          )}
          {!editionMode ? (

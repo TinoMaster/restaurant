@@ -44,9 +44,9 @@ export const ButtonAddCart = ({ product }: { product: TProduct }) => {
             <MotionButton
                onClick={handleClickRemove}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
-               className="bg-green-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"
+               className="bg-white/5 text-white text-xs lg:text-sm px-4 py-2 rounded-full focus:outline-none"
             >
-               <BsFillCartCheckFill />
+               in cart
             </MotionButton>
          ) : (
             <MotionButton

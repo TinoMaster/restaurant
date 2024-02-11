@@ -15,6 +15,8 @@ export async function getCategories() {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -33,6 +35,8 @@ export async function getCategoryById(id: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -51,6 +55,8 @@ export async function getCategoryByName(name: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -72,6 +78,8 @@ export async function createCategory(formData: FormData) {
          }
       }
       return { success: false, message: 'Something went wrong' }
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -86,6 +94,8 @@ export async function addDescription(FormData: FormData, id: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
    }
 }
 
@@ -98,5 +108,26 @@ export async function deleteCategory(id: string) {
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      await mongoose.disconnect()
+   }
+}
+
+export async function ChangeCategoryName(id: string, name: string) {
+   try {
+      await mongoose.connect(db_config.URI)
+      const res = await CategoryModel.findByIdAndUpdate(id, { name })
+
+      if (!res) {
+         return false
+      }
+
+      revalidatePath('/profile/admin/categories')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   } finally {
+      await mongoose.disconnect()
    }
 }

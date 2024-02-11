@@ -9,7 +9,7 @@ export default function MainLayout({
 }) {
    return (
       <>
-         <header className="w-full absolute z-20">
+         <header className="w-full fixed bg-darkMode z-20">
             <NavBarScroll />
             <NavBar />
          </header>

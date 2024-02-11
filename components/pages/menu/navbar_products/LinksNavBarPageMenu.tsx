@@ -14,10 +14,10 @@ export const LinksNavBarPageMenu = async ({
    const pathUrl = cutPathnameByPiece(pathname, 2, 3)
 
    return (
-      <ul className="container grid grid-cols-3 md:grid-cols-4 text-slate-200 gap-6 uppercase p-3 rounded-lg">
-         <h4 className="col-span-full text-center text-primary/70 text-xl md:text-2xl font-bold">
+      <ul className="container grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 py-10 bg-black/5 shadow-md text-slate-200 gap-6 uppercase p-3 rounded-lg">
+         {/* <h4 className="col-span-full text-center text-primary/70 text-xl md:text-2xl font-bold">
             CATEGORIES
-         </h4>
+         </h4> */}
          {categories?.map((link) => (
             <Link
                key={link.name}
@@ -33,7 +33,7 @@ export const LinksNavBarPageMenu = async ({
                <span
                   className={`${
                      pathUrl === '/' + link.name ? 'text-darkMode' : 'text-white'
-                  } text-center z-10 text-base md:text-xl`}
+                  } text-center z-10 text-base md:text-xl font-serif`}
                >
                   {link.name}
                </span>

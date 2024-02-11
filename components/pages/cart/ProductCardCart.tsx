@@ -45,7 +45,7 @@ export const ProductCardCart = ({
       <div className="w-full relative flex flex-wrap bg-white/5 p-1 shadow-md rounded-md items-center justify-between">
          <button
             onClick={removeProduct}
-            className="w-10 h-10 absolute -top-4 -right-4 bg-red-500/50 rounded-full"
+            className="w-10 h-10 absolute -top-4 -right-4 bg-red-500/30 rounded-full"
          >
             X
          </button>
@@ -56,7 +56,7 @@ export const ProductCardCart = ({
             src={texturaCemento}
             alt="textura cemento"
          />
-         <div className="p-2 grow space-y-1">
+         <div className="p-2 w-1/2 lg:w-1/4 space-y-1">
             <p className="text-lg font-bold capitalize">{p.name}</p>
             <p className="text-xs text-gray-300">
                {p.description.substring(0, 50)}...
@@ -83,7 +83,8 @@ export const ProductCardCart = ({
                </button>
             </div>
          </div>
-         <div className="px-4 grow flex justify-center items-center">
+         <div className="px-4 grow flex gap-2 justify-center items-center">
+            <p className="text-lg font-bold">Total:</p>
             <p className="text-lg font-bold">
                {formatPrice(p.price * product.quantity)}
             </p>

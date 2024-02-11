@@ -22,7 +22,7 @@ export const Registration = () => {
                <LogoProfile />
             </div>
          ) : (
-            <div className="flex justify-center text-xl">
+            <div className="flex justify-center text-xl md:text-base">
                <LoginButton />
                <RegistrationButton />
             </div>

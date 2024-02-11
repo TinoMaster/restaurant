@@ -1,4 +1,5 @@
 import mongoose, { model, models, Schema } from 'mongoose'
+import { UserModel } from './User'
 
 interface IProduct extends mongoose.Document {
    name: string
@@ -59,5 +60,51 @@ const ProductSchema = new Schema<IProduct>(
       timestamps: true,
    }
 )
+
+ProductSchema.pre('deleteMany', async function (next) {
+   try {
+      const productIds = this.getQuery()._id.$in
+
+      const objectIdArray = productIds.map(
+         (id: string) => new mongoose.Types.ObjectId(id)
+      )
+
+      await UserModel.updateMany(
+         { favorites: { $in: objectIdArray } },
+         { $pull: { favorites: { $in: objectIdArray } } }
+      )
+
+      await UserModel.updateMany(
+         { 'cart.productId': { $in: objectIdArray } },
+         { $pull: { cart: { productId: { $in: objectIdArray } } } }
+      )
+
+      next()
+   } catch (error: any) {
+      console.log(error)
+      next(error)
+   }
+})
+
+ProductSchema.pre('findOneAndDelete', async function (next) {
+   try {
+      const productId = new mongoose.Types.ObjectId(this.getQuery()['_id'])
+
+      await UserModel.updateMany(
+         { favorites: productId },
+         { $pull: { favorites: productId } }
+      )
+
+      await UserModel.updateMany(
+         { 'cart.productId': productId },
+         { $pull: { cart: { productId } } }
+      )
+
+      next()
+   } catch (error: any) {
+      console.log(error)
+      next(error)
+   }
+})
 
 export const ProductModel = models?.Products || model('Products', ProductSchema)
