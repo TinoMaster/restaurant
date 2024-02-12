@@ -38,24 +38,23 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
             <div className="w-32 h-32 lg:w-44 lg:h-44 bg-primary/30 rounded-full z-10"></div>
          </div>
          <div className="px-2 py-1 lg:p-4 grow flex flex-col">
-            <h2 className="text-sm lg:text-xl text-primary capitalize">
+            <h2 className="text-sm lg:text-base text-primary capitalize">
                {name}
             </h2>
-            <div className="flex flex-col gap-1 my-1 text-[10px] md:text-base grow">
-               <p className="first-letter:capitalize grow text-pri-300/50">
-                  {description}
-               </p>
-               <div className="flex flex-col">
-                  <p className="text-[8px] md:text-sm font-bold text-primary/70">
-                     ingredients:
+            <div className="flex flex-col gap-1 text-[10px] md:text-sm grow">
+               {description && (
+                  <p className="first-letter:capitalize grow text-pri-300/50">
+                     {description}
                   </p>
-                  <p className="capitalize text-[8px] md:text-sm text-pri-300/50">
+               )}
+               <div className="flex flex-col grow">
+                  <p className="capitalize text-[8px] md:text-xs text-pri-300/50">
                      {ingredients?.map((i) => i.name).join(', ')}
                   </p>
                </div>
             </div>
             <div className="flex justify-between items-center mt-4">
-               <span className="lg:text-xl text-primary font-bold text-sm">
+               <span className="lg:text-base text-primary font-bold text-sm">
                   {formatPrice(price)}
                </span>
                <div className="flex gap-2 items-center">

@@ -33,7 +33,7 @@ export async function POST(request: Request) {
          })
       }
 
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.updateOne({ email }, { image: response.data })
 
       return Response.json({

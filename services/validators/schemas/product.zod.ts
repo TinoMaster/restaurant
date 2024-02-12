@@ -7,10 +7,10 @@ export const productSchema = z
       name: z
          .string()
          .min(3, 'The name must have at least 3 characters')
-         .max(25, 'The name must have at most 25 characters'),
+         .max(30, 'The name must have at most 30 characters'),
       description: z
          .string()
-         .min(3, 'The description must have at least 3 characters')
+         .min(0, 'The description must have at least 3 characters')
          .max(100, 'The description must have at most 100 characters'),
       price: z
          .number({

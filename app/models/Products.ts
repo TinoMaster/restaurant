@@ -22,7 +22,6 @@ const ProductSchema = new Schema<IProduct>(
       },
       description: {
          type: String,
-         required: true,
       },
       price: {
          type: Number,
@@ -60,31 +59,6 @@ const ProductSchema = new Schema<IProduct>(
       timestamps: true,
    }
 )
-
-ProductSchema.pre('deleteMany', async function (next) {
-   try {
-      const productIds = this.getQuery()._id.$in
-
-      const objectIdArray = productIds.map(
-         (id: string) => new mongoose.Types.ObjectId(id)
-      )
-
-      await UserModel.updateMany(
-         { favorites: { $in: objectIdArray } },
-         { $pull: { favorites: { $in: objectIdArray } } }
-      )
-
-      await UserModel.updateMany(
-         { 'cart.productId': { $in: objectIdArray } },
-         { $pull: { cart: { productId: { $in: objectIdArray } } } }
-      )
-
-      next()
-   } catch (error: any) {
-      console.log(error)
-      next(error)
-   }
-})
 
 ProductSchema.pre('findOneAndDelete', async function (next) {
    try {

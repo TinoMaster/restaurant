@@ -42,7 +42,5 @@ export async function PUT(req: Request) {
          success: false,
          message: 'Hubo un error al procesar la solicitud',
       })
-   } finally {
-      await mongoose.disconnect()
    }
 }

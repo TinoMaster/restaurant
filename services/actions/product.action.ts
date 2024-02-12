@@ -18,7 +18,7 @@ import { UserModel } from '@/app/models/User'
 
 export async function getProducts() {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const products: TProduct[] | null = await ProductModel.find()
          .populate('category')
          .populate('ingredients')
@@ -27,14 +27,12 @@ export async function getProducts() {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function getProductById(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const product: TProduct | null = (await ProductModel.findById(id)
          .populate('category')
          .populate('ingredients')) as TProduct
@@ -47,8 +45,6 @@ export async function getProductById(id: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
@@ -69,7 +65,7 @@ export async function createProduct(formData: FormData) {
    }
 
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const res = await ProductModel.create(product)
 
       if (!res) {
@@ -94,14 +90,12 @@ export async function createProduct(formData: FormData) {
    } catch (error) {
       console.log(error)
       return { success: false, message: 'Something went wrong' }
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function deleteProduct(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const res: TProduct | null = await ProductModel.findOneAndDelete({
          _id: id,
       })
@@ -123,14 +117,12 @@ export async function deleteProduct(id: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function updateProduct(id: string, data: TUpdateProduct) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const res = await ProductModel.findByIdAndUpdate(id, data, {
          new: true,
       })
@@ -142,14 +134,12 @@ export async function updateProduct(id: string, data: TUpdateProduct) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function addIngredientToProduct(id: string, ingredientId: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await ProductModel.findByIdAndUpdate(id, {
          $addToSet: { ingredients: ingredientId },
       })
@@ -159,14 +149,12 @@ export async function addIngredientToProduct(id: string, ingredientId: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function changeAvailability(id: string, isAvailable: boolean) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await ProductModel.findByIdAndUpdate(id, { available: isAvailable })
 
       revalidatePath('/profile/admin/menu')
@@ -174,8 +162,6 @@ export async function changeAvailability(id: string, isAvailable: boolean) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
@@ -184,7 +170,7 @@ export async function deleteIngredientFromProduct(
    ingredientId: string
 ) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await ProductModel.findByIdAndUpdate(id, {
          $pull: { ingredients: ingredientId },
       })
@@ -194,14 +180,12 @@ export async function deleteIngredientFromProduct(
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function IsFavorite(id: string, userId: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
          $addToSet: { favorites: id },
       })
@@ -214,14 +198,12 @@ export async function IsFavorite(id: string, userId: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function removeFavorite(id: string, userId: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
          $pull: { favorites: id },
       })
@@ -234,8 +216,6 @@ export async function removeFavorite(id: string, userId: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
@@ -245,7 +225,7 @@ export async function AddToCart(
    quantity: number
 ) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const res = await UserModel.findByIdAndUpdate(userId, {
          $addToSet: { cart: { productId, quantity } },
       })
@@ -254,8 +234,6 @@ export async function AddToCart(
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
@@ -265,7 +243,7 @@ export async function AddOneMoreToCart(
    quantity: number
 ) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
          $inc: { cart: { $each: [{ productId, quantity }] } },
       })
@@ -274,14 +252,12 @@ export async function AddOneMoreToCart(
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function RemoveFromCart(userId: string, productId: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
          $pull: { cart: { productId } },
       })
@@ -291,7 +267,5 @@ export async function RemoveFromCart(userId: string, productId: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }

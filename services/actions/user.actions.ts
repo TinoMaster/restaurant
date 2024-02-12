@@ -10,7 +10,7 @@ import { TResponseProductInCartPopulated } from '@/types/models/product'
 
 export async function getUser(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const user: TUser | null = await UserModel.findById(id).populate({
          path: 'cart',
          populate: { path: 'productId' },
@@ -29,7 +29,7 @@ export async function getUser(id: string) {
 
 export async function getUserInfo(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const userInfo: TUserMainInfo | null = (await UserModel.findById(
          id
       ).select('name email phone image -_id')) as TUserMainInfo
@@ -47,7 +47,7 @@ export async function getUserInfo(id: string) {
 
 export async function getFavorites(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const favorites = await UserModel.findById(id)
          .select('favorites')
          .populate({
@@ -68,7 +68,7 @@ export async function getFavorites(id: string) {
 
 export async function updateUser(id: string, data: TUser) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const user: TUser | null = await UserModel.findByIdAndUpdate(id, data, {
          new: true,
       })
@@ -81,7 +81,7 @@ export async function updateUser(id: string, data: TUser) {
 
 export async function ChangeAdminRole(id: string, isAdmin: boolean) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(id, { isAdmin })
       return true
    } catch (error) {
@@ -92,7 +92,7 @@ export async function ChangeAdminRole(id: string, isAdmin: boolean) {
 
 export async function getProductsCart(userId: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const productsCart = await UserModel.findById(userId)
          .select('cart')
          .populate({

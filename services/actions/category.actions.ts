@@ -8,21 +8,20 @@ import { revalidatePath } from 'next/cache'
 
 export async function getCategories() {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
+
       const categories: TCategory[] | null = await CategoryModel.find()
 
       return formatServerResponse<TCategory[]>(categories)
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function getCategoryById(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const category: TCategory | null = (await CategoryModel.findById(
          id
       ).populate('products')) as TCategory
@@ -35,14 +34,12 @@ export async function getCategoryById(id: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function getCategoryByName(name: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const category: TCategory | null = (await CategoryModel.findOne({
          name,
       }).populate('products')) as TCategory
@@ -55,8 +52,6 @@ export async function getCategoryByName(name: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
@@ -65,7 +60,7 @@ export async function createCategory(formData: FormData) {
       const category: TCategoryCreate = {
          name: formData.get('name')?.toString().toLocaleLowerCase() as string,
       }
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await CategoryModel.create(category)
       revalidatePath('/profile/admin')
       return { success: true, message: 'Category created successfully' }
@@ -78,8 +73,6 @@ export async function createCategory(formData: FormData) {
          }
       }
       return { success: false, message: 'Something went wrong' }
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
@@ -87,35 +80,31 @@ export async function addDescription(FormData: FormData, id: string) {
    try {
       const description = FormData.get('description') as string
 
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await CategoryModel.findByIdAndUpdate(id, { description })
       revalidatePath('/profile/admin/categories')
       return true
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function deleteCategory(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await CategoryModel.findOneAndDelete({ _id: id })
       revalidatePath('/profile/admin/categories')
       return true
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }
 
 export async function ChangeCategoryName(id: string, name: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const res = await CategoryModel.findByIdAndUpdate(id, { name })
 
       if (!res) {
@@ -127,7 +116,5 @@ export async function ChangeCategoryName(id: string, name: string) {
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      await mongoose.disconnect()
    }
 }

@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache'
 
 export async function getIngredients() {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const ingredients: TIngredient[] | null = await IngredientModel.find()
 
       return formatServerResponse(ingredients)
@@ -25,7 +25,7 @@ export async function addNewIngredient(formData: FormData) {
          name: name.toLowerCase(),
       }
 
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await IngredientModel.create(data)
 
       revalidatePath('/profile/admin/ingredients')
@@ -44,7 +44,7 @@ export async function addNewIngredient(formData: FormData) {
 
 export async function deleteIngredient(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await IngredientModel.findByIdAndDelete(id)
 
       revalidatePath('/profile/admin/ingredients')

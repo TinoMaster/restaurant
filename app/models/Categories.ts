@@ -27,7 +27,13 @@ CategorySchema.pre('findOneAndDelete', async function (next) {
    try {
       const categoryId: mongoose.Types.ObjectId = this.getQuery()['_id']
 
-      await ProductModel.deleteMany({ category: categoryId })
+      const products = await ProductModel.find({ category: categoryId })
+
+      await Promise.all(
+         products.map(async (product) => {
+            await ProductModel.findOneAndDelete({ _id: product._id })
+         })
+      )
 
       next()
    } catch (error: any) {

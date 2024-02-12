@@ -14,7 +14,7 @@ export async function getAddresses() {
    const session = await getServerSession(authOptions)
 
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const user: TUser | null = await UserModel.findById(session?.user?.sub)
          .populate('addresses')
          .lean()
@@ -32,7 +32,7 @@ export async function getAddresses() {
 
 export async function getAddress(id: string) {
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const address = await AddressesModel.findById(id)
 
       if (!address) {
@@ -60,7 +60,7 @@ export async function createAddress(formData: FormData) {
          user: session?.user?.sub as string,
       }
 
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       const savedAddress = await AddressesModel.create(address)
 
       if (!savedAddress) {
@@ -87,7 +87,7 @@ export async function createAddress(formData: FormData) {
 export async function deleteAddress(id: string) {
    const session = await getServerSession(authOptions)
    try {
-      await mongoose.connect(db_config.URI)
+      await mongoose.connect(db_config.URI as string)
       await UserModel.findOneAndUpdate(
          { _id: session?.user?.sub },
          { $pull: { addresses: id } }
