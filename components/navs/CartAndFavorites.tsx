@@ -6,10 +6,10 @@ import { FaRegHeart } from 'react-icons/fa'
 import { IoCartOutline } from 'react-icons/io5'
 
 export const CartAndFavorites = () => {
-   const { favorites, cart } = useAppSelector((state) => state.userReducer)
+   const { favorites, cart, _id } = useAppSelector((state) => state.userReducer)
 
    return (
-      <div className="flex items-center gap-3 px-2">
+      <div className={`${_id ? 'flex' : 'hidden'} items-center gap-3 px-2`}>
          <Link href={'/profile/favorites'} className="p-2 relative">
             <FaRegHeart className="w-5 h-5 hover:cursor-pointer" />
             {favorites.length > 0 && (

@@ -45,7 +45,7 @@ export const NavBarScroll = () => {
          </motion.div>
          {/* Buttom section */}
          <section
-            className={`fixed top-4 right-0 rounded-l-3xl text-slate-200 bg-gradient-to-r from-darkMode/90 via-lightDarkMode/90 to-darkMode/90 shadow-md py-2 z-40`}
+            className={`rounded-l-3xl text-slate-200 z-40`}
          >
             <div className="lg:pr-5 lg:pl-10 lg:hidden px-3 flex justify-between items-center hover:-translate-x-1 transition-transform">
                <div

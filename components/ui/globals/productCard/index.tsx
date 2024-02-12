@@ -1,11 +1,10 @@
 import { TProduct } from '@/types/models/product'
 import { formatPrice } from '@/utils/formatPrice'
-import { texturaCemento } from '@/utils/images'
+import { pizza, texturaCemento } from '@/utils/images'
 import Image from 'next/image'
-import { FaCartArrowDown } from 'react-icons/fa6'
-import { MotionButton, MotionDiv } from '../../../helpers/MotionDiv'
-import { ButtonAddFav } from './ButtonAddFav'
+import { MotionDiv } from '../../../helpers/MotionDiv'
 import { ButtonAddCart } from './ButtonAddCart'
+import { ButtonAddFav } from './ButtonAddFav'
 
 interface MenuItemPlusImageProps {
    product: TProduct
@@ -35,7 +34,15 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                src={texturaCemento}
                alt="imagen fondo del plato"
             />
-            <div className="w-32 h-32 lg:w-44 lg:h-44 bg-primary/30 rounded-full z-10"></div>
+            <div className="w-32 h-32 lg:w-44 lg:h-44 bg-primary/30 rounded-full z-10 overflow-hidden">
+               <Image
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  src={pizza}
+                  alt="imagen del plato"
+               />
+            </div>
          </div>
          <div className="px-2 py-1 lg:p-4 grow flex flex-col">
             <h2 className="text-sm lg:text-base text-primary capitalize">

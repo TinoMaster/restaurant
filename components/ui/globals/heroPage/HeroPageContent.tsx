@@ -1,6 +1,8 @@
 import { bannerBigTittle, bannerTittle } from '@/utils/animations/framers'
 import LoadingBannerContent from '../../loaders/loadingBannerContent'
 import { MotionDiv, MotionP } from '../../../helpers/MotionDiv'
+import Image from 'next/image'
+import { logo_white } from '@/utils/images'
 
 interface HeroPageContentProps {
    title: string
@@ -15,6 +17,17 @@ export const HeroPageContent = ({
    return (
       <div className="flex flex-col text-white w-11/12 lg:w-2/3 xl:w-2/5 2xl:w-1/3 h-full justify-center items-center relative">
          <LoadingBannerContent />
+         <div className="w-32 h-32 lg:w-44 lg:h-44 bg-primary/30 rounded-full z-10 overflow-hidden border-4 border-primary/50 relative -translate-y-5">
+            <div className="w-full h-full bg-primary/30 z-10 absolute" />
+            <Image
+               src={logo_white}
+               alt="logo"
+               width={300}
+               height={300}
+               priority={true}
+               className="w-full h-full object-cover"
+            />
+         </div>
          <MotionP
             variants={bannerTittle}
             initial="initial"

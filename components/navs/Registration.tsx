@@ -1,10 +1,8 @@
 'use client'
 import { useSession } from 'next-auth/react'
-import React from 'react'
 import { LoginButton } from '../ui/buttons/LoginButton'
 import { RegistrationButton } from '../ui/buttons/RegistrationButton'
 import { LogoProfile } from './LogoProfile'
-import { CartAndFavorites } from './CartAndFavorites'
 
 export const Registration = () => {
    const { data: session, status } = useSession()
@@ -18,7 +16,6 @@ export const Registration = () => {
       <>
          {session ? (
             <div className="flex items-center">
-               <CartAndFavorites />
                <LogoProfile />
             </div>
          ) : (

@@ -1,6 +1,5 @@
 import Footer from '@/components/footer'
 import { NavBar } from '@/components/navs/NavBar'
-import { NavBarScroll } from '@/components/navs/NavBarScroll'
 
 export default function MainLayout({
    children,
@@ -9,8 +8,7 @@ export default function MainLayout({
 }) {
    return (
       <>
-         <header className="w-full fixed bg-darkMode z-20">
-            <NavBarScroll />
+         <header className="w-full sticky top-0 z-20 bg-gradient-to-tr from-darkMode via-neutral-800 to-darkMode shadow">
             <NavBar />
          </header>
          <div className="w-full h-full">{children}</div>
