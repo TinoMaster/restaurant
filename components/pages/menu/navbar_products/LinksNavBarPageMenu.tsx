@@ -1,5 +1,6 @@
 'use client'
 import { TCategory } from '@/types/models/category'
+import { convertPathWithSpaces } from '@/utils/convertPathWithSpaces'
 import { cutPathnameByPiece } from '@/utils/cutPathname'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -21,7 +22,7 @@ export const LinksNavBarPageMenu = async ({
                href={`/menu/${link.name}`}
                className="col-span-1 flex justify-center items-center rounded-md py-2 cursor-pointer relative"
             >
-               {pathUrl === '/' + link.name ? (
+               {pathUrl === '/' + convertPathWithSpaces(link.name) ? (
                   <motion.div
                      layoutId="active2"
                      className="absolute bg-white w-full px-2 h-full rounded-md"
@@ -29,7 +30,7 @@ export const LinksNavBarPageMenu = async ({
                ) : null}
                <span
                   className={`${
-                     pathUrl === '/' + link.name
+                     pathUrl === '/' + convertPathWithSpaces(link.name)
                         ? 'text-darkMode'
                         : 'text-white'
                   } text-center z-10 text-base md:text-xl font-serif`}

@@ -2,6 +2,7 @@
 import { CategoryModel } from '@/app/models/Categories'
 import { db_config } from '@/config/db.config'
 import { TCategory, TCategoryCreate } from '@/types/models/category'
+import { convertPathWithSpacesReverse } from '@/utils/convertPathWithSpaces'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
@@ -39,10 +40,14 @@ export async function getCategoryById(id: string) {
 
 export async function getCategoryByName(name: string) {
    try {
+      const categoryName = convertPathWithSpacesReverse(name)
       await mongoose.connect(db_config.URI as string)
       const category: TCategory | null = (await CategoryModel.findOne({
-         name,
-      }).populate('products')) as TCategory
+         name: categoryName,
+      }).populate({
+         path: 'products',
+         populate: { path: 'ingredients' },
+      })) as TCategory
 
       if (!category) {
          return false
