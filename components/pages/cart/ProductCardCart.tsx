@@ -12,6 +12,7 @@ import { formatPrice } from '@/utils/formatPrice'
 import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
+import { IoMdClose } from 'react-icons/io'
 
 export const ProductCardCart = ({
    product,
@@ -45,9 +46,9 @@ export const ProductCardCart = ({
       <div className="w-full relative flex flex-wrap bg-white/5 p-1 shadow-md rounded-md items-center justify-between">
          <button
             onClick={removeProduct}
-            className="w-10 h-10 absolute -top-4 -right-4 bg-red-500/30 rounded-full"
+            className="w-10 h-10 absolute -top-4 right-0 bg-white/30 rounded-full flex justify-center items-center"
          >
-            X
+            <IoMdClose />
          </button>
          <Image
             width={200}

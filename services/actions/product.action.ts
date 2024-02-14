@@ -48,6 +48,26 @@ export async function getProductById(id: string) {
    }
 }
 
+export async function getProductsByCategory(category: string) {
+   try {
+      await mongoose.connect(db_config.URI as string)
+      const categoryId = await CategoryModel.findOne({ name: category })
+      const products: TProduct[] | null = await ProductModel.find({
+         category: categoryId?._id,
+      }).populate('ingredients')
+
+      if (!products) {
+         return false
+      }
+
+      revalidatePath('/menu')
+      return formatServerResponse<TProduct[]>(products)
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
 export async function createProduct(formData: FormData) {
    const product: TCreateProduct = {
       name: formData.get('name')?.toString().toLocaleLowerCase() as string,

@@ -38,28 +38,6 @@ export async function getCategoryById(id: string) {
    }
 }
 
-export async function getCategoryByName(name: string) {
-   try {
-      const categoryName = convertPathWithSpacesReverse(name)
-      await mongoose.connect(db_config.URI as string)
-      const category: TCategory | null = (await CategoryModel.findOne({
-         name: categoryName,
-      }).populate({
-         path: 'products',
-         populate: { path: 'ingredients' },
-      })) as TCategory
-
-      if (!category) {
-         return false
-      }
-
-      return formatServerResponse<TCategory>(category)
-   } catch (error) {
-      console.log(error)
-      return false
-   }
-}
-
 export async function createCategory(formData: FormData) {
    try {
       const category: TCategoryCreate = {

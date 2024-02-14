@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/ui/globals/productCard'
-import { getCategoryByName } from '@/services/actions/category.actions'
-import { TCategory } from '@/types/models/category'
+import { getProductsByCategory } from '@/services/actions/product.action'
+import { convertPathWithSpacesReverse } from '@/utils/convertPathWithSpaces'
 
 export default async function SectionRenderProducts({
    params,
@@ -8,20 +8,9 @@ export default async function SectionRenderProducts({
    params: { category: string }
 }) {
    const { category } = params
-
-   if (!category) return
-
-   const res = await getCategoryByName(category)
-
-   if (!res) {
-      return (
-         <p className="text-center text-gray-400 text-lg">
-            No se encontro la categoria
-         </p>
-      )
-   }
-   const categoryData: TCategory = res
-   const { products } = categoryData
+   const products = await getProductsByCategory(
+      convertPathWithSpacesReverse(category)
+   )
 
    if (!products || products.length === 0) {
       return (

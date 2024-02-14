@@ -12,7 +12,7 @@ export const Summary = () => {
    )
 
    return (
-      <div className="w-full h-full p-5 rounded-md">
+      <div className="w-full h-full p-5 rounded-md bg-green-700">
          <h3 className="text-3xl text-center">Summary</h3>
          <div className="py-5 text-xl">
             <div className="flex justify-between">
