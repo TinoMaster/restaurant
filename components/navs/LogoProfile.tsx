@@ -53,14 +53,14 @@ export const LogoProfile = () => {
 
          {menuProfile && (
             <div className="bg-gradient-to-r from-gray-100 to-white text-darkMode absolute z-20 top-[48px] right-2 lg:right-0 p-4 flex flex-col justify-center gap-2 rounded-lg">
-               {linksLogoProfile.map((item, idx) => (
+               {linksLogoProfile.map(({ title, href }, idx) => (
                   <Link
                      key={idx}
-                     href={item.href}
+                     href={href}
                      className="flex items-center gap-1 p-2 rounded-lg hover:bg-white/90 hover:text-gray-800 transition-colors duration-150"
                   >
-                     <item.icon className="text-xl" />
-                     <span className="capitalize text-sm">{item.title}</span>
+                     {}
+                     <span className="capitalize text-sm">{title}</span>
                   </Link>
                ))}
                <button

@@ -1,4 +1,5 @@
-import { NavBar_admin } from '@/components/pages/profile/admin/NavBar_admin'
+import { MenuInfinite } from '@/components/ui/globals/MenuInfinite'
+import { linksAdminPanel } from '@/constants/links_profile'
 import { authOptions } from '@/libs/authOptions'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
@@ -17,7 +18,11 @@ export default async function AdminPanellayout({
 
    return (
       <div>
-         <NavBar_admin />
+         <MenuInfinite
+            links={linksAdminPanel}
+            cutPath={[1, 4]}
+            position="right"
+         />
          {children}
       </div>
    )

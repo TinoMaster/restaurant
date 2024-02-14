@@ -15,23 +15,23 @@ export const CONTACT_PAGE_NAME = 'Contatti'
 
 export const linksPrincipalMenu: Array<TLink> = [
    {
-      name: HOME_PAGE_NAME,
+      title: HOME_PAGE_NAME,
       href: HOME_PAGE,
    },
    {
-      name: MENU_PAGE_NAME,
+      title: MENU_PAGE_NAME,
       href: MENU_PAGE,
    },
    {
-      name: SERVICE_PAGE_NAME,
+      title: SERVICE_PAGE_NAME,
       href: SERVICES_PAGE,
    },
    {
-      name: HISTORY_PAGE_NAME,
+      title: HISTORY_PAGE_NAME,
       href: HISTORY_PAGE,
    },
    {
-      name: CONTACT_PAGE_NAME,
+      title: CONTACT_PAGE_NAME,
       href: CONTACT_PAGE,
    },
 ]

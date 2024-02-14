@@ -14,12 +14,12 @@ export const FooterLinksGroup = ({ group }: FooterLinksGroupProps) => {
          </h2>
          <nav className="list-none mb-10">
             {links.map((link) => (
-               <li key={link.name}>
+               <li key={link.title}>
                   <Link
                      href={link.href}
                      className="text-gray-400 hover:text-white capitalize"
                   >
-                     {link.name}
+                     {link.title}
                   </Link>
                </li>
             ))}

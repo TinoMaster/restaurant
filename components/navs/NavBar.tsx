@@ -14,7 +14,7 @@ export const NavBar = () => {
             <NavBarScroll />
             <div className="gap-5 hidden lg:flex items-center">
                {linksPrincipalMenu?.map((link) => (
-                  <NavbarLink key={link.name} link={link} />
+                  <NavbarLink key={link.title} link={link} />
                ))}
                <Registration />
             </div>

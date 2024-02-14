@@ -1,10 +1,10 @@
-import { TLinkProfilePage } from '@/types/common'
+import { TLink, TLinkWhitIcon } from '@/types/common'
 import { CiUser } from 'react-icons/ci'
 import { IoIosNotificationsOutline, IoIosHeartEmpty } from 'react-icons/io'
 import { PiAddressBookLight } from 'react-icons/pi'
 import { TbShoppingBagCheck } from 'react-icons/tb'
 
-export const linksProfile: TLinkProfilePage[] = [
+export const linksProfile: TLinkWhitIcon[] = [
    {
       title: 'User info',
       href: '/profile/user_info',
@@ -32,7 +32,7 @@ export const linksProfile: TLinkProfilePage[] = [
    },
 ]
 
-export const linksLogoProfile: TLinkProfilePage[] = [
+export const linksLogoProfile: TLinkWhitIcon[] = [
    {
       title: 'Mio Profilo',
       href: '/profile/user_info',
@@ -55,25 +55,21 @@ export const linksLogoProfile: TLinkProfilePage[] = [
    },
 ]
 
-export const linksAdminPanel: TLinkProfilePage[] = [
+export const linksAdminPanel: TLink[] = [
    {
       title: 'Categories',
       href: '/profile/admin/categories',
-      icon: CiUser,
    },
    {
       title: 'Ingredients',
       href: '/profile/admin/ingredients',
-      icon: CiUser,
    },
    {
       title: 'Menu',
       href: '/profile/admin/menu',
-      icon: IoIosHeartEmpty,
    },
    {
       title: 'Users',
       href: '/profile/admin/users',
-      icon: TbShoppingBagCheck,
    },
 ]

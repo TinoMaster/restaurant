@@ -1,11 +1,11 @@
 import { IconType } from 'react-icons'
 
 export type TLink = {
-   name: string
+   title: string
    href: string
 }
 
-export type TLinkProfilePage = {
+export type TLinkWhitIcon = {
    title: string
    href: string
    icon: IconType

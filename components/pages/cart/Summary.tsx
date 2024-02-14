@@ -21,12 +21,12 @@ export const Summary = () => {
             </div>
             <div className="flex justify-between">
                <p>Shipping</p>
-               <p>$ 100</p>
+               <p>{formatPrice(0)}</p>
             </div>
          </div>
          <div className="flex justify-between text-2xl">
             <p className="font-bold">Total</p>
-            <p>{formatPrice(total + 100)}</p>
+            <p>{formatPrice(total)}</p>
          </div>
          <button className="w-full h-10 bg-black text-white rounded-md mt-5">
             Checkout

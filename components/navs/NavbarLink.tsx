@@ -12,7 +12,7 @@ interface NavbarLinkProps {
 }
 
 export const NavbarLink = ({ link }: NavbarLinkProps) => {
-   const { name, href } = link
+   const { title, href } = link
    const pathname = usePathname()
    const { setMenuIsOpen } = useNav()
    const pathsUrl = cutPathnameByPiece(pathname, 1, 2)
@@ -30,7 +30,7 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
             ></motion.div>
          ) : null}
          <Link href={`${href}`} scroll={false} className="">
-            {name}
+            {title}
          </Link>
       </div>
    )

@@ -62,19 +62,19 @@ export const Sidebar = () => {
             </div>
 
             <ul className="p-2 sm:p-4 text-sm font-medium md:space-y-4 flex md:flex-col gap-1">
-               {linksProfile.map((item, idx) => (
+               {linksProfile.map((link, idx) => (
                   <li key={idx}>
                      <Link
-                        href={item.href}
+                        href={link.href}
                         className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
-                           path === item.href
+                           path === link.href
                               ? 'bg-white/90 text-gray-700'
                               : 'hover:bg-white/10'
                         }   active:bg-pri-900 duration-150`}
                      >
-                        <item.icon className="text-xl" />
+                        <link.icon className="text-xl" />
                         <span className={`${menuIsOpen ? 'block' : 'hidden'}`}>
-                           {item.title}
+                           {link.title}
                         </span>
                      </Link>
                   </li>

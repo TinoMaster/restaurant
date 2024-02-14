@@ -1,5 +1,5 @@
+import { MenuInfinite } from '@/components/ui/globals/MenuInfinite'
 import { getCategories } from '@/services/actions/category.actions'
-import { LinksNavBarPageMenu } from './LinksNavBarPageMenu'
 
 export const NavBar_pageMenu = async () => {
    const categories = await getCategories()
@@ -10,5 +10,18 @@ export const NavBar_pageMenu = async () => {
             Debe crear al menos una categoria en el panel de admin
          </p>
       )
-   } else return <LinksNavBarPageMenu categories={categories} />
+   }
+   const linksCategories = categories.map((category) => ({
+      title: category.name,
+      href: `/menu/${category.name}`,
+   }))
+   return (
+      <div className="container">
+         <MenuInfinite
+            links={linksCategories}
+            cutPath={[1, 3]}
+            position="center"
+         />
+      </div>
+   )
 }
