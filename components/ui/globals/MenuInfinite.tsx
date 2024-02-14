@@ -1,4 +1,8 @@
 'use client'
+import {
+   convertPathWithSpaces,
+   convertPathWithSpacesReverse,
+} from '@/utils/convertPathWithSpaces'
 import { cutPathnameByPiece } from '@/utils/cutPathname'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -34,7 +38,7 @@ export const MenuInfinite = ({
       <motion.header
          ref={element}
          whileTap={{ cursor: 'grabbing' }}
-         className="flex  overflow-hidden relative py-4 mb-4 lg:mb-10 px-2 bg-white/10 rounded-lg"
+         className="flex  overflow-hidden relative py-4 mb-4 lg:mb-10 px-2  rounded-lg"
       >
          <motion.nav
             drag="x"
@@ -48,16 +52,20 @@ export const MenuInfinite = ({
                   key={title}
                   href={href}
                   className={` ${
-                     path === href ? 'text-gray-800' : 'hover:text-white'
-                  } uppercase text-xs sm:text-xs flex justify-center items-center gap-1 p-2 rounded-lg relative`}
+                     convertPathWithSpacesReverse(path) === href
+                        ? 'text-gray-800'
+                        : 'hover:text-white'
+                  } uppercase text-xs sm:text-xs flex justify-center items-center gap-1 bg-white/5 p-2 rounded-lg relative`}
                >
-                  {path === href && (
+                  {convertPathWithSpacesReverse(path) === href && (
                      <motion.div
                         layoutId="active2"
                         className="absolute bg-white w-full px-2 h-full rounded-md"
                      ></motion.div>
                   )}
-                  <span className="leading-3 z-10">{title}</span>
+                  <span className="leading-none z-10 w-max flex justify-center items-center">
+                     {title}
+                  </span>
                </Link>
             ))}
          </motion.nav>

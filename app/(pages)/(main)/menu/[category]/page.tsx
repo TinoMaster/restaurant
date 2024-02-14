@@ -8,6 +8,9 @@ export default async function SectionRenderProducts({
    params: { category: string }
 }) {
    const { category } = params
+
+   if (!category) return
+
    const res = await getCategoryByName(category)
 
    if (!res) {
