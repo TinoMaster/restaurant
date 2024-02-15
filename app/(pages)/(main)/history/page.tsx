@@ -3,12 +3,12 @@ import Image from 'next/image'
 
 export default function HistoryPage() {
    return (
-      <div className="">
-         <div className="italian-restaurant-story py-32 text-white rounded-md shadow-lg container">
+      <div className="mt-5 md:mt-10">
+         <div className="italian-restaurant-story text-white rounded-md shadow-lg container">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">
                Historia del Restaurante Italiano
             </h2>
-            <div className='w-full h-96'>
+            <div className="w-full h-96">
                <Image
                   src={texturaCemento}
                   alt="map"

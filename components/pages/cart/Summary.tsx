@@ -1,7 +1,8 @@
 'use client'
-
 import { useAppSelector } from '@/redux/hooks'
 import { formatPrice } from '@/utils/formatPrice'
+import { GiTabletopPlayers } from 'react-icons/gi'
+import { ImHome3 } from 'react-icons/im'
 
 export const Summary = () => {
    const { cart } = useAppSelector((state) => state.userReducer)
@@ -12,7 +13,7 @@ export const Summary = () => {
    )
 
    return (
-      <div className="w-full h-full p-5 rounded-md bg-green-700">
+      <div className="w-full h-full p-5 rounded-md bg-gradient-to-b from-black/60 via-black/10 to-black/60">
          <h3 className="text-3xl text-center">Summary</h3>
          <div className="py-5 text-xl">
             <div className="flex justify-between">
@@ -28,9 +29,14 @@ export const Summary = () => {
             <p className="font-bold">Total</p>
             <p>{formatPrice(total)}</p>
          </div>
-         <button className="w-full h-10 bg-black text-white rounded-md mt-5">
-            Checkout
-         </button>
+         <div className="py-5 space-y-3">
+            <button className="w-full h-10 bg-black/60 hover:bg-black transition-colors text-white rounded-md flex items-center justify-center gap-2">
+               <ImHome3 size={24} />A Casa
+            </button>
+            <button className="w-full h-10 bg-black/60 hover:bg-black transition-colors text-white rounded-md flex items-center justify-center gap-2">
+               <GiTabletopPlayers size={24} />A Tavollo
+            </button>
+         </div>
       </div>
    )
 }

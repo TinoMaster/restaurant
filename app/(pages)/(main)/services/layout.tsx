@@ -16,7 +16,7 @@ export default function LayoutServicePage({
                subtitle={BANNER_CONTENT.home.subtitle}
             ></HeroPageContent>
          </HeroCurve> */}
-         <div className="py-20 lg:py-30">
+         <div className="mt-5 md:mt-10">
             <ChoiceService />
          </div>
 

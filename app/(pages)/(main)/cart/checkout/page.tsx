@@ -20,7 +20,7 @@ export default function CheckoutPage() {
                   </p>
                )}
             </div>
-            <div className="w-full lg:w-1/3 h-full lg:py-20 lg:px-5 bg-white/5">
+            <div className="w-full lg:w-1/3 h-full mt-5 lg:mt-0 lg:py-20 lg:px-5 bg-white/5">
                <Summary />
             </div>
          </div>

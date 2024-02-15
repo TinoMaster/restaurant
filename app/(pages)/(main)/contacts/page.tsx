@@ -3,10 +3,8 @@ import React from 'react'
 
 export default function ContactPage() {
    return (
-      <div>
-         <div className='py-20 lg:py-32'>
-            <MapAndFeedback />
-         </div>
+      <div className="mt-5 md:mt-10">
+         <MapAndFeedback />
       </div>
    )
 }
