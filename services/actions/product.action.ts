@@ -107,8 +107,14 @@ export async function createProduct(formData: FormData) {
 
       revalidatePath('/profile/admin/menu')
       return { success: true, message: 'Product created successfully' }
-   } catch (error) {
+   } catch (error: any) {
       console.log(error)
+      if (error?.code === 11000) {
+         return {
+            success: false,
+            message: 'Ya existe el producto',
+         }
+      }
       return { success: false, message: 'Something went wrong' }
    }
 }
