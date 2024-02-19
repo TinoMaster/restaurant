@@ -8,7 +8,7 @@ export default function MainLayout({
 }) {
    return (
       <>
-         <header className="w-full sticky top-0 z-20 bg-gradient-to-tr from-darkMode via-neutral-800 to-darkMode shadow">
+         <header className="w-full relative z-20">
             <NavBar />
          </header>
          <div className="w-full h-full">{children}</div>
