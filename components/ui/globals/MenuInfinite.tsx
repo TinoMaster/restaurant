@@ -38,7 +38,7 @@ export const MenuInfinite = ({
       <motion.header
          ref={element}
          whileTap={{ cursor: 'grabbing' }}
-         className="flex  overflow-hidden relative py-4 mb-4 lg:mb-10 px-2  rounded-lg"
+         className="flex bg-zinc-800 overflow-hidden relative py-4 mb-4 lg:mb-10 shadow-inner px-2 rounded-lg"
       >
          <motion.nav
             drag="x"
@@ -51,6 +51,7 @@ export const MenuInfinite = ({
                <Link
                   key={title}
                   href={href}
+                  scroll={false}
                   className={` ${
                      convertPathWithSpacesReverse(path) === href
                         ? 'text-gray-800'

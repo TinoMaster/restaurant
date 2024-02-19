@@ -48,7 +48,7 @@ export const HeroPageContent = ({
             variants={bannerTittle}
             initial="initial"
             animate="animate"
-            className="py-4 z-20 flex flex-col justify-center items-center gap-2"
+            className="py-6 z-20 flex flex-col justify-center items-center gap-2"
          >
             {children}
          </MotionDiv>

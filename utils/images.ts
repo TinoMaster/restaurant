@@ -12,6 +12,7 @@ import texturaCemento from '@/public/images/textura-cemento.jpg'
 import img_map from '@/public/images/img_map.webp'
 import pizza from '@/public/images/pizza.png'
 import logo_white from '@/public/images/logo_white.png'
+import prenotazione from '@/public/images/prenotacion.jpg'
 
 export {
    banner_servicesPage,
@@ -28,4 +29,5 @@ export {
    img_map,
    pizza,
    logo_white,
+   prenotazione,
 }

@@ -8,7 +8,7 @@ export default function MainLayout({
 }) {
    return (
       <>
-         <header className="w-full relative z-20">
+         <header className="w-full relative z-30">
             <NavBar />
          </header>
          <div className="w-full h-full">{children}</div>

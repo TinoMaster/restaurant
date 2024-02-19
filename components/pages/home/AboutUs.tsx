@@ -1,11 +1,11 @@
-import { img_about_us1, img_about_us2 } from '@/utils/images'
-import { ImagesRotates } from './ImagesRotates'
+import { prenotazione } from '@/utils/images'
 import { LinkButton } from '../../ui/buttons/LinkButton'
+import { ImagesRotates } from './ImagesRotates'
 
 export const AboutUs = () => {
    return (
       <article className="container flex flex-col lg:flex-row gap-10 lg:gap-0 py-20 lg:py-44 text-gray-300">
-         <ImagesRotates image1={img_about_us1} image2={img_about_us2} />
+         <ImagesRotates image1={prenotazione} image2={prenotazione} />
          <section className="flex flex-col w-full lg:w-1/2 gap-2 items-center lg:items-end justify-center lg:pl-32">
             <p className="text-primary/80 font-bold w-full text-center lg:text-start">
                Chi Siamo

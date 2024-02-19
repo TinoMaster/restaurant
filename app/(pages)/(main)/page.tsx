@@ -3,14 +3,10 @@ import { BannerServices } from '@/components/pages/home/BannerServices'
 import { LinksSection } from '@/components/pages/home/LinksSection'
 import { PreferMenu } from '@/components/pages/home/PreferMenu'
 import { Testimonials } from '@/components/pages/home/Testimonials'
-import { Wy_US } from '@/components/pages/home/Wy-Us'
-import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { HeroCurve } from '@/components/ui/globals/HeroCurve'
-import { SectionRoundedBehindBanner } from '@/components/ui/globals/SectionRoundedBehindBanner'
 import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageContent'
 import { LoadingProductsMenu } from '@/components/ui/loaders/LoadingProductsMenu'
 import { BANNER_CONTENT } from '@/constants/common'
-import { CONTACT_PAGE, MENU_PAGE } from '@/constants/routes.app'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
 import Link from 'next/link'
 import { Suspense } from 'react'
@@ -29,9 +25,9 @@ export default function Home() {
                      href="/menu"
                      className="w-full flex flex-col justify-center items-center gap-2"
                   >
-                     <div className="rounded-full border-primary border-2 p-2 gap-2 flex justify-center items-center">
-                        <FaLocationDot className="w-6 h-6 text-gray-200" />
-                        <p className="text-xl">Come Arrivare</p>
+                     <div className="rounded-lg border-primary shadow-md shadow-black/40 border p-3 relative gap-1 flex justify-center items-center bg-gradient-to-tr from-primary/30 to-black/70">
+                        <FaLocationDot className="w-7 h-7 text-gray-200 absolute -top-4" />
+                        <p className="text-xl">Come arrivare</p>
                      </div>
                   </Link>
                </div>
@@ -40,9 +36,6 @@ export default function Home() {
          <div className="py-10 lg:py-20 h-[30vh] rounded-t-3xl">
             <LinksSection />
          </div>
-         {/* <SectionRoundedBehindBanner>
-            <Wy_US />
-         </SectionRoundedBehindBanner> */}
          <AboutUs />
          <Suspense fallback={<LoadingProductsMenu />}>
             <PreferMenu />

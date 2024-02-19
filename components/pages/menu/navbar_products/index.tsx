@@ -16,7 +16,7 @@ export const NavBar_pageMenu = async () => {
       href: `/menu/${category.name}`,
    }))
    return (
-      <div className="container">
+      <div className="container sticky top-0 z-20">
          <MenuInfinite
             links={linksCategories}
             cutPath={[1, 3]}

@@ -1,6 +1,6 @@
 import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { SERVICES_PAGE } from '@/constants/routes.app'
-import { img_about_us1 } from '@/utils/images'
+import { img_PageMenuMovil, img_about_us1 } from '@/utils/images'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BiSolidBusiness } from 'react-icons/bi'
@@ -15,7 +15,7 @@ export const BannerServices = () => {
          <div className="gradient"></div>
          <div className="absolute w-full h-full">
             <Image
-               src={img_about_us1}
+               src={img_PageMenuMovil}
                alt="image banner services"
                className="w-full h-full object-cover brightness-50 grayscale"
             />
