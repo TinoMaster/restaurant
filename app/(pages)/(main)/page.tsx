@@ -7,6 +7,7 @@ import { HeroCurve } from '@/components/ui/globals/HeroCurve'
 import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageContent'
 import { LoadingProductsMenu } from '@/components/ui/loaders/LoadingProductsMenu'
 import { BANNER_CONTENT } from '@/constants/common'
+import { CONTACT_PAGE } from '@/constants/routes.app'
 import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
 import Link from 'next/link'
 import { Suspense } from 'react'
@@ -22,7 +23,7 @@ export default function Home() {
             >
                <div className="col-span-2">
                   <Link
-                     href="/menu"
+                     href={CONTACT_PAGE}
                      className="w-full flex flex-col justify-center items-center gap-2"
                   >
                      <div className="rounded-lg border-primary shadow-md shadow-black/40 border p-3 relative gap-1 flex justify-center items-center bg-gradient-to-tr from-primary/30 to-black/70">

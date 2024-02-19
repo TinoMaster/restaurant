@@ -96,3 +96,7 @@ export const MapAndFeedback = () => {
       </section>
    )
 }
+
+/* 
+https://www.google.com/maps/place/Pizzeria+Albatros/@42.428317,14.2754109,17z/data=!3m1!4b1!4m6!3m5!1s0x1331a806082e6251:0x609f57689103b26!8m2!3d42.428317!4d14.2754109!16s%2Fg%2F1tk205pb?hl=es-419&entry=ttu
+*/
