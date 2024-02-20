@@ -14,7 +14,7 @@ export const Registration = () => {
 
    return (
       <>
-         {session ? (
+         {session?.user.sub ? (
             <div className="flex items-center">
                <LogoProfile />
             </div>
