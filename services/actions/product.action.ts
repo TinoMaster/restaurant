@@ -60,7 +60,6 @@ export async function getProductsByCategory(category: string) {
          return false
       }
 
-      revalidatePath('/menu')
       return formatServerResponse<TProduct[]>(products)
    } catch (error) {
       console.log(error)
