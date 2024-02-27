@@ -10,13 +10,15 @@ export const LinksSection = () => {
                href="/menu"
                className="w-full flex flex-col lg:flex-row justify-center items-center gap-2 bg-gradient-to-tl from-primary/20 to-darkMode/70 shadow-md p-5 rounded-full"
             >
-               <Image
-                  width={200}
-                  height={200}
-                  alt="menu"
-                  src={img_PageMenuMovil}
-                  className="w-20 h-20 rounded-full object-cover bg-white/5 p-1"
-               />
+               <div className="w-20 h-20 relative rounded-full border-4 border-white/5 overflow-hidden">
+                  <Image
+                     fill
+                     alt="menu"
+                     src={img_PageMenuMovil}
+                     className="object-cover"
+                     quality={10}
+                  />
+               </div>
                <p className="text-xl font-bold">Vedi Menu</p>
             </Link>
          </div>
@@ -25,13 +27,15 @@ export const LinksSection = () => {
                href="/services/events"
                className="w-full flex flex-col lg:flex-row justify-center items-center gap-2 bg-gradient-to-tr from-primary/20 to-darkMode/70 shadow-md p-5 rounded-full"
             >
-               <Image
-                  width={200}
-                  height={200}
-                  alt="menu"
-                  src={prenotazione}
-                  className="w-20 h-20 rounded-full object-cover bg-white/5 p-1"
-               />
+               <div className="w-20 h-20 relative rounded-full border-4 border-white/5 overflow-hidden">
+                  <Image
+                     fill
+                     alt="menu"
+                     src={prenotazione}
+                     className="object-cover"
+                     quality={10}
+                  />
+               </div>
                <p className="text-xl font-bold">Prenotare</p>
             </Link>
          </div>

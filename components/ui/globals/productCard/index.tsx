@@ -28,16 +28,14 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
       >
          <div className="w-full h-36 lg:h-56 flex justify-center items-center relative">
             <Image
-               width={400}
-               height={400}
+               fill
                className="w-full h-full object-cover absolute"
                src={texturaCemento}
                alt="imagen fondo del plato"
             />
-            <div className="w-32 h-32 lg:w-44 lg:h-44 bg-primary/30 rounded-full z-10 overflow-hidden">
+            <div className="w-32 h-32 lg:w-44 lg:h-44 relative bg-primary/30 rounded-full z-10 overflow-hidden">
                <Image
-                  width={400}
-                  height={400}
+                  fill
                   className="w-full h-full object-cover"
                   src={pizza}
                   alt="imagen del plato"

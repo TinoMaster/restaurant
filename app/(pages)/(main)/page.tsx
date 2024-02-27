@@ -8,7 +8,7 @@ import { HeroPageContent } from '@/components/ui/globals/heroPage/HeroPageConten
 import { LoadingProductsMenu } from '@/components/ui/loaders/LoadingProductsMenu'
 import { BANNER_CONTENT } from '@/constants/common'
 import { CONTACT_PAGE } from '@/constants/routes.app'
-import { img_PageMenu, img_PageMenuMovil } from '@/utils/images'
+import { img_PageMenu } from '@/utils/images'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -16,7 +16,7 @@ import { FaLocationDot } from 'react-icons/fa6'
 export default function Home() {
    return (
       <div className="-translate-y-[80px]">
-         <HeroCurve imageDesktop={img_PageMenu} imagemovil={img_PageMenuMovil}>
+         <HeroCurve image={img_PageMenu}>
             <HeroPageContent
                title={BANNER_CONTENT.home.title}
                subtitle={BANNER_CONTENT.home.subtitle}

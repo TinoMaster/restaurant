@@ -22,10 +22,9 @@ export const HeroPageContent = ({
             <Image
                src={logo_white}
                alt="logo"
-               width={300}
-               height={300}
+               fill
                priority={true}
-               className="w-full h-full object-cover"
+               className="object-cover"
             />
          </div>
          <MotionP
