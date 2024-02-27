@@ -1,4 +1,4 @@
-import { banner_menuPageMovil } from '@/utils/images'
+import { img_PageMenu } from '@/utils/images'
 import Image from 'next/image'
 
 export const About = () => {
@@ -6,13 +6,8 @@ export const About = () => {
       <section className="py-14">
          <div className="max-w-screen-xl mx-auto md:px-8">
             <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
-               <div className="flex-1 sm:hidden lg:block">
-                  <Image
-                     width={500}
-                     height={500}
-                     src={banner_menuPageMovil}
-                     alt=""
-                  />
+               <div className="flex-1 sm:hidden lg:block relative w-full h-[300px] rounded-md overflow-hidden m-auto">
+                  <Image fill src={img_PageMenu} alt="image about menu" />
                </div>
                <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
                   <h3 className="text-primary font-semibold">

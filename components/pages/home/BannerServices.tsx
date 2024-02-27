@@ -1,6 +1,6 @@
 import { LinkButton } from '@/components/ui/buttons/LinkButton'
 import { SERVICES_PAGE } from '@/constants/routes.app'
-import { img_PageMenuMovil, img_about_us1 } from '@/utils/images'
+import { img_PageMenu } from '@/utils/images'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BiSolidBusiness } from 'react-icons/bi'
@@ -8,16 +8,16 @@ import { GoArrowRight } from 'react-icons/go'
 import { MdNightlife } from 'react-icons/md'
 import { SiHomeassistantcommunitystore } from 'react-icons/si'
 
-img_about_us1
 export const BannerServices = () => {
    return (
       <article className="relative flex justify-center items-center">
          <div className="gradient"></div>
-         <div className="absolute w-full h-full">
+         <div className="absolute overflow-hidden w-full h-full">
             <Image
-               src={img_PageMenuMovil}
+               fill
+               src={img_PageMenu}
                alt="image banner services"
-               className="w-full h-full object-cover brightness-50 grayscale"
+               className="w-full h-full object-cover brightness-25 grayscale"
             />
          </div>
          <div className="absolute w-full h-full bg-gradient-to-tr from-darkMode/80 via-darkMode/60 to-darkMode/80"></div>

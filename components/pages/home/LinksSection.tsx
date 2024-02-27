@@ -1,4 +1,4 @@
-import { img_PageMenuMovil, prenotazione } from '@/utils/images'
+import { img_PageMenu, prenotazione } from '@/utils/images'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -14,7 +14,7 @@ export const LinksSection = () => {
                   <Image
                      fill
                      alt="menu"
-                     src={img_PageMenuMovil}
+                     src={img_PageMenu}
                      className="object-cover"
                      quality={10}
                   />

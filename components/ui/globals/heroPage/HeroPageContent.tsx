@@ -23,7 +23,6 @@ export const HeroPageContent = ({
                src={logo_white}
                alt="logo"
                fill
-               priority={true}
                className="object-cover"
             />
          </div>
