@@ -8,7 +8,7 @@ export const LinksSection = () => {
          <div className="col-span-1">
             <Link
                href="/menu"
-               className="w-full flex flex-col lg:flex-row justify-center items-center gap-2 bg-gradient-to-tl from-primary/20 to-darkMode/70 shadow-md p-5 rounded-full"
+               className="w-full flex flex-col lg:flex-row justify-center items-center gap-2 bg-gradient-to-tl from-primary/5 to-darkMode/70 shadow-md p-5 rounded-md"
             >
                <div className="w-20 h-20 relative rounded-full border-4 border-white/5 overflow-hidden">
                   <Image
@@ -25,7 +25,7 @@ export const LinksSection = () => {
          <div className="col-span-1">
             <Link
                href="/services/events"
-               className="w-full flex flex-col lg:flex-row justify-center items-center gap-2 bg-gradient-to-tr from-primary/20 to-darkMode/70 shadow-md p-5 rounded-full"
+               className="w-full flex flex-col lg:flex-row justify-center items-center gap-2 bg-gradient-to-tr from-primary/5 to-darkMode/70 shadow-md p-5 rounded-md"
             >
                <div className="w-20 h-20 relative rounded-full border-4 border-white/5 overflow-hidden">
                   <Image
