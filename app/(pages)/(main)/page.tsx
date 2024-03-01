@@ -34,7 +34,7 @@ export default function Home() {
                </div>
             </HeroPageContent>
          </HeroCurve>
-         <div className="py-10 lg:py-20 bg-gradient-to-t from-transparent via-lightDarkMode to-darkMode h-[30vh] -translate-y-[20px]">
+         <div className="py-10 lg:py-20 bg-gradient-to-t from-transparent via-lightDarkMode to-darkMode h-[35vh] -translate-y-[20px]">
             <LinksSection />
          </div>
          <AboutUs />

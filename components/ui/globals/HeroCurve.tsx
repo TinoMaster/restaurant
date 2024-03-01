@@ -10,7 +10,7 @@ const PLACEHOLDER_IMAGE =
 
 export const HeroCurve = ({ children, image }: HeroPageProps) => {
    return (
-      <section className="w-full h-[70vh] max-h-[700px] relative mb-5 bg-cover bg-center overflow-hidden">
+      <section className="w-full h-[65vh] max-h-[700px] relative mb-5 bg-cover bg-center overflow-hidden">
          <article className="absolute flex justify-center items-center w-full h-full overflow-hidden z-10 bg-gradient-to-t from-darkMode via-black/60 to-black/70">
             {children}
          </article>
