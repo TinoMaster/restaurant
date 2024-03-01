@@ -1,6 +1,6 @@
 import { Sidebar } from '@/components/pages/profile/Sidebar'
 import { authOptions } from '@/libs/authOptions'
-import { img_about_us2 } from '@/utils/images'
+import { prenotazione } from '@/utils/images'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
@@ -19,7 +19,7 @@ export default async function Layout({
       <div className="flex justify-center items-center w-screen h-screen max-h-[100svh] text-gray-300">
          <div className="absolute w-screen h-screen bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode">
             <Image
-               src={img_about_us2}
+               src={prenotazione}
                alt="background"
                className="w-full h-full object-cover brightness-25 saturate-50"
             />

@@ -2,7 +2,7 @@
 import LoadingSkeletonPages from '@/app/(pages)/loading'
 import { Btn_Google } from '@/components/ui/buttons/Btn_Google'
 import { useRegister } from '@/hooks/useRegister'
-import { img_PageMenuMovil } from '@/utils/images'
+import { prenotazione } from '@/utils/images'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,7 +25,7 @@ export default function Register() {
       return (
          <section className="w-full bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode min-h-screen flex flex-col justify-center items-center relative">
             <Image
-               src={img_PageMenuMovil}
+               src={prenotazione}
                alt="fondo auth"
                className="w-full h-full absolute object-cover brightness-25"
             />
