@@ -31,9 +31,9 @@ export const ProfileProvider = ({
          })
       }
 
-      if (status === 'unauthenticated') {
+      /* if (status === 'unauthenticated') {
          dispatch(logout())
-      }
+      } */
    }, [status, dispatch, session])
 
    const data = {}
