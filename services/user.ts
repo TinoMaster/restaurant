@@ -48,22 +48,6 @@ class User {
       return res
    }
 
-   async uploadImage(route: string, data: FormData) {
-      const requestOptions = {
-         method: 'POST',
-         body: data,
-         Headers: {
-            'Content-Type': 'multipart/form-data',
-         },
-      }
-
-      const response = await fetch(route, requestOptions)
-
-      const docs: ServerResponse = await response.json()
-      const res = userAdapter(docs)
-      return res
-   }
-
    async sendEmailToVerify(
       route: string,
       { firstName, verificationCode, email }: IDataToVerifyEmail

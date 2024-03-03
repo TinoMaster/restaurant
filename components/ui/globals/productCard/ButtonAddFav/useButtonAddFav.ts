@@ -1,13 +1,13 @@
-'use client'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { addFavorite, removeFromFavorite } from '@/redux/reducers/user_slice'
 import { IsFavorite, removeFavorite } from '@/services/actions/product.action'
+import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
-import { FaHeart, FaRegHeart } from 'react-icons/fa'
 
-export const ButtonAddFav = ({ productId }: { productId: string }) => {
+export const useButtonAddFav = (productId: string) => {
    const { _id, favorites } = useAppSelector((state) => state.userReducer)
    const dispatch = useAppDispatch()
+   const { status } = useSession()
 
    const handleClickAdd = async () => {
       dispatch(addFavorite(productId))
@@ -33,23 +33,10 @@ export const ButtonAddFav = ({ productId }: { productId: string }) => {
       }
    }
 
-   return (
-      <>
-         {favorites.includes(productId) ? (
-            <button
-               onClick={handleClickRemove}
-               className="text-white/70 px-2 lg:text-2xl rounded-full"
-            >
-               <FaHeart className="text-red-500/50 hover:text-red-500/70 fill-current focus:shadow-outline-blue active:animate-ping transition duration-150 ease-in-out" />
-            </button>
-         ) : (
-            <button
-               onClick={handleClickAdd}
-               className="text-white/70 px-2 lg:text-2xl rounded-full"
-            >
-               <FaRegHeart className="hover:text-red-500/50 fill-current focus:shadow-outline-blue active:animate-ping transition duration-150 ease-in-out" />
-            </button>
-         )}
-      </>
-   )
+   return {
+      handleClickAdd,
+      handleClickRemove,
+      status,
+      favorites,
+   }
 }

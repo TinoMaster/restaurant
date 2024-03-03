@@ -1,0 +1,1 @@
+export { ButtonAddFav } from './ButtonAddFav'
