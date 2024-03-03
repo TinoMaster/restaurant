@@ -4,12 +4,13 @@ import {
    UPDATING_IMAGE,
    UPDATING_INFO_PROFILE,
 } from '@/constants/common'
-import { PROFILE_ROUTE, UPLOAD_FILE } from '@/constants/routes.api'
+import { PROFILE_ROUTE } from '@/constants/routes.api'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { updateImage, updateMainInfo } from '@/redux/reducers/user_slice'
 import { user } from '@/services/user'
 import { TDataUserToUpdate } from '@/types/models/user'
 import { createNameImage } from '@/utils/createNameImage'
+import { saveImageInCubbit } from '@/utils/saveImageInCubbit'
 import { validateUserInfo } from '@/utils/validators/profile.validators'
 import { signOut } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -102,10 +103,10 @@ export const useMainInfo = (): IUseMainInfo => {
    async function handleChangeImage() {
       if (imageFile) {
          toast.loading(UPDATING_IMAGE)
-         const formData = new FormData()
-         formData.append('image', imageFile)
-         formData.append('name', createNameImage(email))
-         const response = await user.uploadImage(UPLOAD_FILE, formData)
+         const response = await saveImageInCubbit({
+            image: imageFile,
+            name: createNameImage(email),
+         })
 
          if (response.success) {
             toast.remove()
