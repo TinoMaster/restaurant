@@ -3,7 +3,6 @@ import { Input } from '@/components/ui/elements/Input'
 import { menuItemsProfilePageInputs } from '@/constants/forms/profiles.form'
 import { TCategory } from '@/types/models/category'
 import { TIngredient } from '@/types/models/ingredient'
-import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 import { useFormCreateProduct } from './useFormCreateProduct'
 
@@ -16,23 +15,34 @@ export const FormCreateProduct = ({
    categories,
    ingredients,
 }: IFormCreateProductProps) => {
-   const { onSubmit } = useFormCreateProduct()
+   const { onSubmit, imagePreview, onChangeImage } = useFormCreateProduct()
 
    return (
       <form action={onSubmit} className="grid grid-cols-4 w-full gap-4">
          {/* image */}
          <div className="col-span-4 lg:col-span-1 lg:max-h-[250px] flex flex-col gap-2">
-            <div className="w-full h-full">
-               <Image
-                  src={texturaCemento}
-                  alt="map"
-                  className="w-full h-full object-cover rounded-lg brightness-75"
-               />
+            <div className="w-full h-full relative">
+               {imagePreview ? (
+                  <Image
+                     fill
+                     src={imagePreview}
+                     alt="map"
+                     className="w-full h-full object-cover rounded-lg brightness-75"
+                  />
+               ) : (
+                  <div className="w-full h-full bg-white/5 rounded-lg" />
+               )}
             </div>
             <label htmlFor="file" className="btn-white text-center">
                Add Image
             </label>
-            <input type="file" name="image" id="file" className="hidden" />
+            <input
+               onChange={onChangeImage}
+               type="file"
+               name="image"
+               id="file"
+               className="hidden"
+            />
          </div>
          {/* form */}
          <div className="col-span-4 lg:col-span-3">

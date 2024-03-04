@@ -1,4 +1,3 @@
-import { userAdapter } from '@/adapters/UserAdapter'
 import { UPLOAD_FILE } from '@/constants/routes.api'
 import { ServerResponse } from '@/types/api_responses'
 
@@ -21,10 +20,12 @@ export async function saveImageInCubbit({
       },
    }
 
-   const response = await fetch(UPLOAD_FILE, requestOptions)
+   const response = await fetch(
+      `${process.env.NEXTAUTH_URL}${UPLOAD_FILE}`,
+      requestOptions
+   )
 
    const docs: ServerResponse = await response.json()
 
-   const res = userAdapter(docs)
-   return res
+   return docs
 }

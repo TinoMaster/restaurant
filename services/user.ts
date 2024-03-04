@@ -3,8 +3,8 @@ import { ServerResponse } from '@/types/api_responses'
 import { IDataToVerifyEmail } from '@/types/common'
 import {
    TCreateAdminUserForTest,
-   TDataUserToUpdate,
-   TUserRegister,
+   TUserMainInfoToEdit,
+   TUserRegister
 } from '@/types/models/user'
 
 class User {
@@ -34,7 +34,7 @@ class User {
       return docs
    }
 
-   async UpdateInfo(route: string, data: TDataUserToUpdate) {
+   async UpdateInfo(route: string, data: TUserMainInfoToEdit) {
       const requestOptions = {
          method: 'PUT',
          body: JSON.stringify(data),

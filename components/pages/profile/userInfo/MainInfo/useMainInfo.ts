@@ -110,15 +110,23 @@ export const useMainInfo = (): IUseMainInfo => {
             name: createNameImage(email),
          })
 
-         if (response.success) {
-            toast.remove()
-            dispatch(updateImage(imagePreview ?? ''))
-            setImagePreview(null)
-            toast.success(SUCCESS_UPLOAD_IMAGE)
-         } else {
+         if (!response.success) {
             setImagePreview(null)
             toast.remove()
             toast.error(response.message)
+         } else {
+            const saveImageInDB = await user.UpdateInfo(PROFILE_ROUTE, {
+               image: response.data,
+            })
+            toast.remove()
+            if (saveImageInDB.success) {
+               dispatch(updateImage(imagePreview ?? ''))
+               setImagePreview(null)
+               toast.success(SUCCESS_UPLOAD_IMAGE)
+            } else {
+               toast.error(saveImageInDB.message)
+               setImagePreview(null)
+            }
          }
       }
    }

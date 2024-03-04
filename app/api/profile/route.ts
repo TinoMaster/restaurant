@@ -34,7 +34,7 @@ export async function PUT(req: Request) {
       return Response.json({
          success: true,
          data: response,
-         message: 'Usuario actualizado con exito',
+         message: 'Usuario actualizado con éxito',
       })
    } catch (error) {
       console.log(error)

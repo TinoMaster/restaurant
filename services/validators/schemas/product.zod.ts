@@ -18,7 +18,6 @@ export const productSchema = z
          })
          .min(1, 'The price must be greater than 0')
          .max(10000, 'The price must be less than 10000'),
-      image: z.string().min(3, 'The image must have at least 3 characters'),
       category: z.string().refine((value) => ObjectId.isValid(value), {
          message: 'The category is not valid',
       }),

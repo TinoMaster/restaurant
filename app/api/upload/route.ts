@@ -1,15 +1,8 @@
-import { UserModel } from '@/app/models/User'
-import { db_config } from '@/config/db.config'
-import { saveImageInCubbit } from '@/libs/saveImageCubbit'
-import { authOptions } from '@/libs/authOptions'
-import mongoose from 'mongoose'
-import { getServerSession } from 'next-auth'
+import { cubbitLibs } from '@/libs/cubbitLibs'
 
 export async function POST(request: Request) {
    try {
       const formData = await request.formData()
-      const session = await getServerSession(authOptions)
-      const email = session?.user?.email
 
       const file = formData.get('image')
       const name = formData.get('name')
@@ -21,7 +14,7 @@ export async function POST(request: Request) {
          })
       }
 
-      const response = await saveImageInCubbit({
+      const response = await cubbitLibs({
          file: file as File,
          imageName: (name as string) || (file as File).name,
       })
@@ -32,9 +25,6 @@ export async function POST(request: Request) {
             message: response.message,
          })
       }
-
-      await mongoose.connect(db_config.URI as string)
-      await UserModel.updateOne({ email }, { image: response.data })
 
       return Response.json({
          success: true,

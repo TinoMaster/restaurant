@@ -12,7 +12,7 @@ interface TSaveImageCubbitResponse {
    message?: string
 }
 
-export const saveImageInCubbit = async ({
+export const cubbitLibs = async ({
    file,
    imageName,
 }: TSaveImageCubbit): Promise<TSaveImageCubbitResponse> => {

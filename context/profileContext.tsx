@@ -25,15 +25,11 @@ export const ProfileProvider = ({
             if (response) {
                dispatch(login(response))
             } else {
-               toast.error('Hubo un error al cargar la informacion')
+               toast.error('Hubo un error al cargar la información')
                dispatch(logout())
             }
          })
       }
-
-      /* if (status === 'unauthenticated') {
-         dispatch(logout())
-      } */
    }, [status, dispatch, session])
 
    const data = {}
