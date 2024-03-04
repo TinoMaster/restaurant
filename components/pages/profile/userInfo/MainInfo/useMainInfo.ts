@@ -21,10 +21,12 @@ interface IUseMainInfo {
    userInfoToEdit: TDataUserToUpdate
    handlerInfoToEdit: (e: React.ChangeEvent<HTMLInputElement>) => void
    setEditionMode: React.Dispatch<React.SetStateAction<boolean>>
-   handleSubmitUpdateUserInfo: (e: React.FormEvent<HTMLFormElement>) => void
+   handleSubmitUpdateUserInfo: (
+      e: React.FormEvent<HTMLFormElement>
+   ) => Promise<void>
    onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void
    imagePreview: string | null
-   handleChangeImage: () => void
+   handleChangeImage: () => Promise<void>
 }
 
 export const useMainInfo = (): IUseMainInfo => {
@@ -59,7 +61,7 @@ export const useMainInfo = (): IUseMainInfo => {
 
       if (userInfoToEdit.email !== email) {
          const confirm = window.confirm(
-            'Al actualizar el correo electronico se desconectara de la sesion'
+            'Al actualizar el correo electrónico se desconectara de la sesión'
          )
 
          if (!confirm) {
@@ -110,7 +112,7 @@ export const useMainInfo = (): IUseMainInfo => {
 
          if (response.success) {
             toast.remove()
-            dispatch(updateImage(imagePreview || ''))
+            dispatch(updateImage(imagePreview ?? ''))
             setImagePreview(null)
             toast.success(SUCCESS_UPLOAD_IMAGE)
          } else {

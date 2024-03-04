@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Fallback_MainInfo = () => {
+export const FallbackMainInfo = () => {
   return (
     <div className="bg-white/5 grid grid-cols-4 min-h-[40vh] w-full justify-center items-center rounded-lg mb-4 gap-2 animate-pulse pb-4">
       <div className="p-10 col-span-4 lg:col-span-1 m-auto">

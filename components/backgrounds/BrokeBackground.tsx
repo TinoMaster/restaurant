@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import papelSVG from '@/public/svgs/papel_roto.svg'
 import papelSVGRev from '@/public/svgs/papel_roto_rev.svg'
 import Image from 'next/image'
+import { v4 as uuidv4 } from 'uuid'
 
 export const BrokeBackground = () => {
    const [cantidadRepeticiones, setCantidadRepeticiones] = useState(15)
@@ -26,7 +27,7 @@ export const BrokeBackground = () => {
          <div className="w-full flex overflow-hidden absolute -top-8">
             {[...Array(cantidadRepeticiones)].map((_, index) => (
                <Image
-                  key={index}
+                  key={uuidv4()}
                   src={papelSVG}
                   alt="Papel SVG Repetido"
                   style={{ width: '144px' }}
@@ -37,7 +38,7 @@ export const BrokeBackground = () => {
          <div className="w-full flex overflow-hidden absolute -bottom-8">
             {[...Array(cantidadRepeticiones)].map((_, index) => (
                <Image
-                  key={index}
+                  key={uuidv4()}
                   src={papelSVGRev}
                   alt="Papel SVG Repetido"
                   style={{ width: '144px' }}

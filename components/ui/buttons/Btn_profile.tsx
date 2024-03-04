@@ -8,7 +8,7 @@ interface TBtnProfileProps {
    title?: string
 }
 
-export const Btn_profile = ({
+export const BtnProfile = ({
    name,
    trigger,
    type = 'button',

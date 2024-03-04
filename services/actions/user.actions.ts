@@ -1,20 +1,20 @@
 'use server'
-import '@/app/models/Products'
 import '@/app/models/Ingredients'
+import '@/app/models/Products'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
-import { TUser, TUserMainInfo } from '@/types/models/user'
+import { TResponseProductInCartPopulated } from '@/types/models/product'
+import { TUser, TUserMainInfo, TUserMainInfoToEdit } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
-import { TResponseProductInCartPopulated } from '@/types/models/product'
 
 export async function getUser(id: string) {
    try {
       await mongoose.connect(db_config.URI as string)
-      const user: TUser | null = await UserModel.findById(id).populate({
+      const user: TUser | null = (await UserModel.findById(id).populate({
          path: 'cart',
          populate: { path: 'productId' },
-      }) as TUser
+      })) as TUser
 
       if (!user) {
          return false
@@ -66,13 +66,14 @@ export async function getFavorites(id: string) {
    }
 }
 
-export async function updateUser(id: string, data: TUser) {
+export async function updateUser(id: string, data: TUserMainInfoToEdit) {
    try {
       await mongoose.connect(db_config.URI as string)
       const user: TUser | null = await UserModel.findByIdAndUpdate(id, data, {
          new: true,
       })
       console.log(user)
+      return true
    } catch (error) {
       console.log(error)
       return false

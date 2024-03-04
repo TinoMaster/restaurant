@@ -20,11 +20,10 @@ export const saveImageInCubbit = async ({
       region: 'eu-west-1',
       endpoint: 'https://s3.cubbit.eu',
       credentials: {
-         accessKeyId: cubbitConfig.accessKeyId || '',
-         secretAccessKey: cubbitConfig.secretAccessKey || '',
+         accessKeyId: cubbitConfig.accessKeyId ?? '',
+         secretAccessKey: cubbitConfig.secretAccessKey ?? '',
       },
    })
-
    const chunks: Uint8Array[] = []
 
    const reader = file?.stream().getReader()
@@ -67,8 +66,8 @@ export const saveImageInCubbit = async ({
       const data = `https://${cubbitConfig.bucketName}.s3.cubbit.eu/${imageName}`
       console.log(`Archivo subido exitosamente a ${data}`)
       return { success: true, data }
-   } catch (err: Error | any) {
+   } catch (err: any) {
       console.log('Error', err)
-      return { success: false, message: err.message }
+      return { success: false, message: 'Something went wrong' }
    }
 }

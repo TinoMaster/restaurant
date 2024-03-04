@@ -59,3 +59,10 @@ export interface TDataUserToUpdate {
    phone: string
    [key: string]: any
 }
+
+export interface TUserMainInfoToEdit {
+   name?: string
+   email?: string
+   phone?: string
+   image?: string
+}

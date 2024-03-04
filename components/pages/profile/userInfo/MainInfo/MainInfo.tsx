@@ -1,10 +1,10 @@
 'use client'
-import { Btn_profile } from '@/components/ui/buttons/Btn_profile'
+import { BtnProfile } from '@/components/ui/buttons/Btn_profile'
 import { userInfoProfilePageInputs } from '@/constants/forms/profiles.form'
 import { useOpenDialogs } from '@/hooks/useOpenDialogs'
 import { useAppSelector } from '@/redux/hooks'
-import { Dialogs_Render } from './Dialogs_Render'
-import { Fallback_MainInfo } from './Fallback_MainInfo'
+import { DialogsRender } from './Dialogs_Render'
+import { FallbackMainInfo } from './Fallback_MainInfo'
 import { ImageMainInfo } from './Image'
 import { InputEditable } from './InputEditable'
 import { useMainInfo } from './useMainInfo'
@@ -27,12 +27,12 @@ export const MainInfo = () => {
    const { openDialog } = useOpenDialogs()
 
    if (!_id) {
-      return <Fallback_MainInfo />
+      return <FallbackMainInfo />
    }
 
    return (
       <>
-         <Dialogs_Render />
+         <DialogsRender />
          <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
             {/* image box */}
             <div className="flex flex-col gap-2 justify-center items-center col-span-4 lg:col-span-1">
@@ -49,11 +49,11 @@ export const MainInfo = () => {
                   onSubmit={handleSubmitUpdateUserInfo}
                   className="grid grid-cols-1 lg:grid-cols-2 gap-4"
                >
-                  {userInfoProfilePageInputs.map((inp, idx) => (
+                  {userInfoProfilePageInputs.map((inp) => (
                      <InputEditable
                         handlerInfoToEdit={handlerInfoToEdit}
                         userInfoToEdit={userInfoToEdit}
-                        key={idx}
+                        key={inp.id}
                         inp={inp}
                         emailVerified={emailVerified}
                         phoneVerified={phoneVerified}
@@ -63,28 +63,26 @@ export const MainInfo = () => {
                   {/* Buttons box */}
                   <div className="col-span-2 lg:col-span-1 flex justify-end">
                      <div className="flex gap-2 items-end">
-                        <>
-                           <Btn_profile
-                              type="submit"
-                              name="Edit"
-                              disabled={!editionMode}
-                              title={
-                                 editionMode ? 'Edit' : 'You must do any change'
-                              }
-                           />
+                        <BtnProfile
+                           type="submit"
+                           name="Edit"
+                           disabled={!editionMode}
+                           title={
+                              editionMode ? 'Edit' : 'You must do any change'
+                           }
+                        />
 
-                           <Btn_profile
-                              type="button"
-                              trigger={() => setEditionMode(false)}
-                              name="Change password"
-                              disabled={!emailVerified}
-                              title={
-                                 emailVerified
-                                    ? 'Change password'
-                                    : 'You must verify your email'
-                              }
-                           />
-                        </>
+                        <BtnProfile
+                           type="button"
+                           trigger={() => setEditionMode(false)}
+                           name="Change password"
+                           disabled={!emailVerified}
+                           title={
+                              emailVerified
+                                 ? 'Change password'
+                                 : 'You must verify your email'
+                           }
+                        />
                      </div>
                   </div>
                </form>

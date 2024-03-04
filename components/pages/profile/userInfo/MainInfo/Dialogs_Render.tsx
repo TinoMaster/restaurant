@@ -6,7 +6,7 @@ import { useVerifyPhone } from '@/hooks/pages/profile/main-info/useVerifyPhone'
 import { useAppSelector } from '@/redux/hooks'
 import React from 'react'
 
-export const Dialogs_Render = () => {
+export const DialogsRender = () => {
    const { confirmWithCode, handlerVerificationCode } = useVerifyEmail()
    const {
       confirmWithCode: confirmWithCodePhone,
@@ -20,7 +20,7 @@ export const Dialogs_Render = () => {
          {!emailVerified && (
             <Dialog
                onConfirm={confirmWithCode}
-               title="Verifiy your email"
+               title="Verify your email"
                description={`We've sent a verification link to your email: ${email} Please check your email and click on the link to verify your email.`}
                dialog={DIALOG_CHANGE_EMAIL}
             >
@@ -37,7 +37,7 @@ export const Dialogs_Render = () => {
          {!phoneVerified && (
             <Dialog
                onConfirm={confirmWithCodePhone}
-               title="Verifiy your phone"
+               title="Verify your phone"
                description=" We've sent a verification link to your phone. Please check your phone and click on the link to verify your phone."
                dialog={DIALOG_VERIFY_PHONE}
             >
