@@ -3,10 +3,13 @@ import '@/app/models/Ingredients'
 import '@/app/models/Products'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
+import { authOptions } from '@/libs/authOptions'
 import { TResponseProductInCartPopulated } from '@/types/models/product'
 import { TUser, TUserMainInfo, TUserMainInfoToEdit } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
+import { getServerSession } from 'next-auth'
+import { revalidatePath } from 'next/cache'
 
 export async function getUser(id: string) {
    try {
@@ -32,7 +35,9 @@ export async function getUserInfo(id: string) {
       await mongoose.connect(db_config.URI as string)
       const userInfo: TUserMainInfo | null = (await UserModel.findById(
          id
-      ).select('name email phone image -_id')) as TUserMainInfo
+      ).select(
+         'name email phone image emailVerified phoneVerified -_id'
+      )) as TUserMainInfo
 
       if (!userInfo) {
          return false
@@ -66,13 +71,19 @@ export async function getFavorites(id: string) {
    }
 }
 
-export async function updateUser(id: string, data: TUserMainInfoToEdit) {
+export async function updateUser(data: TUserMainInfoToEdit) {
    try {
+      const session = await getServerSession(authOptions)
+
+      if (!session) {
+         return false
+      }
+
       await mongoose.connect(db_config.URI as string)
-      const user: TUser | null = await UserModel.findByIdAndUpdate(id, data, {
+      await UserModel.findByIdAndUpdate(session?.user?.sub, data, {
          new: true,
       })
-      console.log(user)
+      revalidatePath('/profile/user_info')
       return true
    } catch (error) {
       console.log(error)

@@ -1,0 +1,1 @@
+export { ImageMainInfo } from './ImageUserInfo'

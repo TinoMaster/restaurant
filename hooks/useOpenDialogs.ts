@@ -1,5 +1,5 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { TOptionsToEdit } from '../components/pages/profile/userInfo/MainInfo/types'
+import { TOptionsToEdit } from '../components/pages/profile/userInfo/types'
 
 export type IFunctionOpenDialog = (
    type: TOptionsToEdit,

@@ -5,6 +5,7 @@ import { TCategory } from '@/types/models/category'
 import { TIngredient } from '@/types/models/ingredient'
 import Image from 'next/image'
 import { useFormCreateProduct } from './useFormCreateProduct'
+import { ImageProfile } from '@/components/ui/globals/ImageProfile'
 
 interface IFormCreateProductProps {
    categories: TCategory[]
@@ -15,12 +16,20 @@ export const FormCreateProduct = ({
    categories,
    ingredients,
 }: IFormCreateProductProps) => {
-   const { onSubmit, imagePreview, onChangeImage } = useFormCreateProduct()
+   const { onSubmit, imagePreview, onChangeImage, handleChangeImage } =
+      useFormCreateProduct()
 
    return (
       <form action={onSubmit} className="grid grid-cols-4 w-full gap-4">
          {/* image */}
-         <div className="col-span-4 lg:col-span-1 lg:max-h-[250px] flex flex-col gap-2">
+         <div className="col-span-4 relative lg:col-span-1 lg:max-h-[250px] flex flex-col gap-2 justify-center items-center">
+            <ImageProfile
+               imagePreview={imagePreview}
+               onChangeImage={onChangeImage}
+               handleChangeImage={handleChangeImage}
+            />
+         </div>
+         {/* <div className="col-span-4 lg:col-span-1 lg:max-h-[250px] flex flex-col gap-2">
             <div className="w-full h-full relative">
                {imagePreview ? (
                   <Image
@@ -43,7 +52,7 @@ export const FormCreateProduct = ({
                id="file"
                className="hidden"
             />
-         </div>
+         </div> */}
          {/* form */}
          <div className="col-span-4 lg:col-span-3">
             <legend className="col-span-2 text-2xl lg:text-3xl">

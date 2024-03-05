@@ -1,37 +1,43 @@
-import { BtnProfile } from '@/components/ui/buttons/Btn_profile'
-import { useAppSelector } from '@/redux/hooks'
 import Image from 'next/image'
-import React from 'react'
 
 interface IImageBlockProps {
-   imagePreview: string | null
+   image?: string
+   name?: string
    handleChangeImage: () => void
-   onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void
+   onChangeImage: (event: React.ChangeEvent<HTMLInputElement>) => void
+   imagePreview?: string
 }
 
-export const ImageMainInfo = ({
-   imagePreview,
+export const ImageProfile = ({
+   image,
+   name,
    handleChangeImage,
    onChangeImage,
+   imagePreview,
 }: IImageBlockProps) => {
-   const { image, name } = useAppSelector((state) => state.userReducer)
    return (
       <>
          <div className="w-44 h-44 bg-darkMode border border-primary relative rounded-full flex justify-center items-center">
             {imagePreview ? (
                <Image
+                  fill
                   src={imagePreview}
                   alt="profile"
-                  width={250}
-                  height={250}
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover object-top rounded-full"
                />
             ) : (
                renderImageOrName(image, name)
             )}
          </div>
          {imagePreview ? (
-            <BtnProfile trigger={handleChangeImage} name="Save image" />
+            <button
+               title="change image"
+               type="button"
+               onClick={handleChangeImage}
+               className="btn-white disabled:bg-pri-300/40 disabled:cursor-not-allowed"
+            >
+               Save
+            </button>
          ) : (
             <label htmlFor="change-image" className="btn-white">
                Change image
@@ -48,19 +54,26 @@ export const ImageMainInfo = ({
    )
 }
 
-function renderImageOrName(image: string, name: string | undefined) {
+function renderImageOrName(image?: string, name?: string | undefined) {
    if (image) {
       return (
          <Image
+            fill
             src={image}
             alt="profile"
-            width={500}
-            height={500}
             className="w-full h-full object-cover object-top rounded-full"
             priority
          />
       )
    } else {
+      return renderNameIfExist(name)
+   }
+}
+
+function renderNameIfExist(name?: string | undefined) {
+   if (name) {
       return <p className="text-5xl">{name?.slice(0, 2)}</p>
+   } else {
+      return <p className="text-2xl text-gray-500">No image</p>
    }
 }

@@ -20,10 +20,7 @@ export async function saveImageInCubbit({
       },
    }
 
-   const response = await fetch(
-      `${process.env.NEXTAUTH_URL}${UPLOAD_FILE}`,
-      requestOptions
-   )
+   const response = await fetch(UPLOAD_FILE, requestOptions)
 
    const docs: ServerResponse = await response.json()
 

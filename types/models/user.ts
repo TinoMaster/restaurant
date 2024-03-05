@@ -49,8 +49,11 @@ export interface TUserRegister {
 }
 
 export interface TUserMainInfo
-   extends Pick<TUser, 'name' | 'email' | 'phone' | 'image'> {
-   [key: string]: string
+   extends Pick<
+      TUser,
+      'name' | 'email' | 'phone' | 'image' | 'emailVerified' | 'phoneVerified'
+   > {
+   [key: string]: string | boolean
 }
 
 export interface TDataUserToUpdate {

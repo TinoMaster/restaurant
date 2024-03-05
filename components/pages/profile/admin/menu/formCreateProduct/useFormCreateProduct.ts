@@ -4,7 +4,7 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 export const useFormCreateProduct = () => {
-   const [imagePreview, setImagePreview] = useState<string | null>(null)
+   const [imagePreview, setImagePreview] = useState<string | undefined>()
    const { push } = useRouter()
 
    function onChangeImage(e: React.ChangeEvent<HTMLInputElement>) {
@@ -34,9 +34,13 @@ export const useFormCreateProduct = () => {
       toast.success('Item menu created')
       push('/profile/admin/menu')
    }
+
+   const handleChangeImage = () => {}
+
    return {
       onSubmit,
       imagePreview,
       onChangeImage,
+      handleChangeImage,
    }
 }
