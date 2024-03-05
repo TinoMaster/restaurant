@@ -29,30 +29,6 @@ export const FormCreateProduct = ({
                handleChangeImage={handleChangeImage}
             />
          </div>
-         {/* <div className="col-span-4 lg:col-span-1 lg:max-h-[250px] flex flex-col gap-2">
-            <div className="w-full h-full relative">
-               {imagePreview ? (
-                  <Image
-                     fill
-                     src={imagePreview}
-                     alt="map"
-                     className="w-full h-full object-cover rounded-lg brightness-75"
-                  />
-               ) : (
-                  <div className="w-full h-full bg-white/5 rounded-lg" />
-               )}
-            </div>
-            <label htmlFor="file" className="btn-white text-center">
-               Add Image
-            </label>
-            <input
-               onChange={onChangeImage}
-               type="file"
-               name="image"
-               id="file"
-               className="hidden"
-            />
-         </div> */}
          {/* form */}
          <div className="col-span-4 lg:col-span-3">
             <legend className="col-span-2 text-2xl lg:text-3xl">
