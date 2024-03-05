@@ -1,6 +1,6 @@
 import { TProduct } from '@/types/models/product'
 import { formatPrice } from '@/utils/formatPrice'
-import { pizza, texturaCemento } from '@/utils/images'
+import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 import { MotionDiv } from '../../../helpers/MotionDiv'
 import { ButtonAddCart } from './ButtonAddCart'
@@ -37,7 +37,7 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                <Image
                   fill
                   className="w-full h-full object-cover"
-                  src={pizza}
+                  src={image}
                   alt="imagen del plato"
                />
             </div>

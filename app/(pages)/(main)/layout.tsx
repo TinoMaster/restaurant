@@ -4,11 +4,11 @@ import { NavBar } from '@/components/navs/NavBar'
 export default function MainLayout({
    children,
 }: {
-   children: React.ReactNode
+   readonly children: React.ReactNode
 }) {
    return (
       <>
-         <header className="w-full relative z-30">
+         <header className="w-full z-30 relative">
             <NavBar />
          </header>
          <div className="w-full h-full">{children}</div>

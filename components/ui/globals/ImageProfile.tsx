@@ -46,7 +46,7 @@ export const ImageProfile = ({
          <input
             onChange={onChangeImage}
             type="file"
-            name="change-image"
+            name="image"
             id="change-image"
             className="hidden"
          />

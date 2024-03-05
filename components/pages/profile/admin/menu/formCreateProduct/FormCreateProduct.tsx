@@ -1,11 +1,10 @@
 'use client'
 import { Input } from '@/components/ui/elements/Input'
+import { ImageProfile } from '@/components/ui/globals/ImageProfile'
 import { menuItemsProfilePageInputs } from '@/constants/forms/profiles.form'
 import { TCategory } from '@/types/models/category'
 import { TIngredient } from '@/types/models/ingredient'
-import Image from 'next/image'
 import { useFormCreateProduct } from './useFormCreateProduct'
-import { ImageProfile } from '@/components/ui/globals/ImageProfile'
 
 interface IFormCreateProductProps {
    categories: TCategory[]

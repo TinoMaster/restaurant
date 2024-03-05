@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
    children,
 }: {
-   children: React.ReactNode
+   readonly children: React.ReactNode
 }) {
    return (
       <html lang="en">
@@ -20,7 +20,7 @@ export default function RootLayout({
             className={`${siligury.className} antialiased min-h-screen bg-gradient-to-tr from-darkMode/90 via-lightDarkMode text-gray-100 to-darkMode/90 w-full select-none`}
          >
             <Providers>
-               <main className="w-full ">
+               <main className="w-full h-full">
                   <Toaster />
                   {children}
                </main>

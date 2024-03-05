@@ -1,18 +1,17 @@
 import { BtnDeleteProduct } from '@/components/pages/profile/admin/menu/view_product/BtnDeleteProduct'
 import { Description } from '@/components/pages/profile/admin/menu/view_product/Description'
 import { Disponibility } from '@/components/pages/profile/admin/menu/view_product/Disponibility'
+import { ImageViewProduct } from '@/components/pages/profile/admin/menu/view_product/ImageViewProduct'
 import { Ingredients } from '@/components/pages/profile/admin/menu/view_product/Ingredients'
 import { Name } from '@/components/pages/profile/admin/menu/view_product/Name'
 import { Price } from '@/components/pages/profile/admin/menu/view_product/Price'
 import { getProductById } from '@/services/actions/product.action'
-import { texturaCemento } from '@/utils/images'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 export default async function PageAdminProductDetails({
    params,
 }: {
-   params: { id: string }
+   readonly params: { id: string }
 }) {
    const { id } = params
    const product = await getProductById(id)
@@ -35,16 +34,10 @@ export default async function PageAdminProductDetails({
 
    return (
       <section className="text-gray-400 body-font overflow-hidden">
-         <div className="container px-5 py-24 mx-auto">
-            <div className="lg:w-4/5 mx-auto flex flex-wrap">
-               <Image
-                  width={500}
-                  height={500}
-                  alt="ecommerce"
-                  className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                  src={texturaCemento}
-               />
-               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+         <div className="container py-10">
+            <div className="lg:w-4/5 grid grid-cols-1 lg:grid-cols-2 gap-8">
+               <ImageViewProduct image={image} />
+               <div className="w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                   <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">
                      {`PRODUCT | ${category.name}`}
                   </h2>

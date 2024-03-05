@@ -70,11 +70,11 @@ export async function getProductsByCategory(category: string) {
 export async function createProduct(formData: FormData) {
    const imageProduct = formData.get('image') as File
 
-   if (!imageProduct.size) {
-      return { success: false, message: 'Image is required' }
-   }
-
    try {
+      if (!imageProduct?.size) {
+         return { success: false, message: 'Image is required' }
+      }
+
       const product: TCreateProduct = {
          name: formData.get('name') as string,
          description: formData.get('description') as string,

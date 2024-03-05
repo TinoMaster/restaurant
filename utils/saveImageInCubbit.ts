@@ -20,7 +20,13 @@ export async function saveImageInCubbit({
       },
    }
 
-   const response = await fetch(UPLOAD_FILE, requestOptions)
+   const url =
+      typeof window !== 'undefined'
+         ? UPLOAD_FILE
+         : `${process.env.PATHNAME}${UPLOAD_FILE}`
+
+   console.log(url)
+   const response = await fetch(url, requestOptions)
 
    const docs: ServerResponse = await response.json()
 

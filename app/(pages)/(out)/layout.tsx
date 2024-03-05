@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 export default function LayoutOutPages({
    children,
 }: {
-   children: React.ReactNode
+   readonly children: React.ReactNode
 }) {
    const pathname = usePathname()
    const pathNameAuth = ['/login', '/register']

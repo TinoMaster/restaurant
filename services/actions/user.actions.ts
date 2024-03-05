@@ -71,6 +71,62 @@ export async function getFavorites(id: string) {
    }
 }
 
+export async function getCart(userId: string) {
+   try {
+      await mongoose.connect(db_config.URI as string)
+      const cart = await UserModel.findById(userId)
+         .select('cart')
+         .populate({
+            path: 'cart',
+            populate: { path: 'productId', populate: { path: 'ingredients' } },
+         })
+
+      if (!cart) {
+         return false
+      }
+
+      return formatServerResponse<TResponseProductInCartPopulated>(cart)
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function getProductsCart(userId: string) {
+   try {
+      await mongoose.connect(db_config.URI as string)
+      const productsCart = await UserModel.findById(userId)
+         .select('cart')
+         .populate({
+            path: 'cart',
+            populate: { path: 'productId' },
+         })
+
+      if (!productsCart) {
+         return false
+      }
+
+      return formatServerResponse<TResponseProductInCartPopulated>(productsCart)
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function getAmountCartAndFavs(userId: string) {
+   try {
+      await mongoose.connect(db_config.URI as string)
+      const amount = await UserModel.findById(userId).select('favorites cart')
+      return {
+         favorites: amount?.favorites.length ?? 0,
+         cart: amount?.cart.length ?? 0,
+      }
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
 export async function updateUser(data: TUserMainInfoToEdit) {
    try {
       const session = await getServerSession(authOptions)
@@ -96,27 +152,6 @@ export async function ChangeAdminRole(id: string, isAdmin: boolean) {
       await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(id, { isAdmin })
       return true
-   } catch (error) {
-      console.log(error)
-      return false
-   }
-}
-
-export async function getProductsCart(userId: string) {
-   try {
-      await mongoose.connect(db_config.URI as string)
-      const productsCart = await UserModel.findById(userId)
-         .select('cart')
-         .populate({
-            path: 'cart',
-            populate: { path: 'productId' },
-         })
-
-      if (!productsCart) {
-         return false
-      }
-
-      return formatServerResponse<TResponseProductInCartPopulated>(productsCart)
    } catch (error) {
       console.log(error)
       return false
