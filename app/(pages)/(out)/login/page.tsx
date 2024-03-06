@@ -53,7 +53,7 @@ export default function Login() {
                         type="email"
                         name="email"
                         id="email"
-                        className="input-register_login"
+                        className="input"
                      />
                   </div>
                   <div className="flex flex-col w-full max-w-sm m-auto">
@@ -73,7 +73,7 @@ export default function Login() {
                         type="password"
                         name="password"
                         id="password"
-                        className="input-register_login"
+                        className="input"
                      />
                   </div>
                   <button

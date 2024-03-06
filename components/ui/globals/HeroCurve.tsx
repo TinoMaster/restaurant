@@ -17,9 +17,10 @@ export const HeroCurve = ({ children, image }: HeroPageProps) => {
          {image ? (
             <div className="relative w-full h-full">
                <Image
-                  fill={true}
+                  width={1440}
+                  height={700}
                   src={image}
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                   alt="immagine del banner principale"
                   blurDataURL={PLACEHOLDER_IMAGE}
                />

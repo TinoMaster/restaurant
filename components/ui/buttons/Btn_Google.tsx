@@ -38,7 +38,7 @@ export const Btn_Google = () => {
                </clipPath>
             </defs>
          </svg>
-         Continue with Google
+         <span className='text-gray-800'>Continue with Google</span>
       </button>
    )
 }

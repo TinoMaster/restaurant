@@ -25,10 +25,11 @@ export const ImagesRotates = ({ image1, image2 }: ImagesRotatesProps) => {
          >
             <div className="w-[150px] h-[200px] lg:w-[300px] lg:h-[400px] p-1 shadow-lg shadow-black/40 rounded-md relative overflow-hidden">
                <Image
-                  fill
+                  width={300}
+                  height={400}
                   src={image1}
                   alt="1"
-                  className="object-cover saturate-50"
+                  className="w-full h-full object-cover saturate-50"
                />
             </div>
          </MotionDiv>
@@ -42,10 +43,11 @@ export const ImagesRotates = ({ image1, image2 }: ImagesRotatesProps) => {
          >
             <div className="w-[150px] h-[200px] lg:w-[300px] lg:h-[400px] p-1 shadow-lg shadow-black/40 rounded-md relative overflow-hidden">
                <Image
-                  fill
+                  width={300}
+                  height={400}
                   src={image2}
                   alt="1"
-                  className="object-cover saturate-50"
+                  className="w-full h-full object-cover saturate-50"
                />
             </div>
          </MotionDiv>

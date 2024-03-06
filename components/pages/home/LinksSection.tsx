@@ -12,10 +12,11 @@ export const LinksSection = () => {
             >
                <div className="w-20 h-20 relative rounded-full border-4 border-white/5 overflow-hidden">
                   <Image
-                     fill
+                     width={100}
+                     height={100}
                      alt="menu"
                      src={img_PageMenu}
-                     className="object-cover"
+                     className="w-full h-full object-cover"
                      quality={10}
                   />
                </div>
@@ -29,10 +30,11 @@ export const LinksSection = () => {
             >
                <div className="w-20 h-20 relative rounded-full border-4 border-white/5 overflow-hidden">
                   <Image
-                     fill
+                     width={100}
+                     height={100}
                      alt="menu"
                      src={prenotazione}
-                     className="object-cover"
+                     className="w-full h-full object-cover"
                      quality={10}
                   />
                </div>

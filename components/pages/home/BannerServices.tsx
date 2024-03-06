@@ -14,7 +14,8 @@ export const BannerServices = () => {
          <div className="gradient"></div>
          <div className="absolute overflow-hidden w-full h-full">
             <Image
-               fill
+               width={500}
+               height={500}
                src={img_PageMenu}
                alt="image banner services"
                className="w-full h-full object-cover brightness-25 grayscale"

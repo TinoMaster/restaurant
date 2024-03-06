@@ -1,0 +1,1 @@
+export { CartAndFavorites } from './CartAndFavorites'
