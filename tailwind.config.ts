@@ -53,6 +53,7 @@ const config: Config = {
          },
          brightness: {
             '25': '15%',
+            '10': '5%',
          },
       },
    },

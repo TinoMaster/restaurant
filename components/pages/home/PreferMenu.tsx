@@ -3,9 +3,21 @@ import { BrokeBackground } from '../../backgrounds/BrokeBackground'
 import { ProductCard } from '../../ui/globals/productCard'
 import { LinkButton } from '../../ui/buttons/LinkButton'
 import { MENU_PAGE } from '@/constants/routes.app'
+import { getProductsCart } from '@/services/actions/user.actions'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/libs/authOptions'
+import { TProduct } from '@/types/models/product'
 
 export const PreferMenu = async () => {
+   const session = await getServerSession(authOptions)
    const products = await getProducts()
+   const productsCart = await getProductsCart(session?.user?.sub as string)
+
+   if (!productsCart) return
+
+   const isInCart = (product: TProduct) => {
+      return productsCart.cart.some((p) => p.productId._id === product._id)
+   }
 
    return (
       <section className="py-20 lg:py-44 px-2 z-10 bg-lightDarkMode text-slate-100 relative flex flex-col items-center justify-center">
@@ -18,7 +30,12 @@ export const PreferMenu = async () => {
                   products
                      .slice(0, 8)
                      .map((item, index) => (
-                        <ProductCard key={index} index={index} product={item} />
+                        <ProductCard
+                           key={item._id}
+                           index={index}
+                           product={item}
+                           inCart={isInCart(item)}
+                        />
                      ))
                ) : (
                   <p className="text-center col-span-full text-gray-300">

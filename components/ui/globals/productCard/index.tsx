@@ -9,9 +9,16 @@ import { ButtonAddFav } from './ButtonAddFav'
 interface MenuItemPlusImageProps {
    product: TProduct
    index?: number
+   inCart?: boolean
+   favorite?: boolean
 }
 
-export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
+export const ProductCard = ({
+   product,
+   index,
+   inCart,
+   favorite,
+}: MenuItemPlusImageProps) => {
    const { name, price, image, description, ingredients, _id } = product
 
    return (
@@ -66,7 +73,7 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                </span>
                <div className="flex gap-2 items-center">
                   <ButtonAddFav productId={_id} />
-                  <ButtonAddCart product={product} />
+                  <ButtonAddCart product={product} inCart={inCart} />
                </div>
             </div>
          </div>

@@ -1,16 +1,13 @@
-'use client'
-import { useAppSelector } from '@/redux/hooks'
+import { authOptions } from '@/libs/authOptions'
+import { getTotalSummaryFromCart } from '@/services/actions/user.actions'
 import { formatPrice } from '@/utils/formatPrice'
+import { getServerSession } from 'next-auth'
 import { GiTabletopPlayers } from 'react-icons/gi'
 import { ImHome3 } from 'react-icons/im'
 
-export const Summary = () => {
-   const { cart } = useAppSelector((state) => state.userReducer)
-
-   const total = cart.reduce(
-      (acc, item) => acc + item.quantity * item.productId.price,
-      0
-   )
+export const Summary = async () => {
+   const session = await getServerSession(authOptions)
+   const total = await getTotalSummaryFromCart(session?.user.sub as string)
 
    return (
       <div className="w-full h-full p-5 rounded-md bg-gradient-to-b from-white/10 via-white/5 to-white/10">

@@ -1,7 +1,8 @@
 'use server'
-import '@/app/models/Ingredients'
 import { CategoryModel } from '@/app/models/Categories'
+import '@/app/models/Ingredients'
 import { ProductModel } from '@/app/models/Products'
+import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
 import { TCategory } from '@/types/models/category'
 import {
@@ -10,11 +11,12 @@ import {
    TUpdateProduct,
 } from '@/types/models/product'
 import { formatServerResponse } from '@/utils/formatServerResponse'
+import { saveImageInCubbit } from '@/utils/saveImageInCubbit'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
 import { validateProduct } from '../validators/schemas/product.zod'
-import { UserModel } from '@/app/models/User'
-import { saveImageInCubbit } from '@/utils/saveImageInCubbit'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/libs/authOptions'
 
 export async function getProducts() {
    try {
@@ -260,53 +262,39 @@ export async function removeFavorite(id: string, userId: string) {
    }
 }
 
-export async function AddToCart(
-   userId: string,
-   productId: string,
-   quantity: number
-) {
+export async function AddToCart(productId: string) {
    try {
+      const session = await getServerSession(authOptions)
+      const userId = session?.user?.sub as string
+
       await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
-         $addToSet: { cart: { productId, quantity } },
+         $addToSet: { cart: { productId, quantity: 1 } },
       })
-      revalidatePath('/profile')
       return true
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      revalidatePath('/')
    }
 }
 
-export async function AddOneMoreToCart(
-   userId: string,
-   productId: string,
-   quantity: number
-) {
+export async function RemoveFromCart(productId: string) {
    try {
-      await mongoose.connect(db_config.URI as string)
-      await UserModel.findByIdAndUpdate(userId, {
-         $inc: { cart: { $each: [{ productId, quantity }] } },
-      })
-      revalidatePath('/profile')
-      return true
-   } catch (error) {
-      console.log(error)
-      return false
-   }
-}
+      const session = await getServerSession(authOptions)
+      const userId = session?.user?.sub as string
 
-export async function RemoveFromCart(userId: string, productId: string) {
-   try {
       await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
          $pull: { cart: { productId } },
       })
 
-      revalidatePath('/profile')
       return true
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      revalidatePath('/')
    }
 }

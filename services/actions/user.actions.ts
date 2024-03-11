@@ -4,7 +4,11 @@ import '@/app/models/Products'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
 import { authOptions } from '@/libs/authOptions'
-import { TResponseProductInCartPopulated } from '@/types/models/product'
+import {
+   TProductInCart,
+   TProductInCartPopulated,
+   TResponseProductInCartPopulated,
+} from '@/types/models/product'
 import { TUser, TUserMainInfo, TUserMainInfoToEdit } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
@@ -71,7 +75,7 @@ export async function getFavorites(id: string) {
    }
 }
 
-export async function getCart(userId: string) {
+export async function getProductsCart(userId: string) {
    try {
       await mongoose.connect(db_config.URI as string)
       const cart = await UserModel.findById(userId)
@@ -92,24 +96,30 @@ export async function getCart(userId: string) {
    }
 }
 
-export async function getProductsCart(userId: string) {
+export async function AddOrRemoveOneMoreProductToCart(
+   userId: string,
+   productId: string,
+   quantity: number
+) {
    try {
       await mongoose.connect(db_config.URI as string)
-      const productsCart = await UserModel.findById(userId)
-         .select('cart')
-         .populate({
-            path: 'cart',
-            populate: { path: 'productId' },
-         })
+      const user = await UserModel.findById(userId)
 
-      if (!productsCart) {
-         return false
+      const productIndex = user.cart.findIndex(
+         (item: TProductInCart) => item.productId.toString() === productId
+      )
+
+      if (productIndex !== -1) {
+         user.cart[productIndex].quantity = quantity
+
+         await user.save()
       }
-
-      return formatServerResponse<TResponseProductInCartPopulated>(productsCart)
+      return true
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      revalidatePath('/cart/checkout')
    }
 }
 
@@ -121,6 +131,30 @@ export async function getAmountCartAndFavs(userId: string) {
          favorites: amount?.favorites.length ?? 0,
          cart: amount?.cart.length ?? 0,
       }
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
+export async function getTotalSummaryFromCart(userId: string) {
+   try {
+      await mongoose.connect(db_config.URI as string)
+      const cart = await UserModel.findById(userId)
+         .select('cart')
+         .populate({
+            path: 'cart',
+            populate: { path: 'productId' },
+         })
+
+      const totalSummary = cart?.cart.reduce(
+         (acc: number, item: TProductInCartPopulated) => {
+            return acc + item.productId.price * (item.quantity ?? 1)
+         },
+         0
+      )
+
+      return totalSummary
    } catch (error) {
       console.log(error)
       return false
