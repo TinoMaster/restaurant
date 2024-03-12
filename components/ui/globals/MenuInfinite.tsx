@@ -43,7 +43,7 @@ export const MenuInfinite = ({
          <motion.nav
             drag="x"
             dragConstraints={{ right: 0, left: -width }}
-            className={`${position === 'center' && 'justify-center'} ${
+            className={`${position === 'center' && 'md:justify-center'} ${
                position === 'right' && 'md:justify-end'
             } flex w-max gap-4 lg:gap-7 cursor-grab min-w-full`}
          >
