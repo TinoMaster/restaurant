@@ -1,4 +1,3 @@
-import { DialogsRender } from '@/components/pages/profile/userInfo/Dialogs_Render'
 import { FormUserInfo } from '@/components/pages/profile/userInfo/formUserInfo'
 import { ImageMainInfo } from '@/components/pages/profile/userInfo/imageUserInfo'
 import { authOptions } from '@/libs/authOptions'
@@ -20,7 +19,6 @@ export default async function Profile() {
 
    return (
       <div className="text-white space-y-10 min-h-full min-w-full pb-24">
-         <DialogsRender />
          <div className="grid grid-cols-4 justify-center items-center py-4 gap-10 md:gap-0">
             <div className="flex flex-col gap-2 justify-center items-center col-span-4 lg:col-span-1">
                <ImageMainInfo image={image} name={name} email={email} />

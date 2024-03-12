@@ -5,6 +5,7 @@ import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
 import { authOptions } from '@/libs/authOptions'
 import {
+   TFavoritesResponse,
    TProductInCart,
    TProductInCartPopulated,
    TResponseProductInCartPopulated,
@@ -54,10 +55,10 @@ export async function getUserInfo(id: string) {
    }
 }
 
-export async function getFavorites(id: string) {
+export async function getFavorites(userId: string) {
    try {
       await mongoose.connect(db_config.URI as string)
-      const favorites = await UserModel.findById(id)
+      const favorites = await UserModel.findById(userId)
          .select('favorites')
          .populate({
             path: 'favorites',
@@ -68,7 +69,7 @@ export async function getFavorites(id: string) {
          return false
       }
 
-      return formatServerResponse(favorites)
+      return formatServerResponse<TFavoritesResponse>(favorites)
    } catch (error) {
       console.log(error)
       return false

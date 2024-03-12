@@ -226,39 +226,47 @@ export async function deleteIngredientFromProduct(
    }
 }
 
-export async function IsFavorite(id: string, userId: string) {
+export async function addToFavorite(productId: string) {
    try {
+      const session = await getServerSession(authOptions)
+      const userId = session?.user?.sub as string
+
       await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
-         $addToSet: { favorites: id },
+         $addToSet: { favorites: productId },
       })
-      await ProductModel.findByIdAndUpdate(id, {
+      await ProductModel.findByIdAndUpdate(productId, {
          $inc: { favorites: 1 },
       })
 
-      revalidatePath('/')
       return true
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      revalidatePath('/')
    }
 }
 
-export async function removeFavorite(id: string, userId: string) {
+export async function removeFavorite(productId: string) {
    try {
+      const session = await getServerSession(authOptions)
+      const userId = session?.user?.sub as string
+
       await mongoose.connect(db_config.URI as string)
       await UserModel.findByIdAndUpdate(userId, {
-         $pull: { favorites: id },
+         $pull: { favorites: productId },
       })
-      await ProductModel.findByIdAndUpdate(id, {
+      await ProductModel.findByIdAndUpdate(productId, {
          $inc: { favorites: -1 },
       })
 
-      revalidatePath('/')
       return true
    } catch (error) {
       console.log(error)
       return false
+   } finally {
+      revalidatePath('/')
    }
 }
 

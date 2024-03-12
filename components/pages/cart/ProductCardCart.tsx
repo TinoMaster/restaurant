@@ -1,10 +1,12 @@
 'use client'
+import { RemoveFromCart } from '@/services/actions/product.action'
 import { AddOrRemoveOneMoreProductToCart } from '@/services/actions/user.actions'
 import { TProductInCartPopulated } from '@/types/models/product'
 import { formatPrice } from '@/utils/formatPrice'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useOptimistic } from 'react'
+import toast from 'react-hot-toast'
 import { IoMdClose } from 'react-icons/io'
 
 export const ProductCardCart = ({
@@ -23,9 +25,6 @@ export const ProductCardCart = ({
 
    return (
       <div className="w-full relative flex flex-wrap bg-white/5 py-2 px-4 shadow-md rounded-md items-center justify-between">
-         <button className="w-10 h-10 absolute -top-4 right-0 bg-white/30 rounded-full flex justify-center items-center">
-            <IoMdClose />
-         </button>
          <Image
             width={200}
             height={200}
@@ -40,6 +39,19 @@ export const ProductCardCart = ({
          <div className="w-32 h-full p-4">
             <div className="bg-white/10 w-full h-full rounded-md overflow-hidden flex items-center justify-between">
                <form className="w-full h-full flex justify-center items-center text-lg bg-black py-1 disabled:bg-black/50">
+                  <button
+                     formAction={async () => {
+                        toast.loading('Removing...')
+                        const res = await RemoveFromCart(p._id)
+                        toast.dismiss()
+                        if (res) toast.success('Removed successfully')
+                        else toast.error('Something went wrong')
+                     }}
+                     className="w-10 h-10 absolute -top-4 right-0 bg-white/30 rounded-full flex justify-center items-center"
+                  >
+                     <IoMdClose />
+                  </button>
+
                   <button
                      formAction={async () => {
                         setOptimisticAmountInCart(

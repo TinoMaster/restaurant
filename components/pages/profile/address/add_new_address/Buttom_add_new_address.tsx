@@ -1,7 +1,7 @@
 'use client'
 import { useFormStatus } from 'react-dom'
 
-export const Buttom_add_new_address = () => {
+export const ButtomAddNewAddress = () => {
    const { pending } = useFormStatus()
 
    return (

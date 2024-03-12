@@ -54,3 +54,8 @@ export interface TUpdateProduct {
    image?: string
    ingredients?: TIngredient['_id'][]
 }
+
+export interface TFavoritesResponse {
+   _id: string
+   favorites: TProduct[]
+}

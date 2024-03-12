@@ -10,7 +10,7 @@ export const Favorites = async () => {
 
    return (
       <Link
-         href={'/cart/checkout'}
+         href={'/profile/favorites'}
          className="p-2 relative bg-pri-500/10 shadow-md rounded-full"
       >
          <FaRegHeart className="w-5 h-5 hover:cursor-pointer" />

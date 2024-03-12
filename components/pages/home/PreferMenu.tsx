@@ -3,7 +3,7 @@ import { BrokeBackground } from '../../backgrounds/BrokeBackground'
 import { ProductCard } from '../../ui/globals/productCard'
 import { LinkButton } from '../../ui/buttons/LinkButton'
 import { MENU_PAGE } from '@/constants/routes.app'
-import { getProductsCart } from '@/services/actions/user.actions'
+import { getFavorites, getProductsCart } from '@/services/actions/user.actions'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/libs/authOptions'
 import { TProduct } from '@/types/models/product'
@@ -12,11 +12,17 @@ export const PreferMenu = async () => {
    const session = await getServerSession(authOptions)
    const products = await getProducts()
    const productsCart = await getProductsCart(session?.user?.sub as string)
+   const favorites = await getFavorites(session?.user?.sub as string)
 
    if (!productsCart) return
+   if (!favorites) return
 
    const isInCart = (product: TProduct) => {
       return productsCart.cart.some((p) => p.productId._id === product._id)
+   }
+
+   const isInFavorite = (product: TProduct) => {
+      return favorites.favorites.some((p) => p._id === product._id)
    }
 
    return (
@@ -35,11 +41,12 @@ export const PreferMenu = async () => {
                            index={index}
                            product={item}
                            inCart={isInCart(item)}
+                           isFavorite={isInFavorite(item)}
                         />
                      ))
                ) : (
                   <p className="text-center col-span-full text-gray-300">
-                     Debes crear productos para que puedas verlos aqui
+                     Debes crear productos para que puedas verlos aquí
                   </p>
                )}
             </div>

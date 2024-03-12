@@ -1,16 +1,15 @@
 'use client'
 import { MotionButton } from '@/components/helpers/MotionDiv'
 import { AddToCart, RemoveFromCart } from '@/services/actions/product.action'
-import { TProduct } from '@/types/models/product'
 import { useSession } from 'next-auth/react'
 import { useOptimistic } from 'react'
 import { FaCartArrowDown } from 'react-icons/fa6'
 
 export const ButtonAddCart = ({
-   product,
+   productId,
    inCart = false,
 }: {
-   product: TProduct
+   productId: string
    inCart?: boolean
 }) => {
    const { status } = useSession()
@@ -33,7 +32,7 @@ export const ButtonAddCart = ({
             <MotionButton
                formAction={async () => {
                   setOctIsInCart(!octIsInCart)
-                  await RemoveFromCart(product._id)
+                  await RemoveFromCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
                className="bg-white/5 text-white text-xs lg:text-sm px-4 py-2 rounded-full focus:outline-none"
@@ -44,7 +43,7 @@ export const ButtonAddCart = ({
             <MotionButton
                formAction={async () => {
                   setOctIsInCart(!octIsInCart)
-                  await AddToCart(product._id)
+                  await AddToCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
                className="bg-pri-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"

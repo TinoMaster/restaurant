@@ -4,10 +4,8 @@ import { Suspense } from 'react'
 
 export default function AddressPage() {
    return (
-      <>
-         <Suspense fallback={<RenderAddressesFallback />}>
-            <RenderAddresses />
-         </Suspense>
-      </>
+      <Suspense fallback={<RenderAddressesFallback />}>
+         <RenderAddresses />
+      </Suspense>
    )
 }

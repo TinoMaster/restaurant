@@ -1,5 +1,4 @@
 import { DIALOG_EDIT_ADDRESS } from '@/constants/dialogs'
-import { Dialogs_addresses } from './Dialogs_addresses'
 import Link from 'next/link'
 
 export interface CardAddressProps {
@@ -19,7 +18,6 @@ export const CardAddress = ({
 }: CardAddressProps) => {
    return (
       <>
-         <Dialogs_addresses />
          <Link
             href={{
                pathname: '/profile/address',

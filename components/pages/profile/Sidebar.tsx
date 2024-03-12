@@ -1,23 +1,22 @@
 'use client'
 import { linksProfile } from '@/constants/links_profile'
-import { signOut } from 'next-auth/react'
+import { ADMIN_PANEL } from '@/constants/routes.app'
+import { cutPathnameByPiece } from '@/utils/cutPathname'
+import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { RiLogoutCircleLine } from 'react-icons/ri'
-import { IoMenu } from 'react-icons/io5'
-import { FaArrowLeft, FaHouse } from 'react-icons/fa6'
 import { useState } from 'react'
-import { ADMIN_PANEL } from '@/constants/routes.app'
+import { FaArrowLeft, FaHouse } from 'react-icons/fa6'
 import { GrUserAdmin } from 'react-icons/gr'
-import { cutPathnameByPiece } from '@/utils/cutPathname'
-import { useAppSelector } from '@/redux/hooks'
+import { IoMenu } from 'react-icons/io5'
+import { RiLogoutCircleLine } from 'react-icons/ri'
 
 export const Sidebar = () => {
    const pathname = usePathname()
    const path = cutPathnameByPiece(pathname, 1, 3)
    const [menuIsOpen, setMenuIsOpen] = useState(false)
    const router = useRouter()
-   const isAdmin = useAppSelector((state) => state.userReducer.isAdmin)
+   const { data: session } = useSession()
 
    const handlerBack = () => {
       router.back()
@@ -63,7 +62,7 @@ export const Sidebar = () => {
 
             <ul className="p-2 sm:p-4 text-sm font-medium md:space-y-4 flex md:flex-col gap-1">
                {linksProfile.map((link, idx) => (
-                  <li key={idx}>
+                  <li key={link.title}>
                      <Link
                         href={link.href}
                         className={`flex items-center capitalize gap-2 text-gray-400 p-2 rounded-lg ${
@@ -79,7 +78,7 @@ export const Sidebar = () => {
                      </Link>
                   </li>
                ))}
-               {isAdmin && (
+               {session?.user.isAdmin && (
                   <li>
                      <Link
                         href={ADMIN_PANEL}

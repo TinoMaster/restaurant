@@ -16,7 +16,7 @@ export const linksProfile: TLinkWhitIcon[] = [
       icon: IoIosHeartEmpty,
    },
    {
-      title: 'direccion',
+      title: 'indirizzi',
       href: '/profile/address',
       icon: PiAddressBookLight,
    },

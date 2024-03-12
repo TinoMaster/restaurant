@@ -10,14 +10,14 @@ interface MenuItemPlusImageProps {
    product: TProduct
    index?: number
    inCart?: boolean
-   favorite?: boolean
+   isFavorite?: boolean
 }
 
 export const ProductCard = ({
    product,
    index,
    inCart,
-   favorite,
+   isFavorite,
 }: MenuItemPlusImageProps) => {
    const { name, price, image, description, ingredients, _id } = product
 
@@ -72,8 +72,8 @@ export const ProductCard = ({
                   {formatPrice(price)}
                </span>
                <div className="flex gap-2 items-center">
-                  <ButtonAddFav productId={_id} />
-                  <ButtonAddCart product={product} inCart={inCart} />
+                  <ButtonAddFav productId={_id} isFavorite={isFavorite} />
+                  <ButtonAddCart productId={_id} inCart={inCart} />
                </div>
             </div>
          </div>
