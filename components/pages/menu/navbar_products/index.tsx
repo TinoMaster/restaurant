@@ -1,7 +1,7 @@
 import { MenuInfinite } from '@/components/ui/globals/MenuInfinite'
 import { getCategories } from '@/services/actions/category.actions'
 
-export const NavBar_pageMenu = async () => {
+export const NavBarPageMenu = async () => {
    const categories = await getCategories()
 
    if (!categories || categories.length === 0) {
@@ -16,7 +16,7 @@ export const NavBar_pageMenu = async () => {
       href: `/menu/${category.name}`,
    }))
    return (
-      <div className="container sticky top-0 z-20">
+      <div className="w-full sticky top-[70px] z-20">
          <MenuInfinite
             links={linksCategories}
             cutPath={[1, 3]}

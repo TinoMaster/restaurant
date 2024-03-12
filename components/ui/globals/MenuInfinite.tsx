@@ -38,12 +38,12 @@ export const MenuInfinite = ({
       <motion.header
          ref={element}
          whileTap={{ cursor: 'grabbing' }}
-         className="flex bg-zinc-800 overflow-hidden relative py-4 mb-4 lg:mb-10 shadow-inner px-2 rounded-lg"
+         className="flex bg-lightDarkMode overflow-hidden relative py-4 mb-4 lg:mb-10 px-2"
       >
          <motion.nav
             drag="x"
             dragConstraints={{ right: 0, left: -width }}
-            className={`${position === 'center' && 'md:justify-center'} ${
+            className={`${position === 'center' && 'justify-center'} ${
                position === 'right' && 'md:justify-end'
             } flex w-max gap-4 lg:gap-7 cursor-grab min-w-full`}
          >
@@ -56,7 +56,7 @@ export const MenuInfinite = ({
                      convertPathWithSpacesReverse(path) === href
                         ? 'text-gray-800'
                         : 'hover:text-white'
-                  } uppercase text-xs sm:text-xs flex justify-center items-center gap-1 bg-white/5 p-2 rounded-lg relative`}
+                  } uppercase text-xs sm:text-sm flex justify-center items-center gap-1 bg-white/5 p-2 rounded-lg relative`}
                >
                   {convertPathWithSpacesReverse(path) === href && (
                      <motion.div

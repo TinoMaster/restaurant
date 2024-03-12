@@ -9,7 +9,7 @@ import { Favorites } from './cartAndFavorites/Favorites'
 
 export const NavBar = () => {
    return (
-      <section className="flex justify-between items-center text-slate-200 py-3 z-30 lg:pr-5 lg:pl-10 px-3 h-[80px] select-none">
+      <section className="flex justify-between items-center text-slate-200 py-3 z-30 lg:pr-5 lg:pl-10 px-3 h-[70px] select-none bg-gradient-to-t from-lightDarkMode to-darkMode">
          <Logo />
          <div className="flex items-center justify-end gap-2 lg:gap-4 relative">
             <CartAndFavorites>

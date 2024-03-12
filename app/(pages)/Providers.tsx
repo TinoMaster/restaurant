@@ -2,7 +2,11 @@
 import { NavProvider } from '@/context/navContext'
 import { SessionProvider } from 'next-auth/react'
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+   children,
+}: {
+   readonly children: React.ReactNode
+}) {
    return (
       <SessionProvider>
          <NavProvider>{children}</NavProvider>
