@@ -1,13 +1,10 @@
 'use client'
-import {
-   convertPathWithSpaces,
-   convertPathWithSpacesReverse,
-} from '@/utils/convertPathWithSpaces'
+import { convertPathWithSpacesReverse } from '@/utils/convertPathWithSpaces'
 import { cutPathnameByPiece } from '@/utils/cutPathname'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface MenuInfiniteProps {
    links: {
@@ -25,12 +22,12 @@ export const MenuInfinite = ({
 }: MenuInfiniteProps) => {
    const pathName = usePathname()
    const path = cutPathnameByPiece(pathName, cutPath[0], cutPath[1])
-   const [width, setWhidth] = useState(0)
+   const [width, setWidth] = useState(0)
    const element = useRef<HTMLDivElement | null>(null)
 
    useEffect(() => {
       if (element.current) {
-         setWhidth(element.current.scrollWidth - element.current.offsetWidth)
+         setWidth(element.current.scrollWidth - element.current.offsetWidth)
       }
    }, [])
 

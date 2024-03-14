@@ -15,8 +15,7 @@ export const FormCreateProduct = ({
    categories,
    ingredients,
 }: IFormCreateProductProps) => {
-   const { onSubmit, imagePreview, onChangeImage, handleChangeImage } =
-      useFormCreateProduct()
+   const { onSubmit, imagePreview, onChangeImage } = useFormCreateProduct()
 
    return (
       <form action={onSubmit} className="grid grid-cols-4 w-full gap-4">
@@ -25,7 +24,6 @@ export const FormCreateProduct = ({
             <ImageProfile
                imagePreview={imagePreview}
                onChangeImage={onChangeImage}
-               handleChangeImage={handleChangeImage}
             />
          </div>
          {/* form */}

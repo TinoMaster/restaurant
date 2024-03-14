@@ -31,9 +31,9 @@ export const NavBarScroll = () => {
             className={`w-screen h-svh min-h-[800px] lg:hidden fixed flex flex-col top-0 right-0 text-slate-200 bg-gradient-to-r from-darkMode via-lightDarkMode to-darkMode shadow-md py-2 overflow-hidden`}
          >
             <div className="py-4 flex justify-center">
-               <small onClick={() => setIsActive(false)}>
+               <button onClick={() => setIsActive(false)}>
                   <Registration />
-               </small>
+               </button>
             </div>
             <div className="flex w-full flex-col z-10 mt-10 grow">
                <ul className="flex w-[150vw] -translate-x-[25vw] flex-col text-xl justify-center items-center h-full gap-8 bg-lightDarkMode rounded-t-full">
@@ -46,7 +46,7 @@ export const NavBarScroll = () => {
          {/* Buttom section */}
          <section className={`rounded-l-3xl text-slate-200 z-40`}>
             <div className="lg:pr-5 lg:pl-10 lg:hidden px-3 flex justify-between items-center hover:-translate-x-1 transition-transform">
-               <div
+               <button
                   onClick={() => setIsActive(!isActive)}
                   className="lg:hidden select-none"
                >
@@ -55,7 +55,7 @@ export const NavBarScroll = () => {
                   ) : (
                      <TbMenuDeep className="text-4xl hover:text-primary hover:cursor-pointer transition-colors" />
                   )}
-               </div>
+               </button>
             </div>
          </section>
       </>

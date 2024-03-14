@@ -1,19 +1,26 @@
+'use client'
 import Image from 'next/image'
 
 interface IImageBlockProps {
    image?: string
    name?: string
-   handleChangeImage: () => void
+   formActionChange?: () => void
    onChangeImage: (event: React.ChangeEvent<HTMLInputElement>) => void
    imagePreview?: string
+   setImagePreview?: (value: string) => void
+   cancelImagePreview?: boolean
+   setCancelImagePreview?: (value: boolean) => void
 }
 
 export const ImageProfile = ({
    image,
    name,
-   handleChangeImage,
+   formActionChange,
    onChangeImage,
    imagePreview,
+   cancelImagePreview,
+   setCancelImagePreview,
+   setImagePreview,
 }: IImageBlockProps) => {
    return (
       <>
@@ -29,22 +36,37 @@ export const ImageProfile = ({
                renderImageOrName(image, name)
             )}
          </div>
-         {imagePreview ? (
-            <button
-               title="change image"
-               type="button"
-               onClick={handleChangeImage}
-               className="btn-white disabled:bg-pri-300/40 disabled:cursor-not-allowed"
-            >
-               Save
-            </button>
+         {imagePreview && !cancelImagePreview ? (
+            <form action={formActionChange} className="flex gap-2">
+               <button
+                  title="change image"
+                  type="submit"
+                  className="btn-white disabled:bg-pri-300/40 disabled:cursor-not-allowed"
+               >
+                  Save
+               </button>
+               <button
+                  title="cancel image"
+                  type="button"
+                  onClick={() => {
+                     setCancelImagePreview && setCancelImagePreview(true)
+                     setImagePreview && setImagePreview('')
+                  }}
+                  className="btn-white disabled:bg-pri-300/40 disabled:cursor-not-allowed"
+               >
+                  cancel
+               </button>
+            </form>
          ) : (
             <label htmlFor="change-image" className="btn-white">
                Change image
             </label>
          )}
          <input
-            onChange={onChangeImage}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+               setCancelImagePreview && setCancelImagePreview(false)
+               onChangeImage(event)
+            }}
             type="file"
             name="image"
             id="change-image"

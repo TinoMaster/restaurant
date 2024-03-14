@@ -30,13 +30,14 @@ export default async function PageAdminProductDetails({
       sells,
       createdAt,
       updatedAt,
+      _id,
    } = product
 
    return (
       <section className="text-gray-400 body-font overflow-hidden">
          <div className="container py-10">
             <div className="lg:w-4/5 grid grid-cols-1 lg:grid-cols-2 gap-8">
-               <ImageViewProduct image={image} />
+               <ImageViewProduct image={image} name={name} id={_id} />
                <div className="w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                   <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">
                      {`PRODUCT | ${category.name}`}

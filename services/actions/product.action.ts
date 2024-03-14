@@ -180,6 +180,22 @@ export async function updateProduct(id: string, data: TUpdateProduct) {
    }
 }
 
+export async function changeImageProduct(productId: string, imageURL: string) {
+   try {
+      await mongoose.connect(db_config.URI as string)
+
+      await ProductModel.findByIdAndUpdate(productId, {
+         image: imageURL,
+      })
+
+      revalidatePath('/profile/admin/menu')
+      return true
+   } catch (error) {
+      console.log(error)
+      return false
+   }
+}
+
 export async function addIngredientToProduct(id: string, ingredientId: string) {
    try {
       await mongoose.connect(db_config.URI as string)

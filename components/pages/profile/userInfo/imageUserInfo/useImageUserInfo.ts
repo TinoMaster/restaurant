@@ -21,7 +21,7 @@ export const useImageUserInfo = ({ email }: { email: string }) => {
       }
    }
 
-   async function handleChangeImage() {
+   async function formActionChange() {
       toast.loading('Aggiornando la immagine...')
       if (!imageFile) {
          toast.remove()
@@ -53,6 +53,6 @@ export const useImageUserInfo = ({ email }: { email: string }) => {
    return {
       imagePreview,
       onChangeImage,
-      handleChangeImage,
+      formActionChange,
    }
 }

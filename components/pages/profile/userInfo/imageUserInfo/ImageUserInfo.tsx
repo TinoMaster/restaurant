@@ -9,7 +9,7 @@ interface IImageBlockProps {
 }
 
 export const ImageMainInfo = ({ image, name, email }: IImageBlockProps) => {
-   const { handleChangeImage, onChangeImage, imagePreview } = useImageUserInfo({
+   const { formActionChange, onChangeImage, imagePreview } = useImageUserInfo({
       email,
    })
 
@@ -17,7 +17,7 @@ export const ImageMainInfo = ({ image, name, email }: IImageBlockProps) => {
       <ImageProfile
          image={image}
          name={name}
-         handleChangeImage={handleChangeImage}
+         formActionChange={formActionChange}
          onChangeImage={onChangeImage}
          imagePreview={imagePreview ?? ''}
       />

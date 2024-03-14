@@ -35,12 +35,9 @@ export const useFormCreateProduct = () => {
       push('/profile/admin/menu')
    }
 
-   const handleChangeImage = () => {}
-
    return {
       onSubmit,
       imagePreview,
       onChangeImage,
-      handleChangeImage,
    }
 }

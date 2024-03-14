@@ -16,7 +16,7 @@ export const Registration = () => {
       <>
          {session?.user.sub ? (
             <div className="flex items-center">
-               <LogoProfile />
+               <LogoProfile userId={session.user.sub} />
             </div>
          ) : (
             <div className="flex justify-center text-xl md:text-base">

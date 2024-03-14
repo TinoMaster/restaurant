@@ -1,6 +1,7 @@
 'use client'
 import { linksLogoProfile } from '@/constants/links_profile'
-import { signOut, useSession } from 'next-auth/react'
+import { getUserInfo } from '@/services/actions/user.actions'
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -8,9 +9,17 @@ import { CiMenuKebab } from 'react-icons/ci'
 import { FaUser } from 'react-icons/fa'
 import { RiLogoutCircleLine } from 'react-icons/ri'
 
-export const LogoProfile = () => {
+export const LogoProfile = ({ userId }: { userId: string }) => {
    const [menuProfile, setMenuProfile] = useState(false)
-   const { data: session } = useSession()
+   const [profileImage, setProfileImage] = useState('')
+
+   useEffect(() => {
+      getUserInfo(userId).then((res) => {
+         if (res) {
+            setProfileImage(res.image)
+         }
+      })
+   }, [userId])
 
    useEffect(() => {
       if (menuProfile) {
@@ -35,9 +44,9 @@ export const LogoProfile = () => {
          className="cursor-pointer flex justify-center items-center relative"
       >
          <div className="flex items-center">
-            {session?.user.image ? (
+            {profileImage ? (
                <Image
-                  src={session.user.image}
+                  src={profileImage}
                   alt="user image"
                   width={100}
                   height={100}
