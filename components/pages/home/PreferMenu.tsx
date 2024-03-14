@@ -57,3 +57,5 @@ export const PreferMenu = async () => {
       </section>
    )
 }
+
+export const revalidate = 0

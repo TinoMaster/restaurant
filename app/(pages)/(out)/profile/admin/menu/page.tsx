@@ -38,7 +38,9 @@ export default async function PageAdminMenu() {
                      className="w-full p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white/5 rounded-lg"
                      key={category._id}
                   >
-                     <summary className="hover:cursor-pointer uppercase font-semibold text-gray-400 text-sm">{category.name}</summary>
+                     <summary className="hover:cursor-pointer uppercase font-semibold text-gray-400 text-sm">
+                        {category.name}
+                     </summary>
                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-5 bg-black/5">
                         {products
                            .filter(
@@ -61,3 +63,5 @@ export default async function PageAdminMenu() {
       </div>
    )
 }
+
+export const revalidate = 0
