@@ -9,20 +9,25 @@ import { authOptions } from '@/libs/authOptions'
 import { TProduct } from '@/types/models/product'
 
 export const PreferMenu = async () => {
-   const session = await getServerSession(authOptions)
    const products = await getProducts()
-   const productsCart = await getProductsCart(session?.user?.sub as string)
-   const favorites = await getFavorites(session?.user?.sub as string)
+   const session = await getServerSession(authOptions)
+   let isInCart: ((product: TProduct) => boolean) | undefined = undefined
+   let isInFavorite: ((product: TProduct) => boolean) | undefined = undefined
 
-   if (!productsCart) return
-   if (!favorites) return
+   if (session) {
+      const productsCart = await getProductsCart(session?.user?.sub as string)
+      const favorites = await getFavorites(session?.user?.sub as string)
 
-   const isInCart = (product: TProduct) => {
-      return productsCart.cart.some((p) => p.productId._id === product._id)
-   }
+      if (!productsCart) return
+      if (!favorites) return
 
-   const isInFavorite = (product: TProduct) => {
-      return favorites.favorites.some((p) => p._id === product._id)
+      isInCart = (product: TProduct) => {
+         return productsCart.cart.some((p) => p.productId._id === product._id)
+      }
+
+      isInFavorite = (product: TProduct) => {
+         return favorites.favorites.some((p) => p._id === product._id)
+      }
    }
 
    return (
@@ -40,8 +45,10 @@ export const PreferMenu = async () => {
                            key={item._id}
                            index={index}
                            product={item}
-                           inCart={isInCart(item)}
-                           isFavorite={isInFavorite(item)}
+                           {...(isInCart && { inCart: isInCart(item) })}
+                           {...(isInFavorite && {
+                              isFavorite: isInFavorite(item),
+                           })}
                         />
                      ))
                ) : (
