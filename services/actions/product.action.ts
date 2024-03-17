@@ -11,12 +11,12 @@ import {
    TUpdateProduct,
 } from '@/types/models/product'
 import { formatServerResponse } from '@/utils/formatServerResponse'
-import { saveImageInCubbit } from '@/utils/saveImageInCubbit'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'
 import { validateProduct } from '../validators/schemas/product.zod'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/libs/authOptions'
+import { saveImageInCubbit } from '@/libs/utils'
 
 export async function getProducts() {
    try {

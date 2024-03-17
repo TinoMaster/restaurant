@@ -1,5 +1,5 @@
+import { saveImageInCubbit } from '@/libs/utils'
 import { updateUser } from '@/services/actions/user.actions'
-import { saveImageInCubbit } from '@/utils/saveImageInCubbit'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 

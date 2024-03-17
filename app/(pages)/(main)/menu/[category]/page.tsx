@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/ui/globals/productCard'
+import { convertPathWithSpacesReverse } from '@/libs/utils'
 import { getProductsByCategory } from '@/services/actions/product.action'
-import { convertPathWithSpacesReverse } from '@/utils/convertPathWithSpaces'
 
 export default async function SectionRenderProducts({
    params,

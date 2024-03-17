@@ -55,10 +55,16 @@ export async function getUserInfo(id: string) {
    }
 }
 
-export async function getFavorites(userId: string) {
+export async function getFavorites() {
    try {
+      const session = await getServerSession(authOptions)
+
+      if (!session) {
+         return false
+      }
+
       await mongoose.connect(db_config.URI as string)
-      const favorites = await UserModel.findById(userId)
+      const favorites = await UserModel.findById(session?.user?.sub)
          .select('favorites')
          .populate({
             path: 'favorites',
@@ -76,10 +82,16 @@ export async function getFavorites(userId: string) {
    }
 }
 
-export async function getProductsCart(userId: string) {
+export async function getProductsCart() {
    try {
+      const session = await getServerSession(authOptions)
+
+      if (!session) {
+         return false
+      }
+
       await mongoose.connect(db_config.URI as string)
-      const cart = await UserModel.findById(userId)
+      const cart = await UserModel.findById(session?.user?.sub)
          .select('cart')
          .populate({
             path: 'cart',

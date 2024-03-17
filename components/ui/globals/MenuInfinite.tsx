@@ -1,6 +1,5 @@
 'use client'
-import { convertPathWithSpacesReverse } from '@/utils/convertPathWithSpaces'
-import { cutPathnameByPiece } from '@/utils/cutPathname'
+import { convertPathWithSpacesReverse, cutPathnameByPiece } from '@/libs/utils'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

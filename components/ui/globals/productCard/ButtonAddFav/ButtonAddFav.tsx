@@ -29,14 +29,14 @@ export const ButtonAddFav = ({
    }
 
    return (
-      <form>
+      <form className='absolute top-2 right-1'>
          {octIsFavorite ? (
             <button
                formAction={async () => {
                   setOctIsFavorite(!octIsFavorite)
                   await removeFavorite(productId)
                }}
-               className="text-white/70 px-2 lg:text-2xl rounded-full"
+               className="text-white/70 px-2 text-2xl lg:text-3xl rounded-full"
             >
                <FaHeart className="text-red-500/50 hover:text-red-500/70 fill-current focus:shadow-outline-blue active:animate-ping transition duration-150 ease-in-out" />
             </button>
@@ -46,7 +46,7 @@ export const ButtonAddFav = ({
                   setOctIsFavorite(!octIsFavorite)
                   await addToFavorite(productId)
                }}
-               className="text-white/70 px-2 lg:text-2xl rounded-full"
+               className="text-white/70 px-2 text-2xl lg:text-3xl rounded-full"
             >
                <FaRegHeart className="hover:text-red-500/50 fill-current focus:shadow-outline-blue active:animate-ping transition duration-150 ease-in-out" />
             </button>

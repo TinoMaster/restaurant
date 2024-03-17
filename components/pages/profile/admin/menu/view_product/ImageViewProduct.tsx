@@ -1,7 +1,7 @@
 'use client'
 import { ImageProfile } from '@/components/ui/globals/ImageProfile'
+import { saveImageInCubbit } from '@/libs/utils'
 import { changeImageProduct } from '@/services/actions/product.action'
-import { saveImageInCubbit } from '@/utils/saveImageInCubbit'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 

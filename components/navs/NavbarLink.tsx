@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { TLink } from '@/types/common'
 import useNav from '@/context/navContext'
-import { cutPathnameByPiece } from '@/utils/cutPathname'
+import { cutPathnameByPiece } from '@/libs/utils'
 
 interface NavbarLinkProps {
    link: TLink

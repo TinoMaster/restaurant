@@ -1,8 +1,8 @@
 'use client'
 import { ConfirmOrCancelInputChanges } from '@/components/ui/buttons/ConfirmOrCancelInputChanges'
 import { EditInput } from '@/components/ui/buttons/EditInput'
+import { formatPrice } from '@/libs/utils'
 import { updateProduct } from '@/services/actions/product.action'
-import { formatPrice } from '@/utils/formatPrice'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 

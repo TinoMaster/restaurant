@@ -10,7 +10,7 @@ export default async function CheckoutPage() {
    if (!session) {
       redirect('/login')
    }
-   const response = await getProductsCart(session.user.sub)
+   const response = await getProductsCart()
    if (!response) {
       redirect('/menu')
    }

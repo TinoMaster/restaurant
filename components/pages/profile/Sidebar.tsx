@@ -1,7 +1,7 @@
 'use client'
 import { linksProfile } from '@/constants/links_profile'
 import { ADMIN_PANEL } from '@/constants/routes.app'
-import { cutPathnameByPiece } from '@/utils/cutPathname'
+import { cutPathnameByPiece } from '@/libs/utils'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'

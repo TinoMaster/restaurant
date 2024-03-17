@@ -1,6 +1,6 @@
 import { authOptions } from '@/libs/authOptions'
+import { formatPrice } from '@/libs/utils'
 import { getTotalSummaryFromCart } from '@/services/actions/user.actions'
-import { formatPrice } from '@/utils/formatPrice'
 import { getServerSession } from 'next-auth'
 import { GiTabletopPlayers } from 'react-icons/gi'
 import { ImHome3 } from 'react-icons/im'

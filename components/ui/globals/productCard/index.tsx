@@ -1,10 +1,10 @@
 import { TProduct } from '@/types/models/product'
-import { formatPrice } from '@/utils/formatPrice'
 import { texturaCemento } from '@/utils/images'
 import Image from 'next/image'
 import { MotionDiv } from '../../../helpers/MotionDiv'
 import { ButtonAddCart } from './ButtonAddCart'
 import { ButtonAddFav } from './ButtonAddFav'
+import { formatPrice } from '@/libs/utils'
 
 interface MenuItemPlusImageProps {
    product: TProduct
@@ -52,7 +52,7 @@ export const ProductCard = ({
             </div>
          </div>
          <div className="px-2 py-1 lg:p-4 grow flex flex-col">
-            <h2 className="text-sm lg:text-base text-primary capitalize">
+            <h2 className="text-sm lg:text-lg text-primary capitalize">
                {name}
             </h2>
             <div className="flex flex-col gap-1 text-[8px] md:text-xs capitalize grow">
@@ -71,7 +71,7 @@ export const ProductCard = ({
                <span className="lg:text-base text-primary font-bold text-sm">
                   {formatPrice(price)}
                </span>
-               <div className="flex gap-2 items-center">
+               <div className="flex gap-1 items-center">
                   <ButtonAddFav productId={_id} isFavorite={isFavorite} />
                   <ButtonAddCart productId={_id} inCart={inCart} />
                </div>

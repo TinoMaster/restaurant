@@ -2,7 +2,6 @@
 import { CategoryModel } from '@/app/models/Categories'
 import { db_config } from '@/config/db.config'
 import { TCategory, TCategoryCreate } from '@/types/models/category'
-import { convertPathWithSpacesReverse } from '@/utils/convertPathWithSpaces'
 import { formatServerResponse } from '@/utils/formatServerResponse'
 import mongoose from 'mongoose'
 import { revalidatePath } from 'next/cache'

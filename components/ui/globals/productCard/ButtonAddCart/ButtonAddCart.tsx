@@ -3,7 +3,7 @@ import { MotionButton } from '@/components/helpers/MotionDiv'
 import { AddToCart, RemoveFromCart } from '@/services/actions/product.action'
 import { useSession } from 'next-auth/react'
 import { useOptimistic } from 'react'
-import { FaCartArrowDown } from 'react-icons/fa6'
+import { BsCart, BsCartCheck } from 'react-icons/bs'
 
 export const ButtonAddCart = ({
    productId,
@@ -27,7 +27,7 @@ export const ButtonAddCart = ({
    }
 
    return (
-      <form>
+      <form className="">
          {octIsInCart ? (
             <MotionButton
                formAction={async () => {
@@ -35,9 +35,12 @@ export const ButtonAddCart = ({
                   await RemoveFromCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
-               className="bg-white/5 text-white text-xs lg:text-sm px-4 py-2 rounded-full focus:outline-none"
+               className="bg-pri-800 text-white text-lg lg:text-xl p-2 lg:p-3 rounded-full focus:outline-none relative"
             >
-               in cart
+               <BsCartCheck />
+               <p className="absolute text-[8px] text-center -bottom-3">
+                  in cart
+               </p>
             </MotionButton>
          ) : (
             <MotionButton
@@ -46,9 +49,9 @@ export const ButtonAddCart = ({
                   await AddToCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
-               className="bg-pri-800 text-white text-xs lg:text-base p-2 rounded-full focus:outline-none"
+               className="bg-black/20 text-white text-lg lg:text-xl p-2 lg:p-3 rounded-full focus:outline-none"
             >
-               <FaCartArrowDown />
+               <BsCart />
             </MotionButton>
          )}
       </form>

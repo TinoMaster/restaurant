@@ -2,9 +2,9 @@
 import { ConfirmOrCancelInputChanges } from '@/components/ui/buttons/ConfirmOrCancelInputChanges'
 import { EditInput } from '@/components/ui/buttons/EditInput'
 import { TIngredient } from '@/types/models/ingredient'
-import { objectsAreIquals } from '@/utils/objectsAreEquals'
 import { MdCancel } from 'react-icons/md'
 import { useIngredient } from './useIngredient'
+import { objectsAreIquals } from '@/libs/utils'
 
 export const Ingredients = ({
    ingredients,
