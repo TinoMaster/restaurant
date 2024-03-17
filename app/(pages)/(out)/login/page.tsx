@@ -1,5 +1,5 @@
 'use client'
-import LoadingSkeletonPages from '@/app/(pages)/loading'
+import LoadingSkeletonPages from '@/app/(pages)/(main)/loading'
 import { Btn_Google } from '@/components/ui/buttons/Btn_Google'
 import { useLogin } from '@/hooks/useLogin'
 import { prenotazione } from '@/utils/images'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const LoadingProductsMenu = () => {
    return (
       <div className="max-w-screen-xl mx-auto px-4 md:px-8 animate-pulse w-full relative z-10">
