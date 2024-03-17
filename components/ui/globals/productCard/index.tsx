@@ -71,7 +71,7 @@ export const ProductCard = ({
                <span className="lg:text-base text-primary font-bold text-sm">
                   {formatPrice(price)}
                </span>
-               <div className="flex gap-1 items-center">
+               <div className="flex gap-4 items-center">
                   <ButtonAddFav productId={_id} isFavorite={isFavorite} />
                   <ButtonAddCart productId={_id} inCart={inCart} />
                </div>

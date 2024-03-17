@@ -3,7 +3,7 @@ import { MotionButton } from '@/components/helpers/MotionDiv'
 import { AddToCart, RemoveFromCart } from '@/services/actions/product.action'
 import { useSession } from 'next-auth/react'
 import { useOptimistic } from 'react'
-import { BsCart, BsCartCheck } from 'react-icons/bs'
+import { BsCart, BsCartCheck, BsCartCheckFill } from 'react-icons/bs'
 
 export const ButtonAddCart = ({
    productId,
@@ -35,9 +35,9 @@ export const ButtonAddCart = ({
                   await RemoveFromCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
-               className="bg-pri-800 text-white text-lg lg:text-xl p-2 lg:p-3 rounded-full focus:outline-none relative"
+               className="text-primary text-2xl lg:text-3xl rounded-full focus:outline-none relative"
             >
-               <BsCartCheck />
+               <BsCartCheckFill />
                <p className="absolute text-[8px] text-center -bottom-3">
                   in cart
                </p>
@@ -49,7 +49,7 @@ export const ButtonAddCart = ({
                   await AddToCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
-               className="bg-black/20 text-white text-lg lg:text-xl p-2 lg:p-3 rounded-full focus:outline-none"
+               className="bg-black/20 text-white/70 text-2xl lg:text-3xl rounded-full focus:outline-none"
             >
                <BsCart />
             </MotionButton>
