@@ -1,21 +1,24 @@
+import { UPLOAD_FILE } from '@/constants/routes.api'
+import { ServerResponse } from '@/types/api_responses'
 import { TIngredient } from '@/types/models/ingredient'
 import {
    TProduct,
-   TResponseProductInCartPopulated,
+   TResponseProductInCartPopulatedIds
 } from '@/types/models/product'
 import { IconType } from 'react-icons'
-import { UPLOAD_FILE } from '@/constants/routes.api'
-import { ServerResponse } from '@/types/api_responses'
 
 export const isProductInCart = (
-   product: TProduct,
-   array: TResponseProductInCartPopulated['cart']
+   productId: TProduct['_id'],
+   array: TResponseProductInCartPopulatedIds['cart']
 ) => {
-   return array.some((p) => p.productId._id === product._id)
+   return array.some((p) => p.productId === productId)
 }
 
-export const isProductInFavorite = (product: TProduct, array: TProduct[]) => {
-   return array.some((p) => p._id === product._id)
+export const isProductInFavorite = (
+   productId: TProduct['_id'],
+   array: TProduct['_id'][]
+) => {
+   return array.some((id) => id === productId)
 }
 
 export const convertIconToString = (icon: IconType) => {

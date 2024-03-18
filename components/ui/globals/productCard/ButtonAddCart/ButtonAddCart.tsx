@@ -1,25 +1,25 @@
 'use client'
 import { MotionButton } from '@/components/helpers/MotionDiv'
+import { isProductInCart } from '@/libs/utils'
 import { AddToCart, RemoveFromCart } from '@/services/actions/product.action'
+import { getProductsCartIds } from '@/services/actions/user.actions'
 import { useSession } from 'next-auth/react'
-import { useOptimistic } from 'react'
-import { BsCart, BsCartCheck, BsCartCheckFill } from 'react-icons/bs'
+import { useEffect, useState } from 'react'
+import { BsCart, BsCartCheckFill } from 'react-icons/bs'
 
-export const ButtonAddCart = ({
-   productId,
-   inCart = false,
-}: {
-   productId: string
-   inCart?: boolean
-}) => {
+export const ButtonAddCart = ({ productId }: { productId: string }) => {
    const { status } = useSession()
-   const [octIsInCart, setOctIsInCart] = useOptimistic(
-      inCart,
-      (state, newIsInCart: boolean) => newIsInCart
-   )
+   const [isInCart, setIsInCart] = useState(false)
+
+   useEffect(() => {
+      getProductsCartIds().then((data) => {
+         if (!data) return
+         setIsInCart(isProductInCart(productId, data.cart))
+      })
+   }, [productId])
 
    if (status === 'loading') {
-      return <small className="w-5 h-5 rounded-full animate-pulse" />
+      return <small className="w-5 h-5 rounded-full animate-pulse bg-white/5" />
    }
 
    if (status === 'unauthenticated') {
@@ -28,10 +28,10 @@ export const ButtonAddCart = ({
 
    return (
       <form className="">
-         {octIsInCart ? (
+         {isInCart ? (
             <MotionButton
                formAction={async () => {
-                  setOctIsInCart(!octIsInCart)
+                  setIsInCart((prev) => !prev)
                   await RemoveFromCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
@@ -45,11 +45,11 @@ export const ButtonAddCart = ({
          ) : (
             <MotionButton
                formAction={async () => {
-                  setOctIsInCart(!octIsInCart)
+                  setIsInCart((prev) => !prev)
                   await AddToCart(productId)
                }}
                whileHover={{ y: [0, -5, 0, -5, 0] }}
-               className="bg-black/20 text-white/70 text-2xl lg:text-3xl rounded-full focus:outline-none"
+               className="bg-black/20 text-primary/70 text-2xl lg:text-3xl rounded-full focus:outline-none"
             >
                <BsCart />
             </MotionButton>

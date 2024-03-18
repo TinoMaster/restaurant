@@ -9,16 +9,9 @@ import { formatPrice } from '@/libs/utils'
 interface MenuItemPlusImageProps {
    product: TProduct
    index?: number
-   inCart?: boolean
-   isFavorite?: boolean
 }
 
-export const ProductCard = ({
-   product,
-   index,
-   inCart,
-   isFavorite,
-}: MenuItemPlusImageProps) => {
+export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
    const { name, price, image, description, ingredients, _id } = product
 
    return (
@@ -72,8 +65,8 @@ export const ProductCard = ({
                   {formatPrice(price)}
                </span>
                <div className="flex gap-4 items-center">
-                  <ButtonAddFav productId={_id} isFavorite={isFavorite} />
-                  <ButtonAddCart productId={_id} inCart={inCart} />
+                  <ButtonAddFav productId={_id} />
+                  <ButtonAddCart productId={_id} />
                </div>
             </div>
          </div>

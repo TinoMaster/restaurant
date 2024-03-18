@@ -1,9 +1,7 @@
 import { ProductCard } from '@/components/ui/globals/productCard'
-import { isProductInCart, isProductInFavorite } from '@/libs/utils'
-import { getFavorites, getProductsCart } from '@/services/actions/user.actions'
+import { getFavorites } from '@/services/actions/user.actions'
 
 export default async function FavoritesPage() {
-   const productsCart = await getProductsCart()
    const favorites = await getFavorites()
 
    return (
@@ -13,18 +11,7 @@ export default async function FavoritesPage() {
          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {favorites &&
                favorites?.favorites.map((product) => (
-                  <ProductCard
-                     key={product._id}
-                     product={product}
-                     inCart={
-                        productsCart &&
-                        isProductInCart(product, productsCart.cart)
-                     }
-                     isFavorite={
-                        favorites &&
-                        isProductInFavorite(product, favorites.favorites)
-                     }
-                  />
+                  <ProductCard key={product._id} product={product} />
                ))}
          </ul>
       </div>

@@ -22,6 +22,17 @@ export interface TProductInCart {
    _id: string
 }
 
+export interface TResponseProductInCartPopulatedIds {
+   _id: string
+   cart: [
+      {
+         _id: string
+         productId: TProduct['_id']
+         quantity: number
+      }
+   ]
+}
+
 export interface TResponseProductInCartPopulated {
    _id: string
    cart: [
@@ -58,4 +69,9 @@ export interface TUpdateProduct {
 export interface TFavoritesResponse {
    _id: string
    favorites: TProduct[]
+}
+
+export interface TFavoritesResponseIds {
+   _id: string
+   favorites: TProduct['_id'][]
 }
