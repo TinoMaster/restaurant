@@ -4,7 +4,7 @@ import { IDataToVerifyEmail } from '@/types/common'
 import {
    TCreateAdminUserForTest,
    TUserMainInfoToEdit,
-   TUserRegister
+   TUserRegister,
 } from '@/types/models/user'
 
 class User {

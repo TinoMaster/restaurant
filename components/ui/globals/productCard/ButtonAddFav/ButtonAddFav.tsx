@@ -1,24 +1,15 @@
 'use client'
-import { isProductInFavorite } from '@/libs/utils'
 import {
    addToFavorite,
    removeFavorite,
 } from '@/services/actions/product.action'
-import { getFavoritesId } from '@/services/actions/user.actions'
 import { useSession } from 'next-auth/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 
 export const ButtonAddFav = ({ productId }: { productId: string }) => {
    const { status } = useSession()
    const [isFavorite, setIsFavorite] = useState(false)
-
-   useEffect(() => {
-      getFavoritesId().then((data) => {
-         if (!data) return
-         setIsFavorite(isProductInFavorite(productId, data.favorites))
-      })
-   }, [productId])
 
    if (status === 'loading') {
       return <small className="w-5 h-5 rounded-full animate-pulse bg-white/5" />

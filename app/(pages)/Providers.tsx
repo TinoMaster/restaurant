@@ -1,4 +1,5 @@
 'use client'
+import { CartFavProvider } from '@/context/cartFavContext'
 import { NavProvider } from '@/context/navContext'
 import { SessionProvider } from 'next-auth/react'
 
@@ -9,7 +10,9 @@ export function Providers({
 }) {
    return (
       <SessionProvider>
-         <NavProvider>{children}</NavProvider>
+         <CartFavProvider>
+            <NavProvider>{children}</NavProvider>
+         </CartFavProvider>
       </SessionProvider>
    )
 }

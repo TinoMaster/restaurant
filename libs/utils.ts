@@ -1,17 +1,14 @@
 import { UPLOAD_FILE } from '@/constants/routes.api'
 import { ServerResponse } from '@/types/api_responses'
 import { TIngredient } from '@/types/models/ingredient'
-import {
-   TProduct,
-   TResponseProductInCartPopulatedIds
-} from '@/types/models/product'
+import { TProduct } from '@/types/models/product'
 import { IconType } from 'react-icons'
 
 export const isProductInCart = (
    productId: TProduct['_id'],
-   array: TResponseProductInCartPopulatedIds['cart']
+   array: TProduct['_id'][]
 ) => {
-   return array.some((p) => p.productId === productId)
+   return array.some((id) => id === productId)
 }
 
 export const isProductInFavorite = (

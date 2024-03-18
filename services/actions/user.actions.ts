@@ -6,11 +6,10 @@ import { db_config } from '@/config/db.config'
 import { authOptions } from '@/libs/authOptions'
 import {
    TFavoritesResponse,
-   TFavoritesResponseIds,
    TProductInCart,
    TProductInCartPopulated,
    TResponseProductInCartPopulated,
-   TResponseProductInCartPopulatedIds,
+   TCartFavIds,
 } from '@/types/models/product'
 import { TUser, TUserMainInfo, TUserMainInfoToEdit } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
@@ -57,30 +56,6 @@ export async function getUserInfo(id: string) {
    }
 }
 
-export async function getFavoritesId() {
-   try {
-      const session = await getServerSession(authOptions)
-
-      if (!session) {
-         return false
-      }
-
-      await mongoose.connect(db_config.URI as string)
-      const favorites = await UserModel.findById(session?.user?.sub).select(
-         'favorites'
-      )
-
-      if (!favorites) {
-         return false
-      }
-
-      return formatServerResponse<TFavoritesResponseIds>(favorites)
-   } catch (error) {
-      console.log(error)
-      return false
-   }
-}
-
 export async function getFavorites() {
    try {
       const session = await getServerSession(authOptions)
@@ -102,28 +77,6 @@ export async function getFavorites() {
       }
 
       return formatServerResponse<TFavoritesResponse>(favorites)
-   } catch (error) {
-      console.log(error)
-      return false
-   }
-}
-
-export async function getProductsCartIds() {
-   try {
-      const session = await getServerSession(authOptions)
-
-      if (!session) {
-         return false
-      }
-
-      await mongoose.connect(db_config.URI as string)
-      const cart = await UserModel.findById(session?.user?.sub).select('cart')
-
-      if (!cart) {
-         return false
-      }
-
-      return formatServerResponse<TResponseProductInCartPopulatedIds>(cart)
    } catch (error) {
       console.log(error)
       return false
@@ -184,7 +137,7 @@ export async function AddOrRemoveOneMoreProductToCart(
    }
 }
 
-export async function getAmountCartAndFavs() {
+export async function getCartAndFavsIds() {
    try {
       const session = await getServerSession(authOptions)
 
@@ -192,13 +145,20 @@ export async function getAmountCartAndFavs() {
          return false
       }
       await mongoose.connect(db_config.URI as string)
-      const amount = await UserModel.findById(session.user.sub).select(
+      const res = await UserModel.findById(session.user.sub).select(
          'favorites cart'
       )
-      return {
-         favorites: amount?.favorites.length ?? 0,
-         cart: amount?.cart.length ?? 0,
+
+      if (!res) {
+         return false
       }
+
+      const data = {
+         favorites: res.favorites,
+         cart: res.cart.map((item: TProductInCart) => item.productId),
+      }
+
+      return JSON.parse(JSON.stringify(data))
    } catch (error) {
       console.log(error)
       return false
