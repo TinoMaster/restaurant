@@ -103,6 +103,21 @@ class User {
       const docs: ServerResponse = await response.json()
       return docs
    }
+
+   async addOrRemoveProductToCart(productId: string) {
+      const requestOptions = {
+         method: 'PUT',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({
+            productId,
+         }),
+      }
+
+      const response = await fetch(`/api/user/cart`, requestOptions)
+
+      const docs: ServerResponse = await response.json()
+      return docs
+   }
 }
 
 export const user = new User()

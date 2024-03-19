@@ -1,5 +1,6 @@
 'use client'
 import { getCartAndFavsIds } from '@/services/actions/user.actions'
+import { user } from '@/services/user'
 import { TCartFavIds } from '@/types/models/product'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
@@ -65,20 +66,40 @@ export const CartFavProvider = ({
       })
    }
 
-   function addCart(productId: string) {
+   async function addCart(productId: string) {
       setCartIds([...cartIds, productId])
       setAmount({
          ...amount,
          cart: amount.cart + 1,
       })
+
+      const saved = await user.addOrRemoveProductToCart(productId)
+
+      if (!saved.success) {
+         setCartIds(cartIds.filter((id) => id !== productId))
+         setAmount({
+            ...amount,
+            cart: amount.cart - 1,
+         })
+      }
    }
 
-   function removeFromCart(productId: string) {
+   async function removeFromCart(productId: string) {
       setCartIds(cartIds.filter((id) => id !== productId))
       setAmount({
          ...amount,
          cart: amount.cart - 1,
       })
+
+      const removed = await user.addOrRemoveProductToCart(productId)
+
+      if (!removed.success) {
+         setCartIds([...cartIds, productId])
+         setAmount({
+            ...amount,
+            cart: amount.cart + 1,
+         })
+      }
    }
 
    const data = {

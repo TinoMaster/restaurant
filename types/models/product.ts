@@ -19,7 +19,7 @@ export interface TProduct {
 export interface TProductInCart {
    productId: TProduct['_id']
    quantity: number
-   _id: string
+   _id?: string
 }
 
 export interface TResponseProductInCartPopulated {

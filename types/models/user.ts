@@ -1,7 +1,7 @@
 import { TAddress } from './address'
 import { TNotification } from './notification'
 import { TOrder } from './order'
-import { TProduct, TProductInCartPopulated } from './product'
+import { TProduct, TProductInCart } from './product'
 
 export interface TUserSession {
    name?: string | null
@@ -22,7 +22,7 @@ export interface TUser {
    emailVerified: boolean
    phoneVerified: boolean
    orders: TOrder[]
-   cart: TProductInCartPopulated[]
+   cart: TProductInCart[]
    favorites: TProduct['_id'][]
    notifications: TNotification[]
    createdAt: string
