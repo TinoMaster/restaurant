@@ -118,6 +118,21 @@ class User {
       const docs: ServerResponse = await response.json()
       return docs
    }
+
+   async addOrRemoveProductToFavorites(productId: string) {
+      const requestOptions = {
+         method: 'PUT',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({
+            productId,
+         }),
+      }
+
+      const response = await fetch(`/api/user/favorites`, requestOptions)
+
+      const docs: ServerResponse = await response.json()
+      return docs
+   }
 }
 
 export const user = new User()

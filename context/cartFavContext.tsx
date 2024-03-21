@@ -3,6 +3,7 @@ import { getCartAndFavsIds } from '@/services/actions/user.actions'
 import { user } from '@/services/user'
 import { TCartFavIds } from '@/types/models/product'
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 type ContextState = {
    amount: {
@@ -50,20 +51,72 @@ export const CartFavProvider = ({
    }, [])
 
    /* Functions */
-   function addFavorite(productId: string) {
+   async function addFavorite(productId: string) {
       setFavoritesIds([...favoritesIds, productId])
       setAmount({
          ...amount,
          fav: amount.fav + 1,
       })
+
+      toast.success('Added to favorites', {
+         style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+         },
+         icon: '❤️',
+      })
+
+      const saved = await user.addOrRemoveProductToFavorites(productId)
+
+      if (!saved.success) {
+         setFavoritesIds(favoritesIds.filter((id) => id !== productId))
+         setAmount({
+            ...amount,
+            fav: amount.fav - 1,
+         })
+         toast.error('ha ocurrido un error', {
+            style: {
+               borderRadius: '10px',
+               background: '#333',
+               color: '#fff',
+            },
+         })
+      }
    }
 
-   function removeFromFavorites(productId: string) {
+   async function removeFromFavorites(productId: string) {
       setFavoritesIds(favoritesIds.filter((id) => id !== productId))
       setAmount({
          ...amount,
          fav: amount.fav - 1,
       })
+
+      toast.success('Removed from favorites', {
+         style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+         },
+         icon: '❤️',
+      })
+
+      const saved = await user.addOrRemoveProductToFavorites(productId)
+
+      if (!saved.success) {
+         setFavoritesIds([...favoritesIds, productId])
+         setAmount({
+            ...amount,
+            fav: amount.fav + 1,
+         })
+         toast.error('ha ocurrido un error', {
+            style: {
+               borderRadius: '10px',
+               background: '#333',
+               color: '#fff',
+            },
+         })
+      }
    }
 
    async function addCart(productId: string) {
@@ -71,6 +124,14 @@ export const CartFavProvider = ({
       setAmount({
          ...amount,
          cart: amount.cart + 1,
+      })
+      toast.success('Added to cart', {
+         style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+         },
+         icon: '🛒',
       })
 
       const saved = await user.addOrRemoveProductToCart(productId)
@@ -80,6 +141,13 @@ export const CartFavProvider = ({
          setAmount({
             ...amount,
             cart: amount.cart - 1,
+         })
+         toast.error('ha ocurrido un error', {
+            style: {
+               borderRadius: '10px',
+               background: '#333',
+               color: '#fff',
+            },
          })
       }
    }
@@ -91,6 +159,15 @@ export const CartFavProvider = ({
          cart: amount.cart - 1,
       })
 
+      toast.success('Removed from cart', {
+         style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+         },
+         icon: '🛒',
+      })
+
       const removed = await user.addOrRemoveProductToCart(productId)
 
       if (!removed.success) {
@@ -98,6 +175,14 @@ export const CartFavProvider = ({
          setAmount({
             ...amount,
             cart: amount.cart + 1,
+         })
+
+         toast.error('ha ocurrido un error', {
+            style: {
+               borderRadius: '10px',
+               background: '#333',
+               color: '#fff',
+            },
          })
       }
    }

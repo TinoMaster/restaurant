@@ -28,9 +28,6 @@ export const ButtonAddCart = ({ productId }: { productId: string }) => {
                   onClick={() => removeFromCart(productId)}
                >
                   <BsCartCheckFill />
-                  <p className="absolute text-[8px] text-center -bottom-3">
-                     in cart
-                  </p>
                </MotionButton>
             ) : (
                <MotionButton
