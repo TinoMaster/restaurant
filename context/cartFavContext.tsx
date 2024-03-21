@@ -1,7 +1,11 @@
 'use client'
 import { getCartAndFavsIds } from '@/services/actions/user.actions'
 import { user } from '@/services/user'
-import { TCartFavIds } from '@/types/models/product'
+import {
+   TCartFav,
+   TProduct,
+   TProductInCartPopulated,
+} from '@/types/models/product'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -10,12 +14,12 @@ type ContextState = {
       cart: number
       fav: number
    }
-   favoritesIds: string[]
-   cartIds: string[]
-   removeFromCart(productId: string): void
-   removeFromFavorites(productId: string): void
-   addCart(productId: string): void
-   addFavorite(productId: string): void
+   favorites: TProduct[]
+   cart: TProductInCartPopulated[]
+   removeFromCart(product: TProduct): void
+   removeFromFavorites(product: TProduct): void
+   addCart(product: TProduct): void
+   addFavorite(product: TProduct): void
 }
 
 const CartFavContext = createContext<ContextState | null>(null)
@@ -35,14 +39,14 @@ export const CartFavProvider = ({
       cart: 0,
       fav: 0,
    })
-   const [favoritesIds, setFavoritesIds] = useState<string[]>([])
-   const [cartIds, setCartIds] = useState<string[]>([])
+   const [favorites, setFavorites] = useState<TProduct[]>([])
+   const [cart, setCart] = useState<TProductInCartPopulated[]>([])
 
    useEffect(() => {
-      getCartAndFavsIds().then((data: TCartFavIds | false) => {
+      getCartAndFavsIds().then((data: TCartFav | false) => {
          if (!data) return
-         setCartIds(data?.cart)
-         setFavoritesIds(data?.favorites)
+         setCart(data?.cart)
+         setFavorites(data?.favorites)
          setAmount({
             cart: data.cart.length,
             fav: data.favorites.length,
@@ -51,8 +55,8 @@ export const CartFavProvider = ({
    }, [])
 
    /* Functions */
-   async function addFavorite(productId: string) {
-      setFavoritesIds([...favoritesIds, productId])
+   async function addFavorite(product: TProduct) {
+      setFavorites([...favorites, product])
       setAmount({
          ...amount,
          fav: amount.fav + 1,
@@ -67,10 +71,10 @@ export const CartFavProvider = ({
          icon: '❤️',
       })
 
-      const saved = await user.addOrRemoveProductToFavorites(productId)
+      const saved = await user.addOrRemoveProductToFavorites(product._id)
 
       if (!saved.success) {
-         setFavoritesIds(favoritesIds.filter((id) => id !== productId))
+         setFavorites(favorites.filter((p) => p._id !== product._id))
          setAmount({
             ...amount,
             fav: amount.fav - 1,
@@ -85,8 +89,8 @@ export const CartFavProvider = ({
       }
    }
 
-   async function removeFromFavorites(productId: string) {
-      setFavoritesIds(favoritesIds.filter((id) => id !== productId))
+   async function removeFromFavorites(product: TProduct) {
+      setFavorites(favorites.filter((p) => p._id !== product._id))
       setAmount({
          ...amount,
          fav: amount.fav - 1,
@@ -101,10 +105,10 @@ export const CartFavProvider = ({
          icon: '❤️',
       })
 
-      const saved = await user.addOrRemoveProductToFavorites(productId)
+      const saved = await user.addOrRemoveProductToFavorites(product._id)
 
       if (!saved.success) {
-         setFavoritesIds([...favoritesIds, productId])
+         setFavorites([...favorites, product])
          setAmount({
             ...amount,
             fav: amount.fav + 1,
@@ -119,8 +123,8 @@ export const CartFavProvider = ({
       }
    }
 
-   async function addCart(productId: string) {
-      setCartIds([...cartIds, productId])
+   async function addCart(product: TProduct) {
+      setCart([...cart, { productId: product, quantity: 1 }])
       setAmount({
          ...amount,
          cart: amount.cart + 1,
@@ -134,10 +138,10 @@ export const CartFavProvider = ({
          icon: '🛒',
       })
 
-      const saved = await user.addOrRemoveProductToCart(productId)
+      const saved = await user.addOrRemoveProductToCart(product._id)
 
       if (!saved.success) {
-         setCartIds(cartIds.filter((id) => id !== productId))
+         setCart(cart.filter((p) => p.productId._id !== product._id))
          setAmount({
             ...amount,
             cart: amount.cart - 1,
@@ -152,8 +156,8 @@ export const CartFavProvider = ({
       }
    }
 
-   async function removeFromCart(productId: string) {
-      setCartIds(cartIds.filter((id) => id !== productId))
+   async function removeFromCart(product: TProduct) {
+      setCart(cart.filter((p) => p.productId._id !== product._id))
       setAmount({
          ...amount,
          cart: amount.cart - 1,
@@ -168,10 +172,10 @@ export const CartFavProvider = ({
          icon: '🛒',
       })
 
-      const removed = await user.addOrRemoveProductToCart(productId)
+      const removed = await user.addOrRemoveProductToCart(product._id)
 
       if (!removed.success) {
-         setCartIds([...cartIds, productId])
+         setCart([...cart, { productId: product, quantity: 1 }])
          setAmount({
             ...amount,
             cart: amount.cart + 1,
@@ -189,8 +193,8 @@ export const CartFavProvider = ({
 
    const data = {
       amount,
-      favoritesIds,
-      cartIds,
+      favorites,
+      cart,
       addFavorite,
       removeFromFavorites,
       addCart,

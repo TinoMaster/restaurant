@@ -12,7 +12,7 @@ interface MenuItemPlusImageProps {
 }
 
 export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
-   const { name, price, image, description, ingredients, _id } = product
+   const { name, price, image, description, ingredients } = product
 
    return (
       <MotionDiv
@@ -65,8 +65,8 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                   {formatPrice(price)}
                </span>
                <div className="flex gap-4 items-center">
-                  <ButtonAddFav productId={_id} />
-                  <ButtonAddCart productId={_id} />
+                  <ButtonAddFav product={product} />
+                  <ButtonAddCart product={product} />
                </div>
             </div>
          </div>

@@ -8,8 +8,7 @@ import {
    TFavoritesResponse,
    TProductInCart,
    TProductInCartPopulated,
-   TResponseProductInCartPopulated,
-   TCartFavIds,
+   TResponseProductInCartPopulated
 } from '@/types/models/product'
 import { TUser, TUserMainInfo, TUserMainInfoToEdit } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
@@ -145,9 +144,16 @@ export async function getCartAndFavsIds() {
          return false
       }
       await mongoose.connect(db_config.URI as string)
-      const res = await UserModel.findById(session.user.sub).select(
-         'favorites cart'
-      )
+      const res = await UserModel.findById(session.user.sub)
+         .select('favorites cart')
+         .populate({
+            path: 'favorites',
+            populate: { path: 'ingredients' },
+         })
+         .populate({
+            path: 'cart.productId',
+            populate: { path: 'ingredients' },
+         })
 
       if (!res) {
          return false
@@ -155,7 +161,7 @@ export async function getCartAndFavsIds() {
 
       const data = {
          favorites: res.favorites,
-         cart: res.cart.map((item: TProductInCart) => item.productId),
+         cart: res.cart,
       }
 
       return JSON.parse(JSON.stringify(data))

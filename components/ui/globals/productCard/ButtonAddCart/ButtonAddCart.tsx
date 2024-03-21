@@ -2,13 +2,15 @@
 import { MotionButton } from '@/components/helpers/MotionDiv'
 import useCartFav from '@/context/cartFavContext'
 import { isProductInCart } from '@/libs/utils'
+import { TProduct } from '@/types/models/product'
 import { useSession } from 'next-auth/react'
 import { BsCart, BsCartCheckFill } from 'react-icons/bs'
 
-export const ButtonAddCart = ({ productId }: { productId: string }) => {
+export const ButtonAddCart = ({ product }: { product: TProduct }) => {
    const { status } = useSession()
-   const { cartIds, addCart, removeFromCart } = useCartFav()
-   const isInCart = isProductInCart(productId, cartIds)
+   const { cart, addCart, removeFromCart } = useCartFav()
+   const cartIds = cart.map((el) => el.productId._id)
+   const isInCart = isProductInCart(product._id, cartIds)
 
    if (status === 'loading') {
       return <small className="w-5 h-5 rounded-full animate-pulse bg-white/5" />
@@ -25,7 +27,7 @@ export const ButtonAddCart = ({ productId }: { productId: string }) => {
                <MotionButton
                   whileHover={{ y: [0, -5, 0, -5, 0] }}
                   className="text-primary text-2xl lg:text-3xl rounded-full focus:outline-none relative"
-                  onClick={() => removeFromCart(productId)}
+                  onClick={() => removeFromCart(product)}
                >
                   <BsCartCheckFill />
                </MotionButton>
@@ -33,7 +35,7 @@ export const ButtonAddCart = ({ productId }: { productId: string }) => {
                <MotionButton
                   whileHover={{ y: [0, -5, 0, -5, 0] }}
                   className="bg-black/20 text-primary/70 text-2xl lg:text-3xl rounded-full focus:outline-none"
-                  onClick={() => addCart(productId)}
+                  onClick={() => addCart(product)}
                >
                   <BsCart />
                </MotionButton>

@@ -35,7 +35,7 @@ export interface TResponseProductInCartPopulated {
 export interface TProductInCartPopulated {
    productId: TProduct
    quantity: number
-   _id: string
+   _id?: string
 }
 
 export interface TCreateProduct {
@@ -60,7 +60,7 @@ export interface TFavoritesResponse {
    favorites: TProduct[]
 }
 
-export interface TCartFavIds {
-   cart: string[]
-   favorites: string[]
+export interface TCartFav {
+   cart: TProductInCartPopulated[]
+   favorites: TProduct[]
 }
