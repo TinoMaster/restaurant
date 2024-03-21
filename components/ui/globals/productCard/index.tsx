@@ -30,11 +30,11 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
             <Image
                width={200}
                height={200}
-               className="w-full h-full object-cover absolute"
+               className="w-full h-full object-cover absolute brightness-150"
                src={texturaCemento}
                alt="imagen fondo del plato"
             />
-            <div className="w-32 h-32 lg:w-44 lg:h-44 relative bg-primary/30 rounded-full z-10 overflow-hidden">
+            <div className=" z-10">
                <Image
                   width={200}
                   height={200}
