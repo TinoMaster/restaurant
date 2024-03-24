@@ -14,7 +14,11 @@ export const CartAndFavorites = () => {
 
    if (status === 'unauthenticated') {
       return (
-         <Link href={'/login'} className="flex justify-center lg:hidden">
+         <Link
+            aria-label="Accedi"
+            href={'/login'}
+            className="flex justify-center lg:hidden"
+         >
             <FaRegCircleUser className="w-7 h-7 text-gray-300" />
          </Link>
       )

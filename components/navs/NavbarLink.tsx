@@ -19,7 +19,7 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
    const pathHref = cutPathnameByPiece(href, 1, 2)
 
    return (
-      <div
+      <li
          onClick={() => setMenuIsOpen(false)}
          className=" relative  inline-block"
       >
@@ -32,6 +32,6 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
          <Link href={`${href}`} scroll={false} className="">
             {title}
          </Link>
-      </div>
+      </li>
    )
 }

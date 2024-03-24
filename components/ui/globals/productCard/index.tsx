@@ -50,12 +50,12 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
             </h2>
             <div className="flex flex-col gap-1 text-[8px] md:text-xs capitalize grow">
                <div className="flex flex-col grow">
-                  <p className="text-pri-300/50">
+                  <p className="text-pri-300/0">
                      {ingredients?.map((i) => i.name).join(', ')}
                   </p>
                </div>
                {description && (
-                  <p className="first-letter:capitalize grow text-pri-300/50">
+                  <p className="first-letter:capitalize grow text-pri-300/70">
                      {`(${description})`}
                   </p>
                )}

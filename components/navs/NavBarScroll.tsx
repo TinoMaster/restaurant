@@ -31,7 +31,10 @@ export const NavBarScroll = () => {
             className={`w-screen h-svh min-h-[800px] lg:hidden fixed flex flex-col top-0 right-0 text-slate-200 bg-gradient-to-r from-darkMode via-lightDarkMode to-darkMode shadow-md py-2 overflow-hidden`}
          >
             <div className="py-4 flex justify-center">
-               <button onClick={() => setIsActive(false)}>
+               <button
+                  aria-label="Registrazione"
+                  onClick={() => setIsActive(false)}
+               >
                   <Registration />
                </button>
             </div>
@@ -48,6 +51,7 @@ export const NavBarScroll = () => {
             <div className="lg:pr-5 lg:pl-10 lg:hidden px-3 flex justify-between items-center hover:-translate-x-1 transition-transform">
                <button
                   onClick={() => setIsActive(!isActive)}
+                  aria-label={isActive ? 'Chiudere menu' : 'Aprire menu'}
                   className="lg:hidden select-none"
                >
                   {isActive ? (
