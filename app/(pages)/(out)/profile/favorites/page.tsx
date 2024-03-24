@@ -15,10 +15,13 @@ export default function FavoritesPage() {
          <h1 className="text-3xl text-gray-300 text-center">Favorites</h1>
 
          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {favorites &&
-               favorites?.map((product) => (
+            {favorites.length ? (
+               favorites.map((product) => (
                   <ProductCard key={product._id} product={product} />
-               ))}
+               ))
+            ) : (
+               <p className='text-center col-span-full text-gray-400/80 font-semibold'>Non ci sono prodotti in favoriti</p>
+            )}
          </ul>
       </div>
    )

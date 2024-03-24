@@ -1,21 +1,18 @@
-import { authOptions } from '@/libs/authOptions'
+'use client'
+import useCartFav from '@/context/cartFavContext'
 import { formatPrice } from '@/libs/utils'
-import { getTotalSummaryFromCart } from '@/services/actions/user.actions'
-import { getServerSession } from 'next-auth'
 import { GiTabletopPlayers } from 'react-icons/gi'
 import { ImHome3 } from 'react-icons/im'
 
-export const Summary = async () => {
-   const session = await getServerSession(authOptions)
-   const total = await getTotalSummaryFromCart(session?.user.sub as string)
-
+export const Summary = () => {
+   const { summaryCart } = useCartFav()
    return (
       <div className="w-full h-full p-5 rounded-md bg-gradient-to-b from-white/10 via-white/5 to-white/10">
-         <h3 className="text-3xl text-center">Summary</h3>
+         <h3 className="text-2xl sm:text-3xl text-center">Summary</h3>
          <div className="py-5 text-xl">
             <div className="flex justify-between">
                <p>Subtotal</p>
-               <p>{formatPrice(total)}</p>
+               <p>{formatPrice(summaryCart)}</p>
             </div>
             <div className="flex justify-between">
                <p>Shipping</p>
@@ -24,7 +21,7 @@ export const Summary = async () => {
          </div>
          <div className="flex justify-between text-2xl">
             <p className="font-bold">Total</p>
-            <p>{formatPrice(total)}</p>
+            <p>{formatPrice(summaryCart)}</p>
          </div>
          <div className="py-5 space-y-3">
             <button className="w-full h-10 bg-black/60 hover:bg-black transition-colors text-white rounded-md flex items-center justify-center gap-2">

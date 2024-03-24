@@ -8,7 +8,7 @@ import {
    TFavoritesResponse,
    TProductInCart,
    TProductInCartPopulated,
-   TResponseProductInCartPopulated
+   TResponseProductInCartPopulated,
 } from '@/types/models/product'
 import { TUser, TUserMainInfo, TUserMainInfoToEdit } from '@/types/models/user'
 import { formatServerResponse } from '@/utils/formatServerResponse'
@@ -131,8 +131,6 @@ export async function AddOrRemoveOneMoreProductToCart(
    } catch (error) {
       console.log(error)
       return false
-   } finally {
-      revalidatePath('/cart/checkout')
    }
 }
 
