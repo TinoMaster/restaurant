@@ -8,8 +8,7 @@ export const Summary = () => {
    const { summaryCart } = useCartFav()
    return (
       <div className="w-full h-full p-5 rounded-md bg-gradient-to-b from-white/10 via-white/5 to-white/10">
-         <h3 className="text-2xl sm:text-3xl text-center">Summary</h3>
-         <div className="py-5 text-xl">
+         <div className="text-xl">
             <div className="flex justify-between">
                <p>Subtotal</p>
                <p>{formatPrice(summaryCart)}</p>
@@ -23,7 +22,7 @@ export const Summary = () => {
             <p className="font-bold">Total</p>
             <p>{formatPrice(summaryCart)}</p>
          </div>
-         <div className="py-5 space-y-3">
+         <div className="flex gap-2 pt-2">
             <button className="w-full h-10 bg-black/60 hover:bg-black transition-colors text-white rounded-md flex items-center justify-center gap-2">
                <ImHome3 size={24} />A Casa
             </button>
