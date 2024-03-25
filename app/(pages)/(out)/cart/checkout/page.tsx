@@ -29,18 +29,16 @@ export default function CheckoutPage() {
                <h3 className="text-lg">Carrello</h3>
             </div>
          </div>
-         <div className="grow">
-            <div className="w-full overflow-auto max-w-[800px] mx-auto">
-               {cart.length > 0 ? (
-                  cart.map((product) => (
-                     <ProductCardCart key={product._id} product={product} />
-                  ))
-               ) : (
-                  <p className="text-center text-gray-400 text-lg">
-                     No hay productos en el carrito
-                  </p>
-               )}
-            </div>
+         <div className="w-full overflow-auto max-w-[800px] mx-auto space-y-2 md:space-y-4 p-4 rounded-md mb-2 bg-black/10 shadow-inner">
+            {cart.length > 0 ? (
+               cart.map((product) => (
+                  <ProductCardCart key={product._id} product={product} />
+               ))
+            ) : (
+               <p className="text-center text-gray-400 text-lg">
+                  No hay productos en el carrito
+               </p>
+            )}
          </div>
          <div className="max-w-[800px] w-full mx-auto">
             <Summary />
