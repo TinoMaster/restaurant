@@ -29,7 +29,7 @@ export default function CheckoutPage() {
                <h3 className="text-lg">Carrello</h3>
             </div>
          </div>
-         <div className="w-full overflow-auto max-w-[800px] mx-auto space-y-2 md:space-y-4 p-4 rounded-md mb-2 bg-black/10 shadow-inner">
+         <div className="w-full overflow-auto max-w-[800px] mx-auto space-y-2 md:space-y-4 rounded-md mb-5 grow">
             {cart.length > 0 ? (
                cart.map((product) => (
                   <ProductCardCart key={product._id} product={product} />

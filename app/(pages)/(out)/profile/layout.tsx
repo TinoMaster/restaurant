@@ -1,20 +1,12 @@
 import { Sidebar } from '@/components/pages/profile/Sidebar'
-import { authOptions } from '@/libs/authOptions'
 import { prenotazione } from '@/utils/images'
-import { getServerSession } from 'next-auth'
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
 
 export default async function Layout({
    children,
 }: {
    readonly children: React.ReactNode
 }) {
-   const session = await getServerSession(authOptions)
-
-   if (!session) {
-      redirect('/login')
-   }
    return (
       <div className="flex justify-center items-center w-screen h-screen max-h-[100svh] text-gray-300">
          <div className="absolute w-screen h-screen bg-gradient-to-tr from-darkMode via-lightDarkMode to-darkMode">

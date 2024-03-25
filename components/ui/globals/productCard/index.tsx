@@ -12,7 +12,7 @@ interface MenuItemPlusImageProps {
 }
 
 export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
-   const { name, price, image, description, ingredients } = product
+   const { name, price, image, description, ingredients, available } = product
 
    return (
       <MotionDiv
@@ -24,7 +24,7 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
             transition: { delay: 0, duration: 0.2, type: 'spring' },
             cursor: 'pointer',
          }}
-         className="col-span-1 max-w-md mx-auto bg-lightDarkMode rounded-xl overflow-hidden shadow-md w-full relative flex flex-col"
+         className="col-span-1 max-w-md mx-auto bg-lightDarkMode rounded-xl overflow-hidden shadow-md w-full relative flex flex-col gap-2"
       >
          <div className="w-full h-36 lg:h-56 flex justify-center items-center relative">
             <Image
@@ -34,31 +34,32 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
                src={texturaCemento}
                alt="imagen fondo del plato"
             />
-            <div className=" z-10">
+            <div className="w-full h-full py-2 relative z-10">
                <Image
                   width={200}
                   height={200}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   src={image}
                   alt="imagen del plato"
                />
             </div>
          </div>
-         <div className="px-2 py-1 lg:p-4 grow flex flex-col">
+         <div className="px-2 py-1 lg:p-4 grow flex flex-col relative">
+            <p className="text-gray-200 bg-red-400/50 px-2 rounded-md text-xs absolute right-0 -top-4">
+               {!available && 'Non disponibile'}
+            </p>
             <h2 className="text-sm lg:text-lg text-primary capitalize">
                {name}
             </h2>
-            <div className="flex flex-col gap-1 text-[8px] md:text-xs capitalize grow">
+            <div className="flex flex-col gap-1 text-[9px] md:text-xs capitalize grow">
                <div className="flex flex-col grow">
-                  <p className="text-pri-300/0">
+                  <p className="text-pri-300/70">
                      {ingredients?.map((i) => i.name).join(', ')}
                   </p>
                </div>
-               {description && (
-                  <p className="first-letter:capitalize grow text-pri-300/70">
-                     {`(${description})`}
-                  </p>
-               )}
+               <p className="first-letter:capitalize grow text-pri-300/70">
+                  {`-${description || 'No description'}-`}
+               </p>
             </div>
             <div className="flex justify-between items-center mt-4">
                <span className="lg:text-base text-primary font-bold text-sm">
