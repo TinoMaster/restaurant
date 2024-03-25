@@ -1,6 +1,6 @@
 export const BANNER_CONTENT = {
    home: {
-      title: 'Dolce Incanto di Franca Villa',
+      title: 'Dolce Incanto di Francavilla al mare',
       subtitle: "Dove la Tradizione si Fonde con l'Innovazione Culinaria",
    },
 }

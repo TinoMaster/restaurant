@@ -16,7 +16,7 @@ export type TGroupFooterLink = {
    links: TLink[]
 }
 
-/* Imputs */
+/* Inputs */
 export type TInput = {
    id?: string
    name: string

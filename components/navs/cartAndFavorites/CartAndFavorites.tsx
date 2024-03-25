@@ -8,8 +8,11 @@ import { IoCartOutline } from 'react-icons/io5'
 export const CartAndFavorites = () => {
    const { status } = useSession()
    const { amount } = useCartFav()
+
    if (status === 'loading') {
-      return null
+      return (
+         <div className="w-7 h-7 bg-pri-500/10 shadow-md rounded-full animate-pulse" />
+      )
    }
 
    if (status === 'unauthenticated') {
