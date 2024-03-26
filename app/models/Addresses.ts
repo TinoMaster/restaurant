@@ -1,4 +1,17 @@
+import { Document } from 'mongodb'
 import { Schema, model, models } from 'mongoose'
+
+export interface TAddress extends Document {
+   _id: string
+   name: string
+   street: string
+   country: string
+   city: string
+   postal_code: string
+   user: string
+   createdAt: string
+   updatedAt: string
+}
 
 const AddressesSchema = new Schema(
    {

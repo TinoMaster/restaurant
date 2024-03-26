@@ -4,7 +4,7 @@ export enum InputsAddress {
    NAME = 'name',
    COUNTRY = 'country',
    CITY = 'city',
-   STREET = 'street_address',
+   STREET = 'street',
    POSTAL_CODE = 'postal_code',
 }
 

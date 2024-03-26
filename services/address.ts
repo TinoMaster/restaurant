@@ -1,5 +1,6 @@
+import { TAddress } from '@/app/models/Addresses'
 import { ServerResponse } from '@/types/api_responses'
-import { TAddress, TAddressCreate } from '@/types/models/address'
+import { TAddressCreate } from '@/types/models/address'
 
 class Address {
    async createAddress(route: string, data: TAddressCreate) {

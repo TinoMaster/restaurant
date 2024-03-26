@@ -1,4 +1,4 @@
-import { TAddress } from './address'
+import { TAddress } from '@/app/models/Addresses'
 import { TProduct } from './product'
 import { TUser } from './user'
 

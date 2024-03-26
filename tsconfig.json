@@ -1,38 +1,47 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
+   "compilerOptions": {
+      "target": "es5",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "bundler",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "plugins": [
+         {
+            "name": "next"
+         }
+      ],
+      "paths": {
+         "@/*": ["./*"]
       }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/models/User.ts",
-    "app/api/auth/[kindeAuth]/route.js",
-    "utils/api/password.hash.js",
-    "utils/api/password.verify.js",
-    "components/SessionContext.js",
-    "lib/mongoConnect.js"
-, "lib/mongodb.ts", "app/api/profile/route.js", "app/models/Addresses.ts", "app/models/Categories.ts", "app/models/Ingredients.ts", "app/models/Notifications.ts", "app/models/Orders.ts", "app/models/Products.ts", "__tests__/app/HomePage.jsx"  ],
-  "exclude": ["node_modules"]
+   },
+   "include": [
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      ".next/types/**/*.ts",
+      "app/models/User.ts",
+      "app/api/auth/[kindeAuth]/route.js",
+      "utils/api/password.hash.js",
+      "utils/api/password.verify.js",
+      "components/SessionContext.js",
+      "lib/mongoConnect.js",
+      "lib/mongodb.ts",
+      "app/api/profile/route.js",
+      "app/models/Addresses.ts",
+      "app/models/Categories.ts",
+      "app/models/Ingredients.ts",
+      "app/models/Notifications.ts",
+      "app/models/Orders.ts",
+      "app/models/Products.ts",
+      "__tests__/app/HomePage.jsx"
+   ],
+   "exclude": ["node_modules"]
 }

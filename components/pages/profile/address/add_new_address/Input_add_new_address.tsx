@@ -1,14 +1,27 @@
-import { TInputProps } from '@/types/common'
+import { UseFormRegister } from 'react-hook-form'
+
+export type TInputProps = {
+   id?: string
+   name: string
+   label?: string
+   type: string
+   placeholder?: string
+   value?: string | number | undefined | readonly string[]
+   disabled?: boolean
+   register: UseFormRegister<any>
+   error?: string
+}
 
 export const InputAddNewAddress = ({
    id,
    type = 'text',
    placeholder,
    name,
-   onChange,
    value,
    disabled = false,
    label,
+   register,
+   error,
 }: TInputProps) => {
    return (
       <label htmlFor={id} className="col-span-1 space-y-1 lg:space-y-2">
@@ -28,14 +41,13 @@ export const InputAddNewAddress = ({
             id={id}
             type={type}
             placeholder={placeholder}
-            name={name}
             className="input"
-            /* value={value} */
-            defaultValue={value}
-            onChange={onChange}
+            defaultValue={value ? value : ''}
             disabled={disabled}
             autoComplete="off"
+            {...register(name)}
          />
+         {error && <p className="text-red-500 text-xs text-right absolute pl-1">{error}</p>}
       </label>
    )
 }

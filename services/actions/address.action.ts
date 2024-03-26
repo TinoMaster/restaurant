@@ -2,7 +2,6 @@
 import { AddressesModel } from '@/app/models/Addresses'
 import { UserModel } from '@/app/models/User'
 import { db_config } from '@/config/db.config'
-import { InputsAddress } from '@/constants/forms/profiles.form'
 import { authOptions } from '@/libs/authOptions'
 import { TAddressCreate } from '@/types/models/address'
 import { TUser } from '@/types/models/user'
@@ -11,19 +10,19 @@ import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
 
 export async function getAddresses() {
-   const session = await getServerSession(authOptions)
-
    try {
+      const session = await getServerSession(authOptions)
+
       await mongoose.connect(db_config.URI as string)
       const user: TUser | null = await UserModel.findById(session?.user?.sub)
          .populate('addresses')
          .lean()
 
-      if (user) {
-         return user.addresses
+      if (!user) {
+         return false
       }
 
-      return false
+      return user.addresses
    } catch (error) {
       console.log(error)
       return false
@@ -46,22 +45,16 @@ export async function getAddress(id: string) {
    }
 }
 
-export async function createAddress(formData: FormData) {
+export async function createAddress(data: TAddressCreate) {
    const session = await getServerSession(authOptions)
    try {
-      const address: TAddressCreate = {
-         name: formData.get(InputsAddress.NAME) as string,
-         street: formData.get(InputsAddress.STREET) as string,
-         country: (formData.get(InputsAddress.COUNTRY) as string) ?? 'Italia',
-         city:
-            (formData.get(InputsAddress.CITY) as string) ??
-            'Francavilla al mare',
-         postal_code: formData.get(InputsAddress.POSTAL_CODE) as string,
-         user: session?.user?.sub as string,
+      const newData = {
+         ...data,
+         user: session?.user?.sub,
       }
 
       await mongoose.connect(db_config.URI as string)
-      const savedAddress = await AddressesModel.create(address)
+      const savedAddress = await AddressesModel.create(newData)
 
       if (!savedAddress) {
          throw new Error('Failed to save address')

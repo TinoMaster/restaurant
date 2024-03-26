@@ -1,16 +1,4 @@
-import { TUser } from './user'
-
-export interface TAddress {
-   _id: string
-   name: string
-   street: string
-   country: string
-   city: string
-   postal_code: string
-   user: TUser['_id']
-   createdAt: string
-   updatedAt: string
-}
+import { TAddress } from '@/app/models/Addresses'
 
 export interface TAddressCreate
    extends Omit<TAddress, 'createdAt' | 'updatedAt' | '_id'> {}

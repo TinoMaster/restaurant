@@ -1,4 +1,4 @@
-import { TAddress } from './address'
+import { TAddress } from '@/app/models/Addresses'
 import { TNotification } from './notification'
 import { TOrder } from './order'
 import { TProduct, TProductInCart } from './product'
