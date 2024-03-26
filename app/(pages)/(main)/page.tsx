@@ -26,10 +26,10 @@ export default function Home() {
                      href={CONTACT_PAGE}
                      className="w-full flex flex-col justify-center items-center gap-2"
                   >
-                     <div className="rounded-lg border-primary shadow-md shadow-black/40 border p-3 relative gap-1 flex justify-center items-center bg-gradient-to-tr from-primary/30 to-black/70">
+                     <button className="rounded-lg border-primary shadow-md shadow-black/40 border p-3 relative gap-1 flex justify-center items-center bg-gradient-to-tr from-primary/30 to-black/70">
                         <FaLocationDot className="w-7 h-7 text-gray-200 absolute -top-4" />
                         <p className="text-xl">Come arrivare</p>
-                     </div>
+                     </button>
                   </Link>
                </div>
             </HeroPageContent>
@@ -37,7 +37,9 @@ export default function Home() {
          <div className="py-10 lg:py-20 bg-gradient-to-t from-transparent via-lightDarkMode to-darkMode h-[35vh] -translate-y-[20px]">
             <LinksSection />
          </div>
-         <AboutUs />
+         <div className="bg-gradient-to-r from-lightDarkMode via-darkMode to-lightDarkMode">
+            <AboutUs />
+         </div>
          <Suspense fallback={<LoadingProductsMenu />}>
             <PreferMenu />
          </Suspense>

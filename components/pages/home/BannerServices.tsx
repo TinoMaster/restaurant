@@ -11,7 +11,6 @@ import { SiHomeassistantcommunitystore } from 'react-icons/si'
 export const BannerServices = () => {
    return (
       <article className="relative flex justify-center items-center">
-         <div className="gradient"></div>
          <div className="absolute overflow-hidden w-full h-full">
             <Image
                width={500}
