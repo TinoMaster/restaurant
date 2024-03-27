@@ -2,6 +2,7 @@ import { siligury } from '@/utils/fonts'
 import type { Metadata } from 'next'
 import { Toaster } from 'react-hot-toast'
 import { Providers } from './Providers'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
          <body
             className={`${siligury.className} antialiased min-h-screen bg-lightDarkMode text-gray-100 w-full select-none   `}
          >
+            <Analytics />
             <Providers>
                <main className="w-full h-full">
                   <Toaster />
