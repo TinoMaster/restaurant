@@ -1,6 +1,7 @@
 import { AboutUs } from '@/components/pages/home/AboutUs'
 import { BannerServices } from '@/components/pages/home/BannerServices'
 import { LinksSection } from '@/components/pages/home/LinksSection'
+import { LinksSectionFallback } from '@/components/pages/home/LinksSectionFallback'
 import { PreferMenu } from '@/components/pages/home/PreferMenu'
 import { Testimonials } from '@/components/pages/home/Testimonials'
 import { HeroCurve } from '@/components/ui/globals/HeroCurve'
@@ -35,7 +36,9 @@ export default function Home() {
             </HeroPageContent>
          </HeroCurve>
          <div className="py-10 lg:py-20 bg-gradient-to-t from-transparent via-lightDarkMode to-darkMode h-[35vh] -translate-y-[20px]">
-            <LinksSection />
+            <Suspense fallback={<LinksSectionFallback />}>
+               <LinksSection />
+            </Suspense>
          </div>
          <div className="bg-gradient-to-r from-lightDarkMode via-darkMode to-lightDarkMode">
             <AboutUs />

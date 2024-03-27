@@ -1,5 +1,5 @@
 'use client'
-import { linksPrincipalMenu } from '@/constants/links_navbar'
+import { TLink } from '@/types/common'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { IoClose } from 'react-icons/io5'
@@ -7,7 +7,7 @@ import { TbMenuDeep } from 'react-icons/tb'
 import { NavbarLink } from './NavbarLink'
 import { Registration } from './Registration'
 
-export const NavBarScroll = () => {
+export const NavBarScroll = ({ links }: { links: TLink[] }) => {
    const [isActive, setIsActive] = useState(false)
 
    const variant = {
@@ -40,7 +40,7 @@ export const NavBarScroll = () => {
             </div>
             <div className="flex w-full flex-col z-10 mt-10 grow">
                <ul className="flex w-[150vw] -translate-x-[25vw] flex-col text-xl justify-center items-center h-full gap-8 bg-lightDarkMode rounded-t-full">
-                  {linksPrincipalMenu?.map((link) => (
+                  {links?.map((link) => (
                      <NavbarLink key={link.title} link={link} />
                   ))}
                </ul>

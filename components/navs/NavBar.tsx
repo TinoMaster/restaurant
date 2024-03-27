@@ -31,7 +31,7 @@ export const NavBar = async () => {
          <Logo />
          <div className="flex items-center justify-end gap-2 lg:gap-4 relative">
             <CartAndFavorites />
-            <NavBarScroll />
+            <NavBarScroll links={links} />
             <div className="gap-5 hidden lg:flex items-center">
                {links?.map((link) => (
                   <NavbarLink key={link.title} link={link} />
