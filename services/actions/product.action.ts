@@ -217,6 +217,7 @@ export async function changeAvailability(id: string, isAvailable: boolean) {
       await ProductModel.findByIdAndUpdate(id, { available: isAvailable })
 
       revalidatePath('/profile/admin/menu')
+      revalidatePath('/')
       return true
    } catch (error) {
       console.log(error)
