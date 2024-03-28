@@ -1,7 +1,7 @@
 export interface DialogProps {
    children: React.ReactNode
    title: string
-   description: string
+   description?: string
    onDelete?: () => void
    onDeleteProps?: {
       text?: string

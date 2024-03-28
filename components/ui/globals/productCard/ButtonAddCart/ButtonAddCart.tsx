@@ -27,7 +27,10 @@ export const ButtonAddCart = ({ product }: { product: TProduct }) => {
                <MotionButton
                   whileHover={{ y: [0, -5, 0, -5, 0] }}
                   className="text-primary text-2xl lg:text-3xl rounded-full focus:outline-none relative"
-                  onClick={() => removeFromCart(product)}
+                  onClick={(e) => {
+                     e.stopPropagation()
+                     removeFromCart(product)
+                  }}
                >
                   <BsCartCheckFill />
                </MotionButton>
@@ -35,7 +38,10 @@ export const ButtonAddCart = ({ product }: { product: TProduct }) => {
                <MotionButton
                   whileHover={{ y: [0, -5, 0, -5, 0] }}
                   className="bg-black/20 text-primary/70 text-2xl lg:text-3xl rounded-full focus:outline-none"
-                  onClick={() => addCart(product)}
+                  onClick={(e) => {
+                     e.stopPropagation()
+                     addCart(product)
+                  }}
                >
                   <BsCart />
                </MotionButton>

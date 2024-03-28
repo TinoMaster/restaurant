@@ -25,7 +25,7 @@ export const useDialog = (
       dialogRef.current?.close()
       params.delete(DIALOG)
       params.delete(DIALOG_ID)
-      replace(`${pathName}?${params.toString()}`)
+      replace(`${pathName}?${params.toString()}`, { scroll: false })
    }
 
    const confirmDialog = async () => {

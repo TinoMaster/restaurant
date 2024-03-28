@@ -24,14 +24,20 @@ export const ButtonAddFav = ({ product }: { product: TProduct }) => {
          {isFavorite ? (
             <button
                className="text-primary/70 text-2xl lg:text-3xl rounded-full"
-               onClick={() => removeFromFavorites(product)}
+               onClick={(e) => {
+                  e.stopPropagation()
+                  removeFromFavorites(product)
+               }}
             >
                <FaHeart className="text-primary/80 hover:text-primary/70 fill-current focus:shadow-outline-blue active:animate-ping transition duration-150 ease-in-out" />
             </button>
          ) : (
             <button
                className="text-primary/70 text-2xl lg:text-3xl rounded-full"
-               onClick={() => addFavorite(product)}
+               onClick={(e) => {
+                  e.stopPropagation()
+                  addFavorite(product)
+               }}
             >
                <FaRegHeart className="hover:text-primary/50 fill-current focus:shadow-outline-blue active:animate-ping transition duration-150 ease-in-out" />
             </button>
