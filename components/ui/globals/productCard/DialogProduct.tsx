@@ -1,5 +1,4 @@
 'use client'
-
 import { formatPrice } from '@/libs/utils'
 import { TProduct } from '@/types/models/product'
 import Image from 'next/image'
@@ -28,10 +27,19 @@ export const DialogProduct = ({ product }: { product: TProduct }) => {
             />
             <div className="space-y-1">
                <p className="text-pri-300 font-semibold">Descripción:</p>
-               <p className="text-sm first-letter:capitalize">{description}</p>
+               <p className="text-sm first-letter:capitalize">
+                  {description ?? 'Non ha una descrizione'}
+               </p>
             </div>
-            <p>{ingredientsList?.join(', ')}</p>
-            <p>{formatPrice(price)}</p>
+            <div>
+               <p className="text-pri-300 font-semibold">Ingredientes:</p>
+               <p>
+                  {ingredientsList.length
+                     ? ingredientsList.join(', ')
+                     : 'Non ha ingredienti'}
+               </p>
+            </div>
+            <p className='text-pri-300 font-semibold'>{formatPrice(price)}</p>
          </div>
       </Dialog>
    )

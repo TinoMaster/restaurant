@@ -36,7 +36,7 @@ export const Dialog = ({
                >
                   <IoClose className="text-gray-200 hover:text-secondary/30 transition-colors" />
                </button>
-               <div className="max-w-lg flex flex-col gap-4 items-center justify-center">
+               <div className="max-w-lg flex flex-col items-center justify-center">
                   <h1 className="text-2xl font-bold text-primary">{title}</h1>
                   <p className="text-sm text-center">{description ?? ''}</p>
                   <div className="w-full">{children}</div>
