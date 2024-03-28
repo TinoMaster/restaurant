@@ -1,17 +1,18 @@
 'use client'
-import { formatPrice } from '@/libs/utils'
+import { Disponibility } from '@/components/pages/profile/admin/menu/view_product/Disponibility'
 import { TProduct } from '@/types/models/product'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { Dialog } from '../../modals/Dialog'
+import { useSession } from 'next-auth/react'
 
 export const DialogProduct = ({ product }: { product: TProduct }) => {
+   const { data: session } = useSession()
    const params = useSearchParams()
    const id = params.get('id')
-   const { image, name, description, ingredients, price } = product
-   const ingredientsList = ingredients?.map((i) => i.name)
+   const { image, name, available } = product
 
-   if (product._id !== id) {
+   if (product._id !== id || !session?.user.isAdmin) {
       return null
    }
 
@@ -23,23 +24,11 @@ export const DialogProduct = ({ product }: { product: TProduct }) => {
                height={200}
                src={image}
                alt="image"
-               className="w-full h-full object-cover"
+               className="w-36 h-36 m-auto object-cover"
             />
-            <div className="space-y-1">
-               <p className="text-pri-300 font-semibold">Descripción:</p>
-               <p className="text-sm first-letter:capitalize">
-                  {description ?? 'Non ha una descrizione'}
-               </p>
+            <div className="flex justify-center pt-5">
+               <Disponibility available={available} id={id} />
             </div>
-            <div>
-               <p className="text-pri-300 font-semibold">Ingredientes:</p>
-               <p>
-                  {ingredientsList.length
-                     ? ingredientsList.join(', ')
-                     : 'Non ha ingredienti'}
-               </p>
-            </div>
-            <p className='text-pri-300 font-semibold'>{formatPrice(price)}</p>
          </div>
       </Dialog>
    )

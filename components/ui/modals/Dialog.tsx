@@ -29,7 +29,7 @@ export const Dialog = ({
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             className="rounded-lg w-screen h-screen fixed text-gray-200 bg-transparent z-50 flex items-end justify-center"
          >
-            <div className="w-full bg-gradient-to-tl from-lightDarkMode via-darkMode shadow-md border border-primary/20 rounded-lg to-lightDarkMode relative p-10">
+            <div className="w-full sm:w-[500px] m-auto bg-gradient-to-tl from-lightDarkMode via-darkMode shadow-md border border-primary/20 rounded-lg to-lightDarkMode relative p-10">
                <button
                   onClick={closeDialog}
                   className="text-3xl absolute right-3 top-3"
@@ -41,17 +41,19 @@ export const Dialog = ({
                   <p className="text-sm text-center">{description ?? ''}</p>
                   <div className="w-full">{children}</div>
                   <div className="flex gap-4">
-                     <button
-                        style={
-                           onConfirmProps?.color
-                              ? { backgroundColor: onConfirmProps?.color }
-                              : {}
-                        }
-                        onClick={confirmDialog}
-                        className="btn-white"
-                     >
-                        {onConfirmProps?.text || 'Confirm'}
-                     </button>
+                     {onConfirm && (
+                        <button
+                           style={
+                              onConfirmProps?.color
+                                 ? { backgroundColor: onConfirmProps?.color }
+                                 : {}
+                           }
+                           onClick={confirmDialog}
+                           className="btn-white"
+                        >
+                           {onConfirmProps?.text || 'Confirm'}
+                        </button>
+                     )}
                      {onDelete && (
                         <button
                            style={

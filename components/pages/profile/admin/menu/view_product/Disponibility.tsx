@@ -1,4 +1,5 @@
 'use client'
+import useCartFav from '@/context/cartFavContext'
 import { changeAvailability } from '@/services/actions/product.action'
 import toast from 'react-hot-toast'
 import { TbArrowsExchange } from 'react-icons/tb'
@@ -9,6 +10,7 @@ export const Disponibility = ({
    available: boolean
    id: string
 }) => {
+   const { editProductInCartAndFavorites } = useCartFav()
    const handleDisponibility = async (id: string, available: boolean) => {
       toast.loading('Changing availability...')
       const res = await changeAvailability(id, !available)
@@ -16,6 +18,7 @@ export const Disponibility = ({
 
       if (res) {
          toast.success('Availability changed')
+         editProductInCartAndFavorites(id, { available: !available })
       } else {
          toast.error('Something went wrong')
       }

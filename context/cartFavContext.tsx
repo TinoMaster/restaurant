@@ -23,6 +23,10 @@ type ContextState = {
    addCart(product: TProduct): void
    addFavorite(product: TProduct): void
    addOrRemoveQuantity(productId: string, quantity: number): void
+   editProductInCartAndFavorites(
+      productId: string,
+      change: Partial<TProduct>
+   ): void
 }
 
 const CartFavContext = createContext<ContextState | null>(null)
@@ -228,6 +232,29 @@ export const CartFavProvider = ({
       }
    }
 
+   function editProductInCartAndFavorites(
+      productId: string,
+      change: Partial<TProduct>
+   ) {
+      setCart(
+         cart.map((p) => {
+            if (p.productId._id === productId) {
+               return { ...p, productId: { ...p.productId, ...change } }
+            }
+            return p
+         })
+      )
+
+      setFavorites(
+         favorites.map((p) => {
+            if (p._id === productId) {
+               return { ...p, ...change }
+            }
+            return p
+         })
+      )
+   }
+
    const data = {
       amount,
       favorites,
@@ -238,6 +265,7 @@ export const CartFavProvider = ({
       addCart,
       removeFromCart,
       addOrRemoveQuantity,
+      editProductInCartAndFavorites,
    }
    return (
       <CartFavContext.Provider value={data}>{children}</CartFavContext.Provider>

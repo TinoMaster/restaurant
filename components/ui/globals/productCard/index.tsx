@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { MotionDiv } from '../../../helpers/MotionDiv'
 import { ButtonAddCart } from './ButtonAddCart'
 import { ButtonAddFav } from './ButtonAddFav'
+import { DialogProduct } from './DialogProduct'
 
 interface MenuItemPlusImageProps {
    product: TProduct
@@ -17,8 +18,7 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
 
    return (
       <>
-         {/* <DialogProduct product={product} /> */}{' '}
-         {/* Ejemplo con dialog de view product 👆 */}
+         <DialogProduct product={product} />
          <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -31,7 +31,8 @@ export const ProductCard = ({ product, index }: MenuItemPlusImageProps) => {
             className="col-span-1 max-w-md mx-auto bg-lightDarkMode rounded-xl overflow-hidden shadow-md w-full relative flex flex-col gap-2"
          >
             <Link
-               href={`/viewProduct/${product._id}`}
+               href={`?dialog=viewProduct&id=${product._id}`}
+               scroll={false}
                className="w-full h-36 lg:h-56 flex justify-center items-center relative"
             >
                <Image
