@@ -1,11 +1,26 @@
-import { MENU_PAGE } from '@/constants/routes.app'
+import { getCategories } from '@/services/actions/category.actions'
 import { getProducts } from '@/services/actions/product.action'
+import { TLink } from '@/types/common'
 import { BrokeBackground } from '../../backgrounds/BrokeBackground'
 import { LinkButton } from '../../ui/buttons/LinkButton'
 import { ProductCard } from '../../ui/globals/productCard'
 
 export const PreferMenu = async () => {
    const products = await getProducts()
+   const categories = await getCategories()
+   let linkMenu: TLink
+
+   if (!categories) {
+      linkMenu = {
+         title: 'Menu',
+         href: '/menu',
+      }
+   } else {
+      linkMenu = {
+         title: 'Menu',
+         href: `/menu/${categories[0].name}`,
+      }
+   }
 
    return (
       <section className="py-20 lg:py-44 px-2 z-10 bg-lightDarkMode text-slate-100 relative flex flex-col items-center justify-center">
@@ -32,7 +47,7 @@ export const PreferMenu = async () => {
             </div>
          </article>
          <div className="flex justify-center pt-20">
-            <LinkButton href={MENU_PAGE} title="Vedi Menu" />
+            <LinkButton href={linkMenu.href} title="Vedi Menu" />
          </div>
       </section>
    )

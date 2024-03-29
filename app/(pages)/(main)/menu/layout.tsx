@@ -14,7 +14,7 @@ export default function LayoutMenuPage({
             <NavBarPageMenu />
          </Suspense>
 
-         <section className="min-h-[500px] container py-10">
+         <section className="min-h-[700px] container py-10">
             <Suspense fallback={<LoadingProductsMenu />}>{children}</Suspense>
          </section>
       </div>

@@ -29,7 +29,7 @@ export const NavbarLink = ({ link }: NavbarLinkProps) => {
                className="absolute w-full h-full border-b-2"
             ></motion.div>
          ) : null}
-         <Link href={`${href}`} scroll={false} className="">
+         <Link href={`${href}`} className="">
             {title}
          </Link>
       </li>

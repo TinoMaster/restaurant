@@ -56,7 +56,6 @@ export const MenuInfinite = ({
                <Link
                   key={title}
                   href={href}
-                  scroll={false}
                   className={` ${
                      convertPathWithSpacesReverse(path) === href
                         ? 'text-gray-50'

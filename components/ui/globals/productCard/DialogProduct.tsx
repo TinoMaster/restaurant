@@ -10,23 +10,23 @@ export const DialogProduct = ({ product }: { product: TProduct }) => {
    const { data: session } = useSession()
    const params = useSearchParams()
    const id = params.get('id')
-   const { image, name, available } = product
+   const { image, available } = product
 
    if (product._id !== id || !session?.user.isAdmin) {
       return null
    }
 
    return (
-      <Dialog title={name} dialog="viewProduct">
-         <div className="text-primary space-y-2">
+      <Dialog title="Cambiare disponibilità" dialog="viewProduct">
+         <div className="text-primary w-full flex justify-between">
             <Image
                width={200}
                height={200}
                src={image}
                alt="image"
-               className="w-36 h-36 m-auto object-cover"
+               className="w-24 h-24 m-auto object-cover"
             />
-            <div className="flex justify-center pt-5">
+            <div className="flex grow justify-end pt-5">
                <Disponibility available={available} id={id} />
             </div>
          </div>

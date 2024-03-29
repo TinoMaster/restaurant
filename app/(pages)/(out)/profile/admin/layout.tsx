@@ -17,12 +17,14 @@ export default async function AdminPanellayout({
    }
 
    return (
-      <div>
-         <MenuInfinite
-            links={linksAdminPanel}
-            cutPath={[1, 4]}
-            position="right"
-         />
+      <div className=''>
+         <div className="sticky top-0 -translate-y-10">
+            <MenuInfinite
+               links={linksAdminPanel}
+               cutPath={[1, 4]}
+               position="right"
+            />
+         </div>
          {children}
       </div>
    )
