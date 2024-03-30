@@ -1,7 +1,12 @@
 import Footer from '@/components/footer'
 import { NavBar } from '@/components/navs/NavBar'
 import { NavbarFallback } from '@/components/navs/NavbarFallback'
+import { Metadata } from 'next'
 import { Suspense } from 'react'
+
+export const metadata: Metadata = {
+   title: 'Pizzeria Albatros | Casa',
+}
 
 export default function MainLayout({
    children,

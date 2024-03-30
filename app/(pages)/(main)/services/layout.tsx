@@ -1,4 +1,9 @@
 import { ChoiceService } from '@/components/pages/services/ChoiceService'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+   title: 'Pizzeria Albatros | Servizi',
+}
 
 export default function LayoutServicePage({
    children,
