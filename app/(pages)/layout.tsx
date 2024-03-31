@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { Providers } from './Providers'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
+import { ChatBot } from '@/components/ui/chat/ChatBot'
 
 export const metadata: Metadata = {
    metadataBase: new URL(process.env.PATHNAME || 'http://localhost:3000'),
@@ -29,11 +30,12 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body
-            className={`${siligury.className} antialiased min-h-screen bg-lightDarkMode text-gray-100 w-full select-none   `}
+            className={`${siligury.className} antialiased min-h-screen bg-lightDarkMode text-gray-100 w-full select-none`}
          >
             <Analytics />
             <Providers>
-               <main className="w-full h-full">
+               <main className="w-full h-full relative">
+                  <ChatBot />
                   <Toaster />
                   {children}
                </main>
