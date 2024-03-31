@@ -5,7 +5,7 @@ export interface TInputProps
    id?: string
    name: string
    label?: string
-   type: string
+   type?: string
    value?: string | number | undefined | readonly string[]
    error?: string
 }
@@ -32,11 +32,11 @@ export const Input = ({
             autoComplete="off"
             {...props}
          />
-         {error && (
+         {error ? (
             <p className="text-red-500 text-xs text-right absolute pl-1">
                {error}
             </p>
-         )}
+         ): null}
       </label>
    )
 }
