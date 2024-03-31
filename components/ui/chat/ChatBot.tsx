@@ -4,10 +4,14 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa6'
 import { MdOutlineSmartToy } from 'react-icons/md'
+import { BsStars } from 'react-icons/bs'
+import { useSession } from 'next-auth/react'
+import { RiSendPlaneFill } from 'react-icons/ri'
 
 export const ChatBot = () => {
    const { messages, input, handleInputChange, handleSubmit } = useChat()
    const [openedChat, setOpenedChat] = useState(false)
+   const { status } = useSession()
    const variant = {
       open: {
          x: 0,
@@ -19,13 +23,19 @@ export const ChatBot = () => {
       },
    }
 
+   if (status === 'loading') {
+      return (
+         <div className="w-14 h-14 fixed bottom-5 right-5 animate-pulse bg-white/10 rounded-full"></div>
+      )
+   }
+
    return (
       <div className="flex flex-col w-full max-w-md fixed bottom-5 right-0 z-40">
          <motion.div
             variants={variant}
             initial={openedChat ? 'open' : 'closed'}
             animate={openedChat ? 'open' : 'closed'}
-            className={`w-screen h-svh min-h-[800px] lg:hidden fixed flex flex-col top-0 right-0 text-slate-200 bg-gradient-to-r from-darkMode via-lightDarkMode to-darkMode shadow-md py-2 overflow-hidden`}
+            className={`w-screen h-svh min-h-[800px] lg:w-[30vw] fixed flex flex-col top-0 right-0 text-slate-200 bg-gradient-to-r from-darkMode via-lightDarkMode to-darkMode shadow-md py-2 overflow-hidden`}
          >
             <div className="container flex flex-col justify-between h-full">
                <div className="w-full overflow-y-auto grow">
@@ -59,22 +69,32 @@ export const ChatBot = () => {
                   ))} */}
                </div>
 
-               <form onSubmit={handleSubmit}>
+               <form
+                  onSubmit={handleSubmit}
+                  className="flex items-center mb-20 gap-2"
+               >
                   <input
-                     className="w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
+                     className="input p-2 grow"
                      value={input}
                      placeholder="Chiedici qualcosa sulla nostra pizzeria..."
                      onChange={handleInputChange}
                   />
+
+                  <button
+                     type="submit"
+                     className="hover:cursor-pointer px-4 bg-gradient-to-tr from-gray-800 via-gray-700 to-gray-800 rounded-md h-full bg-darkContrast"
+                  >
+                     <RiSendPlaneFill className="text-3xl" />
+                  </button>
                </form>
             </div>
          </motion.div>
 
          <button
-            className="p-2 w-10 h-10 absolute right-5 -top-8 flex justify-center items-center rounded-full bg-primary border border-gray-300 shadow-xl z-50"
+            className={`w-14 h-14 relative ${openedChat ? 'animate-pulse focus:ring-1' : ''} bg-gradient-to-tr transition-all from-pri-800 via-primary/80 to-pri-800 self-end mr-4 flex justify-center items-center overflow-hidden rounded-full p-2 focus:outline-none  focus:ring-pri-400 focus:ring-offset-2 focus:ring-offset-slate-50 z-50`}
             onClick={() => setOpenedChat(!openedChat)}
          >
-            <MdOutlineSmartToy className="w-6 h-6" />
+            <BsStars className="relative text-3xl" />
          </button>
       </div>
    )
