@@ -48,7 +48,7 @@
       @apply border-2 border-gray-400 rounded-md p-2 focus:outline-none focus:border-blue-400 bg-slate-50;
    }
    .input {
-      @apply w-full bg-gray-800 placeholder:text-gray-300/30 placeholder:text-sm placeholder:font-light rounded-xl border bg-opacity-40 border-gray-300/40 focus:bg-transparent focus:ring-2 focus:ring-pri-900 focus:border-primary text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+      @apply w-full bg-transparent disabled:bg-gray-700/40 disabled:cursor-not-allowed disabled:text-gray-300 placeholder:text-gray-300/30 placeholder:font-light rounded-xl border bg-opacity-40 border-gray-300/40 focus:bg-transparent focus:ring-2 focus:ring-pri-900 focus:border-primary text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
    }
    .input-editable {
       @apply w-full bg-transparent placeholder:text-gray-300/30 placeholder:text-sm placeholder:font-light rounded-xl border bg-opacity-40 border-gray-300/40 focus:bg-transparent focus:ring-2 focus:ring-pri-900 focus:border-primary text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;

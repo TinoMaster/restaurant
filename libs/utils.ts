@@ -3,17 +3,23 @@ import { ServerResponse } from '@/types/api_responses'
 import { TIngredient } from '@/types/models/ingredient'
 import { TProduct } from '@/types/models/product'
 import { IconType } from 'react-icons'
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+   return twMerge(clsx(inputs))
+}
 
 export const isProductInCart = (
    productId: TProduct['_id'],
-   array: TProduct['_id'][]
+   array: TProduct['_id'][],
 ) => {
    return array.some((id) => id === productId)
 }
 
 export const isProductInFavorite = (
    productId: TProduct['_id'],
-   array: TProduct['_id'][]
+   array: TProduct['_id'][],
 ) => {
    return array.some((id) => id === productId)
 }
@@ -52,7 +58,7 @@ export const createRandomCode = (length: number) => {
 export const cutPathnameByPiece = (
    pathname: string,
    from: number,
-   piece: number
+   piece: number,
 ) => {
    const pathnameArr = pathname.split('/')
 
