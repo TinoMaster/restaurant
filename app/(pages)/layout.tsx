@@ -1,10 +1,9 @@
 import { siligury } from '@/utils/fonts'
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Toaster } from 'react-hot-toast'
-import { Providers } from './Providers'
-import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
-import { ChatBot } from '@/components/ui/chat/ChatBot'
+import { Providers } from './Providers'
 
 export const metadata: Metadata = {
    metadataBase: new URL(process.env.PATHNAME || 'http://localhost:3000'),
@@ -35,7 +34,6 @@ export default function RootLayout({
             <Analytics />
             <Providers>
                <main className="w-full h-full relative">
-                  <ChatBot />
                   <Toaster />
                   {children}
                </main>

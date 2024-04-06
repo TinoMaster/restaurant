@@ -23,7 +23,6 @@ export const FormAddAddress = () => {
    const router = useRouter()
 
    const onSubmit: SubmitHandler<TAddressCreateZod> = async (data) => {
-      console.log(data)
       toast.loading('Adding address...')
       const response = await createAddress(data)
       if (!response) {

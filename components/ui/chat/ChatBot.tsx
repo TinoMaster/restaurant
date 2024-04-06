@@ -30,7 +30,7 @@ export const ChatBot = () => {
    }
 
    return (
-      <div className="flex flex-col w-full max-w-md fixed bottom-5 right-0 z-40">
+      <div className="fixed bottom-5 right-0 z-40">
          <motion.div
             variants={variant}
             initial={openedChat ? 'open' : 'closed'}
@@ -91,7 +91,7 @@ export const ChatBot = () => {
          </motion.div>
 
          <button
-            className={`w-14 h-14 relative ${openedChat ? 'animate-pulse focus:ring-1' : ''} bg-gradient-to-tr transition-all from-pri-800 via-primary/80 to-pri-800 self-end mr-4 flex justify-center items-center overflow-hidden rounded-full p-2 focus:outline-none  focus:ring-pri-400 focus:ring-offset-2 focus:ring-offset-slate-50 z-50`}
+            className={`w-14 h-14 relative ${openedChat ? 'animate-pulse focus:ring-1' : ''} bg-gradient-to-tr transition-all from-darkMode via-primary/50 to-darkMode border border-pri-400 self-end mr-4 flex justify-center items-center overflow-hidden rounded-full p-2 focus:outline-none  focus:ring-pri-400 focus:ring-offset-2 focus:ring-offset-slate-50 z-50`}
             onClick={() => setOpenedChat(!openedChat)}
          >
             <BsStars className="relative text-3xl" />
