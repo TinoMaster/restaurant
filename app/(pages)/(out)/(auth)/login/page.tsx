@@ -1,5 +1,5 @@
 'use client'
-import { Btn_Google } from '@/components/ui/buttons/BtnGoogle'
+import { BtnGoogle } from '@/components/ui/buttons/BtnGoogle'
 import { useLogin } from '@/hooks/useLogin'
 import { prenotazione } from '@/utils/images'
 import Image from 'next/image'
@@ -87,7 +87,7 @@ export default function Login() {
                </Link>
             </div>
             <p className="text-gray-100 mt-5">o bien</p>
-            <Btn_Google />
+            <BtnGoogle />
          </div>
       </section>
    )
