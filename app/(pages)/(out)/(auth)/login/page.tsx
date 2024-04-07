@@ -1,5 +1,5 @@
 'use client'
-import { Btn_Google } from '@/components/ui/buttons/Btn_Google'
+import { Btn_Google } from '@/components/ui/buttons/BtnGoogle'
 import { useLogin } from '@/hooks/useLogin'
 import { prenotazione } from '@/utils/images'
 import Image from 'next/image'

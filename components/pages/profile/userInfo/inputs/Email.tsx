@@ -13,7 +13,7 @@ export const InputEmail = ({
    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => {
    return (
-      <div className="relative">
+      <div className="relative col-span-2">
          <Input label="Email" name="email" value={email} onChange={onChange} />
          {emailVerified ? (
             <span className="px-2 text-xs bg-green-400/30 rounded-lg absolute right-4 top-1 flex items-center gap-1">

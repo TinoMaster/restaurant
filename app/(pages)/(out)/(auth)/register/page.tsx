@@ -1,5 +1,5 @@
 'use client'
-import { Btn_Google } from '@/components/ui/buttons/Btn_Google'
+import { BtnGoogle } from '@/components/ui/buttons/BtnGoogle'
 import { useRegister } from '@/hooks/useRegister'
 import { prenotazione } from '@/utils/images'
 import Image from 'next/image'
@@ -108,7 +108,7 @@ export default function Register() {
                </Link>
             </div>
             <p className="text-gray-100 mt-5">o bien</p>
-            <Btn_Google />
+            <BtnGoogle />
          </div>
       </section>
    )

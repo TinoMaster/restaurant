@@ -13,7 +13,7 @@ export const InputPhone = ({
    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => {
    return (
-      <div className="relative">
+      <div className="relative col-span-2">
          <Input
             label="Telefono"
             name="phone"

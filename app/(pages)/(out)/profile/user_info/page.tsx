@@ -24,7 +24,7 @@ export default async function Profile() {
                <ImageMainInfo image={image} name={name} email={email} />
             </div>
             <div className="col-span-4 lg:col-span-3">
-               <h3 className="text-3xl mb-5">User Info</h3>
+               <h3 className="text-lg uppercase mr-0 text-gray-300 mb-5">Dati Utente</h3>
                <FormUserInfo
                   name={name}
                   email={email}

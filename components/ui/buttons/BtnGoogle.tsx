@@ -2,7 +2,7 @@
 import { signIn } from 'next-auth/react'
 import React from 'react'
 
-export const Btn_Google = () => {
+export const BtnGoogle = () => {
    return (
       <button
          onClick={() => signIn('google')}
@@ -38,7 +38,7 @@ export const Btn_Google = () => {
                </clipPath>
             </defs>
          </svg>
-         <span className='text-gray-800'>Continue with Google</span>
+         <span className="text-gray-800">Continue with Google</span>
       </button>
    )
 }
