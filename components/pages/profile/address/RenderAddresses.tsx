@@ -1,8 +1,7 @@
+import { ADD_NEW_ADDRESS } from '@/constants/routes.app'
 import { getAddresses } from '@/services/actions/address.action'
 import Link from 'next/link'
 import { CardAddress } from './CardAddress'
-import { ADD_NEW_ADDRESS } from '@/constants/routes.app'
-
 export const RenderAddresses = async () => {
    const addresses = await getAddresses()
 

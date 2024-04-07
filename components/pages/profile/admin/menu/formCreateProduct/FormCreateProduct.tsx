@@ -37,7 +37,7 @@ export const FormCreateProduct = ({
                      <Input
                         key={inp.id}
                         type={inp.type}
-                        label={inp.label}
+                        label={inp.label ?? ''}
                         name={inp.name}
                         id={inp.id}
                         placeholder={inp.placeholder}

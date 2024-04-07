@@ -2,7 +2,7 @@ import { Sidebar } from '@/components/pages/profile/Sidebar'
 import { prenotazione } from '@/utils/images'
 import Image from 'next/image'
 
-export default async function Layout({
+export default function Layout({
    children,
 }: {
    readonly children: React.ReactNode

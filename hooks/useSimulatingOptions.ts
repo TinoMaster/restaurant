@@ -1,6 +1,7 @@
 import { REGISTER } from '@/constants/routes.api'
 import { user } from '@/services/user'
 import { signIn } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 const formRegister = {
@@ -15,19 +16,22 @@ const formLogin = {
 }
 
 export const useSimulatingOptions = () => {
+   const searchParams = useSearchParams()
+   const callbackUrl = searchParams.get('callbackUrl')
+
    const handleLogin = async () => {
       toast.loading('Iniciando sesión...')
       const res = await signIn('credentials', {
          email: formLogin.email,
          password: formLogin.password,
          redirect: false,
-         callbackUrl: '/',
+         callbackUrl: callbackUrl ?? '/',
       })
       toast.remove()
 
       if (res?.ok) {
          toast.success('Session iniciada con exito...')
-         window.location.href = '/'
+         window.location.href = callbackUrl ?? '/'
       } else {
          const signupResponse = await user.register(REGISTER, formRegister)
          if (signupResponse.success) {
@@ -37,7 +41,7 @@ export const useSimulatingOptions = () => {
                email: formRegister.email,
                password: formRegister.password,
                redirect: true,
-               callbackUrl: '/',
+               callbackUrl: callbackUrl ?? '/',
             })
          } else {
             toast.remove()

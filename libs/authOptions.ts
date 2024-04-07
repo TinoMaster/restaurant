@@ -33,7 +33,7 @@ export const authOptions: AuthOptions = {
 
                await mongoose.connect(`${db_config.URI}`)
                const user = await UserModel.findOne({ email }).select(
-                  '+password'
+                  '+password',
                )
 
                if (user && (await verifyPassword(password, user.password))) {
@@ -45,7 +45,6 @@ export const authOptions: AuthOptions = {
          },
       }),
    ],
-   /* //FIXME: view later */
    adapter: MongoDBAdapter(clientPromise) as any,
    pages: {
       signIn: '/login',
@@ -59,19 +58,24 @@ export const authOptions: AuthOptions = {
       maxAge: 60 * 60 * 24 * 30,
    },
    callbacks: {
-      async jwt({ token, user, trigger, session }) {
-         if (trigger === 'update') {
-            return { ...token, ...session.user }
+      async jwt({ token, user }) {
+         if (user) {
+            token.name = user.name
+            token.email = user.email
+            token.sub = user.id
+            token.isAdmin = user.isAdmin
          }
-         return { ...token, ...user }
+         return token
       },
       async session({ session, token }) {
-         session.user = {
-            name: token.name,
-            email: token.email,
-            sub: token.sub,
-            isAdmin: (token._doc as { isAdmin: boolean }).isAdmin,
-         } as any
+         if (session?.user) {
+            session.user = {
+               name: token.name,
+               email: token.email,
+               sub: token.sub,
+               isAdmin: token.isAdmin,
+            } as any
+         }
          return session
       },
    },

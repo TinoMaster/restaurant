@@ -1,4 +1,5 @@
 import { signIn, useSession } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -13,27 +14,29 @@ const INITIAL_FORM: IFormLogin = {
 }
 
 export const useLogin = () => {
-   const { status } = useSession()
+   const searchParams = useSearchParams()
+   const callbackUrl = searchParams.get('callbackUrl')
    const [formLogin, setFormLogin] = useState<IFormLogin>(INITIAL_FORM)
    const [loading, setLoading] = useState(false)
 
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      toast.loading('Iniciando sesión...')
+      e.preventDefault()
+      toast.loading('Iniziando sessione...')
       setLoading(true)
       const res = await signIn('credentials', {
          email: formLogin.email,
          password: formLogin.password,
          redirect: false,
-         callbackUrl: '/',
+         callbackUrl: callbackUrl ?? '/',
       })
+      toast.remove()
 
       if (res?.ok) {
+         toast.success('Sessione iniziata con successo...')
          setFormLogin(INITIAL_FORM)
-         toast.remove()
-         window.location.href = '/'
+         window.location.href = callbackUrl ?? '/'
       } else {
-         toast.remove()
-         toast.error(res?.error || 'Error al iniciar sesión')
+         toast.error('Credenziali errate')
       }
       setLoading(false)
    }
@@ -43,6 +46,5 @@ export const useLogin = () => {
       loading,
       handleSubmit,
       setFormLogin,
-      status,
    }
 }

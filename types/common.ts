@@ -26,15 +26,10 @@ export type TInput = {
    editable?: boolean
    value?: string
 }
-export type TInputProps = {
-   id?: string
-   name: string
-   label?: string
-   type: string
-   placeholder?: string
-   value?: string | number | undefined | readonly string[]
-   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-   disabled?: boolean
+
+export interface InputProps
+   extends React.InputHTMLAttributes<HTMLInputElement> {
+   label: string
 }
 
 export interface IDataToVerifyEmail {
